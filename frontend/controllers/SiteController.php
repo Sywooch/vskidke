@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\models\EmailConfirmForm;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -19,29 +20,29 @@ use frontend\models\ContactForm;
 class SiteController extends Controller
 {
     /**
-     * @inheritdoc
+     * @return array
      */
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only'  => ['logout', 'signup'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
+                        'allow'   => true,
+                        'roles'   => ['?'],
                     ],
                     [
                         'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
+                        'allow'   => true,
+                        'roles'   => ['@'],
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
+            'verbs'  => [
+                'class'   => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -50,35 +51,25 @@ class SiteController extends Controller
     }
 
     /**
-     * @inheritdoc
+     * @return array
      */
     public function actions()
     {
         return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
             'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
+                'class'           => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return mixed
-     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
     /**
-     * Logs in a user.
-     *
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionLogin()
     {
@@ -97,9 +88,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Logs out the current user.
-     *
-     * @return mixed
+     * @return \yii\web\Response
      */
     public function actionLogout()
     {
@@ -109,51 +98,16 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending email.');
-            }
-
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-
-    /**
-     * Signs user up.
-     *
-     * @return mixed
+     * @return string|\yii\web\Response
      */
     public function actionSignup()
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+                Yii::$app->getSession()->setFlash('success', 'На ваш email отправлено письмо с подтверждением регистрации');
+
+                return $this->goHome();
             }
         }
 
@@ -163,36 +117,56 @@ class SiteController extends Controller
     }
 
     /**
-     * Requests password reset.
+     * @param $token
      *
-     * @return mixed
+     * @return \yii\web\Response
+     * @throws \yii\web\BadRequestHttpException
      */
-    public function actionRequestPasswordReset()
+    public function actionEmailConfirm($token)
+    {
+        try {
+            $model = new EmailConfirmForm($token);
+        } catch (InvalidParamException $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        if ($model->confirmEmail()) {
+            Yii::$app->getSession()->setFlash('success', 'Email успешно подтвержден');
+        } else {
+            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'ERROR_CONFIRMATION_EMAIL'));
+        }
+
+        return $this->goHome();
+    }
+
+    /**
+     * @return string|\yii\web\Response
+     */
+    public function actionPasswordResetRequest()
     {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->getSession()->setFlash('success', Yii::t('app', 'EMAIL_SENT_PASSWORD_RECOVERY'));
 
                 return $this->goHome();
             } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->getSession()->setFlash('error', Yii::t('app', 'PROBLEMS_SHIPMENT'));
             }
         }
 
-        return $this->render('requestPasswordResetToken', [
+        return $this->render('passwordResetRequest', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Resets password.
+     * @param $token
      *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
+     * @return string|\yii\web\Response
+     * @throws \yii\web\BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public function actionPasswordReset($token)
     {
         try {
             $model = new ResetPasswordForm($token);
@@ -201,12 +175,12 @@ class SiteController extends Controller
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->session->setFlash('success', 'New password was saved.');
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'PASSWORD_SUCCESS_CHANGE'));
 
             return $this->goHome();
         }
 
-        return $this->render('resetPassword', [
+        return $this->render('passwordReset', [
             'model' => $model,
         ]);
     }
