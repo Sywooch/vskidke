@@ -11,7 +11,7 @@ class EmailConfirmForm extends Model
     /**
      * @var User
      */
-    private $_user;
+    protected $_user;
 
     /**
      * Creates a form model given a token.
@@ -45,5 +45,9 @@ class EmailConfirmForm extends Model
         $user->removeEmailConfirmToken();
 
         return $user->save();
+    }
+
+    public function getUser() {
+        return $this->_user;
     }
 }

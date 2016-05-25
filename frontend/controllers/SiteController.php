@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\helpers\StringHelper;
+use common\models\User;
 use frontend\models\EmailConfirmForm;
 use Yii;
 use yii\base\InvalidParamException;
@@ -131,9 +133,29 @@ class SiteController extends Controller
         }
 
         if ($model->confirmEmail()) {
-            Yii::$app->getSession()->setFlash('success', 'Email успешно подтвержден');
+            /** @var User $user */
+            $user     = $model->getUser();
+            $password = StringHelper::generatePassword();
+            $user->setPassword($password);
+
+            if($user->save()) {
+                Yii::$app->mail->compose('@frontend/mail/authorizationData', [
+                    'user'     => $user,
+                    'password' => $password
+                ])
+                    ->setFrom(['lycifer31992@mail.ru' => Yii::$app->name])
+                    ->setTo($user->email)
+                    ->setSubject('Email confirmation for ' . Yii::$app->name)
+                    ->send();
+            }
+
+
+            Yii::$app->getSession()->setFlash(
+                'success',
+                'Email успешно подтвержден, данные авторизации оправлены вам на почту'
+            );
         } else {
-            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'ERROR_CONFIRMATION_EMAIL'));
+            Yii::$app->getSession()->setFlash('error', 'Время токена истекло');
         }
 
         return $this->goHome();
