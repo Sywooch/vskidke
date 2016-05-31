@@ -245,4 +245,8 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->email_confirm_token = null;
     }
+
+    public function getProfile() {
+        return $this->hasOne(UserProfile::class, ['user_id' => 'id']);
+    }
 }
