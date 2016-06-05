@@ -32,12 +32,11 @@ class CompanyController extends Controller {
 
             if($model->relatedRecords['profile']->load($post) && $model->relatedRecords['profile']->save()) {
                 $uploadForm            = new UploadForm();
-                $uploadForm->img       = UploadedFile::getInstance($model->relatedRecords['profile'], 'profile_img');
+                $uploadForm->img       = UploadedFile::getInstance($model->relatedRecords['profile'], 'img');
                 $uploadForm->model     = $model->relatedRecords['profile'];
                 $uploadForm->directory = 'profile';
-                $uploadForm->attribute = 'profile_img';
 
-                $model->relatedRecords['profile']->profile_img = $uploadForm->upload(false);
+                $model->relatedRecords['profile']->img = $uploadForm->upload(false);
                 $model->relatedRecords['profile']->save();
 
                 $this->refresh();

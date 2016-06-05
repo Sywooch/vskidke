@@ -52,17 +52,10 @@ class UploadForm extends Model
             
             $imgDb = '/' . $this->directory . '/original/' . $fileName;
             $image = Yii::$app->image->load($absoluteImg);
-            $watermark = \Yii::$app->image->load('/var/www/sites/doctora/dev1/frontend/web/images/label.png');
 
-            if($flag) {
-                $image->resize(800, FALSE)->watermark($watermark, true, true, 100)->save($absoluteDirectory . '/thumbs_big/' . $fileName, 90);
-                $image->resize(600, FALSE)->watermark($watermark, true, true, 100)->save($absoluteDirectory . '/thumbs_medium/' . $fileName, 90);
-                $image->resize(300, FALSE)->watermark($watermark, true, true, 100)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90);
-            } else {
-                $image->resize(800, FALSE)->save($absoluteDirectory . '/thumbs_big/' . $fileName, 90);
-                $image->resize(600, FALSE)->save($absoluteDirectory . '/thumbs_medium/' . $fileName, 90);
-                $image->resize(300, FALSE)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90);
-            }
+            $image->resize(800, FALSE)->save($absoluteDirectory . '/thumbs_big/' . $fileName, 90);
+            $image->resize(600, FALSE)->save($absoluteDirectory . '/thumbs_medium/' . $fileName, 90);
+            $image->resize(300, FALSE)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90);
 
             return $imgDb;
         } else {
