@@ -20,5 +20,7 @@ $profile = $model->relatedRecords['profile'];
     <?= $form->field($model->relatedRecords['profile'], 'profile_phone')->textInput(); ?>
     <?= $form->field($model->relatedRecords['profile'], 'profile_site')->textInput(); ?>
 
+    <?= $form->field($model->relatedRecords['profile'], 'profile_img')->widget()?>
+
 <?= Html::submitInput('Save'); ?>
 <?php ActiveForm::end(); ?>

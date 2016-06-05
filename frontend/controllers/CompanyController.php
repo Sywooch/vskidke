@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\models\User;
 use yii\filters\AccessControl;
+use \Yii;
 
 class CompanyController extends Controller {
     public function behaviors()

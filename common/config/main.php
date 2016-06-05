@@ -16,5 +16,9 @@ return [
                 'encryption' => 'ssl',
             ],
         ],
+        'image' => [
+            'class' => 'yii\image\ImageDriver',
+            'driver' => 'GD'
+        ],
     ],
 ];

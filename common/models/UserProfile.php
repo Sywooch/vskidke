@@ -15,6 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $profile_site
  * @property integer $id
  * @property integer $user_id
+ * @property string $profile_img
  */
 class UserProfile extends ActiveRecord {
     public static function tableName() {
