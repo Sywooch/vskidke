@@ -25,7 +25,7 @@ class UserProfile extends ActiveRecord {
     public function rules() {
         return [
             [['id', 'user_id'], 'integer'],
-            [['profile_name', 'profile_phone', 'profile_site'], 'string', 'max' => 255]
+            [['profile_name', 'profile_phone', 'profile_site', 'profile_img'], 'string', 'max' => 255]
         ];
     }
 
