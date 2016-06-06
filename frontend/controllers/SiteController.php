@@ -6,6 +6,7 @@ use common\models\User;
 use frontend\models\EmailConfirmForm;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -46,7 +47,7 @@ class SiteController extends Controller
             'verbs'  => [
                 'class'   => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['post', 'get'],
                 ],
             ],
         ];
@@ -81,7 +82,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->redirect(Url::to(['/company/index']));
         } else {
             return $this->render('login', [
                 'model' => $model,

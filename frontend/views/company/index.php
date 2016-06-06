@@ -13,41 +13,91 @@ use yii\widgets\ActiveForm;
 $profile = $model->relatedRecords['profile'];
 
 ?>
-Компания: <?= $profile->profile_name; ?><br>
-Телефон: <?= $profile->profile_phone; ?><br>
-Сайт: <?= $profile->profile_site; ?><br>
 
-<br><br><br>
-<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
-    <?= $form->field($model->relatedRecords['profile'], 'profile_name')->textInput(); ?>
-    <?= $form->field($model->relatedRecords['profile'], 'profile_phone')->textInput(); ?>
-    <?= $form->field($model->relatedRecords['profile'], 'profile_site')->textInput(); ?>
-
-<?php if (!$model->relatedRecords['profile']->isNewRecord && !empty($model->relatedRecords['profile']->img)) { ?>
-    <?= $form->field($model->relatedRecords['profile'], 'img')->widget(FileInput::className(), [
-        'pluginOptions' => [
-            'initialPreview' => [
-                Html::img(Yii::$app->params['uploadUrl'] . $model->relatedRecords['profile']->img, ['class'=>'file-preview-image', 'alt'=>$model->relatedRecords['profile']->img, 'title'=>$model->relatedRecords['profile']->img]),
-            ],
-            'showPreview' => true,
-            'showRemove'  => false,
-            'showUpload'  => false,
-            'browseLabel' => 'Выбрать изображение',
-
-        ],
-
-    ])?>
-<?php } else { ?>
-    <?= $form->field($model->relatedRecords['profile'], 'img')->widget(FileInput::className(), [
-        'pluginOptions' => [
-            'showPreview' => true,
-            'showRemove'  => false,
-            'showUpload'  => false,
-            'browseLabel' => 'Выбрать изображение',
-        ]
-
-    ])?>
-<?php } ?>
-
-<?= Html::submitInput('Save'); ?>
-<?php ActiveForm::end(); ?>
+<div class="container main">
+    <div class="content">
+        <div class="page-title-wrapp">
+            <h1 class="page-title">Мои  данные</h1>
+        </div>
+        <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
+            <div class="edit-form">
+                <div class="img-block">
+                    <img id="blah" src="<?php if(!$model->relatedRecords['profile']->isNewRecord && !empty($model->relatedRecords['profile']->img)): ?><?= Yii::$app->params['uploadUrl'] . $model->relatedRecords['profile']->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_logo.png&quot;">
+                    <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>
+                    <?= $form->field($model->relatedRecords['profile'], 'img')->fileInput([
+                        'id'    => 'fileID',
+                        'style' => 'visibility: hidden;'
+                    ])->label(''); ?>
+<!--                    <input type="file" id="fileID" style="visibility: hidden;" />-->
+                </div>
+                <div class="inputs-block">
+                    <div class="form-row">
+                        <label for="company" class="form-label">Компания</label>
+                        <a href="#" class="edit">Редактировать</a>
+                        <?= $form->field($model->relatedRecords['profile'], 'profile_name')->textInput([
+                            'class' => 'form-input',
+                            'id'    => 'company'
+                        ])->label(''); ?>
+                    </div>
+                    <div class="form-row">
+                        <label for="phone" class="form-label">Телефон</label>
+                        <a href="#" class="edit">Редактировать</a>
+                        <?= $form->field($model->relatedRecords['profile'], 'profile_phone')->textInput([
+                            'class' => 'form-input',
+                            'id'    => 'phone'
+                        ])->label(''); ?>
+                    </div>
+                    <div class="form-row">
+                        <label for="e-mail" class="form-label">E-mail</label>
+                        <a href="#" class="edit">Редактировать</a>
+                        <?= $form->field($model, 'email')->textInput([
+                            'class' => 'form-input',
+                            'id'    => 'e-mail'
+                        ])->label(''); ?>
+                    </div>
+                    <div class="form-row">
+                        <label for="site" class="form-label">Сайт</label>
+                        <a href="#" class="edit">Редактировать</a>
+                        <?= $form->field($model->relatedRecords['profile'], 'profile_site')->textInput([
+                            'class' => 'form-input',
+                            'id'    => 'site'
+                        ])->label(''); ?>
+                    </div>
+                </div>
+            </div>
+            <div class="search-place">
+                <div class="form-row">
+                    <div class="select-wrapp town">
+                        <select name="town">
+                            <option value="1">Киев</option>
+                            <option value="2">Днепропетровск</option>
+                        </select>
+                    </div>
+                    <input type="text" name="address" placeholder="Введите адрес" class="form-input address">
+                    <input type="text" name="phone" placeholder="телефон" class="form-input phone">
+                </div>
+                <input type="submit" value="Найти адрес" class="form-submit">
+            </div>
+            <div class="map-holder"><script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=wRN6jKaovdUKSUGiikvEm7FlWUgvPByD&width=100%&height=240&lang=ru_RU&sourceType=constructor"></script></div>
+            <div class="save-btn-holder">
+                <button type="submit" class="save-btn">Сохранить</button>
+            </div>
+        <?php ActiveForm::end(); ?>
+    </div>
+    <aside class="sidebar-left sidebar">
+        <a href="#" class="sidebar-banner">
+            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+        </a>
+        <a href="#" class="sidebar-banner">
+            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+        </a>
+    </aside>
+    <aside class="sidebar-right sidebar">
+        <a href="#" class="sidebar-banner">
+            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+        </a>
+        <a href="#" class="sidebar-banner">
+            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+        </a>
+    </aside>
+</div>

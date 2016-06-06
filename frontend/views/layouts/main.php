@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use frontend\assets\BoodstrapAsset;
 use frontend\assets\FancyBoxAsset;
 use frontend\assets\OwlCarouselAsset;
 use frontend\widgets\footer\FooterWidget;
@@ -12,11 +13,12 @@ use frontend\assets\AppAsset;
 
 OwlCarouselAsset::register($this);
 FancyBoxAsset::register($this);
+BoodstrapAsset::register($this);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
+<html>
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">

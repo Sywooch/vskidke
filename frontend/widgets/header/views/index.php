@@ -1,18 +1,26 @@
 <?php
-
+use yii\helpers\Url;
 ?>
 
 <header class="header">
     <div class="topbar container">
         <div class="logo-holder"><strong class="logo"><a href="#"></a></strong></div>
         <div class="btn-holder">
-            <div class="col-left"><a href="#" class="btn-info">Разместить скидку</a>
+            <div class="col-left">
+                <a href="<?= Url::to(['/discount/index']); ?>" class="btn-info">Разместить скидку</a>
                 <select class="town">
                     <option>Киев</option>
                     <option>Днепропетровск</option>
                 </select>
             </div>
-            <div class="col-right"><a href="#" class="btn-default">Вход</a><a href="#" class="registration">Регистрация</a></div>
+            <div class="col-right">
+                <?php if(Yii::$app->user->isGuest): ?>
+                    <a href="<?= Url::to(['/site/login'])?>" class="btn-default">Вход</a>
+                    <a href="#" class="registration">Регистрация</a>
+                <?php else: ?>
+                    <a href="<?= Url::to(['/site/logout'])?>" class="btn-default">Выход</a>
+                <?php endif; ?>
+            </div>
         </div>
         <nav class="navbar">
             <!--span.menu-btn#toggle-menu-->
@@ -33,7 +41,15 @@
             </ul>
         </nav>
     </div>
-    <div id="owl-header" class="owl-carousel owl-theme"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''"><img src="../images/header-banner.png" onerror="src=''">
+    <div id="owl-header" class="owl-carousel owl-theme">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="../images/header-banner.png" onerror="src=''">
         <div class="owl-controls">
             <div id="customNav" class="owl-nav"></div>
             <div id="customDots" class="owl-dots"></div>

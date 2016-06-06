@@ -33,7 +33,8 @@ class UserProfile extends ActiveRecord {
         return [
             'profile_name'  => 'Компания',
             'profile_phone' => 'Телефон',
-            'profile_site'  => 'Сайт'
+            'profile_site'  => 'Сайт',
+            'img'           => 'Изображение'
         ];
     }
 }
