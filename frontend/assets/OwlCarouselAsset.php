@@ -4,22 +4,17 @@ namespace frontend\assets;
 
 use yii\web\AssetBundle;
 
-/**
- * Main frontend application asset bundle.
- */
-class AppAsset extends AssetBundle
-{
+class OwlCarouselAsset extends AssetBundle {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/site.css',
-        'css/main.css',
+        'css/owl-carousel/owl.carousel.css',
     ];
     public $js = [
-        'js/app.js',
+        'js/owl-carousel/owl.carousel.min.js',
     ];
     public $depends = [
-        'yii\web\YiiAsset',
+        'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
 }

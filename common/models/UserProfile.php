@@ -15,7 +15,7 @@ use yii\db\ActiveRecord;
  * @property string $profile_site
  * @property integer $id
  * @property integer $user_id
- * @property string $profile_img
+ * @property string $img
  */
 class UserProfile extends ActiveRecord {
     public static function tableName() {
@@ -25,7 +25,7 @@ class UserProfile extends ActiveRecord {
     public function rules() {
         return [
             [['id', 'user_id'], 'integer'],
-            [['profile_name', 'profile_phone', 'profile_site'], 'string', 'max' => 255]
+            [['profile_name', 'profile_phone', 'profile_site', 'img'], 'string', 'max' => 255]
         ];
     }
 

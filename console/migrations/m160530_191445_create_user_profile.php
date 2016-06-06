@@ -21,7 +21,7 @@ class m160530_191445_create_user_profile extends Migration
             'profile_name' => $this->string(255),
             'profile_phone' => $this->string(20),
             'profile_site' => $this->string(255),
-            'profile_img' => $this->string(255),
+            'img' => $this->string(255),
         ]);
 
         // creates index for column `user_id`
