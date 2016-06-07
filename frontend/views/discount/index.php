@@ -101,6 +101,7 @@ $discountModel;
                     <div class="select-wrapp add-page">
                         <?= $form->field($discountModel, 'discount_date_start')->widget(DatePicker::className(), [
                             'language' => 'ru',
+                            'class' => 'form-input',
                             'value' => date('Y-m-d')
                         ])->label(false)?>
 <!--                        <select name="">-->
@@ -111,6 +112,7 @@ $discountModel;
                     <div class="select-wrapp add-page">
                         <?= $form->field($discountModel, 'discount_date_end')->widget(DatePicker::className(), [
                             'language' => 'ru',
+                            'class' => 'form-input',
                             'value' => date('Y-m-d')
                         ])->label(false)?>
 <!--                        <select name="">-->
