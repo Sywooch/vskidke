@@ -2,6 +2,7 @@
 namespace common\models;
 
 use yii\db\ActiveRecord;
+use Yii;
 
 /**
  * This is the model class for table "user_profile".
@@ -36,5 +37,27 @@ class UserProfile extends ActiveRecord {
             'profile_site'  => 'Сайт',
             'img'           => 'Изображение'
         ];
+    }
+
+    public function getImg($size = 'original')
+    {
+        $sizes = ['original', 'big', 'medium', 'small'];
+        if (!in_array($size, $sizes)) {
+            throw new \yii\web\HttpException(404, 'Изображение не найдено');
+        }
+        if ($size == 'original') {
+            $img = $this->img;
+        } else {
+            $img = str_replace('/original/', '/thumbs_' . $size . '/', $this->img);
+        }
+        $newImg = Yii::getAlias('@frontend/web/upload') . $img;
+
+        if (!file_exists($newImg) || is_dir($newImg)) {
+            $img = '/../img/bg-img.jpg';
+        } else {
+            $img = Yii::$app->params['uploadUrl'] . $img;
+        }
+
+        return $img;
     }
 }

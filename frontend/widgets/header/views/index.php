@@ -19,6 +19,7 @@ use yii\helpers\Url;
                     <a href="#" class="registration">Регистрация</a>
                 <?php else: ?>
                     <a href="<?= Url::to(['/site/logout'])?>" class="btn-default">Выход</a>
+                    <a href="<?= Url::to(['/company/index']); ?>" class="registration">Мои данные</a>
                 <?php endif; ?>
             </div>
         </div>
