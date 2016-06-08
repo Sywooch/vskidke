@@ -4,10 +4,40 @@ namespace frontend\controllers;
 use common\models\Discounts;
 use common\models\UploadForm;
 use common\models\User;
+use yii\data\Pagination;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 class DiscountController extends Controller {
-    public function actionIndex() {
+    public function actionIndex($categoryId = null, $limit = 10) {
+        $query = Discounts::find()->where([
+            '>=',
+            'discount_date_end',
+            date('yyyy-MM-dd')
+        ]);
+
+        if($categoryId) {
+            $query->andWhere(['category_id' => $categoryId]);
+        }
+
+        $countQuery = clone $query;
+        $pages      = new Pagination([
+            'totalCount'     => $countQuery->count(),
+            'pageSize'       => $limit,
+            'forcePageParam' => false,
+            'pageSizeParam'  => false,
+        ]);
+
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('index', [
+            'models' => $models,
+            'pages'  => $pages
+        ]);
+    }
+    public function actionCreate() {
         $userModel     = $this->UserModel();
         $discountModel = new Discounts();
         $post = \Yii::$app->request->post();
@@ -20,10 +50,10 @@ class DiscountController extends Controller {
             $discountModel->img    = $uploadForm->upload(false);
             $discountModel->save();
 
-            $this->refresh();
+            return $this->redirect(Url::to(['index']));
         }
 
-        return $this->render('index', [
+        return $this->render('create', [
             'userModel'     => $userModel,
             'discountModel' => $discountModel
         ]);

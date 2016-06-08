@@ -68,34 +68,9 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex($categoryId = null, $limit = 1)
+    public function actionIndex($categoryId = null, $limit = 10)
     {
-        $query = Discounts::find()->where([
-            '>=',
-            'discount_date_end',
-            date('yyyy-MM-dd')
-        ]);
-
-        if($categoryId) {
-            $query->andWhere(['category_id' => $categoryId]);
-        }
-
-        $countQuery = clone $query;
-        $pages      = new Pagination([
-            'totalCount'     => $countQuery->count(),
-            'pageSize'       => $limit,
-            'forcePageParam' => false,
-            'pageSizeParam'  => false,
-        ]);
-
-        $models = $query->offset($pages->offset)
-                        ->limit($pages->limit)
-                        ->all();
-
-        return $this->render('index', [
-            'models' => $models,
-            'pages'  => $pages
-        ]);
+        return $this->redirect(Url::to(['/discount/index'], 301));
     }
 
     /**

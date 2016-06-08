@@ -7,7 +7,7 @@ use yii\helpers\Url;
         <div class="logo-holder"><strong class="logo"><a href="<?= Url::to(['/']); ?>"></a></strong></div>
         <div class="btn-holder">
             <div class="col-left">
-                <a href="<?= Url::to(['/discount/index']); ?>" class="btn-info">Разместить скидку</a>
+                <a href="<?= Url::to(['/discount/create']); ?>" class="btn-info">Разместить скидку</a>
                 <select class="town">
                     <option>Киев</option>
                     <option>Днепропетровск</option>

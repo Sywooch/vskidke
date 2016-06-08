@@ -35,7 +35,7 @@ $model;
                 <div style="background:url(<?= $model->getImg('medium'); ?>) no-repeat 0 0; background-size:contain contain; " class="img-holder">
                     <div class="label">
                         <div class="price">
-                            <span class='old-price'><?= $model->discount_old_price; ?></span> <?= $model->discount_price; ?> грн
+                            <div class="action">-90%</div>
                         </div>
                     </div>
                     <div class="info-block">
@@ -57,16 +57,16 @@ $model;
                 'pagination' => $pages,
             ]);?>
 <!--            <ul class="pagination-block">-->
-<!--                <!--li(role='menuitem').pagination-prev.disabled-->-->
-<!--                <!--    a(href='#', aria-label='Previous', role='link') Назад-->-->
+<!--                <!--li(role='menuitem').pagination-prev.disabled-->
+<!--                <!--    a(href='#', aria-label='Previous', role='link') Назад-->
 <!--                <li role="menuitem" class="disabled pagination-item"><a href="javascript:void(0)" role="link">1</a></li>-->
 <!--                <li role="menuitem" class="active pagination-item"><a href="javascript:void(0)" role="link">2</a></li>-->
 <!--                <li role="menuitem" class="pagination-item"><a href="javascript:void(0)" role="link">3</a></li>-->
 <!--                <li role="menuitem" class="pagination-item"><a href="javascript:void(0)" role="link">4</a></li>-->
 <!--                <li role="menuitem" class="disabled pagination-item"><a href="javascript:void(0)" role="link">...</a></li>-->
 <!--                <li role="menuitem" class="pagination-item"><a href="javascript:void(0)" role="link">22</a></li>-->
-<!--                <!--li(role='menuitem').pagination-next-->-->
-<!--                <!--    a(href='javascript:void(0)', aria-label='Previous', role='link') Вперед-->-->
+<!--                <!--li(role='menuitem').pagination-next-->
+<!--                <!--    a(href='javascript:void(0)', aria-label='Previous', role='link') Вперед-->
 <!--            </ul>-->
         </div>
     </div>

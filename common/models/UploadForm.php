@@ -11,11 +11,9 @@ class UploadForm extends Model
      * @var UploadedFile
      */
     public $img;
-    
     public $attribute = 'img';
-    
     public $model;
-    
+
     public $directory = 'content';
 
     
@@ -53,9 +51,9 @@ class UploadForm extends Model
             $imgDb = '/' . $this->directory . '/original/' . $fileName;
             $image = Yii::$app->image->load($absoluteImg);
 
-            $image->resize(600, FALSE)->save($absoluteDirectory . '/thumbs_big/' . $fileName, 90);
-            $image->resize(300, FALSE)->save($absoluteDirectory . '/thumbs_medium/' . $fileName, 90);
-            $image->resize(140, FALSE)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90);
+            $image->resize(860, FALSE)->save($absoluteDirectory . '/thumbs_big/' . $fileName, 90);
+            $image->resize(305, 200)->save($absoluteDirectory . '/thumbs_medium/' . $fileName, 90);
+            $image->resize(200, 150)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90);
 
             return $imgDb;
         } else {
