@@ -68,13 +68,22 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex($categoryId = null)
+    public function actionIndex($categoryId = null, $limit = 1)
     {
-        $query = Discounts::find()->where(['category_id' => $categoryId, '>=', 'discount_date_end', date('yyyy-MM-dd')]);
+        $query = Discounts::find()->where([
+            '>=',
+            'discount_date_end',
+            date('yyyy-MM-dd')
+        ]);
+
+        if($categoryId) {
+            $query->andWhere(['category_id' => $categoryId]);
+        }
+
         $countQuery = clone $query;
         $pages      = new Pagination([
             'totalCount'     => $countQuery->count(),
-            'pageSize'       => \Yii::$app->params['discountLimitPage'],
+            'pageSize'       => $limit,
             'forcePageParam' => false,
             'pageSizeParam'  => false,
         ]);

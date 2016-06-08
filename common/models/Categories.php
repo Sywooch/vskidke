@@ -32,8 +32,21 @@ class Categories extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getColorClass($categoryName) {
-        
+    public static function getColorClass() {
+        return [
+            '0'  => 'purple',
+            '1'  => 'purple-light',
+            '2'  => 'violet-light',
+            '3'  => 'violet',
+            '4'  => 'blue-light',
+            '5'  => 'blue',
+            '6'  => 'green',
+            '7'  => 'green-light',
+            '8'  => 'orange-light',
+            '9'  => 'orange',
+            '10' => 'pink',
+            '11' => 'yellow',
+        ];
     }
 
     /**
