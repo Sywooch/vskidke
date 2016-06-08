@@ -30,7 +30,7 @@ return [
         ],
         'urlManager' => [
             'class'           => 'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl' => false,
             'showScriptName'  => false,
             'rules' => [
                 '/' => 'site/index',

@@ -4,7 +4,7 @@ use yii\helpers\Url;
 
 <header class="header">
     <div class="topbar container">
-        <div class="logo-holder"><strong class="logo"><a href="#"></a></strong></div>
+        <div class="logo-holder"><strong class="logo"><a href="<?= Url::to(['/']); ?>"></a></strong></div>
         <div class="btn-holder">
             <div class="col-left">
                 <a href="<?= Url::to(['/discount/index']); ?>" class="btn-info">Разместить скидку</a>

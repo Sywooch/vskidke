@@ -2,10 +2,12 @@
 namespace frontend\controllers;
 
 use common\helpers\StringHelper;
+use common\models\Discounts;
 use common\models\User;
 use frontend\models\EmailConfirmForm;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\data\Pagination;
 use yii\helpers\Url;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
@@ -66,9 +68,25 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex()
+    public function actionIndex($categoryId = null)
     {
-        return $this->render('index');
+        $query = Discounts::find()->where(['category_id' => $categoryId, '>=', 'discount_date_end', date('yyyy-MM-dd')]);
+        $countQuery = clone $query;
+        $pages      = new Pagination([
+            'totalCount'     => $countQuery->count(),
+            'pageSize'       => \Yii::$app->params['discountLimitPage'],
+            'forcePageParam' => false,
+            'pageSizeParam'  => false,
+        ]);
+
+        $models = $query->offset($pages->offset)
+                        ->limit($pages->limit)
+                        ->all();
+
+        return $this->render('index', [
+            'models' => $models,
+            'pages'  => $pages
+        ]);
     }
 
     /**

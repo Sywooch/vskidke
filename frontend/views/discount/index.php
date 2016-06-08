@@ -4,6 +4,7 @@ use common\models\Discounts;
 use common\models\User;
 use common\models\UserProfile;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\jui\DatePicker;
 use yii\widgets\ActiveForm;
 
@@ -101,7 +102,8 @@ $discountModel;
                     <div class="select-wrapp add-page">
                         <?= $form->field($discountModel, 'discount_date_start')->widget(DatePicker::className(), [
                             'language' => 'ru',
-                            'value' => date('Y-m-d')
+                            'value' => date('Y-m-d'),
+                            'dateFormat' => 'yyyy-MM-dd',
                         ])->label(false)?>
 <!--                        <select name="">-->
 <!--                            <option value="1">01.01.2015</option>-->
@@ -111,7 +113,8 @@ $discountModel;
                     <div class="select-wrapp add-page">
                         <?= $form->field($discountModel, 'discount_date_end')->widget(DatePicker::className(), [
                             'language' => 'ru',
-                            'value' => date('Y-m-d')
+                            'value' => date('Y-m-d'),
+                            'dateFormat' => 'yyyy-MM-dd',
                         ])->label(false)?>
 <!--                        <select name="">-->
 <!--                            <option value="1">01.01.2015</option>-->
@@ -141,16 +144,21 @@ $discountModel;
             </div>
             <div class="add-form">
                 <div class="img-block">
-                    <img src="../images/error_photo.png" onerror="src=&quot;../images/error_photo.png&quot;">
+                    <img id="blah" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo.png&quot;">
                     <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>
-                    <input type="file" id="fileID" style="visibility: hidden;" />
+                    <?= $form->field($discountModel, 'img')->fileInput([
+                        'id'    => 'fileID',
+                        'style' => 'visibility: hidden;'
+                    ])->label(''); ?>
                 </div>
                 <div class="inputs-block">
                     <div class="form-row">
+                        <?= $form->field($discountModel, 'user_id')->hiddenInput(['value' => $userModel->getId()])->label(false); ?>
                         <?= $form->field($discountModel, 'discount_title')->textInput(['class' => 'form-input', 'placeholder' => 'Название скидки'])->label(false)?>
                     </div>
                     <div class="form-row">
-                        <textarea name="action-descr" placeholder="Введите текст" class="form-input form-textarea"></textarea>
+                        <?= $form->field($discountModel, 'discount_text')->textarea(['class' => 'form-input form-textarea', 'placeholder' => 'Введите текст'])->label(false); ?>
+<!--                        <textarea name="action-descr" placeholder="Введите текст" class="form-input form-textarea"></textarea>-->
                     </div>
                     <div class="form-row radio-holder">
                         <div class="radio">
@@ -167,13 +175,22 @@ $discountModel;
                         </div>
                     </div>
                     <div class="form-row price-holder">
-                        <input type="text" name="" id="old-price" placeholder="Старая цена" class="form-input price">
-                        <input type="text" name="" id="new-price" placeholder="Новая цена" class="form-input price">
+                        <?= $form->field($discountModel, 'discount_old_price')->textInput([
+                            'id'          => 'old-price',
+                            'class'       => 'form-input price',
+                            'placeholder' => 'Старая цена'
+                        ])->label(false); ?>
+                        <?= $form->field($discountModel, 'discount_price')->textInput([
+                            'id'          => 'new-price',
+                            'class'       => 'form-input price',
+                            'placeholder' => 'Новая цена'
+                        ])->label(false); ?>
                     </div>
                 </div>
             </div>
             <div class="save-btn-holder">
-                <button type="submit" class="save-btn">Разместить</button>
+                <?= Html::button('Разместить', ['class' => 'save-btn', 'type' => 'submit']); ?>
+<!--                <button type="submit" class="save-btn">Разместить</button>-->
             </div>
         <?php ActiveForm::end(); ?>
     </div>

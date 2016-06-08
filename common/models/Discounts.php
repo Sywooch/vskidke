@@ -20,6 +20,7 @@ use Yii;
  * @property integer $discount_price
  * @property integer $discount_old_price
  * @property integer $discount_percent
+ * @property string $img
  *
  * @property Categories $category
  * @property Sities $city
@@ -45,7 +46,7 @@ class Discounts extends \yii\db\ActiveRecord
             [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_percent'], 'integer'],
             [['discount_text', 'discount_app', 'discount_view_email'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],
-            [['discount_title'], 'string', 'max' => 255],
+            [['discount_title', 'img'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'category_id']],
             [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sities::className(), 'targetAttribute' => ['city_id' => 'city_id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],

@@ -32,6 +32,10 @@ class Categories extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getColorClass($categoryName) {
+        
+    }
+
     /**
      * @inheritdoc
      */
