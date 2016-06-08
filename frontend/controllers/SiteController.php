@@ -18,6 +18,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -68,7 +69,7 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex($categoryId = null, $limit = 10)
+    public function actionIndex()
     {
         return $this->redirect(Url::to(['/discount/index'], 301));
     }
