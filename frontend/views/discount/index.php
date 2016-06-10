@@ -32,7 +32,7 @@ $model;
         <div class="item-list">
             <?php foreach ($models as $model): ?>
             <div class="item <?= array_rand(Categories::getColorClass(), 1); ?>">
-                <div style="background:url(<?= $model->getImg('medium'); ?>) no-repeat 0 0; background-size:contain contain; " class="img-holder">
+                <div style="background:url(<?= $model->getImg('small'); ?>) no-repeat 0 0; background-size:contain contain; " class="img-holder">
                     <div class="label">
                         <div class="price">
                             <div class="action">-90%</div>
