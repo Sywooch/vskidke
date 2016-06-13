@@ -28,18 +28,14 @@ use yii\bootstrap\ActiveForm;
     </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
+<?php
+$this->registerJs('
+    $(".close, .mask").click(function() {
+        $(".mask , .modal-layout").hide();
+        $("body").removeClass("modal-open");
+    });
+');
+?>
 
 <!--<div class="site-signup">-->
 <!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->

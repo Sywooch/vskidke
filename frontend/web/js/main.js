@@ -11,7 +11,16 @@ $(document).ready(function () {
     $("#register").click(function () {
         $.get('index.php?r=/site/signup', function (data) {
             $(".modal-container").html(data);
-            $("#registration-modal").modal('show');
+            $(".mask, #registration-modal").show();
+            $('body').addClass('modal-open');
+        })
+    });
+
+    $("#login").click(function () {
+        $.get('index.php?r=/site/login', function (data) {
+            $(".modal-container").html(data);
+            $(".mask, #login-modal").show();
+            $('body').addClass('modal-open');
         })
     });
 });

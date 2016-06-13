@@ -13,7 +13,7 @@ use frontend\assets\AppAsset;
 
 OwlCarouselAsset::register($this);
 FancyBoxAsset::register($this);
-BoodstrapAsset::register($this);
+//BoodstrapAsset::register($this);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

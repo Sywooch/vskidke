@@ -15,7 +15,7 @@ use yii\helpers\Url;
             </div>
             <div class="col-right">
                 <?php if(Yii::$app->user->isGuest): ?>
-                    <a href="<?= Url::to(['/site/login'])?>" class="btn-default">Вход</a>
+                    <a href="#" id="login" class="btn-default">Вход</a>
                     <a href="#" id="register" class="registration">Регистрация</a>
                 <?php else: ?>
                     <a href="<?= Url::to(['/site/logout'])?>" class="btn-default">Выход</a>
