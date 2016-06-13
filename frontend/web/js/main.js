@@ -8,9 +8,17 @@ $(document).ready(function () {
         $("#previewTitle").text(title);
     });
 
-    $( "body" ).on("click", ".close , .mask" , function() {
-        $(".mask , .modal-layout").hide();
+    $( "body" ).on('click', '.modal-layout-wrapp', function(e) {
+        if (e.target === this) {
+            $(this).hide();
+            $('body').removeClass('modal-open');
+        }
+    });
+
+    $( "body" ).on('click', '.close', function() {
+        $(this).parents('.modal-layout-wrapp').hide();
         $('body').removeClass('modal-open');
+
     });
 
     $("#register").click(function () {
