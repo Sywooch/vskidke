@@ -5,6 +5,7 @@
 use common\models\Categories;
 use common\models\Discounts;
 use frontend\components\LinkPager;
+use yii\helpers\Url;
 
 $this->title = 'Vskidke.com';
 
@@ -32,7 +33,10 @@ $model;
         <div class="item-list">
             <?php foreach ($models as $model): ?>
             <div class="item <?= array_rand(Categories::getColorClass(), 1); ?>">
-                <div style="background:url(<?= $model->getImg('small'); ?>) no-repeat 0 0; background-size:contain contain; " class="img-holder">
+                <div class="img-holder">
+                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                        <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo.png'">
+                    </a>
                     <div class="label">
                         <div class="price">
                             <div class="action">-90%</div>
@@ -47,7 +51,9 @@ $model;
                     </div>
                 </div>
                 <div class="text-holder">
-                    <div class="item-title"><?= $model->discount_title; ?></div>
+                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                        <div class="item-title"><?= $model->discount_title; ?></div>
+                    </a>
                 </div>
             </div>
             <?php endforeach; ?>
