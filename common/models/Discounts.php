@@ -11,6 +11,7 @@ use Yii;
  * @property integer $user_id
  * @property integer $category_id
  * @property integer $city_id
+ * @property string  $discount_view
  * @property string $discount_title
  * @property string $discount_text
  * @property string $discount_date_start
@@ -43,7 +44,7 @@ class Discounts extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
-            [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_percent'], 'integer'],
+            [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_percent', 'discount_view'], 'integer'],
             [['discount_text', 'discount_app', 'discount_view_email'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],
             [['discount_title', 'img'], 'string', 'max' => 255],

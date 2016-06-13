@@ -28,15 +28,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'request' => [
+            'baseUrl' => '',
+        ],
         'urlManager' => [
-            'class'           => 'yii\web\UrlManager',
             'enablePrettyUrl' => false,
-            'showScriptName'  => false,
+            'showScriptName' => false,
             'rules' => [
                 '/' => 'site/index',
                 'login' => 'site/login',
                 'logout' => 'site/logout',
-                'signup' => 'site/signup',
+//                'signup' => 'site/signup',
             ],
         ],
     ],

@@ -7,6 +7,13 @@ $(document).ready(function () {
         var title = $("#title").val();
         $("#previewTitle").text(title);
     });
+
+    $("#register").click(function () {
+        $.get('index.php?r=/site/signup', function (data) {
+            $(".modal-container").html(data);
+            $("#registration-modal").modal('show');
+        })
+    });
 });
 
 function readURL(input) {
