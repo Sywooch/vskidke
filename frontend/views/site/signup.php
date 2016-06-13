@@ -7,6 +7,7 @@
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+
 ?>
 
 <div class="mask"></div>
@@ -29,13 +30,13 @@ use yii\bootstrap\ActiveForm;
 </div>
 
 <?php
-$this->registerJs('
-    $(".close, .mask").click(function() {
-        $(".mask , .modal-layout").hide();
-        $("body").removeClass("modal-open");
-    });
-');
-?>
+//$this->registerJs('
+//    $(".close, .mask").click(function() {
+//        $(".mask , .modal-layout").hide();
+//        $("body").removeClass("modal-open");
+//    });
+//');
+//?>
 
 <!--<div class="site-signup">-->
 <!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->

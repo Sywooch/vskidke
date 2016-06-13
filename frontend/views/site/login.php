@@ -33,13 +33,13 @@ use yii\bootstrap\ActiveForm;
 </div>
 
 <?php
-$this->registerJs('
-    $(".close, .mask").click(function() {
-        $(".mask , .modal-layout").hide();
-        $("body").removeClass("modal-open");
-    });
-');
-?>
+//$this->registerJs('
+//    $(".close, .mask").click(function() {
+//        $(".mask , .modal-layout").hide();
+//        $("body").removeClass("modal-open");
+//    });
+//');
+//?>
 
 
 

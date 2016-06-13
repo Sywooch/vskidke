@@ -8,6 +8,11 @@ $(document).ready(function () {
         $("#previewTitle").text(title);
     });
 
+    $( "body" ).on("click", ".close , .mask" , function() {
+        $(".mask , .modal-layout").hide();
+        $('body').removeClass('modal-open');
+    });
+
     $("#register").click(function () {
         $.get('index.php?r=/site/signup', function (data) {
             $(".modal-container").html(data);
