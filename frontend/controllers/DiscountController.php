@@ -9,6 +9,7 @@ use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 class DiscountController extends Controller {
+
     public function actionIndex($categoryId = null, $limit = 10) {
         $query = Discounts::find()->where([
             '>=',
