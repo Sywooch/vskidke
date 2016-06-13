@@ -2,6 +2,18 @@ $(document).ready(function () {
     $("#fileID").change(function(){
         readURL(this);
     });
+
+    $("#title").blur(function(){
+        var title = $("#title").val();
+        $("#previewTitle").text(title);
+    });
+
+    $("#register").click(function () {
+        $.get('index.php?r=/site/signup', function (data) {
+            $(".modal-container").html(data);
+            $("#registration-modal").modal('show');
+        })
+    });
 });
 
 function readURL(input) {
@@ -9,7 +21,7 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#blah').attr('src', e.target.result);
+            $('#blah, #preview').attr('src', e.target.result);
         }
 
         reader.readAsDataURL(input.files[0]);

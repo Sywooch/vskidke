@@ -17,7 +17,7 @@ $profile = $model->relatedRecords['profile'];
 <div class="container main">
     <div class="content">
         <div class="page-title-wrapp">
-            <h1 class="page-title">Мои  данные</h1>
+            <h1 class="page-title">Мои данные</h1>
         </div>
         <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
             <div class="edit-form">

@@ -29,7 +29,8 @@ $discountModel;
             <div class="example-block">
                 <div class="subtitle">Так будет выглядить Ваша скидка:</div>
                 <div class="item blue">
-                    <div style="background:url(../images/error_photo.png) no-repeat 0 0; background-size:contain contain; " class="img-holder">
+                    <div class="img-holder">
+                        <img id="preview" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo.png&quot;">
                         <div class="label">
                             <div class="action">-50%</div>
                         </div>
@@ -41,7 +42,7 @@ $discountModel;
                         -->
                     </div>
                     <div class="text-holder">
-                        <div class="item-title">Название скидки...</div>
+                        <div id="previewTitle" class="item-title">Название скидки...</div>
                     </div>
                 </div>
             </div>
@@ -154,7 +155,7 @@ $discountModel;
                 <div class="inputs-block">
                     <div class="form-row">
                         <?= $form->field($discountModel, 'user_id')->hiddenInput(['value' => $userModel->getId()])->label(false); ?>
-                        <?= $form->field($discountModel, 'discount_title')->textInput(['class' => 'form-input', 'placeholder' => 'Название скидки'])->label(false)?>
+                        <?= $form->field($discountModel, 'discount_title')->textInput(['id' => 'title', 'class' => 'form-input', 'placeholder' => 'Название скидки'])->label(false)?>
                     </div>
                     <div class="form-row">
                         <?= $form->field($discountModel, 'discount_text')->textarea(['class' => 'form-input form-textarea', 'placeholder' => 'Введите текст'])->label(false); ?>

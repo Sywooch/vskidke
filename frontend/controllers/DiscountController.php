@@ -61,7 +61,15 @@ class DiscountController extends Controller {
     }
 
     public function actionView($id) {
+        $discount = Discounts::findOne($id);
+        $discount->discount_view += 1;
+        $discount->save();
 
+
+        return $this->render('view', [
+            'discount' => $discount,
+            'company'  => $discount->getUser()->with('profile')->one(),
+        ]);
     }
 
     /**

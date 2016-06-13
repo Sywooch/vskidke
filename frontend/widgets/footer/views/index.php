@@ -63,3 +63,7 @@
         </div>
     </div>
 </div>
+
+<div class="modal-container">
+    <div class="mask"></div>
+</div>
