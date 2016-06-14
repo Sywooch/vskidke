@@ -11,18 +11,21 @@ use yii\bootstrap\ActiveForm;
     <div class="modal-layout">
         <div class="close"></div>
         <div class="modal-title">Вход</div>
-        <form class="form-registration">
-            <div class="form-modal">
-                <label for="login-email" class="form-label email"></label>
-                <input type="email" id="login-email" required placeholder="E-mail" class="form-input ">
-            </div>
-            <div class="form-modal">
-                <label for="login-pass" class="form-label pass"></label>
-                <input type="login-email" id="login-pass" required placeholder="Пароль" class="form-input ">
-            </div>
+        <?php $form = ActiveForm::begin([
+            'id'    => 'login-form', 
+            'class' => 'form-registration'
+        ]); ?>
+            <?= $form->field($model, 'email', ['options' => ['class' => 'form-modal']])
+                     ->textInput(['id' => 'login-email', 'class' => 'form-input', 'placeholder' => 'E-mail', 'autofocus' => true])
+                     ->label('', ['for' => 'login-email', 'class' => 'form-label email']); ?>
+
+            <?= $form->field($model, 'password', ['options' => ['class' => 'form-modal']])
+                     ->passwordInput(['id' => 'login-pass', 'class' => 'form-input', 'placeholder' => 'Пароль'])
+                     ->label('', ['for' => 'login-pass', 'class' => 'form-label pass']) ?>
+
             <div class="label">Забыли пароль?</div>
-            <button type="submit" class="form-submit">Войти</button>
-        </form>
+            <?= Html::submitButton('Войти', ['class' => 'form-submit']); ?>
+        <?php ActiveForm::end(); ?>
         <div class="registration-link">Регистрация </div>
         <div class="subtitle">Войдите с помощью</div>
         <div class="modal-social">
@@ -32,40 +35,3 @@ use yii\bootstrap\ActiveForm;
         </div>
     </div>
 </div>
-
-<?php
-//$this->registerJs('
-//    $(".close, .mask").click(function() {
-//        $(".mask , .modal-layout").hide();
-//        $("body").removeClass("modal-open");
-//    });
-//');
-//?>
-
-
-
-
-
-<!--<div class="container main">-->
-<!--    <div class="content">-->
-<!--        <div class="col-lg-5">-->
-<!--            --><?php //$form = ActiveForm::begin(['id' => 'login-form']); ?>
-<!---->
-<!--                --><?php //$form->field($model, 'email')->textInput(['autofocus' => true]) ?>
-<!---->
-<!--                --><?php //$form->field($model, 'password')->passwordInput() ?>
-<!---->
-<!--                --><?php //$form->field($model, 'rememberMe')->checkbox() ?>
-<!---->
-<!--                <div style="color:#999;margin:1em 0">-->
-<!--                    If you forgot your password you can --><?php //Html::a('reset it', ['site/request-password-reset']) ?><!--.-->
-<!--                </div>-->
-<!---->
-<!--                <div class="form-group">-->
-<!--                    --><?php //Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-<!--                </div>-->
-<!---->
-<!--            --><?php //ActiveForm::end(); ?>
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->

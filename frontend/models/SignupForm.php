@@ -18,14 +18,14 @@ class SignupForm extends Model
     {
         return [
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
+            ['email', 'required', 'message' => 'Поле не может быть пустым'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => User::className(), 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => User::className(), 'message' => 'Такой Email уже существует'],
 
 //            ['password', 'required'],
 //            ['password', 'string', 'min' => 6],
 
-            ['verifyCode', 'captcha', 'captchaAction' => '/site/captcha'],
+            ['verifyCode', 'captcha', 'captchaAction' => '/site/captcha', 'message' => 'Проверочный код неверен.'],
         ];
     }
 

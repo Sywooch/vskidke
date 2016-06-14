@@ -161,37 +161,44 @@ $discountModel;
                         <?= $form->field($discountModel, 'discount_text')->textarea(['class' => 'form-input form-textarea', 'placeholder' => 'Введите текст'])->label(false); ?>
 <!--                        <textarea name="action-descr" placeholder="Введите текст" class="form-input form-textarea"></textarea>-->
                     </div>
-                    <div class="form-row radio-holder">
-                        <div class="radio">
-                            <input type="radio" id="radio1" name="type-action">
-                            <label for="radio1" class="action-btn">Скидка</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="radio2" name="type-action" class="radio-btn">
-                            <label for="radio2" class="action-btn">Подарок</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="radio3" name="type-action" class="radio-btn">
-                            <label for="radio3" class="action-btn">Распродажа</label>
-                        </div>
-                    </div>
-                    <div class="form-row price-holder">
-                        <?= $form->field($discountModel, 'discount_old_price')->textInput([
-                            'id'          => 'old-price',
-                            'class'       => 'form-input price',
-                            'placeholder' => 'Старая цена'
-                        ])->label(false); ?>
-                        <?= $form->field($discountModel, 'discount_price')->textInput([
-                            'id'          => 'new-price',
-                            'class'       => 'form-input price',
-                            'placeholder' => 'Новая цена'
-                        ])->label(false); ?>
+                    <div class="form-row">
+                        <ul class="accordion-tabs">
+                            <li class="tab-header-and-content"><a href="javascript:void(0)" class="is-active tab-link">Процентная скидка</a>
+                                <div class="tab-content">
+                                    <div class="form-row">
+                                        <input type="text" name="" placeholder="Процентная скидка" class="form-input">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tab-header-and-content"><a href="javascript:void(0)" class="tab-link">Подарок</a>
+                                <div class="tab-content">
+                                    <div class="form-row">
+                                        <input type="text" name="" placeholder="Подарок" class="form-input">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="tab-header-and-content"><a href="javascript:void(0)" class="tab-link">Распродажа</a>
+                                <div class="tab-content">
+                                    <div class="form-row price-holder">
+                                        <?= $form->field($discountModel, 'discount_old_price')->textInput([
+                                            'id'          => 'old-price',
+                                            'class'       => 'form-input price',
+                                            'placeholder' => 'Старая цена'
+                                        ])->label(false); ?>
+                                        <?= $form->field($discountModel, 'discount_price')->textInput([
+                                            'id'          => 'new-price',
+                                            'class'       => 'form-input price',
+                                            'placeholder' => 'Новая цена'
+                                        ])->label(false); ?>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="save-btn-holder">
                 <?= Html::button('Разместить', ['class' => 'save-btn', 'type' => 'submit']); ?>
-<!--                <button type="submit" class="save-btn">Разместить</button>-->
             </div>
         <?php ActiveForm::end(); ?>
     </div>

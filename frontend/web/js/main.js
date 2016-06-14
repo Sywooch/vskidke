@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     });
 
-    $("#register").click(function () {
+    $("#register").on('click', function () {
         $.get('index.php?r=/site/signup', function (data) {
             $(".modal-container").html(data);
             $(".mask, #registration-modal").show();
@@ -29,7 +29,7 @@ $(document).ready(function () {
         })
     });
 
-    $("#login").click(function () {
+    $("#login").on('click', function () {
         $.get('index.php?r=/site/login', function (data) {
             $(".modal-container").html(data);
             $(".mask, #login-modal").show();

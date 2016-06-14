@@ -27,9 +27,8 @@ class UploadForm extends Model
     /**
      * Upload images, if $watermark == true add watermark otherwise without watermark
      * @return bool|string
-     * @internal param bool $watermark
      */
-    public function upload($flag = true)
+    public function upload()
     {
         if(empty($this->img->name)){
             return $this->model->{$this->attribute};

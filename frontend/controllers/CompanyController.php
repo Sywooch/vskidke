@@ -25,19 +25,20 @@ class CompanyController extends Controller {
 
     public function actionIndex()
     {
-        $model = $this->findModel();
+        $model   = $this->findModel();
+        $profile = $model->relatedRecords['profile'];
 //        if(\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
             $post = \Yii::$app->request->post();
 //            $model->relatedRecords['profile']->load($post);
 
-            if($model->relatedRecords['profile']->load($post) && $model->relatedRecords['profile']->save()) {
+            if($profile->load($post) && $profile->save()) {
                 $uploadForm            = new UploadForm();
-                $uploadForm->img       = UploadedFile::getInstance($model->relatedRecords['profile'], 'img');
-                $uploadForm->model     = $model->relatedRecords['profile'];
+                $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
+                $uploadForm->model     = $profile;
                 $uploadForm->directory = 'profile';
 
-                $model->relatedRecords['profile']->img = $uploadForm->upload(false);
-                $model->relatedRecords['profile']->save();
+                $profile->img = $uploadForm->upload();
+                $profile->save();
 
                 $this->refresh();
             }
@@ -53,6 +54,6 @@ class CompanyController extends Controller {
      */
     private function findModel()
     {
-        return User::find(\Yii::$app->user->identity->getId())->with('profile')->one();
+        return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile')->one();
     }
 }

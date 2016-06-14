@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\helpers\StringHelper;
 use common\models\Discounts;
 use common\models\User;
+use common\models\UserProfile;
 use frontend\models\EmailConfirmForm;
 use Yii;
 use yii\base\InvalidParamException;
@@ -117,7 +118,7 @@ class SiteController extends Controller
             }
         }
 
-        return $this->renderPartial('signup', [
+        return $this->renderAjax('signup', [
             'model' => $model,
         ]);
     }
@@ -143,6 +144,10 @@ class SiteController extends Controller
             $user->setPassword($password);
 
             if($user->save()) {
+                $profile = new UserProfile();
+                $profile->user_id = $user->id;
+                $profile->save();
+
                 Yii::$app->mail->compose('@frontend/mail/authorizationData', [
                     'user'     => $user,
                     'password' => $password

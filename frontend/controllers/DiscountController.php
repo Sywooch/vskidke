@@ -63,7 +63,7 @@ class DiscountController extends Controller {
     public function actionView($id) {
         $discount = Discounts::findOne($id);
         $discount->discount_view += 1;
-        $discount->save();
+        $discount->save(false);
 
 
         return $this->render('view', [
@@ -77,6 +77,6 @@ class DiscountController extends Controller {
      */
     private function UserModel()
     {
-        return User::find(\Yii::$app->user->identity->getId())->with('profile')->one();
+        return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile')->one();
     }
 }
