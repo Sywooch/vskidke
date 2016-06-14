@@ -49,6 +49,19 @@ class CompanyController extends Controller {
         ]);
     }
 
+    public function actionMaps() {
+        $post = Yii::$app->request->post();
+
+        $addressData = json_decode(
+            file_get_contents(
+                'https://maps.google.com/maps/api/geocode/json?address=' . urlencode($post['city'] . ' ' . $post['address']) .'&sensor=false'
+            )
+        );
+
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return $addressData->results[0]->geometry->location;
+    }
+
     /**
      * @return User the loaded model
      */

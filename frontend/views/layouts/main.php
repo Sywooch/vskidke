@@ -24,6 +24,13 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <style type="text/css">
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #map { height: 250px; }
+    </style>
+    <script async defer
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoxwf8_9WJvLTDR0dFtPmkiw1ysqO-n7c&callback=initMap">
+    </script>
     <?php $this->head() ?>
 </head>
 <body>

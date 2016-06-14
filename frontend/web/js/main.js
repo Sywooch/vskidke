@@ -8,6 +8,19 @@ $(document).ready(function () {
         $("#previewTitle").text(title);
     });
 
+    $("#submit-id").on('click', function(event){
+        event.preventDefault();
+        var address = $(".address").val();
+        var city = $( "#city option:selected").text();
+
+        $.post('index.php?r=company/maps', {
+            address : address,
+            city : city
+        }, function (data) {
+            $.("#script").append();
+        }, 'json')
+    });
+
     $( "body" ).on('click', '.modal-layout-wrapp', function(e) {
         if (e.target === this) {
             $(this).hide();
