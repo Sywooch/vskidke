@@ -246,7 +246,19 @@ class User extends ActiveRecord implements IdentityInterface
         $this->email_confirm_token = null;
     }
 
+    /**
+     * Relation user profile
+     * @return \yii\db\ActiveQuery
+     */
     public function getProfile() {
         return $this->hasOne(UserProfile::class, ['user_id' => 'id']);
+    }
+
+    /**
+     * Relation company addresses
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAddresses() {
+        return $this->hasMany(CompanyAddresses::className(), ['user_id' => 'id']);
     }
 }

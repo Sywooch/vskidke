@@ -12,7 +12,7 @@ class m160531_183401_create_sities extends Migration
      */
     public function up()
     {
-        $this->createTable('sities', [
+        $this->createTable('cities', [
             'city_id' => $this->primaryKey(),
             'city_name' => $this->string(150),
         ]);
@@ -23,6 +23,6 @@ class m160531_183401_create_sities extends Migration
      */
     public function down()
     {
-        $this->dropTable('sities');
+        $this->dropTable('cities');
     }
 }

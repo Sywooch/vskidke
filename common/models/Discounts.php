@@ -24,7 +24,7 @@ use Yii;
  * @property string $img
  *
  * @property Categories $category
- * @property Sities $city
+ * @property City $city
  * @property User $user
  */
 class Discounts extends \yii\db\ActiveRecord
@@ -49,7 +49,7 @@ class Discounts extends \yii\db\ActiveRecord
             [['discount_date_start', 'discount_date_end'], 'safe'],
             [['discount_title', 'img'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'category_id']],
-            [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sities::className(), 'targetAttribute' => ['city_id' => 'city_id']],
+            [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => City::className(), 'targetAttribute' => ['city_id' => 'city_id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -111,7 +111,7 @@ class Discounts extends \yii\db\ActiveRecord
      */
     public function getCity()
     {
-        return $this->hasOne(Sities::className(), ['city_id' => 'city_id']);
+        return $this->hasOne(City::className(), ['city_id' => 'city_id']);
     }
 
     /**

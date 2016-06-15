@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\CompanyAddresses;
 use common\models\UploadForm;
 use common\models\User;
 use yii\filters\AccessControl;
@@ -27,30 +28,37 @@ class CompanyController extends Controller {
     {
         $model   = $this->findModel();
         $profile = $model->relatedRecords['profile'];
-//        if(\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
-            $post = \Yii::$app->request->post();
-//            $model->relatedRecords['profile']->load($post);
+        $post    = \Yii::$app->request->post();
 
+        if(\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
             if($profile->load($post) && $profile->save()) {
-                $uploadForm            = new UploadForm();
-                $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
-                $uploadForm->model     = $profile;
-                $uploadForm->directory = 'profile';
-
-                $profile->img = $uploadForm->upload();
-                $profile->save();
-
-                $this->refresh();
+                return true;
             }
-//        }
+        }
+
+        if($profile->load($post) && $profile->save()) {
+            $uploadForm            = new UploadForm();
+            $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
+            $uploadForm->model     = $profile;
+            $uploadForm->directory = 'profile';
+
+            $profile->img = $uploadForm->upload();
+            $profile->save();
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            $this->refresh();
+        }
 
         return $this->render('index', [
             'model' => $model,
         ]);
     }
 
-    public function actionMaps() {
-        $post = Yii::$app->request->post();
+    public function actionAddAddress() {
+        $address = new CompanyAddresses();
+        $post    = Yii::$app->request->post();
+        $address->setAttributes($post);
+        $address->save();
 
         $addressData = json_decode(
             file_get_contents(
@@ -59,7 +67,11 @@ class CompanyController extends Controller {
         );
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-        return $addressData->results[0]->geometry->location;
+
+        return [
+            'coordinates' => $addressData->results[0]->geometry->location,
+            'address'     => $address->getCity()->one()->city_name . ', ' . $address->address . ', тел. ' . $address->phone
+        ];
     }
 
     /**
@@ -67,6 +79,6 @@ class CompanyController extends Controller {
      */
     private function findModel()
     {
-        return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile')->one();
+        return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile', 'addresses.city')->one();
     }
 }
