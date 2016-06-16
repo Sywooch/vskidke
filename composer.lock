@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6164441268b5be05bc51f4fdc92b5c29",
-    "content-hash": "b94804761714cf9f492c3af9e8a74006",
+    "hash": "bf4061fd7f413c925c90c373c8d5859b",
+    "content-hash": "47ceef80308f526456a19d5216e6144c",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -482,6 +482,50 @@
                 "yii2"
             ],
             "time": "2016-06-03 18:15:55"
+        },
+        {
+            "name": "rkit/yii2-ajaxform-plugin",
+            "version": "0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rkit/yii2-ajaxform-plugin.git",
+                "reference": "14ebebcd15abaf27901c7c3a22339af33a377bc1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rkit/yii2-ajaxform-plugin/zipball/14ebebcd15abaf27901c7c3a22339af33a377bc1",
+                "reference": "14ebebcd15abaf27901c7c3a22339af33a377bc1",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "rkit\\yii2\\plugins\\ajaxform\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Romanov",
+                    "email": "rkit.ru@gmail.com"
+                }
+            ],
+            "description": "Yii2 Ajax Form",
+            "homepage": "https://github.com/rkit/yii2-ajaxform-plugin",
+            "keywords": [
+                "ajax",
+                "ajax-form",
+                "extension",
+                "form",
+                "yii2"
+            ],
+            "time": "2015-12-07 15:36:48"
         },
         {
             "name": "swiftmailer/swiftmailer",

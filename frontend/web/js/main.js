@@ -1,4 +1,4 @@
-$(document).ready(function () {
+ $(document).ready(function () {
     $("#fileID").change(function(){
         readURL(this);
     });
@@ -39,9 +39,15 @@ $(document).ready(function () {
 
     $(".edit").on('click', function (event) {
         event.preventDefault();
-        $.post('index.php?r=company/index', $("#companyForm").serialize(), function (data) {
-            alert('Данные успешно бновлены');
-        })
+        $("#companyForm").ajaxForm({
+            url: 'index.php?r=company/index',
+            success: function (data) {
+                return true
+            }
+        }).submit();
+        // $.post('index.php?r=company/index', $("#companyForm").serialize(), function (data) {
+        //     alert('Данные успешно бновлены');
+        // })
     })
 });
 

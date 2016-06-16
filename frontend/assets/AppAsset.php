@@ -17,6 +17,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/app.js',
+        'js/jquery.form.min.js',
         'js/main.js',
     ];
     public $depends = [

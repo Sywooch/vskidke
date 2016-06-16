@@ -1,5 +1,6 @@
 <?php
 use common\models\Categories;
+use common\models\CompanyAddresses;
 use common\models\Discounts;
 use common\models\User;
 use common\models\UserProfile;
@@ -14,6 +15,8 @@ $userModel;
 $profile = $userModel->relatedRecords['profile'];
 /** @var Discounts $discountModel */
 $discountModel;
+/** @var CompanyAddresses $address */
+$address;
 ?>
 
 <div class="container main">
@@ -52,6 +55,7 @@ $discountModel;
                         <img src="<?= $profile->getImg('small'); ?>" onerror="src=&quot;../images/error_logo.png&quot;">
                         <!--| <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>-->
                         <!--| <input type="file" id="fileID" style="visibility: hidden;" />-->
+                        <?= $form->field($profile, 'img')->hiddenInput(['value' => $profile->img]); ?>
                     </div>
                     <div class="inputs-block">
                         <div class="form-row">
@@ -174,14 +178,20 @@ $discountModel;
                                 <li class="tab-header-and-content"><a href="javascript:void(0)" class="is-active tab-link">Процентная скидка</a>
                                     <div class="tab-content">
                                         <div class="form-row">
-                                            <input type="text" name="" placeholder="Процентная скидка" class="form-input">
+                                            <?= $form->field($discountModel, 'discount_percent')->textInput([
+                                                'placeholder' => 'Процентная скидка',
+                                                'class' => 'form-input'
+                                            ])->label(false)?>
                                         </div>
                                     </div>
                                 </li>
                                 <li class="tab-header-and-content"><a href="javascript:void(0)" class="tab-link">Подарок</a>
                                     <div class="tab-content">
                                         <div class="form-row">
-                                            <input type="text" name="" placeholder="Подарок" class="form-input">
+                                            <?= $form->field($discountModel, 'discount_gift')->textInput([
+                                                'placeholder' => 'Подарок',
+                                                'class' => 'form-input'
+                                            ])->label(false)?>
                                         </div>
                                     </div>
                                 </li>
@@ -209,18 +219,12 @@ $discountModel;
                     <div class="add-btn-holder">
                         <button type="submit" class="add-btn">Добавить адресс</button>
                     </div>
+                    <?php foreach ($userModel->relatedRecords['addresses'] as $address): ?>
                     <div class="checkbox">
-                        <input type="checkbox" id="Checkbox-address-1" name="Checkbox">
-                        <label for="Checkbox-address-1">ул..Кутузова, 1 оф. 1, тел. (044) 444 44 44</label>
+                        <input type="checkbox" id="Checkbox-address-<?= $address->id; ?>" value="<?= $address->id; ?>" name="city_id[]">
+                        <label for="Checkbox-address-<?= $address->id; ?>"><?= $address->relatedRecords['city']->city_name . ', ' . $address->address . ', тел. ' . $address->phone; ?></label>
                     </div>
-                    <div class="checkbox">
-                        <input type="checkbox" id="Checkbox-address-2" name="Checkbox">
-                        <label for="Checkbox-address-2">ул..Кутузова, 1 оф. 1, тел. (044) 444 44 44</label>
-                    </div>
-                    <div class="checkbox">
-                        <input type="checkbox" id="Checkbox-address-3" name="Checkbox">
-                        <label for="Checkbox-address-3">ул..Кутузова, 1 оф. 1, тел. (044) 444 44 44</label>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="save-btn-holder">
                     <?= Html::button('Разместить', ['class' => 'save-btn', 'type' => 'submit']); ?>

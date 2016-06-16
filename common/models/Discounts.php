@@ -21,6 +21,7 @@ use Yii;
  * @property integer $discount_price
  * @property integer $discount_old_price
  * @property integer $discount_percent
+ * @property string  $discount_gift
  * @property string $img
  *
  * @property Categories $category
@@ -43,9 +44,9 @@ class Discounts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
+            [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_percent', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
             [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_percent', 'discount_view'], 'integer'],
-            [['discount_text', 'discount_app', 'discount_view_email'], 'string'],
+            [['discount_text', 'discount_app', 'discount_view_email', 'discount_gift'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],
             [['discount_title', 'img'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'category_id']],
@@ -73,6 +74,7 @@ class Discounts extends \yii\db\ActiveRecord
             'discount_price' => 'Новая цена',
             'discount_old_price' => 'Старая цена',
             'discount_percent' => 'Процент скидки',
+            'discount_gift' => 'Подарок'
         ];
     }
 

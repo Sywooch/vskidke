@@ -42,7 +42,12 @@ class DiscountController extends Controller {
         $userModel     = $this->UserModel();
         $discountModel = new Discounts();
         $post = \Yii::$app->request->post();
-
+//echo "<pre>";
+//print_r(
+//    $post
+//);
+//die();
+//echo "</pre>";
         if($discountModel->load($post) && $discountModel->save()) {
             $uploadForm            = new UploadForm();
             $uploadForm->img       = UploadedFile::getInstance($discountModel, 'img');
@@ -77,6 +82,6 @@ class DiscountController extends Controller {
      */
     private function UserModel()
     {
-        return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile')->one();
+        return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile', 'addresses.city')->one();
     }
 }

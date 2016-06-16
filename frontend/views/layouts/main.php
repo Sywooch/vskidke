@@ -8,12 +8,12 @@ use frontend\assets\FancyBoxAsset;
 use frontend\assets\OwlCarouselAsset;
 use frontend\widgets\footer\FooterWidget;
 use frontend\widgets\header\HeaderWidget;
+use rkit\yii2\plugins\ajaxform\Asset;
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 
 OwlCarouselAsset::register($this);
 FancyBoxAsset::register($this);
-//BoodstrapAsset::register($this);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

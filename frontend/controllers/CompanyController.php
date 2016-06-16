@@ -32,23 +32,20 @@ class CompanyController extends Controller {
 
         if(\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
             if($profile->load($post) && $profile->save()) {
-                return true;
+                $uploadForm            = new UploadForm();
+                $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
+                $uploadForm->model     = $profile;
+                $uploadForm->directory = 'profile';
+
+                $profile->img = $uploadForm->upload();
+                $profile->save();
+
+                \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+                Yii::$app->getSession()->setFlash('success', 'Данные успешно сохранены');
             }
         }
-
-        if($profile->load($post) && $profile->save()) {
-            $uploadForm            = new UploadForm();
-            $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
-            $uploadForm->model     = $profile;
-            $uploadForm->directory = 'profile';
-
-            $profile->img = $uploadForm->upload();
-            $profile->save();
-            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-            $this->refresh();
-        }
-
+        
         return $this->render('index', [
             'model' => $model,
         ]);

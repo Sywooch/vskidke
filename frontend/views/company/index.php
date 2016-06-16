@@ -7,12 +7,12 @@ use common\models\City;
 use common\models\CompanyAddresses;
 use common\models\User;
 use common\models\UserProfile;
-use kartik\file\FileInput;
 use yii\helpers\ArrayHelper;
-use yii\helpers\BaseUrl;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
+
+
 
 /** @var UserProfile $profile */
 $profile   = $model->relatedRecords['profile'];
@@ -29,15 +29,23 @@ $address;
         <?php $form = ActiveForm::begin(['options' => ['id' => 'companyForm', 'enctype' => 'multipart/form-data']]); ?>
             <div class="edit-form">
                 <div class="img-block">
-                    <img id="blah" src="<?php if(!$model->relatedRecords['profile']->isNewRecord && !empty($model->relatedRecords['profile']->img)): ?><?= Yii::$app->params['uploadUrl'] . $model->relatedRecords['profile']->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_logo.png&quot;">
+                    <img id="blah"
+                         src="<?php if(!$model->relatedRecords['profile']->isNewRecord && !empty($model->relatedRecords['profile']->img)): ?>
+                                  <?= Yii::$app->params['uploadUrl'] . $model->relatedRecords['profile']->img; ?>
+                              <?php else: ?>
+                                #
+                              <?php endif; ?>"
+                         onerror="src=&quot;../images/error_logo.png&quot;">
+
                     <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>
 
                     <?php if(!$model->relatedRecords['profile']->isNewRecord && !empty($model->relatedRecords['profile']->img)): ?>
                         <?= $form->field($model->relatedRecords['profile'], 'img')->fileInput([
                             'id'    => 'fileID',
                             'style' => 'visibility: hidden;',
-                            'value' => Yii::$app->params['uploadUrl'] . $model->relatedRecords['profile']->img
                         ])->label(''); ?>
+
+                        <?= $form->field($model->relatedRecords['profile'], 'img')->hiddenInput(['value' => $model->relatedRecords['profile']->img]); ?>
                     <?php else: ?>
                         <?= $form->field($model->relatedRecords['profile'], 'img')->fileInput([
                             'id'    => 'fileID',
@@ -123,7 +131,7 @@ $address;
             </div>
 
             <div class="save-btn-holder">
-                <button type="submit" class="save-btn">Сохранить</button>
+                <button type="submit" class="save-btn edit">Сохранить</button>
             </div>
         <?php ActiveForm::end(); ?>
     </div>
