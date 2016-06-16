@@ -55,7 +55,7 @@ $address;
                         <img src="<?= $profile->getImg('small'); ?>" onerror="src=&quot;../images/error_logo.png&quot;">
                         <!--| <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>-->
                         <!--| <input type="file" id="fileID" style="visibility: hidden;" />-->
-                        <?= $form->field($profile, 'img')->hiddenInput(['value' => $profile->img]); ?>
+                        <?= $form->field($profile, 'img')->hiddenInput(['value' => $profile->img])->label(false); ?>
                     </div>
                     <div class="inputs-block">
                         <div class="form-row">
@@ -221,7 +221,7 @@ $address;
                     </div>
                     <?php foreach ($userModel->relatedRecords['addresses'] as $address): ?>
                     <div class="checkbox">
-                        <input type="checkbox" id="Checkbox-address-<?= $address->id; ?>" value="<?= $address->id; ?>" name="city_id[]">
+                        <input type="checkbox" id="Checkbox-address-<?= $address->id; ?>" value="<?= $address->id; ?>" name="DiscountAddresses[][address_id]">
                         <label for="Checkbox-address-<?= $address->id; ?>"><?= $address->relatedRecords['city']->city_name . ', ' . $address->address . ', тел. ' . $address->phone; ?></label>
                     </div>
                     <?php endforeach; ?>

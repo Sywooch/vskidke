@@ -1,15 +1,27 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\DiscountAddresses;
 use common\models\Discounts;
 use common\models\UploadForm;
 use common\models\User;
+use yii\base\Model;
 use yii\data\Pagination;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 
+/**
+ * Class DiscountController
+ * @package frontend\controllers
+ * @author Maksim Nikitenko <lycifer3.mn@gmail.com>
+ */
 class DiscountController extends Controller {
 
+    /**
+     * @param null $categoryId
+     * @param int $limit
+     * @return string
+     */
     public function actionIndex($categoryId = null, $limit = 10) {
         $query = Discounts::find()->where([
             '>=',
@@ -38,16 +50,15 @@ class DiscountController extends Controller {
             'pages'  => $pages
         ]);
     }
+
+    /**
+     * @return string|\yii\web\Response
+     */
     public function actionCreate() {
         $userModel     = $this->UserModel();
         $discountModel = new Discounts();
-        $post = \Yii::$app->request->post();
-//echo "<pre>";
-//print_r(
-//    $post
-//);
-//die();
-//echo "</pre>";
+        $post          = \Yii::$app->request->post();
+
         if($discountModel->load($post) && $discountModel->save()) {
             $uploadForm            = new UploadForm();
             $uploadForm->img       = UploadedFile::getInstance($discountModel, 'img');
@@ -56,15 +67,31 @@ class DiscountController extends Controller {
             $discountModel->img    = $uploadForm->upload(false);
             $discountModel->save();
 
+            $modelAddresses = [];
+            foreach($post['DiscountAddresses'] as $model ) {
+                $modelAddresses[] = new DiscountAddresses();
+            }
+
+            if(Model::loadMultiple($modelAddresses, $post)) {
+                foreach ($modelAddresses as $model) {
+                    $model->discount_id = $discountModel->discount_id;
+                    $model->save(false);
+                }
+            }
+
             return $this->redirect(Url::to(['index']));
         }
 
         return $this->render('create', [
-            'userModel'     => $userModel,
-            'discountModel' => $discountModel
+            'userModel'         => $userModel,
+            'discountModel'     => $discountModel,
         ]);
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function actionView($id) {
         $discount = Discounts::findOne($id);
         $discount->discount_view += 1;
