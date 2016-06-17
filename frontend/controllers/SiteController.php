@@ -19,12 +19,13 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
     /**
      * @return array
@@ -72,7 +73,17 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->redirect(Url::to(['/discount/index'], 301));
+        $cookies = \Yii::$app->response->cookies;
+        $city    = \Yii::$app->request->cookies;
+
+        if(Yii::$app->request->isAjax && Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+
+            $cookies->remove('city');
+            $cookies->add(new Cookie(['name' => 'city', 'value' => $post['city']]));
+
+            return true;
+        }
     }
 
     /**

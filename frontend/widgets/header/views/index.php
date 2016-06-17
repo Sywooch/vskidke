@@ -1,6 +1,7 @@
 <?php
 use common\models\Categories;
 use common\models\City;
+use frontend\widgets\CityDropdown;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -16,7 +17,8 @@ $category;
             <div class="col-left">
                 <a href="<?= Url::to(['/discount/create']); ?>" class="btn-info">Разместить скидку</a>
                 <div class="select-town">
-                    <?= Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
+                    <?= CityDropdown::widget(); ?>
+<!--                    --><?php //Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
                 </div>
             </div>
             <div class="col-right">

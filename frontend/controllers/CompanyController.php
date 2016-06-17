@@ -8,7 +8,7 @@ use yii\filters\AccessControl;
 use \Yii;
 use yii\web\UploadedFile;
 
-class CompanyController extends Controller {
+class CompanyController extends BaseController {
     public function behaviors()
     {
         return [

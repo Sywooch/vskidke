@@ -36,7 +36,7 @@ return [
             'enablePrettyUrl' => false,
             'showScriptName'  => false,
             'rules' => [
-                '/'      => 'discount/index',
+//                '/'      => 'discount/index',
                 'login'  => 'site/login',
                 'logout' => 'site/logout',
 //                'signup' => 'site/signup',

@@ -45,10 +45,20 @@
                 return true
             }
         }).submit();
-        // $.post('index.php?r=company/index', $("#companyForm").serialize(), function (data) {
-        //     alert('Данные успешно бновлены');
-        // })
-    })
+    });
+
+     $('#citySwitch').change(function () {
+         var link = $('option:selected', this).val();
+
+         $.ajax({
+             type: "POST",
+             url: 'index.php?r=site/index',
+             data: {city: link, _csrf: $("input[name='_csrf']").val()},
+             success: function (data) {
+                 window.location.reload();
+             }
+         });
+     });
 });
 
 function readURL(input) {

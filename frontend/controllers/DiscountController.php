@@ -17,7 +17,7 @@ use yii\web\UploadedFile;
  * @package frontend\controllers
  * @author Maksim Nikitenko <lycifer3.mn@gmail.com>
  */
-class DiscountController extends Controller {
+class DiscountController extends BaseController {
 
     /**
      * @param null $category

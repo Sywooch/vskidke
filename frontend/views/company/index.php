@@ -43,9 +43,9 @@ $address;
                         <?= $form->field($model->relatedRecords['profile'], 'img')->fileInput([
                             'id'    => 'fileID',
                             'style' => 'visibility: hidden;',
-                        ])->label(''); ?>
+                        ])->label(false); ?>
 
-                        <?= $form->field($model->relatedRecords['profile'], 'img')->hiddenInput(['value' => $model->relatedRecords['profile']->img]); ?>
+                        <?= $form->field($model->relatedRecords['profile'], 'img')->hiddenInput(['value' => $model->relatedRecords['profile']->img])->label(false); ?>
                     <?php else: ?>
                         <?= $form->field($model->relatedRecords['profile'], 'img')->fileInput([
                             'id'    => 'fileID',
