@@ -49,6 +49,23 @@ class Categories extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function getCategoryIcon($name) {
+        $icons = [
+            'Красота'     => 'pretty',
+            'Здоровье'    => 'health',
+            'Мода'        => 'mode',
+            'Еда'         => 'food',
+            'Развлечение' => 'entertainment',
+            'Отдых'       => 'rest',
+            'Спорт'       => 'sport',
+            'Обучение'    => 'training',
+            'Товары'      => 'goods',
+            'Услуги'      => 'services',
+        ];
+
+        return $icons[$name];
+    }
+
     /**
      * @inheritdoc
      */

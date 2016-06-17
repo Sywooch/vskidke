@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Categories;
+use common\models\City;
 use common\models\DiscountAddresses;
 use common\models\Discounts;
 use common\models\UploadForm;
@@ -18,19 +20,17 @@ use yii\web\UploadedFile;
 class DiscountController extends Controller {
 
     /**
-     * @param null $categoryId
+     * @param null $category
      * @param int $limit
      * @return string
      */
-    public function actionIndex($categoryId = null, $limit = 10) {
-        $query = Discounts::find()->where([
-            '>=',
-            'discount_date_end',
-            date('yyyy-MM-dd')
-        ]);
+    public function actionIndex($category = null, $limit = 10, $city = 1) {
+        $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
+                                  ->where(['>=', 'discount_date_end', date('Y-m-d')])
+                                  ->andWhere(['company_addresses.city_id' => City::getCityId()]);
 
-        if($categoryId) {
-            $query->andWhere(['category_id' => $categoryId]);
+        if($category) {
+            $query->andWhere(['category_id' => $category]);
         }
 
         $countQuery = clone $query;

@@ -32,11 +32,12 @@ return [
             'baseUrl' => '',
         ],
         'urlManager' => [
+            'class'           => 'frontend\components\UrlManager',
             'enablePrettyUrl' => false,
-            'showScriptName' => false,
+            'showScriptName'  => false,
             'rules' => [
-                '/' => 'site/index',
-                'login' => 'site/login',
+                '/'      => 'discount/index',
+                'login'  => 'site/login',
                 'logout' => 'site/logout',
 //                'signup' => 'site/signup',
             ],

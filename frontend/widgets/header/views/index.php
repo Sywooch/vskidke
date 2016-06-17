@@ -1,5 +1,12 @@
 <?php
+use common\models\Categories;
+use common\models\City;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\helpers\Url;
+
+/** @var Categories $category */
+$category;
 ?>
 
 <header class="header">
@@ -8,10 +15,9 @@ use yii\helpers\Url;
         <div class="btn-holder">
             <div class="col-left">
                 <a href="<?= Url::to(['/discount/create']); ?>" class="btn-info">Разместить скидку</a>
-                <select class="town">
-                    <option>Киев</option>
-                    <option>Днепропетровск</option>
-                </select>
+                <div class="select-town">
+                    <?= Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
+                </div>
             </div>
             <div class="col-right">
                 <?php if(Yii::$app->user->isGuest): ?>
@@ -27,17 +33,10 @@ use yii\helpers\Url;
             <!--span.menu-btn#toggle-menu-->
             <!--#collaps-menu.collapse-menu-->
             <ul class="menu">
-                <li><a href="#" class="all"> Все</a></li>
-                <li><a href="#" class="pretty"> Красота</a></li>
-                <li><a href="#" class="health"> Здоровье</a></li>
-                <li><a href="#" class="mode"> Мода</a></li>
-                <li><a href="#" class="food"> Еда</a></li>
-                <li><a href="#" class="entertainment"> Развлечение</a></li>
-                <li><a href="#" class="rest"> Отдых</a></li>
-                <li><a href="#" class="sport"> Спорт</a></li>
-                <li><a href="#" class="training"> Обучение</a></li>
-                <li><a href="#" class="goods"> Товары</a></li>
-                <li><a href="#" class="services"> Услуги</a></li>
+                <li><a href="<?= Url::to(['/discount/index']); ?>" class="all"> Все</a></li>
+                <?php foreach (Categories::find()->all() as $category): ?>
+                    <li><a href="<?= Url::to(['/discount/index', 'category' => $category->category_id]); ?>" class="<?= Categories::getCategoryIcon($category->category_name); ?>"><?= $category->category_name; ?></a></li>
+                <?php endforeach; ?>
                 <li><a href="#" class="search"> Поиск</a></li>
             </ul>
         </nav>
