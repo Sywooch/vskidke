@@ -57,7 +57,7 @@ function readURL(input) {
 
         reader.onload = function (e) {
             $('#blah, #preview').attr('src', e.target.result);
-        }
+        };
 
         reader.readAsDataURL(input.files[0]);
     }

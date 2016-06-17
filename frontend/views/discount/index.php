@@ -35,7 +35,7 @@ $model;
             <div class="item <?= array_rand(Categories::getColorClass(), 1); ?>">
                 <div class="img-holder">
                     <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
-                        <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo.png'">
+                        <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
                     </a>
                     <div class="label">
                         <div class="price">
