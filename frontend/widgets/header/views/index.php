@@ -8,10 +8,12 @@ use yii\helpers\Url;
         <div class="btn-holder">
             <div class="col-left">
                 <a href="<?= Url::to(['/discount/create']); ?>" class="btn-info">Разместить скидку</a>
-                <select class="town">
-                    <option>Киев</option>
-                    <option>Днепропетровск</option>
-                </select>
+                <div class="select-town">
+                    <select name="town">
+                        <option value="1">Днепропетровск</option>
+                        <option value="2">Киев</option>
+                    </select>
+                </div>
             </div>
             <div class="col-right">
                 <?php if(Yii::$app->user->isGuest): ?>
