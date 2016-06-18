@@ -23,13 +23,16 @@ $model;
                 <a href="<?= Url::to(['/discount/index', 'popular' => 'SORT_DESC']); ?>"><button class="filter-btn <?= $popular == 'SORT_DESC' ? 'active' : ''?>">популярные</button></a>
             </div>
             <div class="filter-select-block"><span class="descr">акций на странице</span>
-                <select class="filter-select">
-                    <option>10</option>
-                    <option>20</option>
-                    <option>30</option>
-                    <option>40</option>
-                    <option>50</option>
-                </select>
+                <div class="select-filter">
+                    <select>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                    </select>
+                    
+                </div>
             </div>
         </div>
         <div class="item-list">

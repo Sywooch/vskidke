@@ -143,6 +143,11 @@
       font-size: 15px; /* Приближение из-за подстановки шрифтов */
       font-weight: 300
     }
+
+    .descr{
+      position: relative;
+      top: -8px;
+    }
   }
 }
 
@@ -168,11 +173,12 @@
       position: relative;
       text-align: center;
       overflow: hidden;
-      /*background-color: #00cb43;*/
+      background-color: #00cb43;
 
       img {
         max-width: 100%;
-        max-height: 100%;
+        //max-height: 100%;
+        width:100%;
       }
 
       .label {
@@ -1914,6 +1920,50 @@ h3 {
     -moz-appearance: none;
     appearance: none;
     outline: none;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+}
+
+.select-filter {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #d3d8dd;
+  border-radius: 10px;
+  overflow: hidden;
+
+
+  &:after {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    display: block;
+    font-family: $font-family-icomoon;
+    content: $triangle-down-icon;
+    font-size: 12px;
+    color: #849aa5;
+  }
+
+  select {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: auto;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+
+    background-color: #ffffff;
+    height: 23px;
+    padding: 0 15px 0 5px;
+    font-family: $font-family-4;
+    color: #849aa5;
+    font-size: 15px;
+    font-weight: 300;
   }
 
   select::-ms-expand {

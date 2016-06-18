@@ -20,13 +20,16 @@ $model;
                 <button class="filter-btn active">популярные</button>
             </div>
             <div class="filter-select-block"><span class="descr">акций на странице</span>
-                <select class="filter-select">
-                    <option>10</option>
-                    <option>20</option>
-                    <option>30</option>
-                    <option>40</option>
-                    <option>50</option>
-                </select>
+                <div class="select-filter">
+                    <select>
+                        <option>10</option>
+                        <option>20</option>
+                        <option>30</option>
+                        <option>40</option>
+                        <option>50</option>
+                    </select>
+
+                </div>
             </div>
         </div>
         <div class="item-list">
