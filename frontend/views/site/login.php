@@ -26,7 +26,7 @@ use yii\bootstrap\ActiveForm;
             <div class="label">Забыли пароль?</div>
             <?= Html::submitButton('Войти', ['class' => 'form-submit']); ?>
         <?php ActiveForm::end(); ?>
-        <div class="registration-link">Регистрация </div>
+        <div id="register" class="registration-link"><a href="#">Регистрация</a></div>
         <div class="subtitle">Войдите с помощью</div>
         <div class="modal-social">
             <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="fb"></a>
