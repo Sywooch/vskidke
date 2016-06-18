@@ -1534,10 +1534,22 @@ h3 {
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  display: none;
   background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
+
+  &.address-modal{
+    background: transparent;
+
+    .modal-layout{
+      border: 2px solid #88b7cc;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 16.74px 1.26px rgba(24, 24, 24, 0.59);
+      width: 947px;
+    }
+  }
 }
+
+
 
 .modal-layout {
     text-align: center;

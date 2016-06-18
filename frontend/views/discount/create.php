@@ -28,7 +28,7 @@ $address;
                 <div class="subtitle">Так будет выглядить Ваша скидка:</div>
                 <div class="item blue">
                     <div class="img-holder">
-                        <img id="preview" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo.png&quot;">
+                        <img id="preview" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo2.png&quot;">
                         <div class="label">
                             <div id="previewPercent" class="action">-50%</div>
                         </div>
@@ -218,7 +218,7 @@ $address;
                 </div>
                 <div class="address-holder">
                     <div class="add-btn-holder">
-                        <button type="submit" class="add-btn">Добавить адресс</button>
+                        <button type="submit" class="add-btn address-modal-link">Добавить адресс</button>
                     </div>
                     <?php foreach ($userModel->relatedRecords['addresses'] as $address): ?>
                     <div class="checkbox">

@@ -28,6 +28,10 @@
 
     });
 
+     $( "body" ).on('click', '.address-modal-link', function() {
+        $('#address-modal').show();
+    });
+
     $("#register").on('click', function () {
         $.get('index.php?r=/site/signup', function (data) {
             $(".modal-container").html(data);
