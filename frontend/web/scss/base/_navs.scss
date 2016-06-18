@@ -1,0 +1,161 @@
+// Navs
+//
+
+.nav {
+  margin-bottom: 0;
+  padding-left: 0; // Override default ul/ol
+  list-style: none;
+  @include clearfix;
+
+  > li {
+    position: relative;
+    display: block;
+
+    &:last-of-type{
+      text-align: center;
+    }
+
+    > button{
+      .sm{
+        margin-left: 20px;
+      }
+    }
+
+    > a {
+      position: relative;
+      display: block;
+      padding: $nav-link-padding;
+      color: $gray-base;
+
+      &:hover {
+        text-decoration: none;
+        //background-color: $nav-link-hover-bg;
+        color: $primary-pink;
+      }
+    }
+
+    // Disabled state sets text to gray and nukes hover/tab effects
+    &.disabled > a {
+      color: $nav-disabled-link-color;
+
+      &:hover {
+        color: $nav-disabled-link-hover-color;
+        text-decoration: none;
+        background-color: transparent;
+        cursor: $cursor-disabled;
+      }
+    }
+  }
+
+  // Open dropdowns
+  .open > a {
+    &,
+    &:hover {
+      background-color: $nav-link-hover-bg;
+      border-color: $link-color;
+    }
+
+    .fa{
+      @include max-sm{
+        &.fa-angle-down:before{
+          content: $fa-var-angle-up;
+        }
+      }
+    }
+  }
+
+  .nav-divider {
+    height: 1px;
+    margin: ($line-height-computed/2 - 1) 0;
+    overflow: hidden;
+    background-color: $dropdown-divider-bg;
+  }
+}
+
+
+
+// Pills
+// -------------------------
+.nav-pills {
+ @extend %nav-pills;
+}
+
+.nav-pills-justified{
+  @extend %nav-pills;
+  @extend %nav-justified;
+
+  >li{
+    float: none !important;
+  }
+
+}
+
+.nav-pills{
+  &,
+  &-justified{
+    .dropdown.open{
+      .dropdown-toggle{
+        color: $global-color;
+        ///background-color: #b2c6cd;
+      }
+      .dropdown-menu{
+        &:before,
+        &:after{
+          display: none;
+        }
+      }
+    }
+
+  }
+}
+
+// Stacked pills
+.nav-stacked {
+  > li {
+    float: none;
+    + li {
+      margin-top: 2px;
+      margin-left: 0; // no need for this gap between nav items
+    }
+  }
+}
+
+// Nav variations
+// --------------------------------------------------
+
+// Justified nav links
+// -------------------------
+
+.nav-justified {
+  @extend %nav-justified;
+}
+
+// Move borders to anchors instead of bottom of list
+//
+// Mixin for adding on top the shared `.nav-justified` styles for our tabs
+.nav-tabs-justified {
+  @extend %nav-tabs-justified;
+}
+
+// Tabbable tabs
+// -------------------------
+
+// Hide tabbable panes to start, show them when `.active`
+.tab-content {
+  > .tab-pane {
+    display: none;
+  }
+  > .active {
+    display: block;
+  }
+}
+
+
+// Dropdowns
+// -------------------------
+
+// Specific dropdowns
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  @include border-top-radius(0);
+}

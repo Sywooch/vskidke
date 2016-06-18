@@ -1,0 +1,27 @@
+// created to extend in class label
+%label {
+  position: relative;
+  font-size: $font-size-xs;
+  font-family: $base-font-family;
+  display: inline-block;
+  padding: 0 .833em 0 1.33em;
+  margin: 0 0 0 -4px;
+  font-weight: normal;
+  line-height: $font-size-xs*2;
+  color: $label-color;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: top;
+  border-radius: 0;
+  &:before {
+    position: absolute;
+    left: -0.5rem;
+    content: '';
+  }
+  &:after{
+    position: absolute;
+    left: -0.5rem;
+    top: 1rem;
+    content: '';
+  }
+}

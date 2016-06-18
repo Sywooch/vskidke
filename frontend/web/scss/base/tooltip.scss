@@ -1,0 +1,89 @@
+//
+// Tooltips
+// --------------------------------------------------
+
+
+// Base class
+.tooltip {
+    z-index: $zindex-tooltip;
+    display: block;
+    font-size: 1rem;
+    font-family: $base-font-family;
+    font-weight:$font-weight-normal;
+    text-align: left;
+    color: $gray-light;
+    background: $gray-the-lightest;
+    will-change: opacity;
+    opacity: 0;
+    min-width: $tooltip-min-width;
+    padding: 1.33rem  1.7rem 1.7rem;
+    transition: opacity 0.15s ease-in;
+    cursor: text;
+
+    p{
+        margin: 0;
+        a{
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &.top{
+        @include tooltip-position($pos: absolute, $args: bottom 3rem left 50%, $transform: translateX(-50%));
+    }
+    &.right{
+        @include tooltip-position($pos: absolute, $args: top 50% left 130%, $transform: translateY(-50%));
+    }
+    &.bottom {
+        @include tooltip-position($pos: absolute, $args: top 3rem left 50%, $transform: translateX(-50%));
+    }
+    &.left{
+        @include tooltip-position($pos: absolute, $args: top 50% right 130%, $transform: translateY(-50%));
+    }
+    &:after{
+        content: "";
+        @include square(0);
+    }
+}
+
+// Tooltip arrows
+
+.tooltip {
+    &.top{
+        &:after{
+            @include triangle(10px 6px, $gray-the-lightest,down);
+            @include tooltip-position($pos: absolute, $args: top 100% left 50%, $transform: translateX(-50%));
+        }
+        &:before{
+            @include tooltip-before($pos:absolute, $args:top 100% left 0, $width:100%, $height: 1.5rem);
+        }
+    }
+    &.right{
+        &:after{
+            @include triangle(10px 6px, $gray-the-lightest, left);
+            @include tooltip-position($pos: absolute, $args: right 100% top 50%, $transform: translateY(-50%));
+        }
+        &:before{
+            @include tooltip-before($pos:absolute, $args: right 100% top 0, $width: 1.5rem, $height:100%);
+        }
+    }
+    &.left{
+        &:after{
+            @include triangle(10px 6px,$gray-the-lightest, right);
+            @include tooltip-position($pos: absolute, $args: left 100% top 50%, $transform: translateY(-50%));
+        }
+        &:before{
+            @include tooltip-before($pos:absolute, $args: left 100% top 0, $width: 1.5rem, $height:100%);
+        }
+    }
+    &.bottom{
+        &:after{
+            @include triangle(10px 6px,$gray-the-lightest,up);
+            @include tooltip-position($pos: absolute, $args: bottom 100% left 50%, $transform: translateX(-50%));
+        }
+        &:before{
+            @include tooltip-before($pos:absolute, $args:bottom 100% left 0, $width:100%, $height: 1.5rem);
+        }
+    }
+}

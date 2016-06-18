@@ -1,0 +1,6 @@
+// color scheme
+@mixin input-has-color($color){
+  border-color: $color;
+  //@include placeholder($color);
+  //color:$color;
+}

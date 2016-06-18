@@ -1,0 +1,17 @@
+.state-primary {
+	border: 1px solid $state-primary-border;
+	padding: 1rem;
+	color: $primary;
+	background: $state-primary-bg;
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	line-height: $line-height-4;
+
+	.state-title {
+		display: inline-block;
+		padding: 0 1rem 0 0;
+		font-size: $font-size-base;
+		line-height: $line-height-1;
+		color: $primary;
+	}
+}

@@ -1,0 +1,107 @@
+.navbar-header {
+    @include clearfix;
+    @include tablet {
+        float: left;
+    }
+    .navbar-btn {
+        padding: 15px 0 15px 15px;
+
+        &-search {
+            padding: 11px 15px;
+            color: $global-color;
+        }
+    }
+}
+
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+
+  &:focus {
+    outline: 0;
+  }
+
+  @include  tablet{
+    display: none;
+  }
+}
+.collapse {
+  display: none;
+  &.in{
+    display: block;
+  }
+}
+
+.navbar-collapse {
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    transition: height 0.5s ease;
+    @include clearfix;
+    &.collapsing {
+        transition: height 0.5s;
+    }
+    &.in {
+//        overflow-y: auto;
+      height: auto;
+        transition: height 0.5s;
+    }
+  @include  tablet{
+        width: auto;
+        border-top: 0;
+        box-shadow: none;
+          transition: height 0.4s ease;
+        &.collapse {
+          display: block;
+          height: auto;
+          padding-bottom: 0; // Override default setting
+          overflow: visible ;
+            transition: height 0.4s;
+        }
+        &.collapsing{
+           transition: height 0.4s;
+        }
+          &.in {
+              overflow-y: auto;
+              height: auto;
+              transition: height 0.4s ease;
+          }
+        // Undo the collapse side padding for navbars with containers to ensure
+        // alignment of right-aligned contents.
+        .navbar-fixed-top &,
+        .navbar-static-top &,
+        .navbar-fixed-bottom & {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+  .nav{
+    > li{
+      float: none;
+      text-align: right;
+
+      @include tablet{
+        float: left;
+      }
+
+      a{
+        @include tablet-max{
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    .dropdown-menu{
+      @include max-sm {
+        position: relative;
+        float: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+////global container
+//@mixin container($max-width:1060px, $padding:1rem){
+//  margin: 0 auto;
+//  padding: 0 $padding;//default padding
+//  width: 100%;
+//  max-width: $max-width;//default width
+//
+//}
+//
+////columns container
+//@mixin outer-container($width:100%){
+//  width: $width;
+//
+//  &:after{
+//    display: block;
+//    content: '';
+//    clear: both;
+//  }
+//}
+//
+////column
+//@mixin col($width:100%,$float:left){
+//  float: $float;
+//  width: $width;
+//  display: block;
+//}
+//
+////clearfix
+//@mixin clearfix{
+//  &:after{
+//    display: block;
+//    content: '';
+//    clear: both;
+//  }
+//}
+//
+////column width media-queries
+//@mixin col-xs($width:100%,$float:left){
+//  @media screen and (min-width: #{$xs}){
+//    float: $float;
+//    width: $width;
+//    display: block;
+//    @content;
+//  }
+//}
+//
+//@mixin col-sm($width:100%,$float:left){
+//  @media screen and (min-width: #{$sm}){
+//    float: $float;
+//    width: $width;
+//    display: block;
+//    @content;
+//  }
+//}
+//
+//@mixin col-md($width:100%,$float:left){
+//  @media screen and (min-width: #{$md}){
+//    float: $float;
+//    width: $width;
+//    display: block;
+//    @content;
+//  }
+//}
+//
+//@mixin col-lg($width:100%,$float:left){
+//  @media screen and (min-width: #{$lg}){
+//    float: $float;
+//    width: $width;
+//    display: block;
+//    @content;
+//  }
+//}

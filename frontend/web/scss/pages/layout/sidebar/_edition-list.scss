@@ -1,0 +1,46 @@
+.edition-list{
+  margin: 0;
+  border-bottom:1px solid #f0f0f0;
+  li{
+    padding:rem(12) rem(14) rem(10) rem(16);
+    border-top:1px solid #f0f0f0;
+    @include clearfix;
+
+    .img-holder{
+      @include col-xs(78/238*100%);
+      text-align: center;
+      margin-right:15/238*100%;
+
+      img{
+        max-width:100%;
+        max-height:rem(100);
+      }
+    }
+
+    .text-holder{
+      @include col-xs(145/238*100%);
+
+      .download{
+        display: block;
+        color: #c6c5c5;
+        content: '';
+        width:21px;
+        height: 25px;
+        margin:rem(12) 0;
+      }
+
+      .description{
+        display: block;
+        font-family:$font-family-base;
+        color: #4d4d4d;
+        font-size:rem(14);
+        line-height:(18/14);
+        text-decoration: none;
+
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

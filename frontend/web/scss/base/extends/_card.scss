@@ -1,0 +1,231 @@
+%card {
+	@include span-columns(6);
+	margin: 2.5rem 2.5rem 2.5rem 0;
+	text-align: center;
+	width: 100%;
+	max-width: 26.25rem;
+	overflow: hidden;
+	cursor: pointer;
+
+	.img-holder {
+		overflow: hidden;
+		height: auto;
+		padding-bottom: 100%;
+		position: relative;
+		background: $gray-light;
+
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			will-change:transform;
+			transform: scale3d(1.004, 1.004, 1.004) translate(-50%, -50%);
+			width: auto;
+			height: 100%;
+			transition: .3s ease-out;
+		}
+	}
+
+	.text-holder {
+		position: relative;
+		padding: 1rem 1.6666rem 1.6666rem;
+		border: 1px solid $gray-lightest;
+		border-top: none;
+		overflow: hidden;
+		.title {
+			position: relative;
+			z-index: 9;
+			color: $gray-light;
+			font-family: $font-family-sans-serif;
+			@include font-style($font-weight-bold, $font-style-italic);
+			font-size: $font-size-small;
+			line-height: 1.714em;
+			padding: 0 0 1.5rem;
+			margin: 0 auto;
+			transition: .375s ease-in-out;
+		}
+		.sub-title {
+			color: $gray-lighter-hover;
+			@include font-style($font-weight-bold, $font-style-italic);
+			font-size: 1rem;
+			line-height: 1.6rem;
+			padding: 0.7rem 0 1.2rem 0;
+
+			p {
+				margin: 0;
+			}
+		}
+
+		.tools {
+			@include clearfix;
+			padding: 2rem 0 0;
+			border-top: 3px double $gray-lightest;
+			.select-color {
+				content: '';
+				display: inline-block;
+				height: 1rem;
+				width: 2rem;
+				background: $brand-warning;
+				margin: 0 -4px 0 0;
+			}
+			.stats {
+
+				color: $gray-lighter-hover;
+				font-family: $base-font-family;
+				font-size: $font-size-xs;
+				line-height: $font-size-small;
+				.views {
+					padding-right: 1.3rem;
+					&:before {
+						font-size: 1rem;
+						padding-right: 0.5rem;
+						will-change: transform;
+						transform: translateX(-50%);
+						font-family: $font-family-icon;
+						content: "#{$views-icon}";
+					}
+				}
+				.likes {
+					margin-right: -2px;
+					&:before {
+						font-size: 0.9rem;
+						padding-right: 0.5rem;
+						will-change: transform;
+						transform: translateX(-50%);
+						font-family: $font-family-icon;
+						content: "#{$likes-icon}";
+					}
+				}
+			}
+		}
+	}
+
+	.btn-controls-holder {
+		content: '';
+		background: $primary-pink;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		transition: .25s 0s ease-out;
+		will-change: transform;
+		transform: translateY(101%);
+
+		.btn-wrapp {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			@include clearfix;
+			width: 100%;
+			overflow: hidden;
+
+			.btn-controls {
+				will-change: transform, opacity, color;
+				&:after {
+					width: 150%;
+				}
+
+				&:nth-of-type(1) {
+					transition: none;
+				}
+				&:nth-of-type(2) {
+					transition: none;
+				}
+				&:nth-of-type(3) {
+					transition: none;
+				}
+			}
+		}
+	}
+
+	&:hover,
+	&.hoverer {
+		.img-holder {
+			img {
+				transform: translate(-50%, -50%) scale3d(1.1, 1.1, 1);
+			}
+		}
+		.btn-controls-holder {
+			will-change: transform;
+			transform: translateY(0);
+		}
+
+		.text-holder {
+			border-color: $primary-pink;
+			.title {
+				color: $base-background-color;
+			}
+
+			.btn-controls {
+				will-change: transform, opacity;
+				transform: translateY(0);
+				opacity: 1;
+
+				&:nth-of-type(1) {
+					transition: transform .15s .3s ease-in-out, opacity .15s .3s ease-in-out, color .15s ease-in-out;
+				}
+				&:nth-of-type(2) {
+					transition: transform .15s .4s ease-in-out, opacity .15s .4s ease-in-out, color .15s ease-in-out;
+				}
+				&:nth-of-type(3) {
+					transition: transform .15s .5s ease-in-out, opacity .15s .5s ease-in-out, color .15s ease-in-out;
+				}
+			}
+		}
+	}
+	&.list {
+		@include sm {
+			@include span-columns(12);
+			padding-bottom: 2rem;
+			border-bottom: 1px solid $gray-lightest;
+			width: 100%;
+			min-width: 100%;
+
+			.img-holder {
+				float: left;
+				height: 7.1rem;
+				width: 7.4rem;
+				padding-bottom: 0;
+				img {
+					height: 100%;
+					width: 100%;
+				}
+			}
+			.text-holder {
+				text-align: left;
+				border: none;
+				padding: 0.8rem 0 0 1.85rem;
+				.title-block {
+					float: left;
+					width: 60%;
+					.title {
+						padding: 0;
+					}
+					.sub-title {
+						padding: 0;
+						.town {
+							padding-bottom: 1.2rem;
+						}
+					}
+				}
+				.tools {
+					border: none;
+					position: absolute;
+					right: 0.2rem;
+					bottom: 0;
+				}
+				.btn-controls-holder {
+					.btn-wrapp {
+						width: 35%;
+						height: 4.6rem;
+						.btn-controls {
+							padding: 0 1.4rem;
+							line-height: 4.6rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}

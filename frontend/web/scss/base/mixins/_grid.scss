@@ -1,0 +1,100 @@
+//columns container
+@mixin container($width:100%) {
+  width: $width;
+
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+//column
+@mixin col($width:100%,$float:left) {
+  float: $float;
+  width: $width;
+  display: block;
+}
+
+//clearfix
+@mixin clearfix {
+  &:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
+
+//column width media-queries
+@mixin col-xs($width:100%,$float:left) {
+  @media screen and (min-width: #{$xs}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+@mixin col-sm($width:100%,$float:left) {
+  @media screen and (min-width: #{$sm}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+@mixin col-md($width:100%,$float:left) {
+  @media screen and (min-width: #{$md}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+@mixin col-lg($width:100%,$float:left) {
+  @media screen and (min-width: #{$lg}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+@mixin col-lg-sm($width:100%,$float:left) {
+  @media screen and (min-width: #{$lg-sm}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+@mixin col-lg-md($width:100%,$float:left) {
+  @media screen and (min-width: #{$lg-md}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+@mixin col-lg-hd($width:100%,$float:left) {
+  @media screen and (min-width: #{$lg-hd}) {
+    float: $float;
+    width: $width;
+    display: block;
+    @content;
+  }
+}
+
+//column ws custom breakpoint
+@mixin col-custom($breakpoint,$width:100%,$float:left, $display: block) {
+  @media screen and (min-width: #{$breakpoint}) {
+    float: $float;
+    width: $width;
+    display: $display;
+    @content;
+  }
+}

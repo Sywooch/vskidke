@@ -1,0 +1,161 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// Body reset
+
+html {
+  font-size: $root;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  box-sizing: border-box;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color-base;
+  background-color: $global-color;
+  -webkit-font-smoothing: antialiased;
+
+  &.modal-open {
+    overflow: hidden;
+
+  }
+
+}
+
+.container {
+  @include clearfix;
+  width:100%;
+  margin: 0 auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+
+  @include sm{
+    width:90%;
+  }
+
+  @include lg-sm{
+    width:$container-width;
+  }
+}
+
+
+
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  outline: none;
+}
+
+// Forms
+
+// common settings
+input {
+  @include tab-focus;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select {
+  appearance: none;
+  overflow: hidden;
+  color: $text-color-base !important;
+}
+
+// Links
+
+a {
+  color: $link-color-base;
+  text-decoration: none;
+  transition: .1s;
+
+  &:hover {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+  }
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+
+}
+
+// outline
+
+a,
+button,
+input {
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none; // outline delete
+  }
+}
+
+// figure
+
+figure {
+  margin: 0;
+}
+
+// Images
+
+img {
+  vertical-align: middle;
+}
+
+// iOS "clickable elements" fix for role="button"
+//
+// Fixes "clickability" issue (and more generally, the firing of events such as focus as well)
+// for traditionally non-focusable elements with role="button"
+// see https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+
+[role="button"] {
+  cursor: pointer;
+}
+
+select {
+  appearance: none;
+  position: relative;
+  outline: none !important;
+  overflow: hidden;
+}
+
+ul{
+  margin: 0;
+}

@@ -1,0 +1,27 @@
+// Close icons
+//
+
+.close {
+  font-size: $font-size-h3;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  color: $gray-base;
+  transition:.15s ease-in;
+
+  &:hover {
+    color: $primary-sunny;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  //for ios
+  button& {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+  }
+}
+
+

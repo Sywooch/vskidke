@@ -1,0 +1,17 @@
+%placeholder-remove{
+    &::-moz-placeholder {
+        transition: text-indent 0.4s ease-in-out ;
+        text-indent: -100%;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        text-indent: -100%;
+        transition:text-indent 0.4s ease-in-out;
+        opacity: 1;
+    }
+    &::-webkit-input-placeholder {
+        transition:text-indent 0.4s ease-in-out ;
+        text-indent: -100%;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src:    url('./../fonts/font-awesome-4.5.0/fontawesome-webfont.woff2') format('woff2'),
+            url('./../fonts/font-awesome-4.5.0/fontawesome-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('./../fonts/icomoon/icomoon.woff') format('woff'),
+          url('./../fonts/icomoon/icomoon.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'HouschkaRounded';
+    src: url('./../fonts/houschkaroundedaltlightregular-webfont.woff2') format('woff2'),
+         url('./../fonts/houschkaroundedaltlightregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'IntroRegular';
+    src: url('./../fonts/Intro-Light-Alt.otf') format('otf'),
+         url('./../fonts/intro-light-alt-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'SFUIDesignRegular';
+    src: url('./../fonts/sfuidisplay-regular-webfont.woff2') format('woff2'),
+         url('./../fonts/sfuidisplay-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+//Font family base
+@font-face {
+  font-family: 'pfdintextcondprothin';
+  src: url('./../fonts/pfdintext/pfdintextcondprothin.eot');
+  src: url('./../fonts/pfdintext/pfdintextcondprothin.eot') format('embedded-opentype'),
+  url('./../fonts/pfdintext/pfdintextcondprothin.woff2') format('woff2'),
+  url('./../fonts/pfdintext/pfdintextcondprothin.woff') format('woff'),
+  url('./../fonts/pfdintext/pfdintextcondprothin.ttf') format('truetype'),
+  url('./../fonts/pfdintext/pfdintextcondprothin.svg#pfdintextcondprothin') format('svg');
+}
+
+@font-face {
+  font-family: 'SFUIDesignLight';
+  src: url('./../fonts/SFUIDesign/sf-ui-display-light-webfont.woff2') format('woff2'),
+  url('./../fonts/SFUIDesign/sf-ui-display-light-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Azbuka04';
+  src: url('./../fonts/Azbuka04/azbuka04-webfont.woff2') format('woff2'),
+  url('./../fonts/Azbuka04/azbuka04-webfont.woff') format('woff');
+}
+
+

@@ -1,0 +1,45 @@
+@mixin rating-variant($color) {
+  font-size: 0;
+  width: auto;
+  &:hover li {
+
+    &:before {
+      content: $rating-icon ;
+      color: $color;
+    }
+  }
+
+  li {
+
+    display: inline-block;
+    padding-right: 2px;
+    font-size: $font-size-base;
+    color: $color;
+    cursor: pointer;
+
+    &:before {
+      font-family:$font-family-icon;
+      content: $rating-icon-o;
+      color: $gray-light;
+    }
+
+    &:last-child {
+      margin: 0;
+    }
+    &.current ~ li {
+
+      &:before {
+        content: $rating-icon-o ;
+        color: $gray-light;
+      }
+    }
+
+    &:hover ~ li {
+
+      &:before {
+        content: $rating-icon-o ;
+        color: $gray-light ;
+      }
+    }
+  }
+}

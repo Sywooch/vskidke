@@ -1,0 +1,42 @@
+%btn {
+
+  width:rem(160);
+  height:rem(40);
+  line-height:rem(38);
+  border-radius: rem(20);
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0; // For input.btn
+  font: {
+    family: $font-family-base;
+    weight: normal;
+    style: normal;
+  }
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  //background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  white-space: nowrap;
+  user-select: none;
+  z-index: 1;
+  overflow: hidden;
+  text-decoration: none;
+
+  &:active,
+  &.active {
+    background-image: none;
+
+  }
+
+  &.disabled,
+  &[disabled] {
+    cursor: pointer;
+
+    &:after {
+      display: none;
+    }
+  }
+
+}
+

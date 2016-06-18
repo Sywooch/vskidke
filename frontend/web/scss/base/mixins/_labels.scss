@@ -1,0 +1,11 @@
+// backround mixin
+@mixin label-variant($color) {
+  background-color: $color;
+}
+
+
+// color mixins
+@mixin label-color-sheme($bg-color, $color:$global){
+  background-color: $bg-color;
+  color: $color;
+}

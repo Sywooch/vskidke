@@ -1,0 +1,139 @@
+//
+// Checkboxes & radio
+// --------------------------------------------------
+/*
+
+Checkboxes
+==========
+
+Radio and checkbox
+
+    <div class="checkbox">
+        <input type="checkbox" id="Checkbox" name="Checkbox" class="form-input">
+        <label for="Checkbox">Checkbox</label>
+    </div>
+
+    <div class="radio">
+        <input type="radio" id="Radio" name="Radio" class="">
+        <label for="Radio">Radio</label>
+    </div>
+
+
+    .checkbox
+      input( type="checkbox" id="Checkbox1" name="Checkbox" class="")
+      label( for="Checkbox1") Checkbox
+
+*/
+
+.checkbox {
+  @extend %checkbox-radio;
+}
+
+//Modal checkbox area
+
+
+
+.checkbox {
+  label {
+    font-family: $font-family-1;
+    color: #3f3f3f;
+    font-size: 18.75px; /* Approximation due to font substitution */
+    font-weight: 300;
+    line-height: 1; /* Approximation due to font substitution */
+    &:before,
+    &:after {
+      top: 0;
+      left: 0;
+      @include square(15px);
+      text-align: center;
+    }
+
+    &:before {
+      border-radius: 5px;
+      background-color: $global-color;
+      transition: border, color .15s ease-in-out;
+    }
+
+    &:after {
+      padding-left: 0;
+      font-size: 1rem;
+      padding-top: 0.1rem;
+      color: $global-color;
+    }
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    &:checked + label::before {
+      background: $snow;
+    }
+    &:checked + label:after {
+      font-family: $font-family-icomoon;
+      content: $check-icon;
+      color: #0e5f82;
+      //background: url(.//images/checkbox-icon.png) no-repeat 50% 50%;
+
+    }
+    /*&:checked + label:hover::before {
+      background: $primary-1;
+      border-color: $primary-2;
+    }*/
+  }
+
+  &.checkbox-circle label::before {
+    border-radius: 50%;
+  }
+
+  &.checkbox-inline {
+    margin-top: 0;
+  }
+}
+
+.radio {
+  label {
+    &:before,
+    &:after {
+      @include round();
+      background-color: $global-color;
+    }
+
+    &:before {
+      top: 0.2rem;
+      @include square(20px);
+      left: 0;
+      transition: border .15s ease-in-out;
+    }
+
+    &:after {
+      @include square(0.84rem);
+      top: 0.6rem;
+      left: 0.4rem;
+      background-color: $primary-1;
+      transform: scale(0, 0);
+      transition: transform .1s cubic-bezier(.8, -0.33, .2, 1.33);
+    }
+  }
+
+  input[type="radio"] {
+    &:checked + label {
+      &:after {
+        transform: scale(1, 1);
+      }
+      &:before {
+        border-color: $primary-1;
+      }
+      &:hover {
+        &:after {
+          background: $primary-1;
+        }
+        &:before {
+          border-color: $primary-1;
+        }
+      }
+
+    }
+  }
+  &.radio-inline {
+    margin-top: 0;
+  }
+}

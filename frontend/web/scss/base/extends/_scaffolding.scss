@@ -1,0 +1,116 @@
+%title-sm{
+    font-size: $font-size-8;
+    font-weight: $font-weight-bold;
+    color: $gray-darker;
+    margin-bottom: 5px;
+}
+
+%title-md{
+    font-size: 30px;
+    font-weight: $font-weight-bold;
+}
+
+%ava{
+    border-radius: 50%;
+}
+
+// height for carousel and header on page world, city
+%header-carousel-height{
+    min-height: $header-height-xs + 180;
+
+    @include sm{
+        min-height: $header-height-xs;
+    }
+
+    @include md{
+        min-height: $header-height-lg + 30;
+    }
+}
+%heading-title{
+    font-size: $font-size-h3;
+    line-height: 1.3;
+    @include md{
+        font-size: $font-size-h1;
+    }
+}
+%img-responsive{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+%blog-post-title{
+    position: relative;
+    top: 110px;
+    z-index: 1;
+    text-align: center;
+
+    h1{
+        color: #fff;
+    }
+
+    p{
+        font-size: 30px;
+        font-weight: $font-weight-bold;
+        margin-top: 20px;
+    }
+}
+
+%blog-author{
+    img{
+        display: inline-block;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+}
+
+%blog-slider-item-img{
+    & > img{
+        opacity: .7;
+        z-index: 0;
+    }
+}
+
+%blog-label{
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+%shadowed-block{
+    border: 1px solid $gray-lighter;
+    box-shadow: 0 0 5px $profile-box-shadow-color;
+}
+
+%blog-tags-block{
+    position: relative;
+    padding: 20px;
+
+    ul{
+        li{
+            a{
+                padding: 5px 10px 5px 0;
+                color: $gray-base;
+                cursor: pointer;
+
+                &:hover{
+                    color: $primary-pink;
+                }
+            }
+        }
+    }
+}
+
+%under-header-content{
+    padding-top: 530px;
+}
+
+%font-sm-italic{
+    font-style: $font-style-italic;
+    font-size: 14px;
+}
+
+%abs-centered{
+    left: 50%;
+    @include transform(translateX(-50%));
+}
