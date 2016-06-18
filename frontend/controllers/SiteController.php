@@ -84,6 +84,8 @@ class SiteController extends BaseController
 
             return $post['city'];
         }
+
+        return $this->redirect(Url::to(['/discount/index']));
     }
 
     /**
