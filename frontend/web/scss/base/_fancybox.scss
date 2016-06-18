@@ -1,0 +1,53 @@
+
+.fancybox-wrap {
+  .fancybox-nav span {
+    visibility: visible;
+
+  }
+
+  .fancybox-prev span,
+  .fancybox-next span {
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 63px;
+    background: url(/images/owl-buttons.png) no-repeat;
+    text-indent: -9999px;
+  }
+
+  .fancybox-prev span {
+    left: 0;
+    background-position: 0 0;
+  }
+
+  .fancybox-next span {
+    right: 0;
+    background-position: -35px 0;
+  }
+
+}
+
+//.fancybox-outer{
+//  height: 200px !important;
+//
+//  @include sm{
+//    width: 700px !important;
+//    height: 470px !important;
+//  }
+//
+//  .fancybox-inner{
+//    width: 100% !important;
+//    height: 100% !important;
+//    text-align: center;
+//    background: $gray-lighter;
+//
+//    .fancybox-image{
+//      height: 100% !important;
+//      width:auto;
+//      display: inline-block;
+//    }
+//  }
+//}

@@ -1,0 +1,48 @@
+%divider {
+	position: relative;
+	width: 16.667rem;
+	height: 0.25rem;
+	border: 1px double $primary;
+	border-left: none;
+	border-right: none;
+	&:before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 4.167rem;
+		height: 2rem;
+		padding: 0 0.67rem;
+		@include middle-center;
+		background: $base-background-color url('.//images/divider.svg') 50% 50% no-repeat;
+		background-size: 70%;
+	}
+}
+
+%divider-title {
+	position: relative;
+	padding-bottom: 2rem;
+	margin-bottom: 3rem;
+	&:before {
+		position: absolute;
+		bottom: 0;
+		width: 16.667rem;
+		height: 0.25rem;
+		border-bottom: 3px double $primary;
+		content: "";
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	&:after{
+		position: absolute;
+		bottom: 0;
+		content:'';
+		display: block;
+		width: 4.167rem;
+		height: 2rem;
+		padding: 0 0.67rem;
+		left: 50%;
+		transform: translate(-50%,50%);
+		background: $base-background-color url('.//images/divider.svg') 50% 50% no-repeat;
+		background-size: 70%;
+	}
+}

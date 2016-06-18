@@ -1,0 +1,54 @@
+.article-ideas{
+	@extend %card;
+
+	.text-holder{
+		.tools{
+			text-align: justify;
+			.stats{
+				float: right;
+			}
+		}
+	}
+
+	.btn-controls{
+		position: absolute;
+		bottom: 0;
+		width: 50%;
+		transform: translateY(60%);
+		opacity:0;
+		will-change: transform;
+		border-color: transparent;
+		line-height: 5rem;
+
+		&:before{
+			display: inline-block;
+			font-size: 1.7rem;
+			line-height: 1;
+			font-family: $font-family-icon;
+		}
+
+		&.likes{
+			left:0;
+			&:before{
+				content: '#{$heart-icon}';
+			}
+			&.liked {
+				&:before {
+					content: "#{$likes-icon}";
+				}
+			}
+		}
+
+		&.more{
+			right:0;
+			&:before{
+				content: '#{$more-icon}';
+			}
+		}
+
+		&:active{
+			top:auto;
+			bottom: -2px;
+		}
+	}
+}

@@ -1,0 +1,70 @@
+
+  //position: relative;
+  //label{
+  //  position: absolute;
+  //  right: 1rem;
+  //  top: 50%;
+  //  &:before {
+  //
+  //    transform: translateY(-50%);
+  //    color: $input-color-danger;
+  //    font-family: $font-family-icomoon;
+  //    content: $exclamation-icon;
+  //    display: inline-block;
+  //  }
+  //}
+
+  .special-flexselect {
+
+    border-radius: $border-radius-lg;
+    padding: 0 2.667rem 0 3.5rem;
+
+
+  }
+  .flexselect_dropdown {
+    position: absolute;
+    z-index: 999999;
+    margin: 0;
+    padding: 0;
+    border: 1px solid WindowFrame;
+    max-height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: Window;
+    color: WindowText;
+    text-align: left;
+    box-shadow: 0 6px 12px #ccc;
+    -webkit-box-shadow: 0 6px 12px #ccc;
+  }
+
+  .flexselect_dropdown ul {
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .flexselect_dropdown li {
+    margin: 0;
+    padding: 2px 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    font: Menu;
+    overflow: hidden;
+    //&:hover{
+    //  color: $primary-snow;
+    //  background: $primary;
+    //}
+  }
+
+  .flexselect_dropdown li.disabled {
+    cursor: not-allowed;
+    color: GrayText;
+  }
+
+  .flexselect_selected {
+    background-color: Highlight;
+    color: HighlightText;
+  }

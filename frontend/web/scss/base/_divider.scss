@@ -1,0 +1,7 @@
+.divider-top,
+.divider-bottom{
+	@extend %divider;
+}
+.divider-title{
+	@extend %divider-title;
+}

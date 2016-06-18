@@ -1,0 +1,163 @@
+//
+//==Pagination
+/*
+ul.pagination-block
+                    li(role='menuitem').pagination-prev.disabled
+                        a(href='#', aria-label='Previous', role='link') Назад
+                    li.disabled(role='menuitem').pagination-item
+                        a(href='javascript:void(0)' role='link') 1
+                    li.active(role='menuitem').pagination-item
+                        a(href='javascript:void(0)' role='link') 2
+                    li(role='menuitem').pagination-item
+                        a(href='javascript:void(0)' role='link') 3
+                    li(role='menuitem').pagination-item
+                        a(href='javascript:void(0)' role='link') 4
+                    li.disabled(role='menuitem').pagination-item
+                        a(href='javascript:void(0)' role='link') ...
+                    li(role='menuitem').pagination-item
+                        a(href='javascript:void(0)' role='link') 22
+                    li(role='menuitem').pagination-next
+                        a(href='javascript:void(0)', aria-label='Previous', role='link') Вперед
+*/
+
+.pagination-holder{
+  position: relative;
+  margin: rem(24) 0 rem(44);
+  &:before {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 100%;
+    background-color: #cad4d9;
+    height: 3px;
+    content: '';
+    z-index: 5;
+  }  
+
+}
+
+
+.pagination-block {
+  display: inline-block;
+  padding-left: 0;
+  background: #fff;
+  position: relative;
+  z-index:10;
+  padding-right:rem(15);
+
+  li {
+    display: none;
+    @include md {
+      display: inline-block; // Remove list-style and block-level defaults
+    }
+
+    margin-right: rem(5);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+
+      width: 18px;
+      height: 18px;
+      line-height:18px;
+      text-decoration: none;
+      background-color: #ffffff;
+      font-family: $font-family-5;
+      color: #d3d2d2;
+      font-size: 13px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 400;
+      text-align: center;
+      display: inline-block;
+
+      &:hover,
+      &:focus {
+        color: $snow;
+        background-color: #18bef0;
+        //border-color: $pagination-hover-border;
+        text-decoration: none;
+      }
+
+    }
+
+    // different padding for pagination links first and last(arrows)
+    &:first-child,
+    &:last-child {
+
+      display: inline-block;
+      a {
+        border-radius: 0; //reset bootstrap settings
+      }
+    }
+
+  }
+
+  .active a {
+    &,
+    &:hover,
+    &:active {
+      z-index: 2;
+      color: $snow;
+      background-color: #18bef0;
+      //border-color: $pagination-active-border;
+      cursor: default;
+    }
+  }
+
+  li.disabled {
+    a,
+    a:hover,
+    a:active,
+    &:hover a,
+    &:active a,
+    &:active a:hover {
+      color: $gray-9;
+      background-color: transparent;
+      //border-color: $pagination-disabled-border;
+      cursor: default;
+    }
+  }
+  .pagination-prev,
+  .pagination-next {
+
+
+    a {
+      padding: 0 1rem;
+
+      &:before,
+      &:after {
+        font-family: $font-family-icomoon;
+      }
+
+      @include xs {
+        display: block;
+        width: 100%;
+
+      }
+      @include sm {
+        display: inline;
+      }
+    }
+
+  }
+  .pagination-next {
+    a {
+      &:after {
+        content: $angle-right-icon;
+        padding-left: 1rem;
+      }
+    }
+
+  }
+
+  .pagination-prev {
+    a{
+      &:before {
+        content: $angle-left-icon;
+        padding-right: 1rem;
+      }
+    }
+  }
+}
+

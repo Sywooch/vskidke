@@ -1,0 +1,340 @@
+//
+// Forms
+
+//select location
+.select-block-location {
+  position: relative;
+  .select-button {
+    line-height: 3.28rem;
+    height: 3.28rem;
+    display: block;
+    width: 100%;
+    padding: 0 1.25rem 0 rem(48);
+    border: 1px solid $input-border;
+    position: relative;
+    color: $input-label-color;
+    cursor: pointer;
+
+    //Cut string
+    white-space: nowrap; /* Запрещаем перенос строк */
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+
+    &:before {
+      position: absolute;
+      left: 0;
+      top:0;
+      height: 100%;
+      font-family:$font-family-icomoon;
+      content: $place2-icon;
+      border-right: 1px solid $input-border;
+      padding: 0 1rem;
+    }
+
+    &.danger {
+      position: relative;
+      padding-right: 3rem;
+      border-color: $input-color-danger;
+      color: $input-color-danger;
+      &:before  {
+        border-color: $input-color-danger;
+        color: $input-color-danger;
+      }
+      .form-input {
+        color: $input-color-danger;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: $input-color-danger;
+
+        &:before  {
+          border-color: $input-color-danger;
+        }
+      }
+
+      &:after {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $input-color-danger;
+        font-family: $font-family-icomoon;
+        content: $exclamation-icon;
+        display: inline-block;
+      }
+    }
+  }
+
+  .select-list{
+    display: none;
+    position: absolute;
+    top:100%;
+    left: 0;
+    width: 100%;
+    background: $primary-snow;
+    border: 1px solid $input-border;
+    border-top:none;
+    z-index:1000;
+    box-shadow: 0 10px 10px transparentize(black, 0.8);
+
+    li{
+      padding:rem(10) rem(16);
+      color: $gray;
+      font-size:$font-size-base;
+      line-height:rem(18/$font-size-base);
+      cursor: pointer;
+
+      &:hover{
+        color: $primary-snow;
+        background: $primary;
+      }
+    }
+  }
+
+  &.show{
+    .select-list{
+      display: block;
+    }
+  }
+}
+  //Input block search
+
+  .input-block-search {
+    @extend %input-block;
+
+    position: relative;
+
+    .form-input {
+      line-height: 3.83rem;
+      height: 3.83rem;
+      display: block;
+      width: 100%;
+      padding: 0 1.25rem 0 3.5rem;
+    }
+    .form-label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      line-height: 3.83rem;
+      height: 100%;
+
+      &:before {
+        content: $search-icon;
+      }
+    }
+  }
+
+  .input-block-place {
+    @extend %input-block;
+    position: relative;
+    .form-label {
+      position: absolute;
+      top: 0;
+      right: 0;
+      line-height: 3.83rem;
+      height: 100%;
+      &:before {
+        content: $place-icon;
+      }
+    }
+    .form-input {
+      line-height: 3.83rem;
+      height: 3.83rem;
+      display: block;
+      width: 100%;
+      padding: 0 3.5rem 0 1.25rem;
+
+    }
+  }
+
+  //Input block phone
+  .input-block-phone,
+  .input-block-user {
+    @extend %input-block;
+    position: relative;
+
+    .form-label {
+      line-height: 3.28rem;
+      border-right: 1px solid $input-border;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      &:before {
+
+      }
+    }
+
+    .form-input {
+      padding: 0 1.25rem 0 4rem;
+      line-height: 3.28rem;
+      height: 3.28rem;
+      background-repeat: round;
+      display: block;
+      width: 100%;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $input-border-active;
+
+      label {
+        border-color: $input-border-active;
+      }
+    }
+
+    &.primary {
+      border-color: $input-color-primary;
+      label {
+        border-color: $input-color-primary;
+        color: $input-color-primary;
+      }
+      .form-input {
+        color: $input-color-primary;
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: $input-color-primary;
+
+        label {
+          border-color: $input-color-primary;
+        }
+      }
+    }
+
+    &.danger {
+      position: relative;
+      padding-right: 3rem;
+      border-color: $input-color-danger;
+      label {
+        border-color: $input-color-danger;
+        color: $input-color-danger;
+      }
+      .form-input {
+        color: $input-color-danger;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        border-color: $input-color-danger;
+
+        label {
+          border-color: $input-color-danger;
+        }
+      }
+
+      &:after {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $input-color-danger;
+        font-family: $font-family-icomoon;
+        content: $exclamation-icon;
+        display: inline-block;
+      }
+    }
+
+    .help-block {
+      position: absolute;
+      top: 100%;
+      z-index: 10;
+      margin-top: 0 !important;
+      left: 4rem;
+
+    }
+  }
+
+  //Input block phone
+  .input-block-phone {
+
+    .form-label {
+      &:before {
+        content: $phone-icon;
+      }
+    }
+  }
+
+  //Input block user
+  .input-block-user {
+
+    .form-label {
+      &:before {
+        content: $user-form-icon;
+      }
+    }
+  }
+
+  //Input block comment
+  //Input block comment
+  .input-block-comment {
+    @extend %input-block;
+    position: relative;
+
+    .form-input {
+      padding: 1.25rem;
+      display: block;
+      width: 100%;
+      resize: none;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      border-color: $input-border-active;
+
+    }
+
+    .help-block {
+      position: absolute;
+      top: 100%;
+      z-index: 10;
+      margin: 0 !important;
+      left: 4rem;
+
+    }
+
+  }
+
+  .form-phone {
+
+    border-radius: $border-radius-base;
+    background: $primary-snow;
+    padding: 2px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+    .input-block-phone {
+      border: none;
+      margin: 0;
+      display: block;
+      width: 100%;
+      padding-right: 5rem;
+      position: relative;
+
+      .form-label {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+
+      .form-input {
+        width: 100%;
+        display: block;
+        padding: 0 1rem 0 4rem;
+      }
+    }
+
+    .btn-filter-warning {
+      padding: 1rem 1.667rem;
+      position: absolute;
+      right: 3px;
+      top: 3px;
+    }
+  }

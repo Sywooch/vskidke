@@ -1,0 +1,324 @@
+// color scheme to selected elements
+::selection {
+  @include has-color($primary, $global-color);
+  // arguments:
+  //1. bg-color,
+  //2. color
+}
+
+select{
+  opacity: 0;
+}
+
+//Selection
+
+
+
+.select-phone-block{
+
+  .select2-container {
+
+    .select2-selection--single {
+      height: 3.58rem;
+      border-radius: 0;
+      border: none;
+      background: $primary-snow;
+      outline: none;
+      border-bottom: 1px solid $navigation-border-color;
+
+      @include sm {
+        height: 2.7rem;
+        border: none !important;
+      }
+
+      .select2-selection__rendered {
+        color: $primary;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid $navigation-border-color;
+
+        img {
+          position: absolute;
+          left: 1rem;
+          top: 1rem;
+
+          @include sm {
+            position: static;
+          }
+        }
+
+        @include sm {
+          padding: 0.6rem 2rem 0 0;
+          border: none;
+        }
+
+      }
+
+      .select2-selection__arrow {
+        top: 0;
+        padding: 1.1rem 2rem 0 1.5rem;
+        border-left: 1px solid $navigation-border-color;
+        height: 100%;
+
+        @include sm {
+          padding: 1.1rem 0 0 0;
+          border: none;
+        }
+
+        &:after {
+          display: inline-block;
+          font-family: $font-family-icon;
+          content: $angle-down-icon;
+          transition: transform 0.1s;
+
+        }
+
+        b {
+          display: none;
+        }
+      }
+      &[aria-expanded="true"] {
+        .select2-selection__arrow {
+
+          &:after {
+            transform: rotate(180deg);
+
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.select-langs-block,
+.select-place-block,
+.select-profession-block,
+.select-area-block {
+
+  .select2-container {
+
+    .select2-selection--single {
+      height: 3.58rem;
+      border-radius: 0;
+      border: none;
+      background: $primary-snow;
+      outline: none;
+      border-bottom: 1px solid $navigation-border-color;
+
+      @include sm {
+        height: 2.7rem;
+        border: none !important;
+      }
+
+      .select2-selection__rendered {
+        color: $primary;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid $navigation-border-color;
+
+        img {
+          position: absolute;
+          left: 1rem;
+          top: 1rem;
+
+          @include sm {
+            position: static;
+          }
+        }
+
+        @include sm {
+          padding: 0.6rem 2rem 0 0;
+          border: none;
+        }
+
+      }
+
+      .select2-selection__arrow {
+        top: 0;
+        padding: 1.1rem 2rem 0 1.5rem;
+        border-left: 1px solid $navigation-border-color;
+        height: 100%;
+
+        @include sm {
+          padding: 1.1rem 0 0 1rem;
+          border: none;
+        }
+
+        &:after {
+          display: inline-block;
+          font-family: $font-family-icon;
+          content: $angle-down-icon;
+          transition: transform 0.1s;
+
+        }
+
+        b {
+          display: none;
+        }
+      }
+      &[aria-expanded="true"] {
+        .select2-selection__arrow {
+
+          &:after {
+            transform: rotate(180deg);
+
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+.select2-results {
+  text-align: center;
+
+  @include sm {
+    text-align: left;
+    padding: 0.5rem 0;
+    border-radius: 3px;
+    border-right: 1px solid $navigation-border-color;
+    -webkit-box-shadow: 0px 15px 15px 0px rgba(50, 50, 50, 0.13);
+    -moz-box-shadow: 0px 15px 15px 0px rgba(50, 50, 50, 0.13);
+    box-shadow: 0px 15px 15px 0px rgba(50, 50, 50, 0.13);
+
+  }
+
+  .select2-results__option {
+    padding: 1.333rem 0;
+    background: $navigation-bg;
+    border-bottom: 1px solid $navigation-border-color;
+    color: $navigation-color;
+
+    position: relative;
+
+    img {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+
+      @include sm {
+        position: static;
+      }
+    }
+
+    @include sm {
+
+      background: $primary-snow;
+      color: $gray-base;
+      padding: 0.2rem 1rem;
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+      position: relative;
+      border-color: transparent;
+      transition: 0.05s;
+      cursor: pointer;
+
+    }
+
+    &:hover,
+    &:active,
+    &:focus,
+    &::selection{
+      background: $navigation-bg-hover;
+      color: $navigation-color-hover;
+
+      @include sm {
+        color: $gray-base;
+        border-color: $primary;
+        background: $primary-snow;
+      }
+    }
+  }
+}
+
+.select2-container--open {
+  .select2-search--dropdown {
+    display: none;
+  }
+  .select2-dropdown--below {
+    border: none;
+
+    border-bottom: 1px solid $gray-lighter;
+
+    @include sm {
+      border: 1px solid $gray-lighter;
+      border-radius: 3px;
+      top: 3px;
+    }
+  }
+}
+
+.select2-container--default .select2-results > .select2-results__options {
+  //max-height: 100%; //reset base style
+}
+
+.select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option[aria-selected=true] {
+  background-color: $navigation-bg-hover;
+
+  @include sm {
+    background-color: $primary-snow;
+    color: $gray-base;
+
+  }
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: $primary-snow;
+  color: $gray-base;
+
+}
+
+
+
+
+
+
+
+//END Selection
+
+//Selection profession
+
+.select-profession-block,
+.select-area-block {
+  .select2-container {
+
+    width:auto !important;
+
+    .select2-selection--single {
+      background: transparent;
+      height: 2.7rem;
+      border: none !important;
+
+      .select2-selection__rendered {
+        color: $primary;
+        padding: 0.6rem 1.333rem 0 0;
+        border: none;
+
+      }
+    }
+  }
+}
+
+.select-place-block,
+.select-area-block {
+  .select2-container {
+min-width: 1rem !important;
+    width:auto !important;
+  }
+}
+
+.select2-dropdown{
+  -webkit-box-shadow: 0px 10px 10px 0px rgba(50, 50, 50, 0.5);
+  -moz-box-shadow:    0px 10px 10px 0px rgba(50, 50, 50, 0.5);
+  box-shadow:         0px 10px 10px 0px rgba(50, 50, 50, 0.5);
+  min-width: 16rem;
+  @include sm{
+    width:auto !important;
+
+    @include state-box-shadow;
+  }
+
+}

@@ -1,0 +1,124 @@
+.footer {
+  background: #18bef0;
+
+  .wrapp {
+    @include clearfix;
+    padding-top:rem(24);
+    padding-bottom:rem(24);
+  }
+
+  .nav-footer {
+    @include md {
+      float: left;
+    }
+  }
+  .social {
+    @include md {
+      float: right;
+    }
+  }
+
+  .nav-footer {
+    padding:rem(8) 0 0;
+    margin: 0 0 20px;
+    @include clearfix;
+
+    @include sm{
+      margin: 0;
+    }
+    li {
+      float: left;
+      &:last-child{
+        margin-right: 0;
+      }
+
+      a {
+        padding:0 rem(15);
+        display: block;
+        font-family: $font-family-3;
+        font-size: rem(19);
+        line-height: 1;
+        color: #ffffff;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+      }
+
+      &:first-child a {
+        padding-left: 0;
+      }
+      &:last-child a {
+        padding-right: 0;
+
+      }
+    }
+  }
+  .social {
+    .google,
+    .twitter,
+    .fb,
+    .vk,
+    .ok,
+    .youtube {
+      display: inline-block;
+      color: #18bef0;
+      margin-right: rem(15);
+      font-size: rem(20);
+
+      &:before {
+        display: inline-block;
+        content: '';
+        width: rem(32);
+        height: rem(32);
+
+      }
+    }
+
+    .google {
+      &:before {
+        background: url(../images/google_plus.png);
+      }
+    }
+
+    .twitter {
+      &:before {
+        background: url(../images/twitter.png);
+      }
+    }
+
+    .fb {
+      &:before {
+        background: url(../images/facebook.png);
+      }
+    }
+
+    .vk {
+      &:before {
+        background: url(../images/vk.png);
+      }
+    }
+    .ok {
+      &:before {
+        background: url(../images/odnoklasniki.png);
+      }
+    }
+    .youtube {
+      margin-right: 0;
+      &:before {
+        background: url(../images/yotube.png);
+      }
+    }
+  }
+}
+
+.navbar-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  bottom: 0;
+}
+

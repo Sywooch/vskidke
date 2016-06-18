@@ -1,0 +1,7 @@
+@mixin tab-focus() {
+  &:hover,
+  &:active,
+  &:focus{
+    outline: none;
+  }
+}

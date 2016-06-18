@@ -1,0 +1,29 @@
+// Styling scrollbars
+
+//@include scrollbars(10px, 1px, $primary, 0);
+
+//Style scrollbar for Chrome
+::-webkit-scrollbar {
+  width: 10px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: $gray-lighter;
+}
+
+/* Задание цвета центральной части бегунка и полос прокрутки */
+
+body { //for IE
+  scrollbar-3dlight-color: $global-color; /* Задание цвета верхней и левой границ полосы прокрутки, стрелок и бегунка */
+  scrollbar-arrow-color: $global-color; /* Задание цвета стрелок */
+  scrollbar-base-color: $global-color; /* Задание основного цвета полос */
+  scrollbar-darkshadow-color: $global-color; /* Задание цвета тени от стрелок и бегунка */
+  scrollbar-face-color: $primary; /* Задание цвета центральной части бегунка и полос прокрутки */
+  scrollbar-track-color: $global-color; /* Задание цвета свободного места полос прокрутки */
+}

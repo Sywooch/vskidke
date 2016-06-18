@@ -1,0 +1,72 @@
+//
+// Breadcrumbs
+// --------------------------------------------------
+
+.breadcrumbs {
+	margin: rem(25) 0 0.5rem;
+	list-style: none;
+	//background-color: $global-color;
+	color: $primary-3;
+	font-family: $font-family-base;
+	font-size: $font-size-1;
+	line-height:1em;
+	display: none;
+
+	@include sm{
+		display: block;
+	}
+
+	> li {
+		display: inline-block;
+		padding-right: rem(22);
+
+		a {
+			color: $primary-3;
+			text-decoration: none;
+			position: relative;
+			font-size: $font-size-1;
+			line-height:1em;
+
+			&:hover {
+				text-decoration: underline;
+
+				&:after{
+					color: $primary-3;
+				}
+			}
+
+			&:after {
+				display: block;
+				font-family: $font-family-icomoon;
+				content: '»';
+				color: $gray-8;
+				position: absolute;
+				font-size: $font-size-1 - 0.15rem;
+				line-height: 1em;
+				bottom: 3px;
+				right: -1rem;
+
+			}
+
+
+		}
+
+	}
+
+	> .active {
+		a {
+			&,
+			&:hover,
+			&:active {
+				color: $gray-8;
+				cursor: default;
+				text-decoration: none;
+			}
+
+			&:after{
+				display: none;
+			}
+		}
+
+	}
+}

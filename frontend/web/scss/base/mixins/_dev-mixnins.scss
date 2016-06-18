@@ -1,0 +1,202 @@
+@mixin profile-block-style {
+	border: 1px solid $gray-lighter;
+	box-shadow: 0 0 5px $profile-box-shadow-color;
+}
+
+@mixin devider-style {
+	position: relative;
+	height: 1px;
+	background-color: $gray-lightest;
+	border: none;
+	margin: 0 30px;
+	&:after {
+		content: "";
+		position: absolute;
+		top: 2px;
+		@include block-size(100%, 1px);
+		border-bottom: 1px solid $gray-lightest;
+	}
+}
+
+@mixin modal-wrapper-style {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 900;
+	padding: 10px;
+	max-height: 100vh;
+	overflow-y: auto;
+}
+
+@mixin backdrop-style {
+	content: "";
+	display: none;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: $backdrop-color;
+	z-index: 890;
+}
+
+@mixin profile-list-style {
+	@include pad(11px 0 11px 30px);
+	@include anchor-block();
+	&:hover {
+		cursor: pointer;
+		@include has-color($primary-sea, $primary-snow);
+		@include transition(all 0.2s ease-in-out);
+	}
+}
+
+@mixin picture-box-shadow-inset() {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	@include square(100%);
+	box-shadow: inset 0px -100px 100px -50px rgba(0, 0, 0, 0.5);
+}
+
+@mixin label-hover-elements() {
+	position: absolute;
+	top: 0;
+	transform: translate(0, -50%);
+	z-index: 1;
+	opacity: 0;
+	@include border-color($global-color);
+}
+
+// middle vertical
+@mixin middle-vertical() {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+// middle horizontal
+@mixin middle-horizontal() {
+	position: absolute;
+	left: 50%;
+	will-change: transform;
+	transform: translateX(-50%);
+}
+
+// middle center
+@mixin middle-center() {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin var-cols-collapse($width) {
+	width: $width;
+	float: left;
+}
+
+@mixin margin-padding($margin,$padding) {
+	margin: $margin;
+	padding: $padding;
+}
+
+@mixin profile-mobile-burger($width,$border-radius) {
+	background: $gray-darker;
+	width: $width;
+	border-radius: $border-radius;
+}
+
+@mixin profile-payment-invert-btn {
+	@include span-columns(6);
+	@include pad(10px 15px);
+	font-size: $font-size-base;
+	&:hover {
+		background: $global-color;
+		border-color: $primary-sunny;
+		color: $primary-sunny;
+	}
+}
+
+@mixin modal-btn-wrapper {
+	@include row();
+	@include span-columns(12);
+	@include omega();
+}
+
+@mixin payment-options-dropdown {
+	.dropdown-menu {
+		max-width: 250px;
+		left: auto;
+		right: -12px;
+		li {
+			a {
+				text-align: right;
+				@include pad(10px 20px);
+			}
+		}
+	}
+	.dropdown-toggle {
+		@include pad(0 20px 0 10px);
+		color: $primary-sea;
+		@include lg {
+			cursor: pointer;
+		}
+		&:after {
+			font-weight: $font-weight-bold;
+			transform: translate(0, -50%);
+		}
+	}
+}
+
+@mixin box-shadow-collapse($shadow-color) {
+	box-shadow: 1px 0 0 0 $shadow-color,
+	0 1px 0 0 $shadow-color,
+	1px 1px 0 0 $shadow-color,
+	1px 0 0 0 $shadow-color inset,
+	0 1px 0 0 $shadow-color inset;
+}
+
+@mixin link-active-color($color,$bg-color) {
+	color: $color;
+	background: $bg-color;
+}
+
+@mixin fa-before {
+	font: normal normal normal #{$fa-font-size-base}/#{$fa-line-height-base} FontAwesome; // shortening font declaration
+	text-rendering: auto; // optimizelegibility throws things off #1094
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding-right: 0.5rem;
+}
+
+@mixin nav-short-block {
+	width: 30px;
+	margin: 1rem 0 0 1.6666rem;
+}
+
+@mixin article-heading {
+	margin: 0 0 1rem;
+	font: {
+		weight: bold;
+		style: italic;
+	}
+	text-align: center;
+	padding: 0 10%;
+
+	@include sm {
+		padding: 0;
+	}
+}
+
+@mixin article-heading-divider{
+	margin: 0 auto 2rem auto;
+
+	@include sm {
+		margin: 0 auto 3rem auto;
+	}
+}
+

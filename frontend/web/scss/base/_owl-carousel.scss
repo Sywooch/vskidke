@@ -1,0 +1,288 @@
+/*
+ *  Core Owl Carousel
+ */
+
+.carousel-holder {
+  @extend %carousel;
+}
+
+#owl-clinic,
+#owl-clinic-mobile {
+  position: relative;
+  background: $gray-lighter;
+  .owl-item {
+    text-align: center;
+    overflow: hidden;
+    height: 25rem;
+
+
+    @include sm{
+
+    }
+    a {
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+
+  .owl-buttons {
+    .owl-prev,
+    .owl-next {
+      position: absolute;
+      top: 50%;
+      margin-top: -25px;
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 63px;
+      background: url(/images/owl-buttons.png) no-repeat;
+      text-indent: -9999px;
+    }
+
+    .owl-prev {
+      left: 0;
+      background-position: 0 0;
+    }
+
+    .owl-next {
+      right: 0;
+      background-position: -35px 0;
+    }
+  }
+
+}
+
+#owl-doctors {
+  padding-top: 2rem;
+  .item {
+    @include clearfix;
+    .img-block {
+      @include clearfix;
+      .img-holder {
+        width: 60%;
+        float: left;
+        border-radius: $border-radius-base;
+        overflow: hidden;
+        height: 16rem;
+        text-align: center;
+
+        img {
+          border-radius: $border-radius-base;
+          overflow: hidden;
+          width: auto;
+          height: 100%;
+
+        }
+
+      }
+
+      .rating-holder {
+
+        width: 40%;
+        float: right;
+        padding-left: 2rem;
+        text-align: center;
+
+        .rating {
+          border-top: 1px solid $gray-lighter;
+          padding: 1rem 0;
+
+          .number {
+            font-size: $font-size-8;
+            line-height: $line-height-4;
+            padding-bottom: 0.5rem;
+            color: $rating-text-color;
+            font-family: $font-family-3;
+            font-weight: bold;
+          }
+
+          .description {
+            color: $gray-darken;
+            font-size:$font-size-1;
+            line-height: 1;
+
+          }
+        }
+
+        .comments {
+          padding: 1rem 0;
+          border-top: 1px solid $gray-lighter;
+          border-bottom: 1px solid $gray-lighter;
+
+          .number {
+            font-size: $font-size-8;
+            line-height: $line-height-4;
+            padding-bottom: 0.5rem;
+            color: $primary;
+            font-family: $font-family-3;
+            font-weight: bold;
+          }
+
+          .description {
+            text-decoration: underline;
+            font-size:$font-size-1;
+            line-height: 1;
+          }
+        }
+      }
+    }
+    .text-holder {
+      padding: 2.333rem 1.667rem 1.667rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      min-height: 22rem;
+      position: relative;
+
+      @include sm {
+        text-align: left;
+      }
+
+      .title {
+        a {
+          color: $gray;
+          font-family: $font-family-3;
+          font-weight: bold;
+          line-height: $line-height-4;
+          font-size: $font-size-4;
+        }
+      }
+      .category {
+        color: $gray-dark;
+        line-height: $line-height-4;
+        font-size:$font-size-1;
+      }
+
+      .description {
+        padding: 2.33rem 0 0;
+        color: $gray-darken;
+        max-height: 7rem;
+        overflow: hidden;
+        font-size:$font-size-base;
+        line-height: rem(20)/$font-size-base;
+      }
+
+      .more {
+        position: relative;
+
+        @include sm{
+          position: absolute;
+          left: 1.667rem;
+          bottom: 1.667rem;
+        }
+
+        &:after {
+          top:3px;
+
+          @include sm{
+            top:0;
+          }
+          position: absolute;
+          right:-1rem;
+
+          font-family: $font-family-icomoon;
+          display: inline-block;
+          padding-left: 1rem;
+          content: $angle-right-icon;
+        }
+      }
+
+    }
+
+  }
+}
+
+#owl-articles {
+  padding-top: 2rem;
+  .item {
+    @include clearfix;
+
+    @include sm{
+      border: 1px solid $gray-lighter;
+    }
+
+
+    .img-holder {
+      text-align: center;
+      overflow: hidden;
+      height: 16rem;
+
+      img {
+        width:auto;
+        height: 100%;
+
+        @include sm{
+          min-width: 100%;
+        }
+      }
+
+    }
+
+    .text-holder {
+      padding: 2.333rem 1.667rem 1.667rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      min-height: 27rem;
+
+
+
+      @include sm {
+        text-align: left;
+
+
+      }
+      .title {
+        a {
+          color: $post-title-color;
+          font-family: $font-family-2;
+          font-weight: 400;
+          line-height: $line-height-4;
+          font-size: $font-size-5;
+        }
+      }
+      .date {
+        color: $gray-dark;
+        font-style: italic;
+        font-size: $font-size-1;
+        font-weight: bold;
+        line-height: rem(20) / $font-size-1;
+      }
+
+      .description {
+        padding: 2.33rem 0;
+        font-size:$font-size-base;
+        line-height: rem(20) / $font-size-base;
+        color: $post-color;
+        max-height: 15rem;
+        overflow: hidden;
+        font-weight: 400;
+
+      }
+
+      .more {
+        position: absolute;
+        left: 1.667rem;
+        bottom: 1.667rem;
+
+        &:after {
+          top:0;
+
+
+          position: absolute;
+          right: -1rem;
+          font-family: $font-family-icomoon;
+          display: inline-block;
+          padding-left: 1rem;
+          content: $angle-right-icon;
+        }
+      }
+
+    }
+
+  }
+}
+

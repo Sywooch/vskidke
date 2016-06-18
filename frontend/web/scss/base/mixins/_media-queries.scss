@@ -1,0 +1,49 @@
+//media-queries mixin
+//custom breakpoint
+@mixin media-custom($breakpoint){
+  @media screen and (min-width: #{$breakpoint}){
+    @content;
+  }
+}
+//xs
+@mixin xs{
+  @media screen and (min-width: #{$xs}){
+    @content;
+  }
+}
+//sm
+@mixin sm{
+  @media screen and (min-width: #{$sm}){
+    @content;
+  }
+}//md
+@mixin md{
+  @media screen and (min-width: #{$md}){
+    @content;
+  }
+}
+//lg
+@mixin lg{
+  @media screen and (min-width: #{$lg}){
+    @content;
+  }
+}
+//lg-sm
+@mixin lg-sm{
+  @media screen and (min-width: #{$lg-sm}){
+    @content;
+  }
+}
+//lg-md
+@mixin lg-md{
+  @media screen and (min-width: #{$lg-md}){
+    @content;
+  }
+}
+//lg-hd
+@mixin lg-hd{
+  @media screen and (min-width: #{$lg-hd}){
+    @content;
+  }
+}
+//END media-queries mixin

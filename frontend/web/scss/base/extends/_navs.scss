@@ -1,0 +1,98 @@
+
+%nav-justified{
+  width: 100%;
+
+  > li {
+    float: none;
+    > a {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+  }
+
+  @include sm{
+    > li {
+      display: table-cell;
+      width: 1%;
+      > a {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// tabs
+%nav-tabs-justified {
+  border-bottom: 0;
+
+  > li > a {
+    // Override margin from .nav-tabs
+    margin-right: 0;
+    border-radius: $border-radius-base/3 $border-radius-base/3 0 0;
+  }
+
+  > .active > a,
+  > .active > a:hover,
+  > .active > a:focus {
+    border: 1px solid $nav-tabs-justified-link-border-color;
+  }
+
+  @include sm{
+    > li > a {
+      border-bottom: 1px solid $nav-tabs-justified-link-border-color;
+      border-radius: $border-radius-base/3 $border-radius-base/3 0 0;
+    }
+    > .active > a,
+    > .active > a:hover,
+    > .active > a:focus {
+      border-bottom-color: $nav-tabs-justified-active-link-border-color;
+    }
+  }
+}
+
+%nav-pills{
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > a {
+      border-radius: $nav-pills-border-radius;
+      padding: 15px 20px;
+      @include xs{
+          padding: 10px 20px;
+      }
+
+      &:hover{
+        //background: #b2c6cd;
+        //color: $global-color;
+      }
+      
+      @include sm-md{
+        padding: 15px 7px;
+      }
+
+    }
+    + li {
+      margin-left: 2px;
+    }
+
+    // Active state
+    &.active > a {
+      &,
+      &:hover {
+        color: $nav-pills-active-link-hover-color;
+        background-color: $nav-pills-active-link-hover-bg;
+      }
+    }
+
+    // Disabled state
+    &.disabled > a{
+      color: #b2c6cd;
+      background-color: $global-color;
+    }
+    &.dropdown >a{
+      padding-right: 30px;
+
+    }
+  }
+}

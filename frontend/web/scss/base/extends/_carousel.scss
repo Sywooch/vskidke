@@ -1,0 +1,66 @@
+%carousel{
+  padding: 2rem 1rem 0;
+
+  @include sm{
+    padding: 4.75rem 0;
+  }
+  .custom-navigation {
+    @include clearfix;
+    .title {
+      text-transform: uppercase;
+      font-family: $font-family-3;
+      font-weight: bold;
+      font-size: $font-size-8;
+      line-height: $line-height-4;
+      color: $gray;
+      padding-bottom: 1.667rem;
+      text-align: center;
+
+      @include sm{
+        float: left;
+      }
+    }
+    .button-block{
+      display: none;
+
+      @include sm{
+        display: block;
+        float: right;
+      }
+      .prev,
+      .next{
+        display: inline-block;
+        border:1px solid $gray-lighter;
+        font-family:$font-family-icomoon;
+        padding: 0.6rem 1rem;
+        color: $btn-filter-default-color;
+        cursor: pointer;
+
+        &:hover{
+          color: $btn-filter-default-color-hover;
+        }
+      }
+
+      .prev{
+        border-right:none;
+        &:before{
+          content:$angle-left-icon;
+        }
+      }
+
+      .next{
+        &:before{
+          content:$angle-right-icon;
+        }
+      }
+    }
+  }
+
+  .owl-carousel .item{
+    margin-right: 0;
+
+    @include sm{
+      margin-right: 2rem;
+    }
+  }
+}

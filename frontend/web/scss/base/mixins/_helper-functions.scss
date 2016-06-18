@@ -1,0 +1,9 @@
+// Helpers Function
+// --------------------------------------------------
+
+//calculate px to rem
+@function rem($size){
+  $remSize: ($size*1px)/$root;
+  @return $remSize*1rem;
+}
+//End calculate px to rem

@@ -1,0 +1,186 @@
+//
+// Pager pagination
+// --------------------------------------------------
+
+.pager {
+	position: relative;
+	margin: $line-height-computed 0;
+	padding: 0 2.5rem;
+	list-style: none;
+	text-align: center;
+	@include clearfix;
+
+	li {
+		display: block;
+
+		&:nth-of-type(1){
+			float: left;
+		}
+
+		&:nth-of-type(2){
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&:nth-of-type(3){
+			float: right;
+		}
+
+
+		> a {
+			display: inline-block;
+			//width: 120px;
+			//padding: .75em 1em;
+			background-color: $pager-bg;
+			border: 2px solid $pager-border;
+			text-transform: uppercase;
+
+
+			i{
+				padding-right: 0;
+			}
+
+			span{
+				display: none;
+
+				@include sm{
+					display: inline-block;
+				}
+			}
+		}
+
+		> a:hover {
+			//text-decoration: none;
+			//background-color: $primary;
+			//color: $global-color;
+		}
+	}
+
+	.next {
+		> a {
+			//float: right;
+		}
+	}
+
+	.pre {
+		> a {
+			//float: left;
+		}
+	}
+
+	.hover {
+		> a,
+		> a:hover {
+			text-decoration: none;
+			background-color: $primary;
+			color: $global-color;
+			border: 1px solid $primary;
+		}
+	}
+
+	.disabled {
+		> a,
+		> a:hover {
+			color: $pager-disabled-color;
+			background-color: $pager-bg;
+			cursor: $cursor-disabled;
+			border: 1px solid $pager-disabled-color;
+		}
+	}
+
+
+		.current {
+			padding: 0 1.25rem;
+			a {
+				background: transparent;
+				padding: .9em 1em;
+
+				&:after{
+					width: 150%;
+				}
+
+				&:hover{
+					.quad{
+						&:before,
+						&:after{
+							background-color: $global-color;
+						}
+					}
+				}
+
+			}
+
+		}
+
+		.quad {
+			position: relative;
+			@include size(18px 8px);
+
+			&:after,
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				background-color: $primary-pink;
+				top: 0;
+				@include square(8px);
+			}
+
+			&:before {
+				left: 0;
+			}
+			&:after {
+				right: 0;
+			}
+
+			&:nth-last-of-type(1){
+				margin-top: 2px;
+			}
+		}
+	&-lg{
+		//.current{
+		//	padding: 0 10rem;
+		//}
+
+		li{
+			// padding for icons
+			&:first-child {
+				span + i{
+					padding: 0;
+				}
+				@include sm{
+					span + i,
+					i {
+						padding-right: 5px;
+					}
+				}
+				@include sm-lg{
+					a{
+						min-width: 170px;
+					}
+				}
+			}
+
+			&:last-child {
+				span + i{
+					padding: 0;
+				}
+				@include sm{
+					span + i,
+					i {
+						padding-left: 5px;
+					}
+				}
+				@include sm-lg{
+					a{
+						min-width: 170px;
+					}
+				}
+			}
+		}
+	}
+}
+
+

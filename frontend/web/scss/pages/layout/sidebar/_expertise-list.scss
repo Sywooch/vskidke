@@ -1,0 +1,32 @@
+ul.expertise-list{
+  margin: 0 0 rem(25);
+  list-style: none;
+  -moz-padding-start: 0;
+  -webkit-padding-start: 0;
+  li{
+    a{
+      display: block;
+      padding:rem(14) rem(14) rem(12);
+      font-family: $font-family-base;
+      font-size:rem(14);
+      line-height:(18/14);
+      color: #4d4d4d;
+      text-decoration: none;
+      border:1px solid  #f0f0f0;
+      margin:-1px;
+      position: relative;
+
+      &:hover,
+      &.active{
+        text-decoration: none;
+        border-color: #ccdfef;
+        background-color: #eef7ff;
+        z-index:10;
+      }
+      
+      &.active{
+        color: #004681;
+      }
+    }
+  }
+}

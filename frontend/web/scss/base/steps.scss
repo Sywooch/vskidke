@@ -1,0 +1,63 @@
+.progress-steps-list{
+    @include clearfix;
+    margin-bottom: 3rem;
+    .progress-step{
+        position: relative;
+        float: left;
+        width:25%;
+        &:before{
+            content:attr(data-step);
+            font-family: $font-family-base;
+            font-style: normal;
+            font-size:$font-size-base;
+            display: block;
+            @include block-size(3.833rem,4rem);
+            background: $global-color;
+            border:2px solid $gray-lightest;
+            text-align: center;
+            line-height: 3.5rem;
+            cursor: pointer;
+            transition: 0.2s cubic-bezier(.84,.78,.37,-0.02);
+        }
+        &:after{
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: $gray-lightest;
+            position: absolute;
+            left: 0;
+            top: 1.75rem;
+            z-index: -1;
+            transition: 0.2s cubic-bezier(.84,.78,.37,-0.02);
+        }
+        &:first-of-type{
+            &:before{
+                border-color: $primary;
+            }
+        }
+        &:last-of-type{
+            width: auto;
+            &:after{
+                content: none
+            }
+        }
+        &.active{
+            &:before{
+                background: $primary;
+                color:$global-color;
+                border-color:$primary;
+                transition: 0.2s cubic-bezier(.84,.78,.37,-0.02);
+            }
+            &:after{
+                background: $primary ;
+                transition: 0.2s cubic-bezier(.84,.78,.37,-0.02);
+            }
+            + .progress-step{
+                &:before{
+                    border-color:$primary;
+                    transition: 0.2s cubic-bezier(.84,.78,.37,-0.02);
+                }
+            }
+        }
+    }
+}

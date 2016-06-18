@@ -1,0 +1,67 @@
+// Labels
+@mixin bg($bg) {
+  background-color: $bg;
+  &:before{
+    @include triangle($font-size-xs/2 $font-size-xs, $bg, up-right);
+  }
+  &:after{
+    @include triangle($font-size-xs/2 $font-size-xs, $bg, down-right);
+  }
+}
+
+.label{
+
+  @extend %label;
+
+  //labels-color
+  &.label-color-red {
+    @include bg($label-color-red);
+  }
+  &.label-color-orange {
+    @include bg($label-color-orange);
+  }
+  &.label-color-green {
+    @include bg($label-color-green);
+  }
+  &.label-color-blue {
+    @include bg($label-color-blue);
+  }
+  &.label-color-violet {
+    @include bg($label-color-violet);
+  }
+  &.label-color-yellow {
+    @include bg($label-color-yellow);
+  }
+  &.label-color-gray {
+    @include bg($label-color-gray);
+  }
+  &.label-color-dark-blue{
+    @include bg($label-color-dark-blue);
+  }
+}
+
+.label-advices-ideas{
+  @include bg($label-color-orange);
+}
+.label-theme-weddings{
+  @include bg($label-color-blue);
+}
+.label-news {
+  @include bg($label-color-red);
+}
+.label-honeymoon{
+  @include bg($label-color-green);
+}
+.label-workshops{
+  @include bg($label-color-yellow);
+}
+.label-video{
+  @include bg($label-color-violet);
+}
+.label-ad{
+  @include bg($label-color-gray);
+}
+.label-insta{
+  @include bg($label-color-dark-blue);
+}
+

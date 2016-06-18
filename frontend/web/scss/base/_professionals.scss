@@ -1,0 +1,74 @@
+.professionals{
+	@extend %card;
+	.img-holder{
+		height: 26rem;
+	}
+	.text-holder {
+		padding: 0.85rem 1.667rem 1.7rem;
+
+		.sub-title{
+			padding: 0.7rem 0 0.85rem 0;
+		}
+
+		.tools{
+			text-align: center;
+
+			.stats{
+
+			}
+		}
+
+		.btn-controls-holder{
+			.btn-wrapp{
+				height: 5rem;
+			}
+		}
+		.btn-controls{
+			float: left;
+			width: 33.3%;
+			height: 100%;
+			transform: translateY(60%);
+			opacity:0;
+			will-change: transform;
+			border-color: transparent;
+			line-height: 5rem;
+
+			&:before{
+				display: inline-block;
+				font-size: 1.7rem;
+				line-height: 1;
+				font-family: $font-family-icon;
+			}
+
+			&.mail{
+
+				&:before{
+					content: '#{$mail-icon}';
+				}
+			}
+
+			&.likes{
+
+				&:before{
+					content: '#{$heart-icon}';
+				}
+				&.liked {
+					&:before {
+						content: "#{$likes-icon}";
+					}
+				}
+			}
+
+			&.more{
+
+				&:before{
+					content: '#{$more-icon}';
+				}
+			}
+			&:active{
+				top:auto;
+				bottom: -2px;
+			}
+		}
+	}
+}

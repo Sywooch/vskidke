@@ -1,0 +1,620 @@
+// Tabs
+
+//Tabs search pages
+
+.search-tabs{
+  .tabs-controll{
+    @include clearfix;
+    padding-bottom:rem(22);
+    border-bottom:1px solid $gray-lighter;
+
+    .item{
+      margin-bottom:1rem;
+
+
+      @include sm{
+        float: left;
+        margin: 0;
+      }
+
+
+      a{
+        display: inline-block;
+        margin-right:rem(9);
+      }
+    }
+  }
+
+  //.tab-content{
+  //  padding-top:rem(28);
+  //}
+}
+
+
+
+
+
+//Tabs for modal-area
+
+#modal-area {
+  .tabs-block{
+    text-align: center;
+  }
+
+  //reset bootstrap style
+  .nav-tabs {
+    border: none;
+    display: inline-block;
+  }
+
+  .nav-tabs > li {
+    display: inline-block;
+    margin-right: 2px;
+    text-align: center;
+    margin-bottom: 1rem;
+    float: none;
+  }
+
+
+  .nav-tabs > li > span {
+    padding: 0.83rem 1rem;
+    display: inline-block;
+    margin-right: 0;
+    color: $gray;
+    font-family:$font-family-2;
+    font-weight: 600;
+    font-size:$font-size-8;
+    line-height:$line-height-4;
+
+
+
+  }
+
+  .nav-tabs > li > a {
+    padding: 0.83rem 1rem;
+    margin-right: 0;
+    font-family:$font-family-2;
+    font-weight: 600;
+    font-size:$font-size-8;
+    line-height:$line-height-4;
+    color: $primary;
+    border-color: transparent;
+    background: $global-color;
+    border-radius: $border-radius-base;
+
+    &:hover {
+      background: $primary;
+      color: $primary-snow;
+    }
+  }
+
+
+  .nav-tabs > li.active > a,
+  .nav-tabs > li.active > a:focus,
+  .nav-tabs > li.active > a:hover {
+    border-color: transparent;
+    background: $primary;
+    color: $primary-snow;
+
+  }
+  //END reset bootstrap style
+
+  .tab-content {
+    color: $gray;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-4;
+    text-align: left;
+  }
+
+}
+
+//Tabs-content for pages clinic & doctor
+
+#doctor,
+#clinic,
+#diagnostic{
+
+  //Nav-tabs
+  //reset bootstrap style
+  @include max-sm {
+    .nav-tabs {
+      border: none;
+      text-align: center;
+    }
+
+    .nav-tabs > li > a {
+      padding: 1.5rem;
+      margin-right: 0;
+      color: $primary;
+      border-color: $state-primary-border;
+      background: $state-primary-bg;
+      border-radius: $border-radius-base;
+
+      &:hover {
+        border-color: transparent;
+        background: $primary;
+        color: $primary-snow;
+      }
+    }
+    .nav-tabs > li {
+      display: block;
+      width: 100%;
+      margin-right: 2px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .nav-tabs > li.active,
+    .nav-tabs > li.active:focus,
+    .nav-tabs > li.active:hover {
+
+      .number {
+
+      }
+    }
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:focus,
+    .nav-tabs > li.active > a:hover {
+      border-color: transparent;
+      background: $primary;
+      color: $primary-snow;
+
+    }
+
+  }
+
+  //desctop
+
+  @include sm {
+    .nav-tabs {
+      border-bottom: 1px solid $tabs-border;
+
+    }
+
+    .nav-tabs > li > a {
+      margin-right: 0;
+      color: $gray-darkenen;
+      border-left: 1px solid $tabs-border;
+      height: 100%;
+
+      &:hover {
+        border-color: transparent;
+        background: none;
+        border-radius: 0;
+        color: $gray;
+      }
+    }
+    .nav-tabs > li.active ~ li > a {
+      border-left: none;
+      border-right: 1px solid $tabs-border;
+    }
+
+    .nav-tabs > li.active,
+    .nav-tabs > li.active:focus,
+    .nav-tabs > li.active:hover {
+      border-top: 4px solid $primary;
+
+      .number {
+        color: $primary;
+      }
+    }
+
+    .nav-tabs > li.active > a,
+    .nav-tabs > li.active > a:focus,
+    .nav-tabs > li.active > a:hover {
+      border-color: $tabs-border;
+      border-radius: 0;
+      border-top: none;
+      color: $gray;
+
+    }
+  }
+
+  //End reset bootstrap style
+
+  .tab-content {
+    color: $gray;
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: $line-height-4;
+
+    #services{
+      padding-top: 2rem;
+        .service-list{
+          margin-bottom:rem(16);
+          .list-header{
+            padding:rem(20);
+            font-family: $font-family-3;
+            font-weight: bold;
+            font-size:$font-size-base;
+            line-height:1.2;
+            color: $gray;
+            background: $table-bg-accent;
+            border: 1px solid $table-border-color;
+          }
+
+          .list-item{
+            @include clearfix;
+            padding:rem(16) rem(20);
+            border: 1px solid $table-border-color;
+            font-size:$font-size-base;
+            line-height:1.2;
+            color: $gray;
+            position: relative;
+            margin-top: -1px;
+            cursor: pointer;
+
+            &:hover{
+              border: 1px solid $primary;
+              z-index: 10;
+              background: $table-bg-accent;
+
+              .enroll{
+                display: block;
+              }
+            }
+
+            .description{
+              float: left;
+            }
+            .price{
+              float: right;
+              .number{
+                font-family:$font-family-3;
+                font-weight: bold;
+                color: $gray;
+                font-size:$font-size-5;
+                line-height: 1;
+              }
+            }
+            .enroll{
+              padding: rem(12) rem(22);
+              box-shadow: none;
+              display: none;
+
+              @include xs{
+                float: right;
+                margin:rem(-12) 0 rem(-12) rem(20);
+              }
+
+            }
+          }
+        }
+
+
+    }
+
+    #clinic-doctors {
+
+      //layout
+      .tab-title-wrapp{
+        @include clearfix;
+
+        .tab-title{
+
+          @include col-sm(70%);
+
+        }
+
+        .dropdown-filter{
+
+          @include col-sm(30%){
+            text-align: right;
+          }
+
+        }
+
+      }
+      //end layout
+
+
+
+      .tab-title {
+        margin: 0;
+        padding: 2rem 0;
+        font-family: $font-family-3;
+        font-weight: bold;
+        color: $gray;
+        font-size: $font-size-8;
+        line-height: $line-height-4;
+
+        .result {
+          color: $result-filter-color;
+        }
+      }
+
+
+      #doctors-list {
+        .description {
+          display: none;
+          @include sm {
+            display: block;
+          }
+        }
+
+        .location-holder {
+          display: none;
+          @include sm {
+            display: block;
+          }
+        }
+
+      }
+
+    }
+
+    #info {
+      padding-top: 2rem;
+      .title,
+      h2 {
+        padding: 2.176rem 0;
+        font-family: $font-family-2;
+        font-weight: 600;
+        font-size: $font-size-8;
+        line-height: $line-height-4;
+      }
+      .list,
+      ul {
+        list-style: disc;
+        margin: 0;
+        padding-left: 1.5rem;
+        li {
+          padding-bottom: 1rem;
+
+          &:last-child {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+
+    #comments {
+      .rating-holder {
+        @include clearfix;
+        padding: 2rem 0;
+
+        &.results{
+          @include sm{
+            margin:rem(14) 0;
+            padding: rem(33) 0 rem(33) 1.8rem;
+            border:2px solid $enroll-bg;
+          }
+        }
+        .item {
+          color: $gray-darkenen;
+          line-height: $line-height-1;
+
+          &.eval{
+            @include sm{
+              width: 35%;
+
+            }
+          }
+          @include sm {
+            width: 20%;
+            float: left;
+          }
+
+          .title {
+            display: inline-block;
+            padding-right: 2rem;
+            color: $gray-darkenen;
+            font-family: $font-family-base;
+            font-size: $font-size-base;
+            font-weight: normal;
+            min-width: 10rem;
+
+            @include sm {
+              padding-right: 0;
+              display: block;
+            }
+          }
+
+          .rating {
+            display: inline-block;
+            padding-top: 0.5rem;
+          }
+
+          &.eval {
+            font-size: $font-size-4;
+            color: $gray-light;
+            font-family: $font-family-3;
+            font-weight: bold;
+            padding-top: 0.5rem;
+            padding-bottom: 1rem;
+
+            &:before {
+              font-family: $font-family-icomoon;
+              font-size: $font-size-8;
+              line-height: $line-height-4;
+              content: $users-icon;
+              display: inline-block;
+              padding-right: 1rem;
+              transform: translateY(0.3rem);
+            }
+          }
+        }
+      }
+      .title {
+        font-family: $font-family-3;
+        font-weight: bold;
+        color: $gray;
+
+        .name {
+          font-family: $font-family-2;
+          font-weight: normal;
+          padding-left: 0.5rem;
+        }
+      }
+      .comments-list {
+
+        padding-bottom: 2rem;
+        border-bottom: 2px solid $gray-lighter;
+        .comment-item {
+          padding: 2rem 0 0 0;
+          .rating-holder {
+            padding: 0 0 1.667rem 3.5rem;
+            .item {
+              padding-top: 0;
+              font-size: $font-size-1;
+              line-height: $line-height-1;
+
+              @include sm{
+                padding-top: 2rem;
+              }
+
+              &.eval {
+                padding: 0;
+                font-size: $font-size-base;
+                font-family: $font-family-2;
+                font-weight: 600;
+                color: $gray;
+
+                &:before {
+                  display: none;
+                }
+
+                .name {
+                  color: $gray;
+                  padding-bottom: 0.5rem;
+                }
+
+                .date {
+                  font-style: italic;
+                  color: $post-color;
+                }
+
+                .rating {
+                  padding-top: 1rem;
+                  font-size: $font-size-base;
+                  font-family: $font-family-2;
+                  font-weight: 600;
+                  color: $gray;
+                }
+              }
+            }
+          }
+
+          .comment {
+            font-size: $font-size-2;
+            line-height: $line-height-3;
+            @include sm {
+              padding-left: 3.5rem;
+            }
+          }
+
+          &.man,
+          &.woman {
+            position: relative;
+            &:before {
+              position: absolute;
+              left: 0;
+              top: 2rem;
+              display: inline-block;
+              font-family: $font-family-icomoon;
+              font-size: $font-size-8;;
+              line-height: $line-height-4;
+              color: $gray-darkenen;
+
+            }
+          }
+          &.man {
+            &:before {
+              content: $users-man-icon;
+            }
+          }
+          &.woman {
+            &:before {
+              content: $users-woman-icon;
+            }
+          }
+        }
+
+        .reload {
+          padding-top: 2rem;
+          text-align: center;
+        }
+      }
+
+      .comment-form-holder {
+
+        .rating-holder{
+          padding: 2rem 1rem;
+        }
+        padding: 2rem 0 0;
+        .title {
+          font-size: $font-size-5;
+          line-height: $line-height-3;
+
+          span {
+            font-weight: normal;
+          }
+        }
+        .input-block {
+          &-user,
+          &-phone,
+          &-comment{
+            width: 100%;
+            margin-bottom: 2rem;
+            margin-left: 0;
+          }
+
+        }
+        .description {
+          font-size: $font-size-1;
+          line-height: $line-height-1;
+          color: $gray-darkenen;
+          float: left;
+          padding: 1.3rem 0;
+          display: none;
+          @include sm{
+            display: block;
+          }
+        }
+        .button-submit {
+          display: block;
+          margin: 0 auto;
+          border: none;
+          padding: 0.95rem 1.5rem;
+
+          @include sm{
+            float: right;
+          }
+        }
+        .state-form-success {
+          margin-top: 1.5rem;
+          padding: 1rem;
+          border: 1px solid $state-success-border;
+          background: $state-success-bg;
+          color: $state-success-text;
+          .close {
+            float: right;
+            font-weight: bold;
+            color: $state-success-text;
+            font-family: $font-family-icomoon;
+            font-size: $font-size-base;
+            line-height: $line-height-base;
+            &:before {
+              display: inline-block;
+              content: $close-icon;
+            }
+          }
+          .title {
+            padding: 0 0 0.5rem;
+            color: $state-success-text;
+            font-family: $font-family-3;
+            font-weight: bold;
+          }
+          .description {
+            font-size: $font-size-1;
+            line-height: $line-height-1;
+
+          }
+        }
+      }
+    }
+  }
+
+}

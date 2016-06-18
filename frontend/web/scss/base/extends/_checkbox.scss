@@ -1,0 +1,83 @@
+// Checkboxes & radio
+//
+%checkbox-radio {
+    padding-left: 1rem;
+    font-family: $font-family-base;
+    margin-bottom: 1rem;
+    label {
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        padding-left: 1rem;
+        cursor: pointer;
+
+        &:before,
+        &:after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            margin-left: -1rem;
+        }
+
+        &:before {
+            border: 1px solid #0e5f82;
+            border-radius: 3px;
+            transition: 0.15s ease-in-out;
+        }
+        &:hover {
+            &:before {
+                border-color: #0e5f82;
+                transition: 0.15s ease-in-out;
+            }
+        }
+    }
+
+    input[type="checkbox"],
+    input[type="radio"] {
+        opacity: 0;
+        z-index: 1;
+        display: none;
+        &:focus + label::before {
+            outline: none;
+        }
+        &:disabled + label {
+            &:hover {
+                &:before {
+                    border-color: $text-color-base;
+                }
+            }
+        }
+        &:checked {
+            &:disabled + label {
+                &:hover {
+                    &:before {
+                        opacity: 0.2;
+                        border-color: $primary-1;
+                    }
+                }
+            }
+        }
+        &:disabled + label {
+            cursor: default;
+            &:before {
+                opacity: 0.2;
+                cursor: default;
+            }
+            &:hover {
+                &:before {
+                    opacity: 0.2;
+                }
+            }
+        }
+    }
+}
+
+input[type="radio"] {
+    &:checked {
+        &:disabled + label {
+            &:after{
+                opacity: 0.2;
+            }
+        }
+    }
+}

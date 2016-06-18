@@ -1,0 +1,84 @@
+.callback-form {
+  border-top: 1px dashed #e8e8e8;
+  margin-bottom: rem(25);
+  @include clearfix;
+
+  .form-legend {
+    font-family: $font-family-3;
+    font-weight: bold;
+    color: #4d4d4d;
+    font-size: rem(16);
+    line-height: (20/16);
+    text-transform: uppercase;
+    margin: rem(24) 0;
+  }
+
+  .form-input,
+  .form-textarea {
+    border: 1px solid #cccccc;
+    padding: rem(8) rem(17);
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: (20/14);
+    box-shadow: inset 0px 1px 1px 0px rgba(1, 1, 1, 0.15);
+    @include placeholder(#999999);
+  }
+
+  .form-input {
+    width: 100%;
+    margin-bottom: rem(14);
+    @include col-sm(400/810*100%) {
+      margin-right: 10/810*100%;
+    }
+
+  }
+  .form-input + .form-input {
+    margin-right: 0;
+  }
+
+  .form-textarea {
+    width: 100%;
+    margin-bottom: rem(15);
+    resize: none;
+    height: rem(105);
+  }
+
+  .btn-holder {
+
+    @include sm {
+      float: right;
+    }
+
+    .form-button {
+      width: 100%;
+      margin-bottom: rem(15);
+      @include sm {
+        width: rem(116);
+        height: rem(34);
+      }
+
+      text-align: center;
+      line-height: rem(30);
+      font-family: $font-family-2;
+      font-weight: 600;
+
+      &.reset {
+        color: #333333;
+        background-color: transparent;
+        border: 1px solid #cccccc;
+
+      }
+
+      &.submit {
+        border: 1px solid #cf9407;
+        background: #ffb400;
+        color: #936e14;
+
+        @include sm {
+          margin-left: rem(14);
+        }
+      }
+    }
+  }
+
+}

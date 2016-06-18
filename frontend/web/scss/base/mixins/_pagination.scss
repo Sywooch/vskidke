@@ -1,0 +1,15 @@
+@mixin pagination-sizes($padding-vert, $padding-horizont, $padding-horisont-first-last, $font-size){
+  > li {
+    a {
+      padding: $padding-vert $padding-horizont;
+      font-size: $font-size;
+    }
+    &:first-child,
+    &:last-child{
+      a{
+        padding-left: $padding-horisont-first-last;
+        padding-right: $padding-horisont-first-last;
+      }
+    }
+  }
+}

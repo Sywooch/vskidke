@@ -1,0 +1,94 @@
+// Button variants
+//
+@mixin button-variant($type, $color, $background, $border) {
+	color: $color;
+	background-color: $background;
+	border-color: $border;
+
+	@if $type == normal {
+		&:hover,
+		&.hover {
+			color: $global-color;
+			border-color: $primary;
+
+			&:after{
+				background: $primary;
+			}
+		}
+
+		&:active,
+		&.active {
+			border-color: $primary;
+			color: $global-color;
+
+			&:after{
+				background: $primary;
+			}
+		}
+
+		&.disabled,
+		&[disabled] {
+			&,
+			&:hover,
+			&.focus,
+			&:active,
+			&.active {
+				color: $global-color;
+				background-color: $primary;
+				border-color: transparent;
+			}
+			&:active,
+			&.active {
+				top: 0;
+			}
+		}
+	}
+
+	@if $type == inverse {
+		&:hover,
+		&.hover {
+			color: $primary;
+			border-color: $global-color;
+
+			&:after{
+				background: $global-color;
+			}
+		}
+
+		&:active,
+		&.active {
+			background-image: none;
+			border-color: $global-color;
+			color: $primary;
+
+			&:after{
+				background: $global-color;
+			}
+		}
+
+		&.disabled,
+		&[disabled] {
+			&,
+			&:hover,
+			&.focus,
+			&:active,
+			&.active {
+				color: $primary;
+				//background-color: $btn-inverse-bg-disabled-color;
+				border-color: transparent;
+				//opacity: .85;
+			}
+			&:active,
+			&.active {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+// Button sizes
+@mixin button-size($padding-horizontal, $font-size, $line-height) {
+	padding: 0 $padding-horizontal;
+	font-size: $font-size;
+	line-height: $line-height;
+}

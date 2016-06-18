@@ -1,0 +1,346 @@
+////
+//// Modals
+//// --------------------------------------------------
+body.modal-open {
+  overflow: hidden;
+
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.75);
+
+
+}
+
+.popup-content {
+  margin: rem(100) auto;
+  width: 90%;
+  background: $primary-snow;
+
+  @include sm {
+    width: rem(660);
+    min-height: rem(395);
+  }
+}
+
+//// .modal-open      - body class for killing the scroll
+//// .modal           - container to scroll within
+//// .modal-dialog    - positioning shell for the actual modal
+//// .modal-content   - actual modal w/ bg and corners and shit
+//
+//// Kill the scroll on the body
+//.modal-open {
+//	overflow: hidden;
+//}
+//
+//// Container that the modal scrolls within
+//.modal {
+//	display: none;
+//	overflow: hidden;
+//	position: fixed;
+//	top: 0;
+//	right: 0;
+//	bottom: 0;
+//	left: 0;
+//
+//	-webkit-overflow-scrolling: touch;
+//
+//	// Prevent Chrome on Windows from adding a focus outline. For details, see
+//	// https://github.com/twbs/bootstrap/pull/10951.
+//	outline: 0;
+//
+//	// When fading in the modal, animate it to slide down
+//	&.fade .modal-dialog {
+//		transform: translate(0, -25%);
+//		transition: transform 0.5s ease-out;
+//	}
+//	&.in .modal-dialog {
+//		transform: translate(0, 0);
+//
+//	}
+//}
+//
+//.modal-open .modal {
+//	overflow-x: hidden;
+//	overflow-y: auto;
+//}
+//
+////// Shell div to position the modal with bottom padding
+////.modal-dialog {
+////	width: 90%;
+////	position: absolute;
+////	top: 50%;
+////	left: 50%;
+////	transform: translate(-50%, -50%);
+////}
+////
+////// Actual modal
+////.modal-content {
+////	position: relative;
+////	padding: 28px 40px 40px;
+////	background-color: $modal-content-bg;
+////	background-clip: padding-box;
+////	outline: 0;
+////
+////	@include md {
+////		min-height: 530px;
+////	}
+////}
+////
+////// Modal background
+////.modal-backdrop {
+////	position: fixed;
+////	top: 0;
+////	right: 0;
+////	bottom: 0;
+////	left: 0;
+////	z-index: $zindex-modal-background;
+////	background-color: $modal-backdrop-bg;
+////	// Fade for backdrop
+////	&.fade {
+////		opacity: 0;
+////	}
+////	&.in {
+////		opacity: $modal-backdrop-opacity;
+////	}
+////}
+////
+////// Modal header
+////// Top section of the modal w/ title and dismiss
+////.modal-header {
+////	@include clearfix;
+////	width: 80%;
+////	margin: auto;
+////	text-align: center;
+////
+////	@include sm{
+////		width: 100%;
+////		text-align: right;
+////	}
+////
+////	.divider {
+////		width: 100%;
+////	}
+////}
+////
+////// Title text within header
+////.modal-title {
+////	text-align: center;
+////	font-style: normal !important;
+////	color: $primary-pink;
+////	margin: 0 0 2rem 0;
+////}
+////
+////// Modal body
+////// Where all modal content resides (sibling of .modal-header and .modal-footer)
+////.modal-body {
+////	position: relative;
+////	font-size: $font-size-h2;
+////	color: $primary-pink;
+////	text-align: center;
+////	line-height: 1;
+////	padding-bottom: 1rem;
+////	div {
+////		padding-top: 1rem;
+////		padding-bottom: 2rem;
+////	}
+////
+////	@include md {
+////		position: absolute;
+////		top: 50%;
+////		left: 50%;
+////		transform: translate(-50%, -50%);
+////		padding-bottom: 0;
+////	}
+////}
+////
+////// Footer (for actions)
+////.modal-footer {
+////	text-align: right; // right align buttons
+////	@include clearfix; // clear it in case folks use .pull-* classes on buttons
+////
+////	@include md {
+////		position: absolute;
+////		bottom: 40px;
+////		right: 40px;
+////	}
+////
+////	button {
+////		@include max-md {
+////			width: 100%;
+////			display: block;
+////		}
+////
+////		@include md {
+////			min-width: 150px;
+////		}
+////
+////		& + button {
+////			margin-top: 2rem;
+////
+////			@include md {
+////				margin-left: 2rem;
+////				margin-top: 0;
+////			}
+////		}
+////	}
+////}
+////
+////// Measure scrollbar width for padding body during modal show/hide
+////.modal-scrollbar-measure {
+////	position: absolute;
+////	top: -9999px;
+////	width: 50px;
+////	height: 50px;
+////	overflow: scroll;
+////}
+////
+////// Scale up the modal
+////@media (min-width: $sm) {
+////	// Automatically set modal's width for larger viewports
+////	.modal-dialog {
+////		width: $modal-md;
+////		//margin: 30px auto;
+////	}
+////
+////	// Modal sizes
+////	.modal-sm {
+////		width: $modal-sm;
+////	}
+////}
+////
+////@media (min-width: $md) {
+////	.modal-lg {
+////		width: $modal-lg;
+////	}
+////}
+////
+////@include lg {
+////	.modal-dialog {
+////		overflow: hidden;
+////	}
+////	.modal-content {
+////		will-change: transform;
+////		transform: translateX(-100%);
+////		transition: transform .55s .35s $transition-type-modal;
+////	}
+////
+////	.modal-overlay {
+////		background-color: $primary-pink;
+////		position: absolute;
+////		top: 0;
+////		left: 0;
+////		width: 200%;
+////		height: 100%;
+////		transition: .75s $transition-type-modal;
+////		will-change: transform;
+////		transform: translateX(-100%);
+////	}
+////
+////	.fade.in {
+////		.modal-content {
+////			transform: translateX(0);
+////		}
+////		.modal-overlay {
+////			transform: translateX(0%);
+////		}
+////	}
+////	.closing {
+////		.modal-content {
+////			transform: translateX(100%);
+////			transition: .1s $transition-type-modal;
+////		}
+////		.modal-overlay {
+////			transform: translateX(100%);
+////			transition: .75s ease-in-out;
+////			z-index: 1000;
+////		}
+////	}
+////}
+////
+////// Close icon
+////
+////.modal-close {
+////	display: block;
+////	position: fixed;
+////	right: 2rem;
+////	top: 1rem;
+////	@include square(44px);
+////	padding: 0;
+////	font-size: 0;
+////	overflow: hidden;
+////	cursor: pointer;
+////	outline: none;
+////	background: transparent;
+////	-webkit-appearance: none;
+////	border: 0;
+////	z-index: 1046;
+////	box-shadow: none;
+////
+////	&:before {
+////		content: "";
+////		display: block;
+////		width: 1.5rem;
+////		height: 1.5rem;
+////		background: url(".//images/icon_close_modal.svg");
+////		margin: auto;
+////		will-change: transform;
+////		transition: transform .1s ease-in-out;
+////	}
+////
+////	&:after {
+////		content: "";
+////		display: block;
+////		width: 3.5rem;
+////		height: 3.5rem;
+////		border: 2px solid #cc3e6d;
+////		border-radius: 50%;
+////		position: absolute;
+////		top: 50%;
+////		left: 50%;
+////		transform: scale(0.04);
+////	}
+////
+////	&:hover {
+////		&:before {
+////			transform: rotate(90deg);
+////			background: url(".//images/icon_close_hover.svg");
+////		}
+////		&:after{
+////			transform: scale(1);
+////			transition: transform 0.1s ease-in-out;
+////			top: 0;
+////			left: 1px;
+////		}
+////	}
+////}
+////
+////// was needed black svg image
+////.modal-map{
+////	.modal-close {
+////		&:before{
+////			background: url(".//images/icon_close_modal_map.svg");
+////		}
+////		&:hover {
+////			&:before{
+////				background: url(".//images/icon_close_hover.svg");
+////			}
+////		}
+////	}
+////	.modal-content,
+////	.modal-body{
+////		padding: 0;
+////	}
+////
+////}
