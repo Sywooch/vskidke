@@ -90,7 +90,8 @@ select::-ms-expand {
 select {
   appearance: none;
   overflow: hidden;
-  color: $text-color-base !important;
+  color: $text-color-base;
+  outline:none !important;
 }
 
 // Links

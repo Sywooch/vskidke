@@ -43,7 +43,7 @@ class CityDropdown extends \yii\bootstrap\Widget
         } else {
             $data  = Html::beginForm();
             $data .= Html::hiddenInput('_csrf', Yii::$app->request->getCsrfToken());
-            $data .= Html::dropDownList('city', $this->active, $this->items, ['class' => 'town', 'id' => 'citySwitch']);
+            $data .= Html::dropDownList('city', $this->active, $this->items, ['id' => 'citySwitch']);
             $data .= Html::endForm();
             return $data;
         }

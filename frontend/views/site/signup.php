@@ -24,7 +24,7 @@ use yii\bootstrap\ActiveForm;
         
             <?= $form->field($model, 'verifyCode', ['options' => ['class' => 'form-modal']])->widget(Captcha::className(), [
                 'captchaAction' => '/site/captcha',
-                'template'      => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                'template'      => '<div class="form-verify">{image}{input}</div>',
             ]) ?>
             <?= Html::submitButton('Получить пароль', ['class' => 'form-submit']); ?>
         <?php ActiveForm::end(); ?>
