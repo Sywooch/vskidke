@@ -82,7 +82,7 @@ class SiteController extends BaseController
             $cookies->remove('city');
             $cookies->add(new Cookie(['name' => 'city', 'value' => $post['city']]));
 
-            return true;
+            return $post['city'];
         }
     }
 

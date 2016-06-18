@@ -23,5 +23,12 @@
 </footer>
 
 <div class="modal-container">
-    
+    <div id="info-modal" class="modal-layout-wrapp">
+        <div class="modal-layout">
+            <div class="close"></div>
+            <div class="modal-title">Внимание</div>
+            <p>Данный функционал доступен ТОЛЬКО зарегистрированным компаниям!</p>
+            <p>Пожалуйста, зарегистрируйтесь или выполните вход, если вы уже зарегестрированы.  </p>
+        </div>
+    </div>
 </div>

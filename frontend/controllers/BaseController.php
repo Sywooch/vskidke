@@ -12,7 +12,7 @@ class BaseController extends \yii\web\Controller
             $cookies = Yii::$app->response->cookies;
             $cookies->add(new Cookie(['name' => 'city', 'value' => 'kiev']));
         }
-
+        
         return parent::init();
     }
 }

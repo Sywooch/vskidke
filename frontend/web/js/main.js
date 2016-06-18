@@ -1,4 +1,6 @@
  $(document).ready(function () {
+     discountCreateError();
+
     $("#fileID").change(function(){
         readURL(this);
     });
@@ -7,6 +9,11 @@
         var title = $("#title").val();
         $("#previewTitle").text(title);
     });
+
+     $("#percent").blur(function(){
+         var percent = $("#percent").val();
+         $("#previewPercent").text('-' + percent + '%');
+     });
 
     $( "body" ).on('click', '.modal-layout-wrapp', function(e) {
         if (e.target === this) {
@@ -55,7 +62,11 @@
              url: 'index.php?r=site/index',
              data: {city: link, _csrf: $("input[name='_csrf']").val()},
              success: function (data) {
-                 window.location.reload();
+                 var str    = window.location.href;
+                 var params = str.split('?')[1];
+                 var param  = params.split('&');
+
+                 window.location.href = 'index.php?' + param[0] + '&city=' + data
              }
          });
      });
@@ -72,3 +83,13 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+ function discountCreateError() {
+     if($("#error")) {
+         $("#error").on('click', function (event) {
+             event.preventDefault();
+             $(".mask, #info-modal").show();
+             $('body').addClass('modal-open');
+         })
+     }
+ }

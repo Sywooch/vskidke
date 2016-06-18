@@ -38,8 +38,13 @@ $interval    = $dateEnd->diff($dateCurrent);
                 <div class="label-wrapp">
                     <div class="label">
                         <div class="price">
-                            <span class='old-price'>1200</span>
-                            <span class='new-price'> 1000</span> грн</div>
+                            <?php if($discount->discount_percent): ?>
+                                <div class="action">-<?= $discount->discount_percent; ?>%</div>
+                            <?php else: ?>
+                                <span class='old-price'><?= $discount->discount_old_price; ?></span>
+                                <span class='new-price'><?= $discount->discount_price; ?></span> грн
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>

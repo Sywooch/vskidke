@@ -12,10 +12,10 @@ $category;
 
 <header class="header">
     <div class="topbar container">
-        <div class="logo-holder"><strong class="logo"><a href="<?= Url::to(['/']); ?>"></a></strong></div>
+        <div class="logo-holder"><strong class="logo"><a href="<?= Url::to(['/discount/index']); ?>"></a></strong></div>
         <div class="btn-holder">
             <div class="col-left">
-                <a href="<?= Url::to(['/discount/create']); ?>" class="btn-info">Разместить скидку</a>
+                <a href="<?= Url::to(['/discount/create']); ?>" <?php if(Yii::$app->user->isGuest): ?>id="error"<?php endif; ?> class="btn-info">Разместить скидку</a>
                 <div class="select-town">
                     <?= CityDropdown::widget(); ?>
 <!--                    --><?php //Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>

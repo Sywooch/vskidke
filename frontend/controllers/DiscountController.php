@@ -9,6 +9,7 @@ use common\models\UploadForm;
 use common\models\User;
 use yii\base\Model;
 use yii\data\Pagination;
+use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\UploadedFile;
 
@@ -19,15 +20,36 @@ use yii\web\UploadedFile;
  */
 class DiscountController extends BaseController {
 
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['create'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
     /**
      * @param null $category
      * @param int $limit
      * @return string
      */
-    public function actionIndex($category = null, $limit = 10, $city = 1) {
+    public function actionIndex($category = null, $limit = 10, $popular = null, $new = null) {
         $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
                                   ->where(['>=', 'discount_date_end', date('Y-m-d')])
-                                  ->andWhere(['company_addresses.city_id' => City::getCityId()]);
+                                  ->andWhere(['company_addresses.city_id' => City::getCityId()])
+                                  ->orderBy([
+                                      'discounts.discount_view' => $popular == 'SORT_DESC' ? SORT_DESC : SORT_ASC,
+                                      'discounts.date_create' => $new == 'SORT_DESC' ? SORT_DESC : SORT_ASC
+                                  ]);
 
         if($category) {
             $query->andWhere(['category_id' => $category]);
@@ -46,8 +68,10 @@ class DiscountController extends BaseController {
             ->all();
 
         return $this->render('index', [
-            'models' => $models,
-            'pages'  => $pages
+            'models'  => $models,
+            'pages'   => $pages,
+            'popular' => $popular,
+            'new'     => $new
         ]);
     }
 
@@ -65,6 +89,7 @@ class DiscountController extends BaseController {
             $uploadForm->model     = $discountModel;
             $uploadForm->directory = 'discount';
             $discountModel->img    = $uploadForm->upload(false);
+            $discountModel->date_create = date('Y-m-d');
             $discountModel->save();
 
             $modelAddresses = [];

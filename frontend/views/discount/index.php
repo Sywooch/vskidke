@@ -6,19 +6,21 @@ use common\models\Categories;
 use common\models\Discounts;
 use frontend\components\LinkPager;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = 'Vskidke.com';
 
 /** @var Discounts $model */
 $model;
-?>
 
+?>
+<?php Pjax::begin(); ?>
 <div class="container main">
     <div class="content">
         <div class="filter-holder">
             <div class="btn-holder">
-                <button class="filter-btn">новинки</button>
-                <button class="filter-btn active">популярные</button>
+                <a href="<?= Url::to(['/discount/index', 'new' => 'SORT_DESC']); ?>"><button class="filter-btn <?= $new == 'SORT_DESC' ? 'active' : ''?>">новинки</button></a>
+                <a href="<?= Url::to(['/discount/index', 'popular' => 'SORT_DESC']); ?>"><button class="filter-btn <?= $popular == 'SORT_DESC' ? 'active' : ''?>">популярные</button></a>
             </div>
             <div class="filter-select-block"><span class="descr">акций на странице</span>
                 <select class="filter-select">
@@ -37,13 +39,20 @@ $model;
                     <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
                         <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
                     </a>
-                    <div class="label">
-                        <div class="price">
-                            <div class="action">-90%</div>
+                    <?php if(!$model->discount_gift): ?>
+                        <div class="label">
+                            <div class="price">
+                                <?php if($model->discount_percent): ?>
+                                <div class="action">-<?= $model->discount_percent; ?>%</div>
+                                <?php else: ?>
+                                    <span class='old-price'><?= $model->discount_old_price; ?></span>
+                                    <span class='new-price'><?= $model->discount_price; ?></span> грн
+                                <?php endif; ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                     <div class="info-block">
-                        <div class="views">123</div>
+                        <div class="views"><?= $model->discount_view; ?></div>
                         <div class="os-holder">
                             <a href="" class="android"></a>
                             <a href="" class="mac"></a>
@@ -62,20 +71,9 @@ $model;
             <?= LinkPager::widget([
                 'pagination' => $pages,
             ]);?>
-<!--            <ul class="pagination-block">-->
-<!--                <!--li(role='menuitem').pagination-prev.disabled-->
-<!--                <!--    a(href='#', aria-label='Previous', role='link') Назад-->
-<!--                <li role="menuitem" class="disabled pagination-item"><a href="javascript:void(0)" role="link">1</a></li>-->
-<!--                <li role="menuitem" class="active pagination-item"><a href="javascript:void(0)" role="link">2</a></li>-->
-<!--                <li role="menuitem" class="pagination-item"><a href="javascript:void(0)" role="link">3</a></li>-->
-<!--                <li role="menuitem" class="pagination-item"><a href="javascript:void(0)" role="link">4</a></li>-->
-<!--                <li role="menuitem" class="disabled pagination-item"><a href="javascript:void(0)" role="link">...</a></li>-->
-<!--                <li role="menuitem" class="pagination-item"><a href="javascript:void(0)" role="link">22</a></li>-->
-<!--                <!--li(role='menuitem').pagination-next-->
-<!--                <!--    a(href='javascript:void(0)', aria-label='Previous', role='link') Вперед-->
-<!--            </ul>-->
         </div>
     </div>
     <aside class="sidebar-left sidebar"><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a></aside>
     <aside class="sidebar-right sidebar"><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a></aside>
 </div>
+<?php Pjax::end(); ?>

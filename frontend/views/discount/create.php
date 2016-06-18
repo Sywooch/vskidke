@@ -30,7 +30,7 @@ $address;
                     <div class="img-holder">
                         <img id="preview" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo.png&quot;">
                         <div class="label">
-                            <div class="action">-50%</div>
+                            <div id="previewPercent" class="action">-50%</div>
                         </div>
                         <!--.info-block
                         .views 123
@@ -180,7 +180,8 @@ $address;
                                         <div class="form-row">
                                             <?= $form->field($discountModel, 'discount_percent')->textInput([
                                                 'placeholder' => 'Процентная скидка',
-                                                'class' => 'form-input'
+                                                'class' => 'form-input',
+                                                'id' => 'percent'
                                             ])->label(false)?>
                                         </div>
                                     </div>
