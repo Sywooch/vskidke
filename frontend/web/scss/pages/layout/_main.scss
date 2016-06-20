@@ -1540,7 +1540,6 @@ h3 {
 }
 
 .modal-layout-wrapp.address-modal{
-  background: transparent;
 
   .modal-layout{
     border: 2px solid #88b7cc;
@@ -1567,12 +1566,12 @@ h3 {
     }
 
     .address{
-      width:293px;
+      width:203px;
       margin: 0;
     }
 
     .form-submit{
-      width:113px;
+      width:220px;
       margin: 0;
       min-width: 113px;
 
@@ -1583,7 +1582,7 @@ h3 {
 
   .map-holder{
     height:450px;
-    padding:20px 0 18px;
+    margin:20px 0 18px;
   }
 }
 

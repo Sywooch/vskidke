@@ -45,7 +45,7 @@ use yii\helpers\Html;
                 <input type="hidden" id="userId" name="user_id" value="<?= Yii::$app->user->getId(); ?>">
                 <input type="text" name="address" placeholder="Введите адрес" class="form-input address">
                 <input type="text" name="phone" placeholder="телефон" class="form-input phone">
-                <input id="searchAddress" type="submit" value="Добавить аддрес" class="form-submit">
+                <input id="searchAddress" type="submit" value="Добавить адрес" class="form-submit">
             </div>
 
             <div id="map" class="map-holder"></div>
