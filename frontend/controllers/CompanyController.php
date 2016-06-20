@@ -66,8 +66,8 @@ class CompanyController extends BaseController {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
         return [
-            'coordinates' => $addressData->results[0]->geometry->location,
-            'address'     => $address->getCity()->one()->city_name . ', ' . $address->address . ', тел. ' . $address->phone
+            'coordinates'  => $addressData->results[0]->geometry->location,
+            'address'      => $address->getCity()->one()->city_name . ', ' . $address->address . ', тел. ' . $address->phone,
         ];
     }
 

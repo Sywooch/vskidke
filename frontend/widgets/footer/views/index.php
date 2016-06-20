@@ -1,5 +1,7 @@
 <?php
-
+use common\models\City;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 ?>
 
 <footer class="footer">
@@ -37,22 +39,69 @@
             <div class="close"></div>
             <div class="search-place">
                 <div class="select-wrapp town">
-                    <select name="city" id="city">
-                        <option value="1">Киев</option>
-                        <option value="2">Днепропетровск</option>
-                    </select>
+                    <?= Html::dropDownList('city', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['id' => 'city']); ?>
                 </div>
-                <input type="hidden" name="_csrf" value="">
-                <input type="hidden" id="userId" name="user_id" value="">
+                <input type="hidden" name="_csrf" value="<?= Yii::$app->request->csrfToken; ?>">
+                <input type="hidden" id="userId" name="user_id" value="<?= Yii::$app->user->getId(); ?>">
                 <input type="text" name="address" placeholder="Введите адрес" class="form-input address">
                 <input type="text" name="phone" placeholder="телефон" class="form-input phone">
-                <input id="" type="submit" value="Найти" class="form-submit">
+                <input id="searchAddress" type="submit" value="Добавить аддрес" class="form-submit">
             </div>
 
-            <div class="map-holder"><script type="text/javascript" charset="utf-8" src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=wRN6jKaovdUKSUGiikvEm7FlWUgvPByD&width=100%&height=240&lang=ru_RU&sourceType=constructor"></script></div>
-            <div class="save-btn-holder">
-                <button type="submit" class="save-btn">Сохранить</button>
-            </div>
+            <div id="map" class="map-holder"></div>
+
+            <script id="script" type="text/javascript">
+                var map;
+                function initMap(data) {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        center: data,
+                        zoom: 17,
+                        scrollwheel: false,
+                    });
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: data,
+                    });
+                }
+            </script>
+<!--            <div class="save-btn-holder">-->
+<!--                <button type="submit" class="save-btn">Сохранить</button>-->
+<!--            </div>-->
         </div>
     </div>
 </div>
+
+<?php
+$this->registerJs('
+                 $("#searchAddress").on(\'click\', function(event){
+                        event.preventDefault();
+                        var address = $(".address").val();
+                        var phone   = $(".phone").val();
+                        var city    = $( "#city option:selected").text();
+                        var cityId  = $( "#city").val();
+                        var userId  = $( "#userId").val();
+                        var data = {
+                            address: address,
+                            phone: phone,
+                            city: city,
+                            city_id: cityId,
+                            user_id: userId
+                        };
+                        
+                        getGeoposition(data);
+                        
+                        if($("#map").css("display") == "none") {
+                            $("#map").slideToggle(400);
+                        }
+                    });
+                    
+                    function getGeoposition(data) {
+                    $.post(\'index.php?r=company/add-address\', data, function (data) {
+                        initMap(data.coordinates);
+//                        var address = "<div class=\'address\'><label>" + data.address + "</label></div>"
+                        $(".address-holder").appendTo(data.addressModel);
+                    }, \'json\')
+                }
+            ');
+?>
