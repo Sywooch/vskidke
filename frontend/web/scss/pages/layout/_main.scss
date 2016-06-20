@@ -1537,18 +1537,55 @@ h3 {
   background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 
-  &.address-modal{
-    background: transparent;
-
-    .modal-layout{
-      border: 2px solid #88b7cc;
-      background-color: #ffffff;
-      box-shadow: 0px 0px 16.74px 1.26px rgba(24, 24, 24, 0.59);
-      width: 947px;
-    }
-  }
 }
 
+.modal-layout-wrapp.address-modal{
+  background: transparent;
+
+  .modal-layout{
+    border: 2px solid #88b7cc;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 16.74px 1.26px rgba(24, 24, 24, 0.59);
+    width: 947px;
+    padding:28px 25px;
+  }
+
+  .search-place{
+    border:none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+
+    &:after{
+      display: none;
+    }
+
+    .town,
+    .phone{
+      width:203px;
+      margin: 0;
+    }
+
+    .address{
+      width:293px;
+      margin: 0;
+    }
+
+    .form-submit{
+      width:113px;
+      margin: 0;
+      min-width: 113px;
+
+      height:35px;
+      line-height:32px;
+    }
+  }
+
+  .map-holder{
+    height:450px;
+    padding:20px 0 18px;
+  }
+}
 
 
 .modal-layout {
@@ -1988,6 +2025,13 @@ h3 {
   select::-ms-expand {
     display: none;
   }
+}
+
+.help-block{
+    color: #ff0000;
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 15px;
 }
 
   .modal-open {
