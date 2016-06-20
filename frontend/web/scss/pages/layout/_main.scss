@@ -916,7 +916,7 @@
       color: #0e5f82;
     }
 
-    select {
+    select, input {
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
@@ -941,6 +941,12 @@
 
     select::-ms-expand {
       display: none;
+    }
+
+    .help-block{
+      position: absolute;
+      top: 100%;
+      left: 0;
     }
   }
 
