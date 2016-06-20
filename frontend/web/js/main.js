@@ -74,7 +74,15 @@
              }
          });
      });
-});
+
+     //disabled
+     $('body').on('click', '.disabled', function(e) {
+         e.preventDefault();
+         $(this).find('input').attr('disabled', true);
+         return false
+     });
+
+ });
 
 function readURL(input) {
     if (input.files && input.files[0]) {

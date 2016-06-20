@@ -905,6 +905,10 @@
       margin-bottom: 0;
     }
 
+    &:last-child{
+      margin: 0;
+    }
+
     &:after {
       position: absolute;
       top: 0;
@@ -914,6 +918,8 @@
       content: $triangle-down-icon;
       font-size: 23px;
       color: #0e5f82;
+      z-index:1;
+      cursor: pointer;
     }
 
     select, input {
@@ -925,7 +931,7 @@
       border-width: 1.25px;
       border-color: #0e5f82;
       border-style: solid;
-      background-color: #ffffff;
+      background-color: transparent;
       height: 33px;
       font-family: $font-family-1;
       color: #8e8e8e;
@@ -937,6 +943,8 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
+      z-index:2;
+      cursor: pointer;
     }
 
     select::-ms-expand {
@@ -2048,7 +2056,21 @@ h3 {
     }
   }
 
+//disabled
 
+.form-row{
+  &.disabled{
+    .edit{
+      opacity: 0;
+      cursor: default;
+    }
+
+    input{
+      border: none !important;
+      outline: none !important;
+    }
+  }
+}
 
 
 
