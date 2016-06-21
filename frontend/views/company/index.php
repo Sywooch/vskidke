@@ -70,7 +70,7 @@ $address;
                             'id'    => 'phone'
                         ])->label(''); ?>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row disabled">
                         <label for="e-mail" class="form-label">E-mail</label>
                         <a href="#" class="edit">Редактировать</a>
                         <?= $form->field($model, 'email')->textInput([

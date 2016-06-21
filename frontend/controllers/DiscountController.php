@@ -25,11 +25,11 @@ class DiscountController extends BaseController {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['create'],
+                'only' => ['create', 'my-discounts'],
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['create'],
+                        'actions' => ['create', 'my-discounts'],
                         'roles' => ['@'],
                     ],
                 ],
@@ -78,10 +78,16 @@ class DiscountController extends BaseController {
     /**
      * @return string|\yii\web\Response
      */
-    public function actionCreate() {
-        $userModel     = $this->UserModel();
-        $discountModel = new Discounts();
-        $post          = \Yii::$app->request->post();
+    public function actionCreate($id = null) {
+        $userModel = $this->UserModel();
+        
+        if($id) {
+            $discountModel = Discounts::findOne($id);
+        } else {
+            $discountModel = new Discounts();
+        }
+
+        $post = \Yii::$app->request->post();
 
         if($discountModel->load($post) && $discountModel->save()) {
             $uploadForm            = new UploadForm();
@@ -113,6 +119,10 @@ class DiscountController extends BaseController {
         ]);
     }
 
+    public function actionUpdate() {
+
+    }
+
     /**
      * @param $id
      * @return string
@@ -126,6 +136,79 @@ class DiscountController extends BaseController {
         return $this->render('view', [
             'discount' => $discount,
             'company'  => $discount->getUser()->with('profile')->one(),
+        ]);
+    }
+
+    /**
+     * @param null $category
+     * @param int $limit
+     * @return string
+     */
+    public function actionArchive($category = null, $limit = 10) {
+        $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
+            ->where(['<', 'discount_date_end', date('Y-m-d')])
+            ->andWhere(['company_addresses.city_id' => City::getCityId()]);
+
+        if($category) {
+            $query->andWhere(['category_id' => $category]);
+        }
+
+        $countQuery = clone $query;
+        $pages      = new Pagination([
+            'totalCount'     => $countQuery->count(),
+            'pageSize'       => $limit,
+            'forcePageParam' => false,
+            'pageSizeParam'  => false,
+        ]);
+
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('archive', [
+            'models'  => $models,
+            'pages'   => $pages,
+        ]);
+    }
+
+    /**
+     * @param null $category
+     * @param int $limit
+     * @param bool $archive
+     * @param bool $active
+     * @return string
+     */
+    public function actionMyDiscounts($category = null, $limit = 10, $archive = false, $active = false) {
+        $user  = $this->UserModel();
+        $query = Discounts::find()->where(['user_id' => $user->id]);
+
+        if($active) {
+            $query->andWhere(['>=', 'discount_date_end', date('Y-m-d')]);
+        } elseif ($archive) {
+            $query->andWhere(['<', 'discount_date_end', date('Y-m-d')]);
+        }
+
+        if($category) {
+            $query->andWhere(['category_id' => $category]);
+        }
+
+        $countQuery = clone $query;
+        $pages      = new Pagination([
+            'totalCount'     => $countQuery->count(),
+            'pageSize'       => $limit,
+            'forcePageParam' => false,
+            'pageSizeParam'  => false,
+        ]);
+
+        $models = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('my-discounts', [
+            'models'  => $models,
+            'pages'   => $pages,
+            'archive' => $archive,
+            'active'  => $active
         ]);
     }
 

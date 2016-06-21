@@ -2,6 +2,8 @@
 use common\models\City;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
+
 ?>
 
 <footer class="footer">
@@ -9,17 +11,20 @@ use yii\helpers\Html;
         <nav>
             <ul class="nav-footer">
                 <li><a href="#">О проэкте</a></li>
-                <li><a href="#">Архив скидок</a></li>
+                <li><a href="<?= Url::to(['/discount/archive']); ?>">Архив скидок</a></li>
                 <li><a href="#">Контакты</a></li>
+                <?php if(!Yii::$app->user->isGuest): ?>
+                    <li><a href="<?= Url::to(['/discount/my-discounts'])?>">Мои скидки</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
         <div class="social">
-            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="fb"></a>
-            <a href="https://plus.google.com/u/0/communities/100953407866228239745" target="_blank" class="google"></a>
-            <a href="https://plus.google.com/u/0/communities/100953407866228239745" target="_blank" class="ok"></a>
-            <a href="https://vk.com/doctora_ua" target="_blank" class="twitter"></a>
-            <a href="https://vk.com/doctora_ua" target="_blank" class="vk"></a>
-            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="youtube"></a>
+            <a href="https://www.facebook.com/vskidke" target="_blank" class="fb"></a>
+            <a href="https://plus.google.com/112076983030129168895" target="_blank" class="google"></a>
+            <a href="http://ok.ru/group/54487909335043" target="_blank" class="ok"></a>
+            <a href="https://twitter.com/vskidke_com" target="_blank" class="twitter"></a>
+            <a href="https://new.vk.com/vskidke_com" target="_blank" class="vk"></a>
+<!--            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="youtube"></a>-->
         </div>
     </div>
 </footer>

@@ -74,7 +74,7 @@ $address;
                                 'id'    => 'phone'
                             ])->label(''); ?>
                         </div>
-                        <div class="form-row">
+                        <div class="form-row disabled">
                             <label for="e-mail" class="form-label">E-mail</label>
                             <a href="#" class="edit">Редактировать</a>
                             <?= $form->field($userModel, 'email')->textInput([
@@ -106,10 +106,6 @@ $address;
                                 ArrayHelper::map(Categories::find()->all(), 'category_id', 'category_name'),
                                 ['prompt' => 'Рубрика', 'class' => '']
                             )->label(false); ?>
-    <!--                        <select name="">-->
-    <!--                            <option value="1">Рубрика</option>-->
-    <!--                            <option value="2">Рубрика</option>-->
-    <!--                        </select>-->
                         </div>
                         <span class="descr">Период действия скидки:</span>
                         <div class="select-wrapp add-page">
@@ -118,25 +114,17 @@ $address;
                                 'value' => date('Y-m-d'),
                                 'dateFormat' => 'yyyy-MM-dd',
                             ])->label(false)?>
-    <!--                        <select name="">-->
-    <!--                            <option value="1">01.01.2015</option>-->
-    <!--                            <option value="2">02.01.2015</option>-->
-    <!--                        </select>-->
-                        </div><span class="descr">-</span>
+                        </div>
+                        <span class="descr">-</span>
                         <div class="select-wrapp add-page">
                             <?= $form->field($discountModel, 'discount_date_end')->widget(DatePicker::className(), [
                                 'language' => 'ru',
                                 'value' => date('Y-m-d'),
                                 'dateFormat' => 'yyyy-MM-dd',
                             ])->label(false)?>
-    <!--                        <select name="">-->
-    <!--                            <option value="1">01.01.2015</option>-->
-    <!--                            <option value="2">02.01.2015</option>-->
-    <!--                        </select>-->
                         </div>
                     </div>
                     <div class="form-row checkbox-holder">
-    <!--                    <div class="checkbox">-->
                             <?= $form->field($discountModel, 'discount_app', [
                                 'options' => ['class' => 'checkbox'],
                                 'template' => '{input}
