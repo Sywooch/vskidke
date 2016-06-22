@@ -45,7 +45,7 @@ class Discounts extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_percent', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
+            [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
             [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_percent', 'discount_view'], 'integer'],
             [['discount_text', 'discount_app', 'discount_view_email', 'discount_gift'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],

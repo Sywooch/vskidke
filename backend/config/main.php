@@ -29,13 +29,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'request' => [
-            'baseUrl' => '/admin',
-        ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
