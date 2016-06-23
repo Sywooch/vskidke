@@ -96,6 +96,7 @@ function readURL(input) {
     }
 }
 
+
  function discountCreateError() {
      if($("#error")) {
          $("#error").on('click', function (event) {

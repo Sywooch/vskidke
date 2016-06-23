@@ -33,5 +33,6 @@ use yii\bootstrap\ActiveForm;
             <a href="https://vk.com/doctora_ua" target="_blank" class="vk"></a>
             <a href="https://plus.google.com/u/0/communities/100953407866228239745" target="_blank" class="google"></a>
         </div>
+
     </div>
 </div>
