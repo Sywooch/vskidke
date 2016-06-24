@@ -92,6 +92,8 @@ select {
   overflow: hidden;
   color: $text-color-base;
   outline:none !important;
+  cursor: pointer;
+  z-index:1;
 }
 
 // Links
