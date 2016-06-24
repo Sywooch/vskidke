@@ -6,8 +6,6 @@
   .content {
 
     padding: 0 rem(27);
-    border-top: 1px solid #f0f0f0;
-    border-bottom: 1px solid #f0f0f0;
     border-left: none;
     border-right: none;
     background: $snow;
@@ -20,8 +18,10 @@
 
   .sidebar-left {
     width: 100%;
-    background: #fdfdfd;
-    border: 1px solid #f0f0f0;
+
+    .sidebar-banner{
+      box-shadow: -1px 2px 4px 0px rgba(13, 13, 14, 0.35);
+    }
     //display: none;
     @include sm {
 
@@ -36,8 +36,11 @@
 
   .sidebar-right {
     width: 100%;
-    background: #fdfdfd;
-    border: 1px solid #f0f0f0;
+
+
+    .sidebar-banner{
+      box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
+    }
     //display: none;
 
     @include sm {
@@ -103,7 +106,7 @@
     color: #738d9a;
     font-size: 15px;
     font-weight: 300;
-    line-height: 18px;
+    line-height: 20px;
     text-align: center;
     text-transform: lowercase;
     height: 23px;
@@ -112,11 +115,12 @@
     background-color: #ffffff;
     border-radius: 10px;
     margin-right: 12px;
+    display: inline-block;
+    text-decoration: none;
 
     &.active {
       border: 1px solid #18bef0;
       background-color: #18bef0;
-      width: 111px;
       color: #fff;
     }
 
@@ -232,6 +236,11 @@
             content: '';
             border-bottom: 1px solid #fff;
           }
+        }
+
+        .new-price{
+          display: block;
+          margin-bottom: 5px;
         }
 
       }
@@ -1304,6 +1313,7 @@
 
         .new-price{
           font-size: 40px;
+          
         }
 
       }

@@ -19,8 +19,8 @@ $model;
     <div class="content">
         <div class="filter-holder">
             <div class="btn-holder">
-                <a href="<?= Url::to(['/discount/index', 'new' => 'SORT_DESC']); ?>"><button class="filter-btn <?= $new == 'SORT_DESC' ? 'active' : ''?>">новинки</button></a>
-                <a href="<?= Url::to(['/discount/index', 'popular' => 'SORT_DESC']); ?>"><button class="filter-btn <?= $popular == 'SORT_DESC' ? 'active' : ''?>">популярные</button></a>
+                <a href="<?= Url::to(['/discount/index', 'new' => 'SORT_DESC']); ?>" class="filter-btn <?= $new == 'SORT_DESC' ? 'active' : ''?>">новинки</a>
+                <a href="<?= Url::to(['/discount/index', 'popular' => 'SORT_DESC']); ?>" class="filter-btn <?= $popular == 'SORT_DESC' ? 'active' : ''?>"> популярные</a>
             </div>
             <div class="filter-select-block"><span class="descr">акций на странице</span>
                 <div class="select-filter">
