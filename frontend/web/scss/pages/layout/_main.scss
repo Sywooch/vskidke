@@ -1087,8 +1087,9 @@
 .fill{
   .top-holder{
     margin: 37px 0 14px;
-    background: #ffd600;
-    padding-left: 20px;
+    background: #18bef0;
+    height: 73px;
+    overflow: hidden;
     @include clearfix;
     .back-btn{
       font-family: $font-family-3;
@@ -1099,15 +1100,19 @@
       text-align: left;
       text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
       position: relative;
-      padding-left: 18px;
       float: left;
-      line-height: 73px;
-      width: 175/895*100%;
+      width: 175px;
+      display: inline-block;
+      background: url(../images/back-btn-bg.png) 100% no-repeat;
+      background-size: cover;
+      padding: 20px 0 0 35px;
+      height: 100%;
+
 
       &:before{
         position:absolute;
-        top: 0;
-        left: 0;
+        top: 20px;
+        left: 15px;
         font-family: $font-family-icomoon;
         content: $triangle-right-icon;
         transform: rotate(180deg);
@@ -1115,12 +1120,7 @@
 
     }
     .action-title-wrapp{
-      background: #18bef0;
-      border-left: 10px solid #fff;
-      border-top-left-radius: 50px;
-      float: left;
-      width: 720/895*100%;
-      padding: 0 22px 0 30px;
+
       @include clearfix;
       .action-title{
         float: left;
@@ -1131,13 +1131,18 @@
         line-height: 1.1; /* Приближение из-за подстановки шрифтов */
         text-align: left;
         text-transform: none;
-        padding-top: 25px;
+        margin: 0;
+        max-width: 330px;
+        padding-top: 20px;
+        white-space: nowrap; /* Запрещаем перенос строк */
+        overflow: hidden; /* Обрезаем все, что не помещается в область */
+        text-overflow: ellipsis; /* Добавляем многоточие */
 
       }
       .time{
         float: right;
         width: 165px;
-        padding-top: 21px;
+        padding-top: 15px;
         padding-left: 50px;
         position: relative;
         font-family: $font-family-3;
@@ -1148,7 +1153,7 @@
 
         &:before{
           position:absolute;
-          top: 11px;
+          top: 6px;
           left: 0;
           font-family: $font-family-icomoon;
           display: block;
