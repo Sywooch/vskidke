@@ -177,7 +177,7 @@
       position: relative;
       text-align: center;
       overflow: hidden;
-      background-color: #00cb43;
+      //background-color: #00cb43;
 
       img {
         max-width: 100%;
@@ -1218,6 +1218,7 @@
         line-height: 25px; /* Приближение из-за подстановки шрифтов */
         padding: 10px 0 10px 50px;
         position: relative;
+        min-height:45px;
 
         &:before{
           position: absolute;
@@ -1354,6 +1355,11 @@
 }
 .post-text-holder{
   @include clearfix;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }
 .post-img-holder{
   float: right;
@@ -1460,12 +1466,12 @@
 
   .comment-item{
     position: relative;
-    margin-bottom: 11px;
+    margin-bottom: 15px;
     padding-left: 20px;
 
     .user-name{
       float: left;
-      padding-left: 80px;
+      padding-left: 60px;
       font-family: $font-family-3;
       color: #0e5f82;
       font-size: 18.4px; /* Приближение из-за подстановки шрифтов */
@@ -1491,8 +1497,7 @@
       border-color: #0e5f82;
       border-style: solid;
       background-color: #ffffff;
-      width: 100%;
-      padding: 6px 14px 6px 80px;
+      padding: 6px 14px 6px 60px;
       font-family: $font-family-1;
       color: #3e3f3f;
       font-size: 19px; /* Приближение из-за подстановки шрифтов */

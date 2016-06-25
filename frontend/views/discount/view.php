@@ -54,7 +54,10 @@ $interval    = $dateEnd->diff($dateCurrent);
             <div class="post-img-holder"><img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;../images/error_photo.png&quot;">
                 <div class="link-wrapp"> <a href="#" class="liked">Избранное</a><a href="#" class="share">Поделиться</a></div>
             </div>
-            <?= $discount->discount_text; ?>
+            <div class="text" style="word-break: break-all;">
+                <?= $discount->discount_text; ?>
+            </div>
+
         </div>
         <div class="page-title-wrapp">
             <h1 class="page-title">Комментарии</h1>
