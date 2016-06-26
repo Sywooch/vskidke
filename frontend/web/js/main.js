@@ -82,6 +82,15 @@
          return false
      });
 
+     //==Navbar
+
+     //open menu
+     $('#toggle-menu').on('click', function (e) {
+         $('#collapse-menu').slideToggle('fast');
+         e.preventDefault();
+     });
+
+
  });
 
 function readURL(input) {

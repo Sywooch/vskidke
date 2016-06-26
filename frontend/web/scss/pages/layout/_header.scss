@@ -1,97 +1,148 @@
 .header {
-  background: $snow;
-  text-align: center;
   .topbar {
-      display: flex;
-      justify-content: space-between;
-    flex-wrap:wrap;
-  }
-
-  .logo{
-    @include lg-sm{
-      order:1;
-      flex: 1;
-    }
-
-  }
-
-  .navbar{
-    display: block;
-
-    @include lg-sm{
-      order:2;
-      flex: 2;
-    }
-  }
-
-  .btn-holder{
-    @include lg-sm{
-      order:3;
-      flex:1;
-    }
-  }
-
-
-  .logo {
-    width: rem(241);
-    height: rem(101);
-    display: inline-block;
-    //float: left;
-    align-self: auto;
-    margin-right: rem(21);
-
-    a {
-      display: block;
-      width: 100%;
-      height: 100%;
-      content: '';
-      background: url(../images/logo.png) no-repeat;
-    }
-  }
-
-  .navbar {
-    width:100%;
-    @include lg-sm {
-
-    }
-
-  }
-  .btn-holder {
-    display: flex;
+    padding: 23px 28px;
+    background: #17bdf0;
+    @include clearfix;
+    position: relative;
     text-align: center;
-    padding-top: rem(21);
-    margin-left: rem(21);
 
-    .town {
-      font-family: $font-family-3;
-      border: none;
-      color: #0e5f82;;
-      font-size: 14px;
-      line-height: 1;
+    @include sm{
+      background: $global-color;
+    }
+
+    //mobile navigation
+    .menu-btn {
+      display: block;
+      float: left;
+      cursor: pointer;
+      width: 42px;
+      height: 35px;
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: url(../images/menu-btn.png) no-repeat;
+      }
+
+
+      @include sm {
+        display: none;
+      }
+
 
     }
 
-    .col-left {
-      margin-right: rem(18);
+    .user {
+      display: block;
+      float: right;
+      width: 38px;
+      height: 38px;
+      @include sm {
+        display: none;
+      }
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: url(../images/ic_people.png) no-repeat;
+      }
+
     }
 
-    .registration {
-      text-decoration: underline;
-      font-family:$font-family-3;
-      font-size:rem(16);
-      color: #0e5f82;
-    }
-
-  }
-
-  #owl-header {
-    img {
+    .collapse-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
       width: 100%;
-      height: rem(400);
-    }
-  }
+      z-index: 99999;
 
+      @include clearfix;
+
+      @include sm {
+        display: block;
+        position: static;
+
+      }
+
+    }
+
+    //End mobile navigation
+
+    .logo {
+      display: inline-block;
+      width: 276px;
+      height: 39px;
+      @include sm {
+        width: rem(241);
+        height: rem(101);
+        margin-right: rem(21);
+      }
+
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: '';
+        background: url(../images/logo-mobile.png) no-repeat;
+
+        @include sm {
+          background: url(../images/logo-desctop.png) no-repeat;
+        }
+
+      }
+    }
+
+    .navbar {
+      width: 100%;
+      @include lg-sm {
+
+      }
+
+    }
+    .btn-holder {
+      display: flex;
+      text-align: center;
+      padding-top: rem(21);
+      margin-left: rem(21);
+
+      .town {
+        font-family: $font-family-3;
+        border: none;
+        color: #0e5f82;;
+        font-size: 14px;
+        line-height: 1;
+
+      }
+
+      .col-left {
+        margin-right: rem(18);
+      }
+
+      .registration {
+        text-decoration: underline;
+        font-family: $font-family-3;
+        font-size: rem(16);
+        color: #0e5f82;
+      }
+
+    }
+
+    #owl-header {
+      img {
+        width: 100%;
+        height: rem(400);
+      }
+    }
+
+  }
 }
+
+
 
 
 
