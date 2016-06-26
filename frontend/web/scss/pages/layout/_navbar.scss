@@ -1,24 +1,23 @@
 //menu
 .navbar {
-  padding-top: rem(20);
+  background: #ebebeb;
 
   .menu {
     list-style: none;
     margin: 0;
+    padding:23px 0;
     @include clearfix;
-    display: flex;
-    justify-content: space-around;
 
     @include md {
-      display: flex;
     }
 
     > li {
       position: relative;
-      text-align: center;
 
-      @include md {
+
+      @include sm {
         float: left;
+        text-align: center;
       }
 
       &:hover {
@@ -29,20 +28,38 @@
       }
 
       > a {
-        display: block;
+        display: flex;
+        align-items: center;
         font-family: $font-family-2;
-        color: #5c7f8e;
-        font-size: $font-size-base;
-        line-height: rem(26) / $font-size-base;
-        position: relative;
+        color: #3a809f;
+        font-size: 39.93px; /* Приближение из-за подстановки шрифтов */
+        font-weight: 400;
+        line-height: 25px; /* Приближение из-за подстановки шрифтов */
+        padding:13px 30px;
+
+        @include sm{
+          font-family: $font-family-2;
+          color: #5c7f8e;
+          font-size: $font-size-base;
+          line-height: rem(26) / $font-size-base;
+          position: relative;
+
+        }
 
         &:before {
-          width: rem(44);
-          height: rem(44);
           display: block;
+          width:82px;
+          height: 84px;
           content: '';
-          margin: 0 auto;
+          margin-right:24px;
           background: url(../images/header-sprite.png) no-repeat;
+          background-size: cover;
+
+          @include sm{
+            margin: 0 auto;
+            width: rem(44);
+            height: rem(44);
+          }
         }
       }
     }
@@ -50,61 +67,99 @@
     .all {
       &:before {
         background-position: -2px -5px;
+        @include sm{
+          background-position: -2px -5px;
+        }
+
+
       }
     }
     .pretty {
       &:before {
-        background-position: -64px -5px;
+        background-position: -106px -5px;
+        @include sm{
+          background-position: -64px -5px;
+        }
       }
     }
     .health {
       &:before {
-        background-position: -128px -5px;
+        background-position: -209px -5px;
+        @include sm{
+          background-position: -128px -5px;
+        }
       }
     }
     .mode {
       &:before {
-        background-position: -192px -5px;
+        background-position: -314px -5px;
+        @include sm{
+          background-position: -192px -5px;
+        }
       }
     }
     .food {
       &:before {
-        background-position: -254px -5px;
+        background-position: -417px -5px;
+        @include sm{
+          background-position: -254px -5px;
+        }
       }
     }
     .entertainment {
       &:before {
-        background-position: -318px -5px;
+        background-position: -524px -5px;
+        @include sm{
+          background-position: -318px -5px;
+        }
       }
     }
     .rest {
       &:before {
-        background-position: -382px -5px;
+        background-position: -634px -5px;
+        @include sm{
+          background-position: -382px -5px;
+        }
       }
     }
     .sport {
       &:before {
-        background-position: -446px -5px;
+        background-position: -741px -5px;
+        @include sm{
+          background-position: -446px -5px;
+        }
       }
     }
     .training {
       &:before {
-        background-position: -510px -5px;
+        background-position: -846px -5px;
+        @include sm{
+          background-position: -510px -5px;
+        }
       }
     }
     .goods {
       &:before {
-        background-position: -572px -5px;
+        background-position: -953px -5px;
+        @include sm{
+          background-position: -572px -5px;
+        }
       }
     }
     .services {
       &:before {
-        background-position: -635px -5px;
+        background-position: -1058px -5px;
+        @include sm{
+          background-position: -635px -5px;
+        }
       }
     }
     .search {
       &:before {
-        background-position: -698px -5px;
+        background-position: -1164px -5px;
+        @include sm{
+          background-position: -698px -5px;
+        }
       }
     }
 

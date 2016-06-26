@@ -4,9 +4,8 @@
     background: #17bdf0;
     @include clearfix;
     position: relative;
-    text-align: center;
 
-    @include sm{
+    @include sm {
       background: $global-color;
     }
 
@@ -26,11 +25,9 @@
         background: url(../images/menu-btn.png) no-repeat;
       }
 
-
       @include sm {
         display: none;
       }
-
 
     }
 
@@ -53,13 +50,30 @@
 
     }
 
+    .mobile-create-btn {
+      display: block;
+      width: 65px;
+      height: 134px;
+      position: fixed;
+      top: 160px;
+      right: 0;
+      z-index: 10000;
+      background: url(../images/mobile-create-btn.png);
+
+      @include sm {
+        display: none;
+      }
+
+    }
+
     .collapse-menu {
       display: none;
       position: absolute;
       top: 100%;
       left: 0;
       width: 100%;
-      z-index: 99999;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.59);
 
       @include clearfix;
 
@@ -71,10 +85,17 @@
 
     }
 
+    .create-btn {
+      display: none;
+      @include sm {
+        display: inline-block;
+      }
+    }
+
     //End mobile navigation
 
     .logo {
-      display: inline-block;
+      margin: 0 auto;
       width: 276px;
       height: 39px;
       @include sm {
@@ -98,17 +119,22 @@
     }
 
     .navbar {
-      width: 100%;
+      width: 80%;
       @include lg-sm {
 
       }
 
     }
     .btn-holder {
-      display: flex;
-      text-align: center;
-      padding-top: rem(21);
-      margin-left: rem(21);
+      background: #cccccc;
+      border-bottom: 1px solid #acacac;
+      padding: 52px 39px;
+      width: 80%;
+
+      @include sm {
+        padding-top: rem(21);
+        margin-left: rem(21);
+      }
 
       .town {
         font-family: $font-family-3;
@@ -119,8 +145,10 @@
 
       }
 
-      .col-left {
-        margin-right: rem(18);
+      .login-btn {
+        float: left;
+        border-radius: 10px;
+        margin-right: 31px;
       }
 
       .registration {
@@ -128,18 +156,23 @@
         font-family: $font-family-3;
         font-size: rem(16);
         color: #0e5f82;
+        display: block;
+        margin-bottom:10px;
       }
 
     }
-
-    #owl-header {
-      img {
-        width: 100%;
-        height: rem(400);
-      }
-    }
-
   }
+
+  #owl-header {
+    img {
+      width: 100%;
+      height:288px;
+      @include sm{
+        height: 400px;
+      }
+    }
+  }
+
 }
 
 

@@ -16,26 +16,24 @@ $category;
         <span class="user"><a href="#"></a></span>
         <div class="logo"><a href="<?= Url::to(['/discount/index']); ?>"></a>
         </div>
+        <a href="<?= Url::to(['/discount/create']); ?>" class="mobile-create-btn"></a>
 
         <div class=" collapse-menu" id="collapse-menu">
+
             <div class="btn-holder">
-                <div class="col-left">
-                    <a href="<?= Url::to(['/discount/create']); ?>"
-                       <?php if (Yii::$app->user->isGuest): ?>id="error"<?php endif; ?> class="btn-info">Разместить
-                        скидку</a>
-                    <div class="select-town">
-                        <?= CityDropdown::widget(); ?>
-                        <!--                    --><?php //Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
-                    </div>
-                </div>
-                <div class="col-right">
-                    <?php if (Yii::$app->user->isGuest): ?>
-                        <a href="#" id="login" class="btn-default">Вход</a>
-                        <a href="#" id="register" class="registration">Регистрация</a>
-                    <?php else: ?>
-                        <a href="<?= Url::to(['/site/logout']) ?>" class="btn-default">Выход</a>
-                        <a href="<?= Url::to(['/company/index']); ?>" class="registration">Мои данные</a>
-                    <?php endif; ?>
+                <a href="<?= Url::to(['/discount/create']); ?>"
+                   <?php if (Yii::$app->user->isGuest): ?>id="error"<?php endif; ?> class="btn-info create-btn">Разместить
+                    скидку</a>
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <a href="#" id="login" class="btn-default login-btn">Вход</a>
+                    <a href="#" id="register" class="registration">Регистрация</a>
+                <?php else: ?>
+                    <a href="<?= Url::to(['/site/logout']) ?>" class="btn-default login-btn">Выход</a>
+                    <a href="<?= Url::to(['/company/index']); ?>" class="registration">Мои данные</a>
+                <?php endif; ?>
+                <div class="select-town">
+                    <?= CityDropdown::widget(); ?>
+                    <!--                    --><?php //Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
                 </div>
             </div>
             <nav class="navbar">
