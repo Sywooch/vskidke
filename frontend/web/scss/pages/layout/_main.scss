@@ -1,55 +1,50 @@
 //==Index page layout
 .main {
-  display: flex;
-  flex-flow: row wrap;
+
+
+  @include media-custom(1400px){
+    display: flex;
+    flex-flow: row wrap;
+  }
 
   .content {
+    max-width: 948px;
+    margin: 0 auto;
 
-    padding: 0 rem(27);
-    border-left: none;
-    border-right: none;
-    background: $snow;
-
-    @include md {
+    @include media-custom(1400px) {
       flex: 4;
       order: 2;
+      padding: 0 rem(27);
+
+
     }
   }
 
   .sidebar-left {
-    width: 100%;
+    display: none;
 
     .sidebar-banner{
       box-shadow: -1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     }
-    //display: none;
-    @include sm {
 
-    }
-
-    @include md {
-      //display: block;
-      flex: 1;
+    @include media-custom(1400px) {
+      display: block;
+      max-width: 211px;
       order: 1;
     }
   }
 
   .sidebar-right {
-    width: 100%;
+    display: none;
 
 
     .sidebar-banner{
       box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     }
-    //display: none;
 
-    @include sm {
-
-    }
-
-    @include md {
-      //display: block;
-      flex: 1;
+    @include media-custom(1400px) {
+      display: block;
+      max-width: 211px;
       order: 3;
     }
 
@@ -83,14 +78,22 @@
     height: 3px;
     content: '';
     z-index: 5;
+    display: none;
+
+    @include sm{
+      display: block;
+    }
   }
 
   .btn-holder {
-    float: left;
     background: $snow;
     padding-right: 10px;
     position: relative;
     z-index: 10;
+
+    @include sm{
+      float: left;
+    }
   }
 
   .filter-select-block {
@@ -135,6 +138,11 @@
     font-size: 15px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
     line-height: 20px; /* Приближение из-за подстановки шрифтов */
+    display: none;
+
+    @include sm{
+      display: block;
+    }
 
     .filter-select {
       height: 23px;
@@ -2035,10 +2043,10 @@ h3 {
 
 .select-filter {
   position: relative;
-  display: inline-block;
   border: 1px solid #d3d8dd;
   border-radius: 10px;
   overflow: hidden;
+  display: inline-block;
 
 
   &:after {

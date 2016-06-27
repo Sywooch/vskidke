@@ -42,11 +42,11 @@ body {
   padding-left: $container-padding;
   padding-right: $container-padding;
 
-  @include sm{
-    width:90%;
-  }
+  //@include sm{
+  //  width:90%;
+  //}
 
-  @include lg-sm{
+  @include media-custom(1400px){
     width:$container-width;
   }
 }
