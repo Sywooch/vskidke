@@ -69,6 +69,11 @@
   @include clearfix;
   padding: 24px 0 26px;
   position: relative;
+  text-align: center;
+
+  @include sm{
+    text-align: left;
+  }
 
   &:before {
     position: absolute;
@@ -106,21 +111,41 @@
   }
 
   .filter-btn {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d3d8dd;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    padding:0 40px;
+    height: 59px;
     font-family: $font-family-4;
     color: #738d9a;
-    font-size: 15px;
+    font-size: 38.48px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
-    line-height: 20px;
+    line-height: 53px; /* Приближение из-за подстановки шрифтов */
     text-align: center;
-    text-transform: lowercase;
-    height: 23px;
-    padding: 0 12px;
-    border: 1px solid #d3d8dd;
-    background-color: #ffffff;
     border-radius: 10px;
-    margin-right: 12px;
+    margin-right: 21px;
     display: inline-block;
     text-decoration: none;
+
+
+
+    @include sm {
+      font-family: $font-family-4;
+      color: #738d9a;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 20px;
+      text-align: center;
+      text-transform: lowercase;
+      height: 23px;
+      padding: 0 12px;
+      border: 1px solid #d3d8dd;
+      background-color: #ffffff;
+      margin-right: 12px;
+
+    }
 
     &.active {
       border: 1px solid #18bef0;
@@ -182,11 +207,16 @@
 
     .img-holder {
       width: 100%;
-      height: 195px;
+      height:308px;
       position: relative;
       text-align: center;
       overflow: hidden;
       //background-color: #00cb43;
+
+      @include sm{
+        height: 195px;
+      }
+
 
       img {
         max-width: 100%;
@@ -195,27 +225,42 @@
       }
 
       .label {
-        width: 135px;
-        height: 135px;
+        width: 220px;
+        height: 220px;
         position: absolute;
-        top: -33px;
-        right: -33px;
+        top: -67px;
+        right: -55px;
         border-radius: 50%;
         background-color: #ffd600;
         text-align: center;
         vertical-align: middle;
 
-        padding: 45px 32px 0 15px;
+        padding: 45px 32px 0 0px;
+
+        @include sm{
+          width: 135px;
+          height: 135px;
+          top: -33px;
+          right: -33px;
+
+          padding: 45px 32px 0 15px;
+        }
       }
 
       .action {
         font-family: $font-family-6;
         color: #ffffff;
-        font-size: 31.66px; /* Приближение из-за подстановки шрифтов */
+        font-size: 50.18px; /* Приближение из-за подстановки шрифтов */
         font-weight: 400;
-        line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
+        line-height: 1; /* Приближение из-за подстановки шрифтов */
         text-shadow: 0px 1px 8.19px rgba(0, 0, 0, 0.73);
-        padding-top: 16px;
+        padding-top: 58px;
+
+        @include sm {
+
+          font-size: 31.66px; /* Приближение из-за подстановки шрифтов */
+          padding-top: 16px;
+        }
       }
 
       .gift {
@@ -224,26 +269,42 @@
       .price {
         font-family: $font-family-6;
         color: #ffffff;
-        font-size: 26.38px; /* Приближение из-за подстановки шрифтов */
+        font-size: 41.82px; /* Приближение из-за подстановки шрифтов */
         font-weight: 400;
-        line-height: 18.988px; /* Приближение из-за подстановки шрифтов */
+        line-height: 27px; /* Приближение из-за подстановки шрифтов */
         text-align: center;
-        transform: scaleX(1.0175); /* свойства ширины и высоты были исключены, поскольку было выполнено трансформирование */
         text-shadow: 0px 1px 4.55px rgba(0, 0, 0, 0.54);
+
+        @include sm {
+          font-size: 26.38px; /* Приближение из-за подстановки шрифтов */
+          line-height: 18.988px; /* Приближение из-за подстановки шрифтов */
+        }
 
         .old-price {
           position: relative;
           margin-bottom: 10px;
           display: inline-block;
 
+          padding-top: 40px;
+
+          @include sm{
+            padding-top: 0;
+          }
+
+
           &:after {
             display: block;
             position: absolute;
-            bottom: 7px;
+            bottom: 11px;
             left: 0;
             width: 100%;
             content: '';
-            border-bottom: 1px solid #fff;
+            border-bottom: 3px solid #fff;
+
+            @include sm{
+              bottom: 7px;
+              border-width: 1px;
+            }
           }
         }
 
@@ -260,21 +321,33 @@
         bottom: 13px;
         left: 0;
         width: 100%;
-        padding: 10px;
+        padding: 16px;
+
+        @include sm{
+          padding: 10px;
+        }
 
         .views {
           float: left;
           font-family: $font-family-6;
           color: #ffffff;
-          font-size: 15.83px; /* Приближение из-за подстановки шрифтов */
+          font-size: 25.09px; /* Приближение из-за подстановки шрифтов */
           font-weight: 400;
-          line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
-          text-shadow: 0px 0px 8.55px rgba(0,0,0,0.43);
+          line-height: 1; /* Приближение из-за подстановки шрифтов */
+          text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
+
+          @include sm {
+
+            font-size: 15.83px; /* Приближение из-за подстановки шрифтов */
+
+          }
 
           &:before {
             font-family: $font-family-icomoon;
             //content: '\ee31';
             content: '\ef58';
+            position: relative;
+            top:3px;
             //width: 38px;
             //height: 22px;
             //display: inline-block;
@@ -319,11 +392,16 @@
       .mac {
         border-radius: 50%;
         background-color: #ffd600;
-        width: 26px;
-        height: 26px;
+        width: 42px;
+        height: 42px;
         display: inline-block;
         text-align: center;
         text-decoration: none;
+
+        @include sm{
+          width: 26px;
+          height: 26px;
+        }
 
         &:hover {
           text-decoration: none;
@@ -332,8 +410,14 @@
         &:before {
           font-family: $font-family-icomoon;
           color: #fff;
-          line-height: 26px;
+          line-height: 42px;
+          font-size: 25px;
           text-shadow: 0px 0px 8.55px rgba(0,0,0,0.43);
+
+          @include sm{
+            line-height: 26px;
+            font-size: 14px;
+          }
         }
       }
 
@@ -354,19 +438,28 @@
 
     .text-holder {
       background-color: #ffffff;
-      height: 75px;
+      height: 138px;
       text-align: center;
       padding: 5px 22px 22px;
       position: relative;
 
+      @include sm{
+        height: 75px;
+      }
+
+
       .item-title {
         font-family: $font-family-3;
         color: #37445d;
-        font-size: 26.38px; /* Приближение из-за подстановки шрифтов */
+        font-size: 41.82px; /* Приближение из-за подстановки шрифтов */
         font-weight: 400;
-        line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
-        transform: scaleX(1.0175); /* свойства ширины и высоты были исключены, поскольку было выполнено трансформирование */
+        line-height: 47.733px; /* Приближение из-за подстановки шрифтов */
         text-overflow: ellipsis;
+
+        @include sm {
+          font-size: 26.38px; /* Приближение из-за подстановки шрифтов */
+          line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
+        }
       }
     }
 

@@ -57,6 +57,11 @@
     }
   }
   .social {
+    display: none;
+
+    @include sm{
+      display: block;
+    }
     .google,
     .twitter,
     .fb,
