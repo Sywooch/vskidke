@@ -7,6 +7,7 @@
 
     @include sm {
       background: $global-color;
+      padding: 0 15px;
     }
 
     //mobile navigation
@@ -80,7 +81,7 @@
       @include sm {
         display: block;
         position: static;
-
+        background: $global-color;
       }
 
     }
@@ -101,7 +102,8 @@
       @include sm {
         width: rem(241);
         height: rem(101);
-        margin-right: rem(21);
+        margin: 0;
+        float: left;
       }
 
       a {
@@ -119,10 +121,7 @@
     }
 
     .navbar {
-      width: 80%;
-      @include lg-sm {
 
-      }
 
     }
     .btn-holder {
@@ -131,9 +130,57 @@
       padding: 52px 39px;
       width: 80%;
 
+      .btn-row{
+        @include clearfix;
+        float: left;
+
+        @include sm{
+          float: none;
+        }
+
+        .create-btn{
+
+          @include sm{
+            float: left;
+            margin-right: 20px;
+          }
+        }
+
+        .login-btn{
+          @include sm{
+            float: right;
+          }
+
+        }
+      }
+
+      .select-row{
+        @include clearfix;
+
+        .registration{
+
+          @include sm{
+            float: right;
+            margin-right: 30px;
+          }
+        }
+
+        .select-town{
+          @include sm{
+            float: left;
+            margin-left: 40px;
+          }
+
+        }
+      }
+
       @include sm {
-        padding-top: rem(21);
-        margin-left: rem(21);
+        background: $global-color;
+        margin: 0;
+        padding: 21px 0 0;
+        width: auto;
+        float: right;
+        border: none;
       }
 
       .town {
@@ -147,17 +194,59 @@
 
       .login-btn {
         float: left;
-        border-radius: 10px;
         margin-right: 31px;
+        border-radius: 15px;
+        border-width: 2.25px;
+        border-color:  #3a809f;
+        border-style: solid;
+        background-color:  #ffffff;
+        width: 241px;
+        height: 61px;
+
+        color: #0e5f82;
+        font-size: 43.95px; /* Приближение из-за подстановки шрифтов */
+        font-weight: 300;
+        line-height: 58px; /* Приближение из-за подстановки шрифтов */
+        text-align: center;
+
+        @include sm{
+          float: none;
+          margin: 0;
+          border-radius: 20px;
+          border-width: 1.25px;
+          border-color: #0e5f82;
+          border-style: solid;
+          background-color: #ffffff;
+          width: 162px;
+          height: 40px;
+          color: #0e5f82;
+          font-size: 25.16px; /* Приближение из-за подстановки шрифтов */
+          font-weight: 300;
+          line-height: 38px; /* Приближение из-за подстановки шрифтов */
+          text-align: center;
+        }
       }
 
       .registration {
-        text-decoration: underline;
         font-family: $font-family-3;
-        font-size: rem(16);
         color: #0e5f82;
-        display: block;
-        margin-bottom:10px;
+        font-size: 29.44px; /* Приближение из-за подстановки шрифтов */
+        font-weight: 300;
+        line-height: 1; /* Приближение из-за подстановки шрифтов */
+        text-decoration: underline;
+        margin-bottom: 19px;
+        display: inline-block;
+
+        @include sm {
+          font-size: rem(16);
+          color: #0e5f82;
+          display: block;
+          margin-top: 5px;
+        }
+      }
+
+      .select-town{
+
       }
 
     }

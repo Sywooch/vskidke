@@ -11,7 +11,7 @@ $category;
 ?>
 
 <header class="header">
-    <div class="topbar conteiner">
+    <div class="topbar container">
         <span id="toggle-menu" class="menu-btn"><a href="#"></a></span>
         <span class="user"><a href="#"></a></span>
         <div class="logo"><a href="<?= Url::to(['/discount/index']); ?>"></a>
@@ -21,19 +21,26 @@ $category;
         <div class=" collapse-menu" id="collapse-menu">
 
             <div class="btn-holder">
-                <a href="<?= Url::to(['/discount/create']); ?>"
-                   <?php if (Yii::$app->user->isGuest): ?>id="error"<?php endif; ?> class="btn-info create-btn">Разместить
-                    скидку</a>
-                <?php if (Yii::$app->user->isGuest): ?>
-                    <a href="#" id="login" class="btn-default login-btn">Вход</a>
-                    <a href="#" id="register" class="registration">Регистрация</a>
-                <?php else: ?>
-                    <a href="<?= Url::to(['/site/logout']) ?>" class="btn-default login-btn">Выход</a>
-                    <a href="<?= Url::to(['/company/index']); ?>" class="registration">Мои данные</a>
-                <?php endif; ?>
-                <div class="select-town">
-                    <?= CityDropdown::widget(); ?>
-                    <!--                    --><?php //Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
+                <div class="btn-row">
+                    <a href="<?= Url::to(['/discount/create']); ?>"
+                       <?php if (Yii::$app->user->isGuest): ?>id="error"<?php endif; ?> class="btn-info create-btn">Разместить
+                        скидку</a>
+                    <?php if (Yii::$app->user->isGuest): ?>
+                        <a href="#" id="login" class="btn-default login-btn">Вход</a>
+                    <?php else: ?>
+                        <a href="<?= Url::to(['/site/logout']) ?>" class="btn-default login-btn">Выход</a>
+                    <?php endif; ?>
+                </div>
+                <div class="select-row">
+                    <?php if (Yii::$app->user->isGuest): ?>
+                        <a href="#" id="register" class="registration">Регистрация</a>
+                    <?php else: ?>
+                        <a href="<?= Url::to(['/company/index']); ?>" class="registration">Мои данные</a>
+                    <?php endif; ?>
+                    <div class="select-town">
+                        <?= CityDropdown::widget(); ?>
+                        <!--                    --><?php //Html::dropDownList('city_id', 'city_id', ArrayHelper::map(City::find()->all(), 'city_id', 'city_name'), ['class' => 'town', 'id' => 'city']); ?>
+                    </div>
                 </div>
             </div>
             <nav class="navbar">
