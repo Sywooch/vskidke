@@ -1,55 +1,51 @@
 //==Index page layout
 .main {
-  display: flex;
-  flex-flow: row wrap;
+
+
+  @include media-custom(1400px){
+    display: flex;
+    flex-flow: row wrap;
+  }
 
   .content {
+    max-width: 948px;
+    margin: 0 auto;
 
-    padding: 0 rem(27);
-    border-left: none;
-    border-right: none;
-    background: $snow;
+    @include md{
+      padding: 0 rem(27);
+    }
 
-    @include md {
+    @include media-custom(1400px) {
       flex: 4;
       order: 2;
     }
   }
 
   .sidebar-left {
-    width: 100%;
+    display: none;
 
     .sidebar-banner{
       box-shadow: -1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     }
-    //display: none;
-    @include sm {
 
-    }
-
-    @include md {
-      //display: block;
-      flex: 1;
+    @include media-custom(1400px) {
+      display: block;
+      max-width: 211px;
       order: 1;
     }
   }
 
   .sidebar-right {
-    width: 100%;
+    display: none;
 
 
     .sidebar-banner{
       box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     }
-    //display: none;
 
-    @include sm {
-
-    }
-
-    @include md {
-      //display: block;
-      flex: 1;
+    @include media-custom(1400px) {
+      display: block;
+      max-width: 211px;
       order: 3;
     }
 
@@ -83,14 +79,22 @@
     height: 3px;
     content: '';
     z-index: 5;
+    display: none;
+
+    @include sm{
+      display: block;
+    }
   }
 
   .btn-holder {
-    float: left;
     background: $snow;
     padding-right: 10px;
     position: relative;
     z-index: 10;
+
+    @include sm{
+      float: left;
+    }
   }
 
   .filter-select-block {
@@ -135,6 +139,11 @@
     font-size: 15px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
     line-height: 20px; /* Приближение из-за подстановки шрифтов */
+    display: none;
+
+    @include sm{
+      display: block;
+    }
 
     .filter-select {
       height: 23px;
@@ -260,11 +269,31 @@
           font-size: 15.83px; /* Приближение из-за подстановки шрифтов */
           font-weight: 400;
           line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
+          text-shadow: 0px 0px 8.55px rgba(0,0,0,0.43);
 
           &:before {
-            font-family: $font-family-icon;
-            content: '\f06e';
+            font-family: $font-family-icomoon;
+            //content: '\ee31';
+            content: '\ef58';
+            //width: 38px;
+            //height: 22px;
+            //display: inline-block;
+            //content: '';
+            //background: url(../images/spy_icon.png) no-repeat;
+            //background-size: cover;
+
+            font-size: 32px;
+            line-height: 0.8;
             margin-right: 5px;
+            text-shadow: 0px 0px 8.55px rgba(0,0,0,0.43);
+
+            @include sm{
+              //width: 24px;
+              //height: 14px;
+              font-size: 26px;
+              position: relative;
+              top: 3px;
+            }
           }
         }
 
@@ -304,6 +333,7 @@
           font-family: $font-family-icomoon;
           color: #fff;
           line-height: 26px;
+          text-shadow: 0px 0px 8.55px rgba(0,0,0,0.43);
         }
       }
 
@@ -1977,7 +2007,11 @@ h3 {
 .select-town {
   position: relative;
   display: inline-block;
-  border-bottom: 1px solid #0e5f82;
+  border-bottom: 2px solid #0e5f82;
+
+  @include sm{
+    border-bottom: 1px solid #0e5f82;
+  }
 
   &:after {
     position: absolute;
@@ -1986,8 +2020,14 @@ h3 {
     display: block;
     font-family: $font-family-icomoon;
     content: $triangle-down-icon;
-    font-size: 12px;
+    font-size: 23px;
     color: #0e5f82;
+
+    @include sm{
+      font-size: 12px;
+      top: 1px;
+      right: 0;
+    }
   }
 
   select {
@@ -1999,15 +2039,23 @@ h3 {
     background: transparent;
     font-family: $font-family-3;
     color: #0e5f82;
-    font-size: 13.5px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
-    line-height: 1; /* Приближение из-за подстановки шрифтов */
+    line-height: 1.1; /* Приближение из-за подстановки шрифтов */
     text-align: left;
     padding: 0 20px 0 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     outline: none;
+
+    font-size: 29.08px; /* Приближение из-за подстановки шрифтов */
+
+    @include sm{
+      color: #0e5f82;
+      font-size: 13.5px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 300;
+      line-height: 1; /* Приближение из-за подстановки шрифтов */
+    }
   }
 
   select::-ms-expand {
@@ -2017,10 +2065,10 @@ h3 {
 
 .select-filter {
   position: relative;
-  display: inline-block;
   border: 1px solid #d3d8dd;
   border-radius: 10px;
   overflow: hidden;
+  display: inline-block;
 
 
   &:after {
