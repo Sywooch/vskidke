@@ -1977,7 +1977,11 @@ h3 {
 .select-town {
   position: relative;
   display: inline-block;
-  border-bottom: 1px solid #0e5f82;
+  border-bottom: 2px solid #0e5f82;
+
+  @include sm{
+    border-bottom: 1px solid #0e5f82;
+  }
 
   &:after {
     position: absolute;
@@ -1986,8 +1990,14 @@ h3 {
     display: block;
     font-family: $font-family-icomoon;
     content: $triangle-down-icon;
-    font-size: 12px;
+    font-size: 23px;
     color: #0e5f82;
+
+    @include sm{
+      font-size: 12px;
+      top: 1px;
+      right: 0;
+    }
   }
 
   select {
@@ -1999,15 +2009,23 @@ h3 {
     background: transparent;
     font-family: $font-family-3;
     color: #0e5f82;
-    font-size: 13.5px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
-    line-height: 1; /* Приближение из-за подстановки шрифтов */
+    line-height: 1.1; /* Приближение из-за подстановки шрифтов */
     text-align: left;
     padding: 0 20px 0 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     outline: none;
+
+    font-size: 29.08px; /* Приближение из-за подстановки шрифтов */
+
+    @include sm{
+      color: #0e5f82;
+      font-size: 13.5px; /* Приближение из-за подстановки шрифтов */
+      font-weight: 300;
+      line-height: 1; /* Приближение из-за подстановки шрифтов */
+    }
   }
 
   select::-ms-expand {
