@@ -11,12 +11,13 @@
     max-width: 948px;
     margin: 0 auto;
 
+    @include md{
+      padding: 0 rem(27);
+    }
+
     @include media-custom(1400px) {
       flex: 4;
       order: 2;
-      padding: 0 rem(27);
-
-
     }
   }
 
