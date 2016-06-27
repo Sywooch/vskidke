@@ -12,13 +12,14 @@
   .menu {
     list-style: none;
     margin: 0;
-    padding:23px 0 0;
+    padding:23px 0;
     //@include clearfix;
 
     @include sm {
       display: flex;
       justify-content:space-around;
       clear: both;
+      padding:23px 0 0;
     }
 
     @include media-custom(1270px){
@@ -72,7 +73,7 @@
 
           @include sm{
             margin: 0 auto;
-            width: rem(44);
+            width: rem(42);
             height: rem(44);
             background-size: auto;
           }
@@ -82,9 +83,9 @@
 
     .all {
       &:before {
-        background-position: -2px -5px;
+        background-position: 0 0;
         @include sm{
-          background-position: -2px -5px;
+          background-position: 0 0;
         }
 
 
@@ -92,89 +93,89 @@
     }
     .pretty {
       &:before {
-        background-position: -106px -5px;
+        background-position: -119px 0;
         @include sm{
-          background-position: -64px -5px;
+          background-position: -63px 0;
         }
       }
     }
     .health {
       &:before {
-        background-position: -209px -5px;
+        background-position: -239px 0;
         @include sm{
-          background-position: -128px -5px;
+          background-position: -126px 0;
         }
       }
     }
     .mode {
       &:before {
-        background-position: -314px -5px;
+        background-position: -360px 0;
         @include sm{
-          background-position: -192px -5px;
+          background-position: -189px 0;
         }
       }
     }
     .food {
       &:before {
-        background-position: -417px -5px;
+        background-position: -480px 0;
         @include sm{
-          background-position: -254px -5px;
+          background-position: -252px 0;
         }
       }
     }
     .entertainment {
       &:before {
-        background-position: -524px -5px;
+        background-position: -600px 0;
         @include sm{
-          background-position: -318px -5px;
+          background-position: -316px 0;
         }
       }
     }
     .rest {
       &:before {
-        background-position: -634px -5px;
+        background-position: -726px 0;
         @include sm{
-          background-position: -382px -5px;
+          background-position: -381px 0;
         }
       }
     }
     .sport {
       &:before {
-        background-position: -741px -5px;
+        background-position: -846px 0;
         @include sm{
-          background-position: -446px -5px;
+          background-position: -444px 0;
         }
       }
     }
     .training {
       &:before {
-        background-position: -846px -5px;
+        background-position: -966px 0;
         @include sm{
-          background-position: -510px -5px;
+          background-position: -507px 0;
         }
       }
     }
     .goods {
       &:before {
-        background-position: -953px -5px;
+        background-position: -1087px 0;
         @include sm{
-          background-position: -572px -5px;
+          background-position: -570px 0;
         }
       }
     }
     .services {
       &:before {
-        background-position: -1058px -5px;
+        background-position: -1207px 0;
         @include sm{
-          background-position: -635px -5px;
+          background-position: -633px 0;
         }
       }
     }
     .search {
       &:before {
-        background-position: -1164px -5px;
+        background-position: -1327px 0;
         @include sm{
-          background-position: -698px -5px;
+          background-position: -696px 0;
         }
       }
     }
