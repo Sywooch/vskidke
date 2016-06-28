@@ -91,6 +91,14 @@
      });
 
 
+     //Close menu
+     $('#login, #register').on('click', function (e) {
+         if( $(document).width() < 768 ){
+             $('#collapse-menu').slideUp('fast');
+         }
+     });
+
+
  });
 
 function readURL(input) {

@@ -639,7 +639,12 @@
 
 //=Block settings
 .page-title-wrapp {
+  display: none;
   position: relative;
+
+  @include sm{
+    display: block;
+  }
   &:before {
     display: block;
     position: absolute;
@@ -669,15 +674,26 @@
 
 .example-block {
   text-align: center;
-  padding: 50px 0 76px;
+
+  @include sm{
+    padding: 50px 0 76px;
+  }
+
 
   .subtitle {
-    margin-bottom: 18px;
+    margin:39px 0 31px;
     font-family: $font-family-3;
     color: #0e5f82;
-    font-size: 18.4px; /* Approximation due to font substitution */
+    font-size: 31.05px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
-    line-height: 1.1; /* Approximation due to font substitution */
+    line-height: 1; /* Приближение из-за подстановки шрифтов */
+
+    @include sm {
+      margin: 0 0 18px;
+      font-size: 18.4px; /* Approximation due to font substitution */
+      font-weight: 300;
+      line-height: 1.1; /* Approximation due to font substitution */
+    }
   }
 
   .item {
@@ -689,23 +705,26 @@
 .edit-form {
   @include clearfix;
   .img-block {
-    width: 140px;
-    margin: 0 auto 0;
+    width: 235px;
+    margin: 37px auto 42px;
 
-    @include col-lg-sm(140/896*100%) {
-      margin-right: 30/896*100%;
-      margin-bottom: 0;
+
+    @include col-sm(140/896*100%) {
+      margin: 0 30/896*100% 0 0;
     }
   }
   .inputs-block {
-    @include col-lg-sm(726/896*100%);
+    @include col-sm(726/896*100%);
   }
 
   .img-block {
     text-align: center;
     img {
       max-width: 100%;
-      max-height: 140px;
+      max-height: 235px;
+      @include sm{
+        max-height: 140px;
+      }
     }
 
     .img-add {
@@ -733,6 +752,11 @@
     }
 
     .form-label {
+      display: none;
+
+      @include sm{
+        display: block;
+      }
       float: left;
       margin-top: 10px;
     }
@@ -740,6 +764,11 @@
       float: right;
     }
     .edit {
+      display: none;
+
+      @include sm{
+        display: block;
+      }
       float: right;
       margin-top: 10px;
     }
@@ -767,11 +796,15 @@
       line-height: 31px; /* Approximation due to font substitution */
       padding: 0 14px;
 
-      margin-top: 20px;
+
       display: block;
       width: 100%;
 
-      @include lg-sm {
+      @include sm{
+        margin-top: 20px;
+      }
+
+      @include sm {
         width: 401px;
         display: inline-block;
         margin-right: 20px;
