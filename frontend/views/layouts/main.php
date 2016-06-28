@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use common\widgets\Alert;
 use frontend\assets\BoodstrapAsset;
 use frontend\assets\FancyBoxAsset;
 use frontend\assets\OwlCarouselAsset;
@@ -36,6 +37,25 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '1560917077537659',
+            xfbml      : true,
+            version    : 'v2.6'
+        });
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
     <?= HeaderWidget::widget(); ?>
         <?= $content ?>
     <?= FooterWidget::widget()?>

@@ -90,13 +90,17 @@ class DiscountController extends BaseController {
         $post = \Yii::$app->request->post();
 
         if($discountModel->load($post) && $discountModel->save()) {
-            $uploadForm            = new UploadForm();
-            $uploadForm->img       = UploadedFile::getInstance($discountModel, 'img');
-            $uploadForm->model     = $discountModel;
-            $uploadForm->directory = 'discount';
-            $discountModel->img    = $uploadForm->upload(false);
+            $uploadForm                 = new UploadForm();
+            $uploadForm->img            = UploadedFile::getInstance($discountModel, 'img');
+            $uploadForm->model          = $discountModel;
+            $uploadForm->directory      = 'discount';
+            $discountModel->img         = $uploadForm->upload(false);
             $discountModel->date_create = date('Y-m-d');
             $discountModel->save();
+
+            if($id) {
+                DiscountAddresses::deleteAll(['discount_id' => $discountModel->discount_id]);
+            }
 
             $modelAddresses = [];
             foreach($post['DiscountAddresses'] as $model ) {
@@ -114,8 +118,8 @@ class DiscountController extends BaseController {
         }
 
         return $this->render('create', [
-            'userModel'         => $userModel,
-            'discountModel'     => $discountModel,
+            'userModel'     => $userModel,
+            'discountModel' => $discountModel,
         ]);
     }
 

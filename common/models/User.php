@@ -27,6 +27,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_WAIT    = 2;
 
     /**
+     * @var array EAuth attributes
+     */
+    public $profileSoc;
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -76,6 +81,40 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public static function findIdentity($id) {
+        if (Yii::$app->getSession()->has('user-'.$id)) {
+            return new self(Yii::$app->getSession()->get('user-'.$id));
+        }
+        else {
+            return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+        }
+    }
+
+    /**
+     * @param \nodge\eauth\ServiceBase $service
+     * @return User
+     * @throws ErrorException
+     */
+    public static function findByEAuth($service) {
+        if (!$service->getIsAuthenticated()) {
+            throw new ErrorException('EAuth user should be authenticated before creating identity.');
+        }
+
+        $id = $service->getServiceName().'-'.$service->getId();
+        $attributes = array(
+            'auth_key' => md5($id),
+            'email' => isset($service->email) ? $service->email : '',
+            'status' => self::STATUS_ACTIVE,
+            'profileSoc' => $service->getAttributes(),
+        );
+        $attributes['profileSoc']['service'] = $service->getServiceName();
+        Yii::$app->getSession()->set('user-'.$id, $attributes);
+        return new self($attributes);
+    }
+
+    /**
+     * @return mixed
+     */
     public function getStatusName()
     {
         return ArrayHelper::getValue(self::getStatusesArray(), $this->status);
@@ -90,10 +129,10 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    public static function findIdentity($id)
-    {
-        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
-    }
+//    public static function findIdentity($id)
+//    {
+//        return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
+//    }
 
     public static function findIdentityByAccessToken($token, $type = null)
     {

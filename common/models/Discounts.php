@@ -129,4 +129,8 @@ class Discounts extends \yii\db\ActiveRecord
     public function getAddress() {
         return $this->hasMany(CompanyAddresses::className(), ['id' => 'address_id'])->viaTable(DiscountAddresses::tableName(), ['discount_id' => 'discount_id']);
     }
+
+    public function getDiscount_addresses() {
+        return $this->hasOne(DiscountAddresses::className(), ['discount_id' => 'discount_id']);
+    }
 }

@@ -10,7 +10,7 @@ use yii\helpers\Url;
     <div class="container wrapp">
         <nav>
             <ul class="nav-footer">
-                <li><a href="#">О проэкте</a></li>
+                <li><a href="#">О проекте</a></li>
                 <li><a href="<?= Url::to(['/discount/archive']); ?>">Архив скидок</a></li>
                 <li><a href="#">Контакты</a></li>
                 <?php if(!Yii::$app->user->isGuest): ?>
@@ -27,6 +27,9 @@ use yii\helpers\Url;
 <!--            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="youtube"></a>-->
         </div>
     </div>
+<?php if(Yii::$app->getSession()->hasFlash('message')): ?>
+    <a href="#" id="message" style="display: none;"></a>
+<?php endif;?>
 </footer>
 
 <div class="modal-container">
@@ -38,6 +41,18 @@ use yii\helpers\Url;
             <p>Пожалуйста, зарегистрируйтесь или выполните вход, если вы уже зарегестрированы.  </p>
         </div>
     </div>
+
+    <?php if(Yii::$app->getSession()->hasFlash('message')): ?>
+        <div id="flash-modal" class="modal-layout-wrapp">
+            <div class="modal-layout">
+                <div class="close"></div>
+<!--                <div class="modal-title">Внимание</div>-->
+                <?php foreach (Yii::$app->getSession()->getAllFlashes() as $flash): ?>
+                    <?= $flash; ?><br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif;?>
 
     <div id="address-modal" class="modal-layout-wrapp address-modal">
         <div class="modal-layout">
