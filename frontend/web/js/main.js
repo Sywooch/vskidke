@@ -115,9 +115,9 @@ function readURL(input) {
 }
 
  function flashMessages() {
-     if($(".success")) {
+     if($("#message")) {
          $(".mask, #flash-modal").show();
-         $('body').addClass('modal-open');
+         // $('body').addClass('modal-open');
      }
  }
 

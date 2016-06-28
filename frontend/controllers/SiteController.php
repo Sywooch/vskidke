@@ -129,6 +129,8 @@ class SiteController extends BaseController
                                 $profile = new UserProfile();
                                 $profile->user_id = $identity->id;
                                 $profile->save();
+
+                                Yii::$app->getSession()->setFlash('message', 'Спасибо за регистрацию на нашем сайте');
                             }
                         }
                     } else {
@@ -144,6 +146,8 @@ class SiteController extends BaseController
                             $profile->save();
 
                             Yii::$app->getUser()->login($identity);
+
+                            Yii::$app->getSession()->setFlash('message', 'Спасибо за регистрацию на нашем сайте');
                         }
                     }
 

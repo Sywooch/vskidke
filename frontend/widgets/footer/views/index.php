@@ -27,6 +27,9 @@ use yii\helpers\Url;
 <!--            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="youtube"></a>-->
         </div>
     </div>
+<?php if(Yii::$app->getSession()->hasFlash('message')): ?>
+    <a href="#" id="message" style="display: none;"></a>
+<?php endif;?>
 </footer>
 
 <div class="modal-container">
@@ -40,7 +43,7 @@ use yii\helpers\Url;
     </div>
 
     <?php if(Yii::$app->getSession()->hasFlash('message')): ?>
-        <div id="flash-modal" class="modal-layout-wrapp success">
+        <div id="flash-modal" class="modal-layout-wrapp">
             <div class="modal-layout">
                 <div class="close"></div>
 <!--                <div class="modal-title">Внимание</div>-->

@@ -208,12 +208,32 @@ $address;
                     <div class="add-btn-holder">
                         <button type="submit" class="add-btn address-modal-link">Добавить адресс</button>
                     </div>
-                    <?php foreach ($userModel->relatedRecords['addresses'] as $address): ?>
-                    <div class="checkbox">
-                        <input type="checkbox" id="Checkbox-address-<?= $address->id; ?>" value="<?= $address->id; ?>" name="DiscountAddresses[][address_id]">
-                        <label for="Checkbox-address-<?= $address->id; ?>"><?= $address->relatedRecords['city']->city_name . ', ' . $address->address . ', тел. ' . $address->phone; ?></label>
-                    </div>
-                    <?php endforeach; ?>
+                    <?php $i = 0; foreach ($userModel->relatedRecords['addresses'] as $address): ?>
+                        <?php $discountAddresses = $discountModel->getAddress()->all(); if($discountAddresses): ?>
+                            <div class="checkbox">
+                                <input type="checkbox"
+                                       id="Checkbox-address-<?= $address->id; ?>"
+                                       value="<?= $address->id; ?>"
+                                       <?= isset($discountAddresses[$i]) && $discountAddresses[$i]->id == $address->id ? 'checked="checked"' : ''; ?>
+                                       name="DiscountAddresses[][address_id]">
+
+                                <label for="Checkbox-address-<?= $address->id; ?>">
+                                    <?= $address->relatedRecords['city']->city_name . ', ' . $address->address . ', тел. ' . $address->phone; ?>
+                                </label>
+                            </div>
+                        <?php else: ?>
+                            <div class="checkbox">
+                                <input type="checkbox"
+                                       id="Checkbox-address-<?= $address->id; ?>"
+                                       value="<?= $address->id; ?>"
+                                       name="DiscountAddresses[][address_id]">
+
+                                <label for="Checkbox-address-<?= $address->id; ?>">
+                                    <?= $address->relatedRecords['city']->city_name . ', ' . $address->address . ', тел. ' . $address->phone; ?>
+                                </label>
+                            </div>
+                        <?php endif; ?>
+                    <?php $i++; endforeach; ?>
                 </div>
                 <div class="save-btn-holder">
                     <?= Html::button('Разместить', ['class' => 'save-btn', 'type' => 'submit']); ?>
