@@ -28,11 +28,6 @@ use yii\bootstrap\ActiveForm;
         <?php ActiveForm::end(); ?>
         <div class="registration-link"><a id="register" href="#">Регистрация</a></div>
         <div class="subtitle">Войдите с помощью</div>
-        <?php
-        if (Yii::$app->getSession()->hasFlash('error')) {
-            echo '<div class="alert alert-danger">'.Yii::$app->getSession()->getFlash('error').'</div>';
-        }
-        ?>
         <?php echo \nodge\eauth\Widget::widget(['action' => '/site/login']); ?>
 <!--        <div class="modal-social">-->
 <!--            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="fb"></a>-->
