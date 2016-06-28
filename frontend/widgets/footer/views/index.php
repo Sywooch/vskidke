@@ -39,6 +39,18 @@ use yii\helpers\Url;
         </div>
     </div>
 
+    <?php if(Yii::$app->getSession()->hasFlash('message')): ?>
+        <div id="flash-modal" class="modal-layout-wrapp success">
+            <div class="modal-layout">
+                <div class="close"></div>
+<!--                <div class="modal-title">Внимание</div>-->
+                <?php foreach (Yii::$app->getSession()->getAllFlashes() as $flash): ?>
+                    <?= $flash; ?><br>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif;?>
+
     <div id="address-modal" class="modal-layout-wrapp address-modal">
         <div class="modal-layout">
             <div class="close"></div>

@@ -102,9 +102,9 @@ class User extends ActiveRecord implements IdentityInterface
 
         $id = $service->getServiceName().'-'.$service->getId();
         $attributes = array(
-            'id' => $id,
             'auth_key' => md5($id),
             'email' => isset($service->email) ? $service->email : '',
+            'status' => self::STATUS_ACTIVE,
             'profileSoc' => $service->getAttributes(),
         );
         $attributes['profileSoc']['service'] = $service->getServiceName();

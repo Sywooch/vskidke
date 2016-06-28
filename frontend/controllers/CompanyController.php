@@ -40,10 +40,11 @@ class CompanyController extends BaseController {
                 $profile->img = $uploadForm->upload();
                 $profile->save();
 
-                \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+                Yii::$app->getSession()->setFlash('message', 'Данные успешно сохранены');
 
-                Yii::$app->getSession()->setFlash('success', 'Данные успешно сохранены');
+                return $this->refresh();
             }
+
         }
         
         return $this->render('index', [

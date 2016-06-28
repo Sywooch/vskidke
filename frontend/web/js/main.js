@@ -1,5 +1,6 @@
  $(document).ready(function () {
      discountCreateError();
+     flashMessages();
 
     $("#fileID").change(function(){
         readURL(this);
@@ -113,6 +114,12 @@ function readURL(input) {
     }
 }
 
+ function flashMessages() {
+     if($(".success")) {
+         $(".mask, #flash-modal").show();
+         $('body').addClass('modal-open');
+     }
+ }
 
  function discountCreateError() {
      if($("#error")) {

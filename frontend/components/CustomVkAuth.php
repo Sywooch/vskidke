@@ -2,6 +2,7 @@
 
 namespace frontend\components;
 
+use common\models\User;
 use nodge\eauth\services\VKontakteOAuth2Service;
 
 /**
@@ -40,10 +41,8 @@ class CustomVkAuth extends VKontakteOAuth2Service {
         $this->attributes['service'] = $this->getServiceName();
         $this->attributes['id'] = $info['uid'];
         $this->attributes['url'] = 'http://vk.com/id' . $info['uid'];
-        $this->attributes['name'] = $info['first_name'] . ' ' . $info['last_name'];
-        $this->attributes['firstname'] = $info['first_name'];
-        $this->attributes['lastname'] = $info['last_name'];
         $this->attributes['email'] = $tokenData['params']['email'];
+        $this->attributes['status'] = User::STATUS_ACTIVE;
 
         $this->attributes['info'] = $info;
 

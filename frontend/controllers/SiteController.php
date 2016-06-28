@@ -111,10 +111,41 @@ class SiteController extends BaseController
 
             try {
                 if ($eauth->authenticate()) {
-//                  var_dump($eauth->getIsAuthenticated(), $eauth->getAttributes()); exit;
-
                     $identity = User::findByEAuth($eauth);
-                    Yii::$app->getUser()->login($identity);
+
+                    if(isset($identity->email)) {
+                        $user = User::findByUserEmail($identity->email);
+
+                        if($user) {
+                            Yii::$app->getUser()->login($user);
+                        } else {
+                            $user = User::find()->where(['auth_key' => $identity->auth_key])->one();
+
+                            if($user) {
+                                Yii::$app->getUser()->login($user);
+                            } else {
+                                $identity->save(false);
+
+                                $profile = new UserProfile();
+                                $profile->user_id = $identity->id;
+                                $profile->save();
+                            }
+                        }
+                    } else {
+                        $user = User::find()->where(['auth_key' => $identity->auth_key])->one();
+
+                        if($user) {
+                            Yii::$app->getUser()->login($user);
+                        } else {
+                            $identity->save(false);
+
+                            $profile = new UserProfile();
+                            $profile->user_id = $identity->id;
+                            $profile->save();
+
+                            Yii::$app->getUser()->login($identity);
+                        }
+                    }
 
                     // special redirect with closing popup window
                     $eauth->redirect();
@@ -126,14 +157,13 @@ class SiteController extends BaseController
             }
             catch (\nodge\eauth\ErrorException $e) {
                 // save error to show it later
-                Yii::$app->getSession()->setFlash('error', 'EAuthException: '.$e->getMessage());
+                Yii::$app->getSession()->setFlash('message', 'EAuthException: '.$e->getMessage());
 
                 // close popup window and redirect to cancelUrl
 //              $eauth->cancel();
                 $eauth->redirect($eauth->getCancelUrl());
             }
         }
-
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
@@ -163,7 +193,7 @@ class SiteController extends BaseController
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                Yii::$app->getSession()->setFlash('success', 'На ваш email отправлено письмо с подтверждением регистрации');
+                Yii::$app->getSession()->setFlash('message', 'На ваш email отправлено письмо с подтверждением регистрации');
 
                 return $this->goHome();
             }
@@ -211,11 +241,11 @@ class SiteController extends BaseController
 
 
             Yii::$app->getSession()->setFlash(
-                'success',
+                'message',
                 'Email успешно подтвержден, данные авторизации оправлены вам на почту'
             );
         } else {
-            Yii::$app->getSession()->setFlash('error', 'Время токена истекло');
+            Yii::$app->getSession()->setFlash('message', 'Время токена истекло');
         }
 
         return $this->goHome();
@@ -229,11 +259,11 @@ class SiteController extends BaseController
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', Yii::t('app', 'EMAIL_SENT_PASSWORD_RECOVERY'));
+                Yii::$app->getSession()->setFlash('message', Yii::t('app', 'EMAIL_SENT_PASSWORD_RECOVERY'));
 
                 return $this->goHome();
             } else {
-                Yii::$app->getSession()->setFlash('error', Yii::t('app', 'PROBLEMS_SHIPMENT'));
+                Yii::$app->getSession()->setFlash('message', Yii::t('app', 'PROBLEMS_SHIPMENT'));
             }
         }
 
@@ -257,7 +287,7 @@ class SiteController extends BaseController
         }
 
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'PASSWORD_SUCCESS_CHANGE'));
+            Yii::$app->getSession()->setFlash('message', Yii::t('app', 'PASSWORD_SUCCESS_CHANGE'));
 
             return $this->goHome();
         }

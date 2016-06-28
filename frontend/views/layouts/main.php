@@ -3,6 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use common\widgets\Alert;
 use frontend\assets\BoodstrapAsset;
 use frontend\assets\FancyBoxAsset;
 use frontend\assets\OwlCarouselAsset;
