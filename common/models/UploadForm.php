@@ -52,7 +52,7 @@ class UploadForm extends Model
 
             $image->resize(860, FALSE)->save($absoluteDirectory . '/thumbs_big/' . $fileName, 90);
             $image->resize(600, FALSE)->save($absoluteDirectory . '/thumbs_medium/' . $fileName, 90);
-            $image->resize(450, FALSE)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90); 
+            $image->resize(450, FALSE)->save($absoluteDirectory . '/thumbs_small/' . $fileName, 90);
 
             return $imgDb;
         } else {
