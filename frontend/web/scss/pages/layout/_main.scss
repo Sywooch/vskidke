@@ -701,9 +701,10 @@
     margin: 37px auto 42px;
 
     @include col-sm(140/896*100%) {
-      margin: 0 30/896*100% 0 0;
+      margin: 37px 30/896*100% 0 0;
     }
   }
+
   .inputs-block {
     @include col-sm(726/896*100%);
   }
@@ -890,13 +891,13 @@
     width: 253px;
     margin: 0 auto 0;
 
-    @include col-lg-sm(253/896*100%) {
+    @include col-sm(253/896*100%) {
       margin-right: 68/896*100%;
       margin-bottom: 0;
     }
   }
   .inputs-block {
-    @include col-lg-sm(552/896*100%);
+    @include col-sm(552/896*100%);
   }
 
   .img-block {
@@ -950,13 +951,13 @@
     &.price {
       display: inline-block;
 
-      @include lg-sm {
+      @include sm {
         width: 254/552*100%;
       }
 
       &:first-child {
         margin-bottom: 15px;
-        @include lg-sm {
+        @include sm {
           margin-bottom: 0;
           margin-right: 38/552*100%;
         }
@@ -2102,7 +2103,6 @@ h3 {
   }
 
   .tab-content {
-    background: $tab-content-background;
     display: none;
     padding: 15px 0;
     width: 100%;
