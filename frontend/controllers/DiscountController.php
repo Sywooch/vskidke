@@ -3,10 +3,12 @@ namespace frontend\controllers;
 
 use common\models\Categories;
 use common\models\City;
+use common\models\Comment;
 use common\models\DiscountAddresses;
 use common\models\Discounts;
 use common\models\UploadForm;
 use common\models\User;
+use frontend\models\CommentForm;
 use yii\base\Model;
 use yii\data\Pagination;
 use yii\filters\AccessControl;
@@ -123,10 +125,6 @@ class DiscountController extends BaseController {
         ]);
     }
 
-    public function actionUpdate() {
-
-    }
-
     /**
      * @param $id
      * @return string
@@ -135,12 +133,30 @@ class DiscountController extends BaseController {
         $discount = Discounts::findOne($id);
         $discount->discount_view += 1;
         $discount->save(false);
-
+        $comments = $discount->getComments()->where(['status' => Comment::STATUS_ACTIVE])->all();
 
         return $this->render('view', [
             'discount' => $discount,
             'company'  => $discount->getUser()->with('profile')->one(),
+            'comment'  => new Comment(),
+            'comments' => $comments
         ]);
+    }
+    
+    public function actionComment() {
+        $comment = new Comment();
+        if(\Yii::$app->request->isPost) {
+            $post = \Yii::$app->request->post();
+
+            if($comment->load($post) && $comment->save()) {
+                \Yii::$app->getSession()->setFlash(
+                    'message',
+                    'Спасибо за ваш отзыв, он пояпится на сайте после модерации'
+                );
+
+                return $this->redirect(Url::to(['/discount/view', 'id' => $post['Comment']['discount_id']]));
+            }
+        }
     }
 
     /**

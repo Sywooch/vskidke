@@ -4,6 +4,7 @@ use common\helpers\StringHelper;
 use common\models\Discounts;
 use common\models\User;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 /**@var User $company*/
 $company;
@@ -62,27 +63,49 @@ $interval    = $dateEnd->diff($dateCurrent);
         <div class="page-title-wrapp">
             <h1 class="page-title">Комментарии</h1>
         </div>
-        <form>
+        <?php $form = ActiveForm::begin([
+            'action'  =>'/index.php?r=discount/comment',
+            'options' => [
+                'id'      => 'commentForm',
+            ]
+        ]); ?>
             <div class="add-comment-form">
-                <input type="text" id="comment-username" name="username" placeholder="Введите Ваше имя" required class="form-input username">
+                <?= $form->field($comment, 'name')->textInput([
+                    'class' => 'form-input username',
+                    'id'    => 'comment-username',
+                    'placeholder' => 'Введите Ваше имя',
+                ])->label(false); ?>
                 <label for="comment-username" class="form-label">*обязательное поле для заполнения</label>
-                <textarea name="comment" placeholder="Введите текст сообщения" required class="form-input textarea"></textarea>
+                <?= $form->field($comment, 'text')->textarea([
+                    'class' => 'form-input textarea',
+                    'placeholder' => 'Введите текст сообщения'
+                ])->label(false); ?>
+                <?= $form->field($comment, 'discount_id')->hiddenInput(['value' => $discount->discount_id])->label(false); ?>
+                <?= $form->field($comment, 'date')->hiddenInput(['value' => Yii::$app->formatter->asDatetime(date('Y-m-d H:i:s'), 'php:Y-m-d H:i:s')])->label(false); ?>
+                <?php if(!Yii::$app->user->isGuest): ?>
+                    <?= $form->field($comment, 'user_id')->hiddenInput(['value' => Yii::$app->user->identity->getId()])->label(false); ?>
+                <?php endif; ?>
                 <button type="submit" class="form-submit">Отправить</button>
             </div>
-        </form>
+        <?php ActiveForm::end(); ?>
         <div class="comment-list">
-            <div class="comment-item">
-                <div class="user-name">ИмяПользователя</div>
-                <div class="date">17.12.2015 12:41</div>
-                <div class="comment-text">Хорошое продложение!!!</div>
-                <div class="img-holder"><img src="../images/v-icon.png"></div>
-            </div>
-            <div class="comment-item">
-                <div class="user-name">ИмяПользователя</div>
-                <div class="date">17.12.2015 12:41</div>
-                <div class="comment-text">Хорошое продложение!!!</div>
-                <div class="img-holder"><img src="../images/error_photo.png"></div>
-            </div>
+            <?php if($comments): ?>
+                <?php foreach ($comments as $discountComment): ?>
+                    <?php /** @var User $user */$user = $discountComment->getUser()->one(); ?>
+                    <div class="comment-item">
+                        <div class="user-name"><?= $discountComment->name; ?></div>
+                        <div class="date"><?= $discountComment->date; ?></div>
+                        <div class="comment-text"><?= $discountComment->text; ?></div>
+                        <div class="img-holder">
+                            <?php if($user): ?>
+                                <img src="<?= $user->relatedRecords['profile']->getImg('small'); ?>" onerror="src='../images/error_photo.png'">
+                            <?php else: ?>
+                                <img src="../images/error_photo.png" onerror="src='../images/error_photo.png'">
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
     <aside class="sidebar-left sidebar"><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a></aside>
