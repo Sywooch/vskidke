@@ -39,24 +39,27 @@ $category;
                             <a href="<?= Url::to(['/company/index']); ?>" class="registration dropdown-button">Мои данные</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Мои данные</a>
+                                    <a href="<?= Url::to(['/company/index']); ?>">Мои данные</a>
                                 </li>
                                 <li>
-                                    <a href="#">Мои данные</a>
+                                    <a href="#">Сменить пароль</a>
                                 </li>
                                 <li>
-                                    <a href="#">Мои данные</a>
+                                    <a href="#">Мои скидки</a>
                                     <Ul class="submenu">
                                         <li>
-                                            <a href="#">Registration</a>
+                                            <a href="#">На расмотрении</a>
                                         </li>
                                         <li>
-                                            <a href="#">Registration</a>
+                                            <a href="#">Активные</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Архивные</a>
                                         </li>
                                     </Ul>
                                 </li>
                                 <li>
-                                    <a href="#">Мои данные</a>
+                                    <a href="#">Разместить скидку</a>
                                 </li>
                             </ul>
                         </span>
