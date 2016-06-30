@@ -33,6 +33,20 @@ use yii\helpers\Url;
 </footer>
 
 <div class="modal-container">
+    <div id="search-modal" class="modal-layout-wrapp">
+        <div class="modal-layout">
+            <div class="close"></div>
+            <div class="modal-title">Поиск</div>
+            <form class="form-registration">
+                <div class="form-modal">
+                    <label for="email" class="form-label search"></label>
+                    <input type="text"  placeholder="Поиск" class="form-input "/>
+                </div>
+                <button type="submit" class="form-submit">Найти</button>
+            </form>
+        </div>
+    </div>
+
     <div id="info-modal" class="modal-layout-wrapp">
         <div class="modal-layout">
             <div class="close"></div>

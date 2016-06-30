@@ -35,7 +35,31 @@ $category;
                     <?php if (Yii::$app->user->isGuest): ?>
                         <a href="#" id="register" class="registration">Регистрация</a>
                     <?php else: ?>
-                        <a href="<?= Url::to(['/company/index']); ?>" class="registration">Мои данные</a>
+                        <span class="dropdown-wrapp">
+                            <a href="<?= Url::to(['/company/index']); ?>" class="registration dropdown-button">Мои данные</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Мои данные</a>
+                                </li>
+                                <li>
+                                    <a href="#">Мои данные</a>
+                                </li>
+                                <li>
+                                    <a href="#">Мои данные</a>
+                                    <Ul class="submenu">
+                                        <li>
+                                            <a href="#">Registration</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Registration</a>
+                                        </li>
+                                    </Ul>
+                                </li>
+                                <li>
+                                    <a href="#">Мои данные</a>
+                                </li>
+                            </ul>
+                        </span>
                     <?php endif; ?>
                     <div class="select-town">
                         <?= CityDropdown::widget(); ?>
@@ -51,7 +75,7 @@ $category;
                                class="<?= Categories::getCategoryIcon($category->category_name); ?>"><?= $category->category_name; ?></a>
                         </li>
                     <?php endforeach; ?>
-                    <li><a href="#" class="search"> Поиск</a></li>
+                    <li><a href="#" class="search search-modal-link"> Поиск</a></li>
                 </ul>
             </nav>
         </div>

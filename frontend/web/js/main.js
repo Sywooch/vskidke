@@ -99,6 +99,12 @@
          }
      });
 
+     //Search modal
+     $( ".search-modal-link" ).click(function() {
+         $(" .mask ,  #search-modal").show();
+         $('body').addClass('modal-open');
+     });
+
 
  });
 

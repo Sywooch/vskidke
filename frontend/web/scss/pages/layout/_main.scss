@@ -1877,6 +1877,14 @@ h3 {
           font-size: 20px;
         }
       }
+      &.search {
+        &:before {
+          font-family: $font-family-icomoon;
+          content: '\eb73';
+          color: #0e5f82;
+          font-size: 20px;
+        }
+      }
     }
 
     .help-block {
@@ -2248,6 +2256,53 @@ h3 {
   }
 }
 
+//drop-downs
+.dropdown-wrapp{
+  position: relative;
+  float: right;
+
+  @include clearfix;
+
+  &:hover{
+    .dropdown-menu{
+      display: block;
+    }
+  }
+
+  .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    list-style: none;
+    z-index: 999;
+    padding: 10px 0;
+    min-width: 280px;
+    box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
+    display: none;
+
+    > li{
+      > a {
+        display: block;
+        padding: 10px 20px;
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .submenu{
+      list-style: none;
+      li{
+        a{
+          display: block;
+          padding: 5px 20px 5px 40px;
+        }
+      }
+    }
+  }
+}
 
 
 
