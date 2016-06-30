@@ -33,6 +33,20 @@ use yii\helpers\Url;
 </footer>
 
 <div class="modal-container">
+    <div id="forgot-modal" class="modal-layout-wrapp">
+        <div class="modal-layout">
+            <div class="close"></div>
+            <div class="modal-title">Забыли пароль?</div>
+            <form class="form-registration">
+                <div class="form-modal">
+                    <label for="email" class="form-label email"></label>
+                    <input type="email" id="email" required="required" placeholder="E-mail" class="form-input "/>
+                </div>
+                <button type="submit" class="form-submit">Отправить пароль</button>
+            </form>
+        </div>
+    </div>
+
     <div id="search-modal" class="modal-layout-wrapp">
         <div class="modal-layout">
             <div class="close"></div>

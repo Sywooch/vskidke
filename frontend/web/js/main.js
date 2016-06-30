@@ -104,6 +104,19 @@
          $(" .mask ,  #search-modal").show();
          $('body').addClass('modal-open');
      });
+    //Forgot pass
+     $( ".forgot-modal-link" ).click(function() {
+         $(" .mask ,  #search-modal").show();
+         $('body').addClass('modal-open');
+     });
+
+     $(".modal-container").on('click', '#register', function () {
+         $.get('index.php?r=/site/signup', function (data) {
+             $(".modal-container").html(data);
+             $("#login-modal").hide();
+             $("#registration-modal").show();
+         })
+     });
 
 
  });
