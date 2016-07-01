@@ -20,5 +20,11 @@ return [
             'class' => 'yii\image\ImageDriver',
             'driver' => 'GD'
         ],
+        'sphinx' => [
+            'class' => 'yii\sphinx\Connection',
+            'dsn' => 'mysql:host=localhost;port=9306;',
+            'username' => 'vskidki_vskidke',
+            'password' => '0SSXsgFhFx',
+        ],
     ],
 ];

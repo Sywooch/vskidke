@@ -146,7 +146,7 @@ $address;
                 <div class="add-form">
                     <div class="img-block">
                         <img id="blah" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo.png&quot;">
-                        <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>
+                        <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить фото</a>
                         <?= $form->field($discountModel, 'img')->fileInput([
                             'id'    => 'fileID',
                             'style' => 'visibility: hidden;'

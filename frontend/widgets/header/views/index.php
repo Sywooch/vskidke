@@ -36,30 +36,30 @@ $category;
                         <a href="#" id="register" class="registration">Регистрация</a>
                     <?php else: ?>
                         <span class="dropdown-wrapp">
-                            <a href="<?= Url::to(['/company/index']); ?>" class="registration dropdown-button">Мои данные</a>
+                            <a href="#" class="registration dropdown-button">Мои данные</a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a href="<?= Url::to(['/company/index']); ?>">Мои данные</a>
                                 </li>
                                 <li>
-                                    <a href="#">Сменить пароль</a>
+                                    <a href="<?= Url::to(['/company/edit-password', 'id' => Yii::$app->user->identity->getId()]); ?>">Сменить пароль</a>
                                 </li>
                                 <li>
-                                    <a href="#">Мои скидки</a>
+                                    <a href="<?= Url::to(['/discount/my-discounts']); ?>">Мои скидки</a>
                                     <Ul class="submenu">
                                         <li>
                                             <a href="#">На расмотрении</a>
                                         </li>
                                         <li>
-                                            <a href="#">Активные</a>
+                                            <a href="<?= Url::to(['/discount/my-discounts', 'active' => true]); ?>">Активные</a>
                                         </li>
                                         <li>
-                                            <a href="#">Архивные</a>
+                                            <a href="<?= Url::to(['/discount/my-discounts', 'archive' => true]); ?>">Архивные</a>
                                         </li>
                                     </Ul>
                                 </li>
                                 <li>
-                                    <a href="#">Разместить скидку</a>
+                                    <a href="<?= Url::to(['/discount/create']); ?>">Разместить скидку</a>
                                 </li>
                             </ul>
                         </span>

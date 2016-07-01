@@ -12,6 +12,7 @@ use yii\bootstrap\ActiveForm;
         <div class="close"></div>
         <div class="modal-title">Вход</div>
         <?php $form = ActiveForm::begin([
+            'enableAjaxValidation' => true,
             'id'    => 'login-form', 
             'class' => 'form-registration'
         ]); ?>
@@ -24,7 +25,7 @@ use yii\bootstrap\ActiveForm;
                      ->label('', ['for' => 'login-pass', 'class' => 'form-label pass']) ?>
 
             <div class="label"><a id="password" href="#">Забыли пароль?</a></div>
-            <?= Html::submitButton('Войти', ['class' => 'form-submit']); ?>
+            <?= Html::submitButton('Войти', ['class' => 'form-submit', 'id' => 'loginSubmit']); ?>
         <?php ActiveForm::end(); ?>
         <div class="registration-link"><a id="register" href="#">Регистрация</a></div>
         <div class="subtitle">Войдите с помощью</div>

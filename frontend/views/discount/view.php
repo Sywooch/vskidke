@@ -15,11 +15,11 @@ $dateEnd     = new DateTime(date('Y-m-d'));
 $dateCurrent = new DateTime($discount->discount_date_end);
 $interval    = $dateEnd->diff($dateCurrent);
 
-if($model->discount_percent) {
-    $colorClass = Discounts::getColorClass($model->discount_percent);
-} elseif($model->discount_price && $model->discount_old_price) {
+if($discount->discount_percent) {
+    $colorClass = Discounts::getColorClass($discount->discount_percent);
+} elseif($discount->discount_price && $discount->discount_old_price) {
     $colorClass = 'yellow';
-} elseif($model->discount_gift) {
+} elseif($discount  ->discount_gift) {
     $colorClass = 'pink';
 }
 ?>

@@ -15,6 +15,7 @@ use yii\bootstrap\ActiveForm;
         <div class="modal-title">Забыли пароль?</div>
         <?php $form = ActiveForm::begin([
             'action' => '/index.php?r=site/password-reset-request',
+            'enableAjaxValidation' => true,
             'id'     => 'request-password-reset-form', 
             'class'  => 'form-registration'
         ]); ?>
@@ -29,7 +30,7 @@ use yii\bootstrap\ActiveForm;
                 ])->label(false); ?>
 <!--                <input type="email" id="email" required="required" placeholder="E-mail" class="form-input "/>-->
             </div>
-            <button type="submit" class="form-submit">Отправить пароль</button>
+            <button type="submit" id="forgot-password" class="form-submit">Отправить пароль</button>
         <?php ActiveForm::end(); ?>
     </div>
 </div>

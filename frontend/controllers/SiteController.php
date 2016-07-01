@@ -21,6 +21,8 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\web\Cookie;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
+use yii\widgets\ActiveForm;
 
 /**
  * Site controller
@@ -170,13 +172,22 @@ class SiteController extends BaseController
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect(Url::to(['/company/index']));
-        } else {
-            return $this->renderAjax('login', [
-                'model' => $model,
-            ]);
+
+        if(Yii::$app->request->isAjax && Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                $model->login();
+
+                return $this->redirect(Url::to(['/company/index']));
+            } else {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
         }
+
+
+        return $this->renderAjax('login', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -261,19 +272,25 @@ class SiteController extends BaseController
     public function actionPasswordResetRequest()
     {
         $model = new PasswordResetRequestForm();
-        if(Yii::$app->request->isPost) {
-            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-                if ($model->sendEmail()) {
-                    Yii::$app->getSession()->setFlash('message', 'На ваш email отправлено писмо, проверте вашу почту');
 
-                    return $this->goHome();
-                } else {
-                    Yii::$app->getSession()->setFlash('message', 'Что то пошло не так, убедитесь в правельности введенного email');
+        if(Yii::$app->request->isAjax && Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post())) {
+                if($model->validate()) {
+                    if ($model->sendEmail()) {
+                        Yii::$app->getSession()->setFlash('message', 'На ваш email отправлено писмо, проверте вашу почту');
+
+                        return $this->goHome();
+                    } else {
+                        Yii::$app->getSession()->setFlash('message', 'Что то пошло не так, убедитесь в правельности введенного email');
+                    }
+                }else {
+                    Yii::$app->response->format = Response::FORMAT_JSON;
+                    return ActiveForm::validate($model);
                 }
             }
         }
 
-        return $this->renderPartial('passwordResetRequest', [
+        return $this->renderAjax('passwordResetRequest', [
             'model' => $model,
         ]);
     }

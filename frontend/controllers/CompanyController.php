@@ -6,6 +6,7 @@ use common\models\UploadForm;
 use common\models\User;
 use yii\filters\AccessControl;
 use \Yii;
+use yii\sphinx\Query;
 use yii\web\UploadedFile;
 
 class CompanyController extends BaseController {
@@ -29,7 +30,7 @@ class CompanyController extends BaseController {
         $model   = $this->findModel();
         $profile = $model->relatedRecords['profile'];
         $post    = \Yii::$app->request->post();
-
+        
         if(\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
             if($profile->load($post) && $profile->save()) {
                 $uploadForm            = new UploadForm();
@@ -70,6 +71,13 @@ class CompanyController extends BaseController {
             'coordinates'  => $addressData->results[0]->geometry->location,
             'address'      => $address->getCity()->one()->city_name . ', ' . $address->address . ', тел. ' . $address->phone,
         ];
+    }
+
+    public function actionEditPassword($id) {
+        $user = $this->findModel();
+        return $this->render('edit-password', [
+            'user' => $user
+        ]);
     }
 
     /**

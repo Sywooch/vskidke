@@ -22,52 +22,49 @@ $model;
                 <a href="<?= Url::to(['/discount/' . Yii::$app->controller->action->id, 'active' => true]); ?>"><button class="filter-btn <?= $active == true ? 'active' : ''?>">Активные</button></a>
                 <a href="<?= Url::to(['/discount/' . Yii::$app->controller->action->id, 'archive' => true]); ?>"><button class="filter-btn <?= $archive == true ? 'active' : ''?>">Архивные</button></a>
             </div>
-<!--            <div class="filter-select-block"><span class="descr">акций на странице</span>-->
-<!--                <div class="select-filter">-->
-<!--                    <select>-->
-<!--                        <option>10</option>-->
-<!--                        <option>20</option>-->
-<!--                        <option>30</option>-->
-<!--                        <option>40</option>-->
-<!--                        <option>50</option>-->
-<!--                    </select>-->
-<!--                    -->
-<!--                </div>-->
-<!--            </div>-->
         </div>
         <div class="item-list">
             <?php foreach ($models as $model): ?>
-            <div class="item <?= array_rand(Categories::getColorClass(), 1); ?>">
-                <div class="img-holder">
-                    <a href="<?= Url::to(['/discount/create', 'id' => $model->discount_id]); ?>">
-                        <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
-                    </a>
-                    <?php if(!$model->discount_gift): ?>
-                        <div class="label">
-                            <div class="price">
-                                <?php if($model->discount_percent): ?>
-                                <div class="action">-<?= $model->discount_percent; ?>%</div>
-                                <?php else: ?>
-                                    <span class='old-price'><?= $model->discount_old_price; ?></span>
-                                    <span class='new-price'><?= $model->discount_price; ?></span> грн
-                                <?php endif; ?>
+                <?php
+                if($model->discount_percent) {
+                    $colorClass = Discounts::getColorClass($model->discount_percent);
+                } elseif($model->discount_price && $model->discount_old_price) {
+                    $colorClass = 'yellow';
+                } elseif($model->discount_gift) {
+                    $colorClass = 'pink';
+                }
+                ?>
+                <div class="item <?= $colorClass ?>">
+                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                        <div class="img-holder">
+                            <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
+                            <div class="label">
+                                <div class="price">
+                                    <?php if($model->discount_percent): ?>
+                                        <div class="action">-<?= $model->discount_percent; ?>%</div>
+                                    <?php elseif($model->discount_old_price && $model->discount_price): ?>
+                                        <span class='old-price'><?= $model->discount_old_price; ?></span>
+                                        <span class='new-price'><?= $model->discount_price; ?></span> грн
+                                    <?php else: ?>
+                                        <div class="gift"></div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="info-block">
+                                <div class="views"><?= $model->discount_view; ?></div>
+                                <div class="os-holder">
+                                    <a href="" class="android"></a>
+                                    <a href="" class="mac"></a>
+                                </div>
                             </div>
                         </div>
-                    <?php endif; ?>
-                    <div class="info-block">
-                        <div class="views"><?= $model->discount_view; ?></div>
-                        <div class="os-holder">
-                            <a href="" class="android"></a>
-                            <a href="" class="mac"></a>
+                    </a>
+                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                        <div class="text-holder">
+                            <div class="item-title"><?= $model->discount_title; ?></div>
                         </div>
-                    </div>
-                </div>
-                <div class="text-holder">
-                    <a href="<?= Url::to(['/discount/create', 'id' => $model->discount_id]); ?>">
-                        <div class="item-title"><?= $model->discount_title; ?></div>
                     </a>
                 </div>
-            </div>
             <?php endforeach; ?>
         </div>
         <div class="pagination-holder">

@@ -21,12 +21,12 @@ class PasswordResetRequestForm extends Model
     {
         return [
             ['email', 'filter', 'filter' => 'trim'],
-            ['email', 'required'],
+            ['email', 'required', 'message' => 'Поле не может быть пустым'],
             ['email', 'email'],
             ['email', 'exist',
                 'targetClass' => '\common\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => 'There is no user with such email.'
+                'message' => 'Пользователя с таким email не существует.'
             ],
         ];
     }

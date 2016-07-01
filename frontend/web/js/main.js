@@ -59,6 +59,26 @@
         }).submit();
     });
 
+     $("body").on('click', "#forgot-password", function (event) {
+         event.preventDefault();
+         $("#request-password-reset-form").ajaxForm({
+             url: 'index.php?r=site/password-reset-request',
+             success: function (data) {
+                 return true
+             }
+         }).submit();
+     });
+
+     $("body").on('click', "#loginSubmit", function (event) {
+         event.preventDefault();
+         $("#login-form").ajaxForm({
+             url: 'index.php?r=site/login',
+             success: function (data) {
+                 return true
+             }
+         }).submit();
+     });
+
      $('#citySwitch').change(function () {
          var link = $('option:selected', this).val();
 

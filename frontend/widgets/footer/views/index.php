@@ -12,10 +12,8 @@ use yii\helpers\Url;
             <ul class="nav-footer">
                 <li><a href="#">О проекте</a></li>
                 <li><a href="<?= Url::to(['/discount/archive']); ?>">Архив скидок</a></li>
+                <li><a href="#">Условия размещения</a></li>
                 <li><a href="#">Контакты</a></li>
-                <?php if(!Yii::$app->user->isGuest): ?>
-                    <li><a href="<?= Url::to(['/discount/my-discounts'])?>">Мои скидки</a></li>
-                <?php endif; ?>
             </ul>
         </nav>
         <div class="social">
