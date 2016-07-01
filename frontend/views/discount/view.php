@@ -15,13 +15,23 @@ $dateEnd     = new DateTime(date('Y-m-d'));
 $dateCurrent = new DateTime($discount->discount_date_end);
 $interval    = $dateEnd->diff($dateCurrent);
 
+if($model->discount_percent) {
+    $colorClass = Discounts::getColorClass($model->discount_percent);
+} elseif($model->discount_price && $model->discount_old_price) {
+    $colorClass = 'yellow';
+} elseif($model->discount_gift) {
+    $colorClass = 'pink';
+}
 ?>
 
 <div class="container main">
-    <div class="content fill">
+    <div class="content fill <?= $colorClass; ?>">
         <div class="top-holder"><a href="<?= Url::previous(); ?>" class="back-btn">Назад</a>
             <div class="action-title-wrapp">
-                <div class="time"><span class="time-count"><?= $interval->days; ?></span><span><?= StringHelper::trueWordForm($interval->days, 'День', 'Дня', 'Дней')?></span></div>
+                <div class="time">
+                    <span class="time-count"><?= $interval->days; ?></span>
+                    <span><?= StringHelper::trueWordForm($interval->days, 'День', 'Дня', 'Дней')?></span>
+                </div>
                 <h2 class="action-title"><?= $discount->discount_title; ?></h2>
             </div>
         </div>
@@ -52,8 +62,11 @@ $interval    = $dateEnd->diff($dateCurrent);
         </div>
         <div class="map-holder"></div>
         <div class="post-text-holder">
-            <div class="post-img-holder"><span class="img-wrapp"><img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;../images/error_photo2.png&quot;"></span>
-                <div class="link-wrapp"> <a href="#" class="liked">Избранное</a><a href="#" class="share">Поделиться</a></div>
+            <div class="post-img-holder">
+                <span class="img-wrapp">
+                    <img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;../images/error_photo2.png&quot;">
+                </span>
+<!--                <div class="link-wrapp"> <a href="#" class="liked">Избранное</a><a href="#" class="share">Поделиться</a></div>-->
             </div>
             <div class="text" style="word-break: break-all;">
                 <?= $discount->discount_text; ?>

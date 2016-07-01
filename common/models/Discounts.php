@@ -102,6 +102,34 @@ class Discounts extends \yii\db\ActiveRecord
         return $img;
     }
 
+    public static function getColorClass($percent) {
+        if($percent >= 0 || $percent <= 10) {
+            return 'purple';
+        } elseif ($percent >= 11 || $percent <= 20) {
+            return 'violet';
+        }elseif ($percent >= 21 || $percent <= 30) {
+            return 'violet-light';
+        }elseif ($percent >= 31 || $percent <= 40) {
+            return 'blue';
+        }elseif ($percent >= 41 || $percent <= 50) {
+            return 'blue-light';
+        }elseif ($percent >= 51 || $percent <= 60) {
+            return 'green';
+        }elseif ($percent >= 61 || $percent <= 70) {
+            return 'green-light';
+        }elseif ($percent >= 71 || $percent <= 80) {
+            return 'orange';
+        }elseif ($percent >= 81 || $percent <= 90) {
+            return 'orange-light';
+        }elseif ($percent >= 91 || $percent <= 100) {
+            return 'purple-light';
+        }
+//        return [
+//            '10' => 'pink',
+//            '11' => 'yellow',
+//        ];
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

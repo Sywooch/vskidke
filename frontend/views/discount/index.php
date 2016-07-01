@@ -37,36 +37,45 @@ $model;
         </div>
         <div class="item-list">
             <?php foreach ($models as $model): ?>
-            <div class="item <?= array_rand(Categories::getColorClass(), 1); ?>">
-                <div class="img-holder">
-                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+            <?php
+                if($model->discount_percent) {
+                    $colorClass = Discounts::getColorClass($model->discount_percent);
+                } elseif($model->discount_price && $model->discount_old_price) {
+                    $colorClass = 'yellow';
+                } elseif($model->discount_gift) {
+                    $colorClass = 'pink';
+                }
+            ?>
+            <div class="item <?= $colorClass ?>">
+                <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                    <div class="img-holder">
                         <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
-                    </a>
-                    <?php if(!$model->discount_gift): ?>
                         <div class="label">
                             <div class="price">
                                 <?php if($model->discount_percent): ?>
-                                <div class="action">-<?= $model->discount_percent; ?>%</div>
-                                <?php else: ?>
+                                    <div class="action">-<?= $model->discount_percent; ?>%</div>
+                                <?php elseif($model->discount_old_price && $model->discount_price): ?>
                                     <span class='old-price'><?= $model->discount_old_price; ?></span>
                                     <span class='new-price'><?= $model->discount_price; ?></span> грн
+                                <?php else: ?>
+                                    <div class="gift"></div>
                                 <?php endif; ?>
                             </div>
                         </div>
-                    <?php endif; ?>
-                    <div class="info-block">
-                        <div class="views"><?= $model->discount_view; ?></div>
-                        <div class="os-holder">
-                            <a href="" class="android"></a>
-                            <a href="" class="mac"></a>
+                        <div class="info-block">
+                            <div class="views"><?= $model->discount_view; ?></div>
+                            <div class="os-holder">
+                                <a href="" class="android"></a>
+                                <a href="" class="mac"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-holder">
-                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                </a>
+                <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                    <div class="text-holder">
                         <div class="item-title"><?= $model->discount_title; ?></div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             <?php endforeach; ?>
         </div>
