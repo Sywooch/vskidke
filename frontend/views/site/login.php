@@ -23,7 +23,7 @@ use yii\bootstrap\ActiveForm;
                      ->passwordInput(['id' => 'login-pass', 'class' => 'form-input', 'placeholder' => 'Пароль'])
                      ->label('', ['for' => 'login-pass', 'class' => 'form-label pass']) ?>
 
-            <div class="label">Забыли пароль?</div>
+            <div class="label"><a id="password" href="#">Забыли пароль?</a></div>
             <?= Html::submitButton('Войти', ['class' => 'form-submit']); ?>
         <?php ActiveForm::end(); ?>
         <div class="registration-link"><a id="register" href="#">Регистрация</a></div>

@@ -261,17 +261,19 @@ class SiteController extends BaseController
     public function actionPasswordResetRequest()
     {
         $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->getSession()->setFlash('message', Yii::t('app', 'EMAIL_SENT_PASSWORD_RECOVERY'));
+        if(Yii::$app->request->isPost) {
+            if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                if ($model->sendEmail()) {
+                    Yii::$app->getSession()->setFlash('message', 'На ваш email отправлено писмо, проверте вашу почту');
 
-                return $this->goHome();
-            } else {
-                Yii::$app->getSession()->setFlash('message', Yii::t('app', 'PROBLEMS_SHIPMENT'));
+                    return $this->goHome();
+                } else {
+                    Yii::$app->getSession()->setFlash('message', 'Что то пошло не так, убедитесь в правельности введенного email');
+                }
             }
         }
 
-        return $this->render('passwordResetRequest', [
+        return $this->renderPartial('passwordResetRequest', [
             'model' => $model,
         ]);
     }

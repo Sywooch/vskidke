@@ -118,7 +118,13 @@
          })
      });
 
-
+     $(".modal-container").on('click', '#password', function () {
+         $.get('index.php?r=/site/password-reset-request', function (data) {
+             $(".modal-container").html(data);
+             $("#login-modal").hide();
+             $("#forgot-modal").show();
+         })
+     });
  });
 
 function readURL(input) {
