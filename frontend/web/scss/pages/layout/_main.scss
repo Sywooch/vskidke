@@ -65,12 +65,13 @@
 
 .filter-holder {
   @include clearfix;
-  padding: 24px 0 26px;
+  padding: 24px 0 0;
   position: relative;
   text-align: center;
 
   @include sm {
     text-align: left;
+    padding: 24px 0 26px;
   }
 
   &:before {
@@ -123,9 +124,9 @@
     line-height: 53px; /* Приближение из-за подстановки шрифтов */
     text-align: center;
     border-radius: 10px;
-    margin-right: 21px;
     display: inline-block;
     text-decoration: none;
+    margin: 0 21px 26px 0;
 
     @include sm {
       font-family: $font-family-4;
@@ -139,7 +140,7 @@
       padding: 0 12px;
       border: 1px solid #d3d8dd;
       background-color: #ffffff;
-      margin-right: 12px;
+      margin: 0 12px 0 0;
 
     }
 
@@ -2205,10 +2206,23 @@ h3 {
 .select-town {
   position: relative;
   display: inline-block;
-  border-bottom: 2px solid #0e5f82;
 
   @include sm {
-    border-bottom: 1px solid #0e5f82;
+    margin-top:2px;
+  }
+
+  &:before{
+    position: absolute;
+    bottom:3px;
+    left: 3px;
+    width: 100%;
+    border-bottom: 2px solid #0e5f82;
+    display: block;
+    content: '';
+
+    @include sm {
+      border-bottom: 1px solid #0e5f82;
+    }
   }
 
   &:after {
@@ -2339,7 +2353,12 @@ h3 {
 //drop-downs
 .dropdown-wrapp{
   position: relative;
-  float: right;
+  float: left;
+
+  @include sm{
+    float: right;
+  }
+
 
   @include clearfix;
 
