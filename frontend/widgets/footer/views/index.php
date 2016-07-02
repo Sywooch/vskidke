@@ -3,6 +3,7 @@ use common\models\City;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\ActiveForm;
 
 ?>
 
@@ -49,13 +50,16 @@ use yii\helpers\Url;
         <div class="modal-layout">
             <div class="close"></div>
             <div class="modal-title">Поиск</div>
-            <form class="form-registration">
+            <?php ActiveForm::begin([
+                'action' => Url::to(['/discount/index']),
+                'method' => 'GET'
+            ]); ?>
                 <div class="form-modal">
                     <label for="email" class="form-label search"></label>
-                    <input type="text"  placeholder="Поиск" class="form-input "/>
+                    <input type="text" name="q"  placeholder="Поиск" class="form-input "/>
                 </div>
                 <button type="submit" class="form-submit">Найти</button>
-            </form>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
 

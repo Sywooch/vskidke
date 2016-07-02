@@ -44,7 +44,7 @@ class DiscountController extends BaseController {
      * @param int $limit
      * @return string
      */
-    public function actionIndex($category = null, $limit = 10, $popular = null, $new = null) {
+    public function actionIndex($category = null, $limit = 10, $popular = null, $new = null, $q = null) {
         $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
                                   ->where(['>=', 'discount_date_end', date('Y-m-d')])
                                   ->andWhere(['company_addresses.city_id' => City::getCityId()])
@@ -55,6 +55,11 @@ class DiscountController extends BaseController {
 
         if($category) {
             $query->andWhere(['category_id' => $category]);
+        }
+
+        if($q) {
+            $query->andWhere('discount_title' . ' like "%' . $q .'%"')
+                  ->orWhere('discount_text' . ' like "%' . $q .'%"');
         }
 
         $countQuery = clone $query;
