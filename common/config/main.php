@@ -22,7 +22,7 @@ return [
         ],
         'sphinx' => [
             'class' => 'yii\sphinx\Connection',
-            'dsn' => 'mysql:host=localhost;port=9306;',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=vskidki_vskidke;port=3306;',
             'username' => 'vskidki_vskidke',
             'password' => '0SSXsgFhFx',
         ],

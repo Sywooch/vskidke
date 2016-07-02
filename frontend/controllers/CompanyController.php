@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\models\CompanyAddresses;
 use common\models\UploadForm;
 use common\models\User;
+use yii\db\Expression;
 use yii\filters\AccessControl;
 use \Yii;
 use yii\sphinx\Query;
