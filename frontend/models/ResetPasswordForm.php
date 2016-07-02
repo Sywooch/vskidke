@@ -11,31 +11,8 @@ use common\models\User;
 class ResetPasswordForm extends Model
 {
     public $password;
-
-    /**
-     * @var \common\models\User
-     */
-    private $_user;
-
-
-    /**
-     * Creates a form model given a token.
-     *
-     * @param string $token
-     * @param array $config name-value pairs that will be used to initialize the object properties
-     * @throws \yii\base\InvalidParamException if token is empty or not valid
-     */
-    public function __construct($token, $config = [])
-    {
-        if (empty($token) || !is_string($token)) {
-            throw new InvalidParamException('Password reset token cannot be blank.');
-        }
-        $this->_user = User::findByPasswordResetToken($token);
-        if (!$this->_user) {
-            throw new InvalidParamException('Wrong password reset token.');
-        }
-        parent::__construct($config);
-    }
+    public $new_password;
+    public $password_repeat;
 
     /**
      * @inheritdoc
@@ -43,10 +20,26 @@ class ResetPasswordForm extends Model
     public function rules()
     {
         return [
-            ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'required', 'message' => 'Поле не может быть пустым'],
+            ['password', 'validatePassword'],
+            ['new_password', 'required', 'message' => 'Поле не может быть пустым'],
+            ['new_password', 'string', 'min' => 6, 'message' => 'Пароль должен состоять не мение час из 6 символов'],
+            ['password_repeat', 'compare', 'compareAttribute' => 'new_password', 'message' => "Пароли не совпадают"]
         ];
     }
+
+    public function validatePassword()
+    {
+        if (!$this->hasErrors()) {
+            /** @var User $user */
+            $user = $this->getUser();
+
+            if (!$user || !$user->validatePassword($this->password)) {
+                $this->addError('password', 'Неверный пароль.');
+            }
+        }
+    }
+
 
     /**
      * Resets password.
@@ -55,10 +48,14 @@ class ResetPasswordForm extends Model
      */
     public function resetPassword()
     {
-        $user = $this->_user;
+        $user = $this->getUser();
         $user->setPassword($this->password);
         $user->removePasswordResetToken();
 
         return $user->save(false);
+    }
+
+    public function getUser() {
+        return \Yii::$app->user->identity;
     }
 }

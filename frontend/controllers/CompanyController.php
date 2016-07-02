@@ -4,6 +4,7 @@ namespace frontend\controllers;
 use common\models\CompanyAddresses;
 use common\models\UploadForm;
 use common\models\User;
+use frontend\models\ResetPasswordForm;
 use yii\db\Expression;
 use yii\filters\AccessControl;
 use \Yii;
@@ -74,10 +75,24 @@ class CompanyController extends BaseController {
         ];
     }
 
-    public function actionEditPassword($id) {
-        $user = $this->findModel();
+    public function actionEditPassword() {
+        $user  = $this->findModel();
+        $model = new ResetPasswordForm();
+
+        if(Yii::$app->request->isPost) {
+            $post = Yii::$app->request->post();
+
+            if($model->load($post) && $model->validate()) {
+                $model->resetPassword();
+                Yii::$app->getSession()->setFlash('message', 'Пароль успешно изменен.');
+
+                $this->refresh();
+            }
+        }
+
         return $this->render('edit-password', [
-            'user' => $user
+            'user'  => $user,
+            'model' => $model
         ]);
     }
 
