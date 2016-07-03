@@ -64,7 +64,7 @@ if($discount->discount_percent) {
         <div class="post-text-holder">
             <div class="post-img-holder">
                 <span class="img-wrapp">
-                    <img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;../images/error_photo2.png&quot;">
+                    <img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;../images/error_photo.png&quot;">
                 </span>
 <!--                <div class="link-wrapp"> <a href="#" class="liked">Избранное</a><a href="#" class="share">Поделиться</a></div>-->
             </div>
