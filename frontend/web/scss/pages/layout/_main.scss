@@ -1627,6 +1627,15 @@
 
 .add-comment-form {
   @include clearfix;
+
+  .field-comment-username{
+    margin-bottom:15px;
+  }
+
+  .field-comment-text{
+    margin-bottom: 20px;
+  }
+
   .form-input {
     border-radius: 5px;
     border-width: 1.25px;
@@ -1642,16 +1651,14 @@
       padding: 0 14px;
       line-height: 31px;
       height: 33px;
-      margin-bottom: 15px;
       width: 100%;
-      @include md {
+      @include sm {
         width: 50%;
       }
     }
     &.textarea {
       padding: 14px;
       height: 135px;
-      margin-bottom: 20px;
       width: 100%;
       resize: none;
     }
@@ -1681,7 +1688,7 @@
     text-align: left;
     margin-bottom: 15px;
 
-    @include lg-sm {
+    @include sm {
       margin-bottom: 0;
     }
   }

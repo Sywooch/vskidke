@@ -80,15 +80,22 @@ if($discount->discount_percent) {
             'action'  =>'/index.php?r=discount/comment',
             'options' => [
                 'id'      => 'commentForm',
-            ]
+            ],
+            'fieldConfig' => [
+                'template' => "{input}{label}\n{error}"
+            ],
         ]); ?>
             <div class="add-comment-form">
                 <?= $form->field($comment, 'name')->textInput([
                     'class' => 'form-input username',
                     'id'    => 'comment-username',
                     'placeholder' => 'Введите Ваше имя',
-                ])->label(false); ?>
-                <label for="comment-username" class="form-label">*обязательное поле для заполнения</label>
+                ])->label('*обязательное поле для заполнения', [
+                    'class' => 'form-label',
+                    'for'    => 'comment-username'
+
+                ]); ?>
+
                 <?= $form->field($comment, 'text')->textarea([
                     'class' => 'form-input textarea',
                     'placeholder' => 'Введите текст сообщения'
