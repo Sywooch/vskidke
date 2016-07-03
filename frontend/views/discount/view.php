@@ -40,10 +40,18 @@ if($discount->discount_percent) {
                 <img src="<?= $company->relatedRecords['profile']->getImg('small'); ?>" onerror="src='../images/error_logo.png'">
             </div>
             <div class="info-holder">
+                <?php if ( $company->relatedRecords['profile']->profile_name): ?>
                 <div class="item-title"><?= $company->relatedRecords['profile']->profile_name; ?></div>
+                <?php endif; ?>
+                <?php if ( $company->relatedRecords['profile']->profile_phone): ?>
                 <div class="item phone"><?= $company->relatedRecords['profile']->profile_phone; ?></div>
+                <?php endif; ?>
+                <?php if ( $company->email): ?>
                 <div class="item mail"><?= $discount->discount_view_email == '0' ? $company->email : ''; ?></div>
+                <?php endif; ?>
+                <?php if ( $company->relatedRecords['profile']->profile_site): ?>
                 <div class="item site"><?= $company->relatedRecords['profile']->profile_site; ?></div>
+                <?php endif; ?>
             </div>
             <div class="action-holder">
                 <div class="label-wrapp">
