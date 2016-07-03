@@ -61,7 +61,7 @@ return [
         ],
         'urlManager' => [
             'class'           => 'frontend\components\UrlManager',
-            'enablePrettyUrl' => false,
+            'enablePrettyUrl' => true,
             'showScriptName'  => false,
             'rules' => [
                 '/'      => 'discount/index',
