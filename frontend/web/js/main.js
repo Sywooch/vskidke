@@ -34,7 +34,7 @@
     });
 
     $("#register").on('click', function () {
-        $.get('index.php?r=/site/signup', function (data) {
+        $.get('/site/signup', function (data) {
             $(".modal-container").html(data);
             $(".mask, #registration-modal").show();
             $('body').addClass('modal-open');
@@ -42,7 +42,7 @@
     });
 
     $("#login").on('click', function () {
-        $.get('index.php?r=/site/login', function (data) {
+        $.get('/site/login', function (data) {
             $(".modal-container").html(data);
             $(".mask, #login-modal").show();
             $('body').addClass('modal-open');
@@ -52,17 +52,17 @@
     $(".edit").on('click', function (event) {
         event.preventDefault();
         $("#companyForm").ajaxForm({
-            url: 'index.php?r=company/index',
+            url: '/company/index',
             success: function (data) {
                 return true
             }
-        }).submit();
+        }).submit(); 
     });
 
      $("body").on('click', "#forgot-password", function (event) {
          event.preventDefault();
          $("#request-password-reset-form").ajaxForm({
-             url: 'index.php?r=site/password-reset-request',
+             url: '/site/password-reset-request',
              success: function (data) {
                  return true
              }
@@ -72,7 +72,7 @@
      $("body").on('click', "#loginSubmit", function (event) {
          event.preventDefault();
          $("#login-form").ajaxForm({
-             url: 'index.php?r=site/login',
+             url: '/site/login',
              success: function (data) {
                  return true
              }
@@ -131,7 +131,7 @@
      });
 
      $(".modal-container").on('click', '#register', function () {
-         $.get('index.php?r=/site/signup', function (data) {
+         $.get('/site/signup', function (data) {
              $(".modal-container").html(data);
              $("#login-modal").hide();
              $("#registration-modal").show();
@@ -139,7 +139,7 @@
      });
 
      $(".modal-container").on('click', '#password', function () {
-         $.get('index.php?r=/site/password-reset-request', function (data) {
+         $.get('/site/password-reset-request', function (data) {
              $(".modal-container").html(data);
              $("#login-modal").hide();
              $("#forgot-modal").show();
