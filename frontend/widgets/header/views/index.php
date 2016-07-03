@@ -46,7 +46,7 @@ $category;
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['/discount/my-discounts']); ?>">Мои скидки</a>
-                                    <Ul class="submenu">
+                                    <ul class="submenu">
                                         <li>
                                             <a href="#">На расмотрении</a>
                                         </li>
@@ -56,7 +56,7 @@ $category;
                                         <li>
                                             <a href="<?= Url::to(['/discount/my-discounts', 'archive' => true]); ?>">Архивные</a>
                                         </li>
-                                    </Ul>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="<?= Url::to(['/discount/create']); ?>">Разместить скидку</a>

@@ -30,6 +30,15 @@
 
 @font-face {
     font-family: 'IntroRegular';
+    src: url('./../fonts/intro_regular.woff2') format('woff2'),
+         url('./../fonts/intro_regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'IntroRegularAlt';
     src: url('./../fonts/Intro-Light-Alt.woff2') format('woff2'),
          url('./../fonts/intro-light-alt-webfont.woff') format('woff');
     font-weight: normal;

@@ -227,7 +227,7 @@
         top: -67px;
         right: -55px;
         border-radius: 50%;
-        background-color: #ffd600;
+        //background-color: #ffd600;
         text-align: center;
         vertical-align: middle;
 
@@ -344,17 +344,17 @@
           }
 
           &:before {
-            font-family: $font-family-icomoon;
-            //content: '\ee31';
-            content: '\ef58';
-            position: relative;
-            top: 3px;
-            //width: 38px;
-            //height: 22px;
-            //display: inline-block;
-            //content: '';
-            //background: url(../images/spy_icon.png) no-repeat;
-            //background-size: cover;
+            //font-family: $font-family-icomoon;
+            ////content: '\ee31';
+            //content: '\ef58';
+            //position: relative;
+            //top: 3px;
+            width: 38px;
+            height: 22px;
+            display: inline-block;
+            content: '';
+            background: url(../images/spy_icon.png) no-repeat;
+            background-size: contain;
 
             font-size: 32px;
             line-height: 0.8;
@@ -362,11 +362,12 @@
             text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
 
             @include sm {
-              //width: 24px;
-              //height: 14px;
-              font-size: 26px;
+              width: 24px;
+              height: 14px;
+              margin-top: 6px;
+              //font-size: 26px;
               position: relative;
-              top: 3px;
+              top: 1px;
             }
           }
         }
@@ -378,7 +379,8 @@
         left: -25%;
         top: calc(100% - 13px);
         border-radius: 50%;
-        border-top: 3px solid #ffd600;
+        border-top-width: 3px;
+        border-top-style: solid;
         background-color: #ffffff;
         width: 150%;
         content: '';
@@ -392,7 +394,7 @@
       .android,
       .mac {
         border-radius: 50%;
-        background-color: #ffd600;
+        //background-color: #ffd600;
         width: 42px;
         height: 42px;
         display: inline-block;
@@ -449,7 +451,7 @@
       }
 
       .item-title {
-        font-family: $font-family-3;
+        font-family: $font-family-7;
         color: #37445d;
         font-size: 41.82px; /* Приближение из-за подстановки шрифтов */
         font-weight: 400;
@@ -463,179 +465,180 @@
       }
     }
 
-    //color scheme
-
-    &.yellow {
-      .label {
-        background-color: #ffd600;
-      }
-      .android,
-      .mac {
-        background-color: #ffd600;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #ffd600;
-        }
-      }
-    }
-
-    &.pink {
-      .label {
-        background-color: #f06eaa;
-      }
-      .android,
-      .mac {
-        background-color: #f06eaa;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #f06eaa;
-        }
-      }
-    }
-    &.orange {
-      .label {
-        background-color: #ff5200;
-      }
-      .android,
-      .mac {
-        background-color: #ff5200;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #ff5200;
-        }
-      }
-    }
-    &.orange-light {
-      .label {
-        background-color: #f8941d;
-      }
-      .android,
-      .mac {
-        background-color: #f8941d;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #f8941d;
-        }
-      }
-    }
-    &.green {
-      .label {
-        background-color: #00cb43;
-      }
-      .android,
-      .mac {
-        background-color: #00cb43;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #00cb43;
-        }
-      }
-    }
-    &.green-light {
-      .label {
-        background-color: #4aff60;
-      }
-      .android,
-      .mac {
-        background-color: #4aff60;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #4aff60;
-        }
-      }
-    }
-    &.blue {
-      .label {
-        background-color: #286fff;
-      }
-      .android,
-      .mac {
-        background-color: #286fff;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #286fff;
-        }
-      }
-    }
-    &.blue-light {
-      .label {
-        background-color: #00b7ff;
-      }
-      .android,
-      .mac {
-        background-color: #00b7ff;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #00b7ff;
-        }
-      }
-    }
-    &.violet {
-      .label {
-        background-color: #801ace;
-      }
-      .android,
-      .mac {
-        background-color: #801ace;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #801ace;
-        }
-      }
-    }
-    &.violet-light {
-      .label {
-        background-color: #a956d4;
-      }
-      .android,
-      .mac {
-        background-color: #a956d4;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #a956d4;
-        }
-      }
-    }
-    &.purple {
-      .label {
-        background-color: #bc3581;
-      }
-      .android,
-      .mac {
-        background-color: #bc3581;
-      }
-
-      .img-holder {
-        &:before {
-          border-top-color: #bc3581;
-        }
-      }
-    }
-
-    //end color scheme
 
   }
 }
+
+//color scheme
+
+&.yellow {
+  .label {
+    background-color: #ffd600;
+  }
+  .android,
+  .mac {
+    background-color: #ffd600;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #ffd600;
+    }
+  }
+}
+
+&.pink {
+  .label {
+    background-color: #f06eaa;
+  }
+  .android,
+  .mac {
+    background-color: #f06eaa;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #f06eaa;
+    }
+  }
+}
+&.orange {
+  .label {
+    background-color: #ff5200;
+  }
+  .android,
+  .mac {
+    background-color: #ff5200;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #ff5200;
+    }
+  }
+}
+&.orange-light {
+  .label {
+    background-color: #f8941d;
+  }
+  .android,
+  .mac {
+    background-color: #f8941d;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #f8941d;
+    }
+  }
+}
+&.green {
+  .label {
+    background-color: #00cb43;
+  }
+  .android,
+  .mac {
+    background-color: #00cb43;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #00cb43;
+    }
+  }
+}
+&.green-light {
+  .label {
+    background-color: #4aff60;
+  }
+  .android,
+  .mac {
+    background-color: #4aff60;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #4aff60;
+    }
+  }
+}
+&.blue {
+  .label {
+    background-color: #286fff;
+  }
+  .android,
+  .mac {
+    background-color: #286fff;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #286fff;
+    }
+  }
+}
+&.blue-light {
+  .label {
+    background-color: #00b7ff;
+  }
+  .android,
+  .mac {
+    background-color: #00b7ff;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #00b7ff;
+    }
+  }
+}
+&.violet {
+  .label {
+    background-color: #801ace;
+  }
+  .android,
+  .mac {
+    background-color: #801ace;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #801ace;
+    }
+  }
+}
+&.violet-light {
+  .label {
+    background-color: #a956d4;
+  }
+  .android,
+  .mac {
+    background-color: #a956d4;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #a956d4;
+    }
+  }
+}
+&.purple {
+  .label {
+    background-color: #bc3581;
+  }
+  .android,
+  .mac {
+    background-color: #bc3581;
+  }
+
+  .img-holder {
+    &:before {
+      border-top-color: #bc3581;
+    }
+  }
+}
+
+//end color scheme
 
 //=Block settings
 .page-title-wrapp {
@@ -1358,9 +1361,8 @@
       }
       .time {
         float: right;
-        width: 165px;
-        padding-top: 15px;
-        padding-left: 50px;
+        //width: 165px;
+        padding: 15px 15px 0 50px;
         position: relative;
         font-family: $font-family-3;
         color: #ffffff;
@@ -1494,7 +1496,6 @@
         height: 100%;
         border-radius: 50%;
         border: 4px solid #fff;
-        background-color: #ffd600;
         text-align: center;
         display: flex;
         justify-content: center;
@@ -1509,10 +1510,15 @@
         font-weight: 400;
         line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
         text-shadow: 0px 1px 8.19px rgba(0, 0, 0, 0.73);
-        padding-top: 16px;
+        //padding-top: 16px;
       }
 
       .gift {
+        background: url(../images/gift.png) no-repeat;
+        display: block;
+        content: '';
+        width:63px;
+        height: 62px;
       }
 
       .price {
@@ -2443,6 +2449,10 @@ h3 {
         a{
           display: block;
           padding: 5px 20px 5px 40px;
+
+          &:hover{
+            text-decoration: underline;
+          }
         }
       }
     }
