@@ -177,7 +177,7 @@ $this->registerJs('
                     });
                     
                     function getGeoposition(data) {
-                    $.post(\'index.php?r=company/add-address\', data, function (data) {
+                    $.post(\'/company/add-address\', data, function (data) {
                         initMap(data.coordinates);
                         var address = "<div class=\'address\'><label>" + data.address + "</label></div>"
                         $("#addresses").append(address);
