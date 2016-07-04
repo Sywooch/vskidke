@@ -108,17 +108,14 @@ class UserController extends Controller
         $profile = $model->getProfile()->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if ($profile->load(Yii::$app->request->post())) {
-                $profile->user_id = $model->id;
-                if($profile->save()) {
-                    $uploadForm            = new UploadForm();
-                    $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
-                    $uploadForm->model     = $profile;
-                    $uploadForm->directory = 'profile';
+            if ($profile->load(Yii::$app->request->post() && $profile->save())) {
+                $uploadForm            = new UploadForm();
+                $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
+                $uploadForm->model     = $profile;
+                $uploadForm->directory = 'profile';
 
-                    $profile->img = $uploadForm->upload();
-                    $profile->save();
-                }
+                $profile->img = $uploadForm->upload();
+                $profile->save();
             }
 
             Yii::$app->getSession()->setFlash('success', 'Данные успешно сохранены');
@@ -126,7 +123,7 @@ class UserController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'model'   => $model,
                 'profile' => $profile
             ]);
         }
