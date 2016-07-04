@@ -150,6 +150,7 @@ class DiscountController extends BaseController {
     
     public function actionComment() {
         $comment = new Comment();
+        
         if(\Yii::$app->request->isPost) {
             $post = \Yii::$app->request->post();
 
