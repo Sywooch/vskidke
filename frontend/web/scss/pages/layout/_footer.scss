@@ -13,8 +13,10 @@
     }
   }
   .social {
+    display: none;
     @include sm {
       float: right;
+      display: block;
     }
   }
 

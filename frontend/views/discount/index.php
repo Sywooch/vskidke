@@ -50,16 +50,18 @@ $model;
                     <div class="img-holder">
                         <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
                         <div class="label">
-                            <div class="price">
+
                                 <?php if($model->discount_percent): ?>
                                     <div class="action">-<?= $model->discount_percent; ?>%</div>
                                 <?php elseif($model->discount_old_price && $model->discount_price): ?>
-                                    <span class='old-price'><?= $model->discount_old_price; ?></span>
-                                    <span class='new-price'><?= $model->discount_price; ?></span> грн
+                                    <div class="price">
+                                        <span class='old-price'><?= $model->discount_old_price; ?></span>
+                                        <span class='new-price'><?= $model->discount_price; ?></span> грн
+                                    </div>
                                 <?php else: ?>
                                     <div class="gift"></div>
                                 <?php endif; ?>
-                            </div>
+
                         </div>
                         <div class="info-block">
                             <div class="views"><?= $model->discount_view; ?></div>
