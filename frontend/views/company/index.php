@@ -137,18 +137,18 @@ $address;
     </div>
     <aside class="sidebar-left sidebar">
         <a href="#" class="sidebar-banner">
-            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
         </a>
         <a href="#" class="sidebar-banner">
-            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
         </a>
     </aside>
     <aside class="sidebar-right sidebar">
         <a href="#" class="sidebar-banner">
-            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
         </a>
         <a href="#" class="sidebar-banner">
-            <img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
         </a>
     </aside>
 </div>
@@ -168,16 +168,17 @@ $this->registerJs('
                             city_id: cityId,
                             user_id: userId
                         };
-                        
+
                         getGeoposition(data);
-                        
+
                         if($("#map").css("display") == "none") {
                             $("#map").slideToggle(400);
                         }
                     });
-                    
+
                     function getGeoposition(data) {
-                    $.post(\'/company/add-address\', data, function (data) {
+                    console.log(data)
+                    $.post("/company/kiev/add-address", data, function (data) {
                         initMap(data.coordinates);
                         var address = "<div class=\'address\'><label>" + data.address + "</label></div>"
                         $("#addresses").append(address);

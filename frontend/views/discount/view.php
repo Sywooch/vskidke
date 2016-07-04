@@ -59,9 +59,11 @@ if($discount->discount_percent) {
                         <div class="price">
                             <?php if($discount->discount_percent): ?>
                                 <div class="action">-<?= $discount->discount_percent; ?>%</div>
-                            <?php else: ?>
+                            <?php elseif($discount->discount_old_price && $discount->discount_price): ?>
                                 <span class='old-price'><?= $discount->discount_old_price; ?></span>
                                 <span class='new-price'><?= $discount->discount_price; ?></span> грн
+                            <?php else: ?>
+                                <div class="gift"></div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -136,6 +138,6 @@ if($discount->discount_percent) {
             <?php endif; ?>
         </div>
     </div>
-    <aside class="sidebar-left sidebar"><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a></aside>
-    <aside class="sidebar-right sidebar"><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="../images/banner.png" onerror="src=&quot;../images/banner.png&quot;"></a></aside>
+    <aside class="sidebar-left sidebar"><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a></aside>
+    <aside class="sidebar-right sidebar"><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a></aside>
 </div>

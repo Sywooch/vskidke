@@ -84,14 +84,14 @@ $category;
         </div>
     </div>
     <div id="owl-header" class="owl-carousel owl-theme">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
-        <img src="../images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
+        <img src="/images/header-banner.png" onerror="src=''">
         <div class="owl-controls">
             <div id="customNav" class="owl-nav"></div>
             <div id="customDots" class="owl-dots"></div>

@@ -34,7 +34,7 @@
     });
 
     $("#register").on('click', function () {
-        $.get('/site/signup', function (data) {
+        $.get('/site/kiev/signup', function (data) {
             $(".modal-container").html(data);
             $(".mask, #registration-modal").show();
             $('body').addClass('modal-open');
@@ -42,7 +42,7 @@
     });
 
     $("#login").on('click', function () {
-        $.get('/site/login', function (data) {
+        $.get('/site/kiev/login', function (data) {
             $(".modal-container").html(data);
             $(".mask, #login-modal").show();
             $('body').addClass('modal-open');
@@ -52,7 +52,7 @@
     $(".edit").on('click', function (event) {
         event.preventDefault();
         $("#companyForm").ajaxForm({
-            url: '/company/index',
+            url: '/company/kiev/index',
             success: function (data) {
                 return true
             }
@@ -62,7 +62,7 @@
      $("body").on('click', "#forgot-password", function (event) {
          event.preventDefault();
          $("#request-password-reset-form").ajaxForm({
-             url: '/site/password-reset-request',
+             url: '/site/kiev/password-reset-request',
              success: function (data) {
                  return true
              }
@@ -72,7 +72,7 @@
      $("body").on('click', "#loginSubmit", function (event) {
          event.preventDefault();
          $("#login-form").ajaxForm({
-             url: '/site/login',
+             url: '/site/kiev/login',
              success: function (data) {
                  return true
              }
@@ -84,14 +84,10 @@
 
          $.ajax({
              type: "POST",
-             url: 'index.php?r=site/index',
+             url: '/site/kiev/index',
              data: {city: link, _csrf: $("input[name='_csrf']").val()},
              success: function (data) {
-                 var str    = window.location.href;
-                 var params = str.split('?')[1];
-                 var param  = params.split('&');
-
-                 window.location.href = 'index.php?' + param[0] + '&city=' + data
+                 window.location.href = '/' + link;
              }
          });
      });
@@ -131,7 +127,7 @@
      });
 
      $(".modal-container").on('click', '#register', function () {
-         $.get('/site/signup', function (data) {
+         $.get('/site/kiev/signup', function (data) {
              $(".modal-container").html(data);
              $("#login-modal").hide();
              $("#registration-modal").show();
@@ -139,7 +135,7 @@
      });
 
      $(".modal-container").on('click', '#password', function () {
-         $.get('/site/password-reset-request', function (data) {
+         $.get('/site/kiev/password-reset-request', function (data) {
              $(".modal-container").html(data);
              $("#login-modal").hide();
              $("#forgot-modal").show();
