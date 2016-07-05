@@ -87,7 +87,7 @@ if($discount->discount_percent) {
             <h1 class="page-title">Комментарии</h1>
         </div>
         <?php $form = ActiveForm::begin([
-            'action'  =>'/index.php?r=discount/comment',
+            'action'  => Url::to(['/discount/comment']),
             'options' => [
                 'id'      => 'commentForm',
             ],
@@ -110,8 +110,11 @@ if($discount->discount_percent) {
                     'class' => 'form-input textarea',
                     'placeholder' => 'Введите текст сообщения'
                 ])->label(false); ?>
+                
                 <?= $form->field($comment, 'discount_id')->hiddenInput(['value' => $discount->discount_id])->label(false); ?>
+                
                 <?= $form->field($comment, 'date')->hiddenInput(['value' => Yii::$app->formatter->asDatetime(date('Y-m-d H:i:s'), 'php:Y-m-d H:i:s')])->label(false); ?>
+                
                 <?php if(!Yii::$app->user->isGuest): ?>
                     <?= $form->field($comment, 'user_id')->hiddenInput(['value' => Yii::$app->user->identity->getId()])->label(false); ?>
                 <?php endif; ?>
@@ -138,6 +141,20 @@ if($discount->discount_percent) {
             <?php endif; ?>
         </div>
     </div>
-    <aside class="sidebar-left sidebar"><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a></aside>
-    <aside class="sidebar-right sidebar"><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a><a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a></aside>
+    <aside class="sidebar-left sidebar">
+        <a href="#" class="sidebar-banner">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
+        </a>
+        <a href="#" class="sidebar-banner">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
+        </a>
+    </aside>
+    <aside class="sidebar-right sidebar">
+        <a href="#" class="sidebar-banner">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
+        </a>
+        <a href="#" class="sidebar-banner">
+            <img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;">
+        </a>
+    </aside>
 </div>

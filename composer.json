@@ -24,7 +24,8 @@
         "rkit/yii2-ajaxform-plugin": "^0.0.4",
         "nodge/yii2-eauth": "~2.0",
         "kartik-v/yii2-widget-growl": "*",
-        "yiisoft/yii2-sphinx": "^2.0"
+        "yiisoft/yii2-sphinx": "^2.0",
+        "uran1980/yii2-jquery-essential": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
