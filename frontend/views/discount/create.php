@@ -28,7 +28,7 @@ $address;
                 <div class="subtitle">Так будет выглядить Ваша скидка:</div>
                 <div class="item blue">
                     <div class="img-holder">
-                        <img id="preview" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo2.png&quot;">
+                        <img id="preview" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;/images/error_photo2.png&quot;">
                         <div class="label">
                             <div id="previewPercent" class="action">-50%</div>
                         </div>
@@ -52,7 +52,7 @@ $address;
             ]); ?>
                 <div class="edit-form">
                     <div class="img-block">
-                        <img src="<?= $profile->getImg('small'); ?>" onerror="src=&quot;../images/error_logo.png&quot;">
+                        <img src="<?= $profile->getImg('small'); ?>" onerror="src=&quot;/images/error_logo.png&quot;">
                         <!--| <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>-->
                         <!--| <input type="file" id="fileID" style="visibility: hidden;" />-->
                         <?= $form->field($profile, 'img')->hiddenInput(['value' => $profile->img])->label(false); ?>
@@ -145,7 +145,7 @@ $address;
                 </div>
                 <div class="add-form">
                     <div class="img-block">
-                        <img id="blah" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;../images/error_photo.png&quot;">
+                        <img id="blah" src="<?php if(!$discountModel->isNewRecord && !empty($discountModel->img)): ?><?= Yii::$app->params['uploadUrl'] . $discountModel->img; ?><?php else: ?>#<?php endif; ?>" onerror="src=&quot;/images/error_photo.png&quot;">
                         <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить фото</a>
                         <?= $form->field($discountModel, 'img')->fileInput([
                             'id'    => 'fileID',

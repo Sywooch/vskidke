@@ -35,7 +35,7 @@ $address;
                               <?php else: ?>
                                 #
                               <?php endif; ?>"
-                         onerror="src=&quot;../images/error_logo.png&quot;">
+                         onerror="src=&quot;/images/error_logo.png&quot;">
 
                     <a href="#" class='img-add' onclick="document.getElementById('fileID').click(); return false;" />Добавить лого</a>
 

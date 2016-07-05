@@ -37,7 +37,7 @@ if($discount->discount_percent) {
         </div>
         <div class="info-wrapp">
             <div class="img-holder">
-                <img src="<?= $company->relatedRecords['profile']->getImg('small'); ?>" onerror="src='../images/error_logo.png'">
+                <img src="<?= $company->relatedRecords['profile']->getImg('small'); ?>" onerror="src='/images/error_logo.png'">
             </div>
             <div class="info-holder">
                 <?php if ( $company->relatedRecords['profile']->profile_name): ?>
@@ -74,7 +74,7 @@ if($discount->discount_percent) {
         <div class="post-text-holder">
             <div class="post-img-holder">
                 <span class="img-wrapp">
-                    <img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;../images/error_photo.png&quot;">
+                    <img src="<?= $discount->getImg('small'); ?>" onerror="src=&quot;/images/error_photo.png&quot;">
                 </span>
 <!--                <div class="link-wrapp"> <a href="#" class="liked">Избранное</a><a href="#" class="share">Поделиться</a></div>-->
             </div>
@@ -128,9 +128,9 @@ if($discount->discount_percent) {
                         <div class="comment-text"><?= $discountComment->text; ?></div>
                         <div class="img-holder">
                             <?php if($user): ?>
-                                <img src="<?= $user->relatedRecords['profile']->getImg('small'); ?>" onerror="src='../images/error_photo.png'">
+                                <img src="<?= $user->relatedRecords['profile']->getImg('small'); ?>" onerror="src='/images/error_photo.png'">
                             <?php else: ?>
-                                <img src="../images/error_photo.png" onerror="src='../images/error_photo.png'">
+                                <img src="/images/error_photo.png" onerror="src='/images/error_photo.png'">
                             <?php endif; ?>
                         </div>
                     </div>

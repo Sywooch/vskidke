@@ -48,7 +48,7 @@ $model;
             <div class="item <?= $colorClass ?>">
                 <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
                     <div class="img-holder">
-                        <img src="<?= $model->getImg('small'); ?>" onerror="src='../images/error_photo2.png'">
+                        <img src="<?= $model->getImg('small'); ?>" onerror="src='/images/error_photo2.png'">
                         <div class="label">
 
                                 <?php if($model->discount_percent): ?>

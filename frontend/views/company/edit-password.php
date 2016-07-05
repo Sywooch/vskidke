@@ -20,7 +20,7 @@ $profile = $user->relatedRecords['profile'];
 
         ]); ?>
             <div class="edit-form pass">
-                <div class="img-holder"><img src="<?= $profile->getImg('small'); ?>" onerror="src=&quot;../images/error_logo.png&quot;"></div>
+                <div class="img-holder"><img src="<?= $profile->getImg('small'); ?>" onerror="src=&quot;/images/error_logo.png&quot;"></div>
                 <div class="info-holder">
                     <div class="item"><?= $profile->profile_name; ?></div>
                     <div class="item"><?= $profile->profile_phone; ?></div>
