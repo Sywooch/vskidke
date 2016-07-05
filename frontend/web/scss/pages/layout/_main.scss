@@ -209,7 +209,7 @@
       text-align: center;
       overflow: hidden;
 
-      @include media-custom(480px){
+      @include media-custom(480px) {
         height: 308px;
       }
 
@@ -232,8 +232,7 @@
         padding: 45px 32px 0 15px;
         border-radius: 50%;
 
-
-        @include media-custom(480px){
+        @include media-custom(480px) {
           width: 220px;
           height: 220px;
 
@@ -266,8 +265,7 @@
         line-height: 1; /* Приближение из-за подстановки шрифтов */
         text-shadow: 0px 1px 8.19px rgba(0, 0, 0, 0.73);
 
-
-        @include media-custom(480px){
+        @include media-custom(480px) {
           padding-top: 58px;
           font-size: 50.18px; /* Приближение из-за подстановки шрифтов */
         }
@@ -279,25 +277,24 @@
         }
       }
 
-      .gift{
+      .gift {
 
         background: url(../images/gift.png) no-repeat;
         background-size: contain;
         display: block;
         content: '';
-        width:63px;
+        width: 63px;
         height: 62px;
         margin: 0 0 0 10px;
 
-
-        @include media-custom(480px){
-          width:102px;
+        @include media-custom(480px) {
+          width: 102px;
           height: 99px;
           margin: 36px 0 0 42px;
         }
 
-        @include sm{
-          width:63px;
+        @include sm {
+          width: 63px;
           height: 62px;
           margin: 0 0 0 10px;
         }
@@ -313,8 +310,7 @@
         text-align: center;
         text-shadow: 0px 1px 4.55px rgba(0, 0, 0, 0.54);
 
-
-        @include media-custom(480px){
+        @include media-custom(480px) {
           font-size: 41.82px; /* Приближение из-за подстановки шрифтов */
           line-height: 27px; /* Приближение из-за подстановки шрифтов */
         }
@@ -330,8 +326,7 @@
           display: inline-block;
           padding-top: 0;
 
-
-          @include media-custom(480px){
+          @include media-custom(480px) {
             padding-top: 40px;
           }
 
@@ -370,7 +365,7 @@
         width: 100%;
         padding: 10px;
 
-        @include media-custom(480px){
+        @include media-custom(480px) {
           padding: 16px;
         }
 
@@ -387,7 +382,7 @@
           line-height: 1; /* Приближение из-за подстановки шрифтов */
           text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
 
-          @include media-custom(480px){
+          @include media-custom(480px) {
             font-size: 25.09px; /* Приближение из-за подстановки шрифтов */
           }
 
@@ -419,7 +414,7 @@
             margin-right: 5px;
             text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
 
-            @include media-custom(480px){
+            @include media-custom(480px) {
               width: 38px;
               height: 22px;
               position: static;
@@ -465,7 +460,7 @@
         text-align: center;
         text-decoration: none;
 
-        @include media-custom(480px){
+        @include media-custom(480px) {
           width: 42px;
           height: 42px;
         }
@@ -486,7 +481,7 @@
           font-size: 14px;
           text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
 
-          @include media-custom(480px){
+          @include media-custom(480px) {
             line-height: 42px;
             font-size: 25px;
           }
@@ -537,7 +532,7 @@
 
         text-overflow: ellipsis;
 
-        @include media-custom(480px){
+        @include media-custom(480px) {
           font-size: 41.82px; /* Приближение из-за подстановки шрифтов */
           line-height: 47.733px; /* Приближение из-за подстановки шрифтов */
         }
@@ -549,14 +544,14 @@
       }
     }
 
-
   }
 }
 
 //color scheme
 
 &.yellow {
-  .label {
+  .label,
+  .back-btn {
     background-color: #ffd600;
   }
   .android,
@@ -572,7 +567,7 @@
 }
 
 &.pink {
-  .label {
+  .label, .back-btn {
     background-color: #f06eaa;
   }
   .android,
@@ -586,8 +581,9 @@
     }
   }
 }
+
 &.orange {
-  .label {
+  .label, .back-btn {
     background-color: #ff5200;
   }
   .android,
@@ -601,8 +597,9 @@
     }
   }
 }
+
 &.orange-light {
-  .label {
+  .label, .back-btn {
     background-color: #f8941d;
   }
   .android,
@@ -616,8 +613,9 @@
     }
   }
 }
+
 &.green {
-  .label {
+  .label, .back-btn {
     background-color: #00cb43;
   }
   .android,
@@ -631,8 +629,9 @@
     }
   }
 }
+
 &.green-light {
-  .label {
+  .label, .back-btn {
     background-color: #4aff60;
   }
   .android,
@@ -646,8 +645,9 @@
     }
   }
 }
+
 &.blue {
-  .label {
+  .label, .back-btn {
     background-color: #286fff;
   }
   .android,
@@ -661,8 +661,9 @@
     }
   }
 }
+
 &.blue-light {
-  .label {
+  .label, .back-btn {
     background-color: #00b7ff;
   }
   .android,
@@ -676,8 +677,9 @@
     }
   }
 }
+
 &.violet {
-  .label {
+  .label, .back-btn {
     background-color: #801ace;
   }
   .android,
@@ -691,8 +693,9 @@
     }
   }
 }
+
 &.violet-light {
-  .label {
+  .label, .back-btn {
     background-color: #a956d4;
   }
   .android,
@@ -706,8 +709,9 @@
     }
   }
 }
+
 &.purple {
-  .label {
+  .label, .back-btn {
     background-color: #bc3581;
   }
   .android,
@@ -811,8 +815,6 @@
     box-sizing: border-box;
     width: 235px;
     height: 235px;
-
-
 
     @include sm {
       height: 140px;
@@ -1019,7 +1021,7 @@
     border-color: #18bef0;
     box-sizing: border-box;
     width: 253px;
-    height:253px;
+    height: 253px;
     img {
       max-width: 100%;
       max-height: 253px;
@@ -1033,7 +1035,7 @@
     }
 
     .img-add {
-      margin-top:10px;
+      margin-top: 10px;
       display: block;
       font-family: $font-family-1;
       color: #0e5f82;
@@ -1131,18 +1133,19 @@
 
 //Price-holder
 .field-old-price,
-.field-new-price{
+.field-new-price {
   @include sm {
     width: 254/552*100%;
   }
 }
 
-.field-new-price{
+.field-new-price {
   @include sm {
     float: right;
   }
 }
-.field-old-price{
+
+.field-old-price {
   margin-bottom: 15px;
   @include sm {
     margin-bottom: 0;
@@ -1150,7 +1153,6 @@
     //margin-right: 38/552*100%;
   }
 }
-
 
 //End Price-holder
 
@@ -1325,10 +1327,10 @@
 
 .edit-form.pass {
   @include clearfix;
-  margin-top:20px;
+  margin-top: 20px;
   @include sm {
     width: 50%;
-    margin-top:0;
+    margin-top: 0;
   }
 
   .img-holder {
@@ -1423,8 +1425,11 @@
       float: left;
       width: 175px;
       display: inline-block;
-      background: url(../images/back-btn-bg.png) 100% no-repeat;
-      background-size: cover;
+      background-image: url(../images/line.png);
+      background-position: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
+
       padding: 20px 0 0 35px;
       height: 100%;
 
@@ -1495,7 +1500,7 @@
 
     margin-bottom: 20px;
 
-    @include sm{
+    @include sm {
       display: flex;
       justify-content: space-around;
       align-items: center;
@@ -1513,7 +1518,7 @@
 
       margin: 0 auto;
 
-      @include sm{
+      @include sm {
         margin: 0 40px 0 0;
 
       }
@@ -1616,7 +1621,7 @@
         background: url(../images/gift.png) no-repeat;
         display: block;
         content: '';
-        width:63px;
+        width: 63px;
         height: 62px;
       }
 
@@ -1703,7 +1708,7 @@
   max-width: 300px;
   margin: 0 0 20px 20px;
 
-  .img-wrapp{
+  .img-wrapp {
     text-align: center;
     border-radius: 50%;
     border-style: solid;
@@ -1757,11 +1762,11 @@
 .add-comment-form {
   @include clearfix;
 
-  .field-comment-username{
-    margin-bottom:15px;
+  .field-comment-username {
+    margin-bottom: 15px;
   }
 
-  .field-comment-text{
+  .field-comment-text {
     margin-bottom: 20px;
   }
 
@@ -1889,7 +1894,7 @@
         border-color: #fff;
         box-sizing: border-box;
         width: 100%;
-        height:100%;
+        height: 100%;
         background: #fff;
       }
     }
@@ -2290,7 +2295,7 @@ h3 {
   .tab-header-and-content {
     list-style: none;
 
-    @include xs{
+    @include xs {
       display: inline;
     }
 
@@ -2360,12 +2365,12 @@ h3 {
   display: inline-block;
 
   @include sm {
-    margin-top:2px;
+    margin-top: 2px;
   }
 
-  &:before{
+  &:before {
     position: absolute;
-    bottom:3px;
+    bottom: 3px;
     left: 3px;
     width: 100%;
     border-bottom: 2px solid #0e5f82;
@@ -2503,24 +2508,23 @@ h3 {
 }
 
 //drop-downs
-.dropdown-wrapp{
+.dropdown-wrapp {
   position: relative;
   float: left;
 
-  @include sm{
+  @include sm {
     float: right;
   }
 
-
   @include clearfix;
 
-  &:hover{
-    .dropdown-menu{
+  &:hover {
+    .dropdown-menu {
       display: block;
     }
   }
 
-  .dropdown-menu{
+  .dropdown-menu {
     position: absolute;
     top: 100%;
     right: 0;
@@ -2532,25 +2536,25 @@ h3 {
     box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     display: none;
 
-    > li{
+    > li {
       > a {
         display: block;
         padding: 10px 20px;
         text-decoration: none;
-        &:hover{
+        &:hover {
           text-decoration: underline;
         }
       }
     }
 
-    .sub-menu{
+    .sub-menu {
       list-style: none;
-      li{
-        a{
+      li {
+        a {
           display: block;
           padding: 5px 20px 5px 40px;
 
-          &:hover{
+          &:hover {
             text-decoration: underline;
           }
         }
