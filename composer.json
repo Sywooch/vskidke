@@ -25,7 +25,10 @@
         "nodge/yii2-eauth": "~2.0",
         "kartik-v/yii2-widget-growl": "*",
         "yiisoft/yii2-sphinx": "^2.0",
-        "uran1980/yii2-jquery-essential": "dev-master"
+        "uran1980/yii2-jquery-essential": "dev-master",
+        "kartik-v/yii2-widget-depdrop": "@dev",
+        "kartik-v/yii2-widget-datepicker": "@dev",
+        "kartik-v/yii2-widget-select2": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

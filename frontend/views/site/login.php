@@ -6,6 +6,8 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
+
 ?>
 <div id="login-modal" class="modal-layout-wrapp">
     <div class="modal-layout">
@@ -29,7 +31,7 @@ use yii\bootstrap\ActiveForm;
         <?php ActiveForm::end(); ?>
         <div class="registration-link"><a id="register" href="#">Регистрация</a></div>
         <div class="subtitle">Войдите с помощью</div>
-        <?php echo \nodge\eauth\Widget::widget(['action' => '/site/login']); ?>
+        <?= frontend\widgets\social\SocialWidget::widget(['action' => Url::to(['/site/login'])]); ?>
 <!--        <div class="modal-social">-->
 <!--            <a href="https://www.facebook.com/%D0%94%D0%BE%D0%BA%D1%82%D0%BE%D1%80%D0%B0-UA-1526716247624396" target="_blank" class="fb"></a>-->
 <!--            <a href="https://vk.com/doctora_ua" target="_blank" class="vk"></a>-->

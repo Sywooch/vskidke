@@ -35,7 +35,7 @@ $model;
                 }
                 ?>
                 <div class="item <?= $colorClass ?>">
-                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                    <a href="<?= Url::to(['/discount/create', 'id' => $model->discount_id]); ?>">
                         <div class="img-holder">
                             <img src="<?= $model->getImg('small'); ?>" onerror="src='/images/error_photo2.png'">
                             <div class="label">
@@ -59,7 +59,7 @@ $model;
                             </div>
                         </div>
                     </a>
-                    <a href="<?= Url::to(['/discount/view', 'id' => $model->discount_id]); ?>">
+                    <a href="<?= Url::to(['/discount/create', 'id' => $model->discount_id]); ?>">
                         <div class="text-holder">
                             <div class="item-title"><?= $model->discount_title; ?></div>
                         </div>

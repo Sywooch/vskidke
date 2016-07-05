@@ -7,6 +7,7 @@
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 ?>
 
@@ -29,6 +30,6 @@ use yii\bootstrap\ActiveForm;
             <?= Html::submitButton('Получить пароль', ['class' => 'form-submit']); ?>
         <?php ActiveForm::end(); ?>
         <div class="subtitle">Войдите с помощью</div>
-        <?php echo \nodge\eauth\Widget::widget(['action' => '/site/login']); ?>
+        <?= frontend\widgets\social\SocialWidget::widget(['action' => Url::to(['/site/login'])]); ?>
     </div>
 </div>
