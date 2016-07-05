@@ -35,9 +35,25 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Пользователи', 'url' => ['/user/index']],
-        ['label' => 'Скидки', 'url' => ['/discounts/index']],
+        [
+            'label' => 'Home',
+            'url' => ['/site/index']
+        ],
+        [
+            'label' => 'Пользователи',
+            'url' => ['/user/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
+        [
+            'label' => 'Скидки',
+            'url' => ['/discounts/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
+        [
+            'label' => 'Города',
+            'url' => ['/cities/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

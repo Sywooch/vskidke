@@ -49,12 +49,44 @@ class DiscountAddresses extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function attachTags($addresses, $model) {
+        parent::deleteAll(['discount_id' => $model->discount_id]);
+
+        if (is_array($addresses)) {
+            foreach ($addresses AS $address) {
+                $relation               = new self();
+                $relation->address_id   = $address;
+                $relation->discount_id = $model->discount_id;
+                $relation->save();
+            }
+        }
+
+        return true;
+    }
+
+    public static function getDiscountAddresses($model) {
+        $addresses = parent::find()->where(['discount_id' => $model->discount_id])->with('address.city')->all();
+        $result    = [];
+        $i         = 0;
+
+        foreach ($addresses as $address) {
+            /** @var CompanyAddresses $companyAddress */
+            $companyAddress     = $address->relatedRecords['address'];
+            $city               = $companyAddress->relatedRecords['city'];
+            $result[$i]   = $companyAddress->id;
+//            $result[$companyAddress->id]['name'] = $city->city_name . ' ' . $companyAddress->address;
+            $i++;
+        }
+
+        return $result;
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getAddress()
     {
-        return $this->hasOne(CompanyAddresses::className(), ['id' => 'address_id'])->inverseOf('discountAddresses');
+        return $this->hasOne(CompanyAddresses::className(), ['id' => 'address_id']);
     }
 
     /**

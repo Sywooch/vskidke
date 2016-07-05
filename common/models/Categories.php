@@ -60,6 +60,10 @@ class Categories extends \yii\db\ActiveRecord
         ];
     }
 
+    public static function getCategory($id) {
+        return parent::findOne($id);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */

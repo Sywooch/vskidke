@@ -78,7 +78,8 @@ class DiscountController extends BaseController {
             'models'  => $models,
             'pages'   => $pages,
             'popular' => $popular,
-            'new'     => $new
+            'new'     => $new,
+            'limit'   => $limit
         ]);
     }
 

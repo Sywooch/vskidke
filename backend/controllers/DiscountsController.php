@@ -3,13 +3,17 @@
 namespace backend\controllers;
 
 use common\models\CompanyAddresses;
+use common\models\DiscountAddresses;
+use common\models\UploadForm;
 use Yii;
 use common\models\Discounts;
+use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * DiscountsController implements the CRUD actions for Discounts model.
@@ -66,8 +70,21 @@ class DiscountsController extends Controller
     public function actionCreate()
     {
         $model = new Discounts();
+        $post  = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($post) && $model->save()) {
+            $uploadForm            = new UploadForm();
+            $uploadForm->img       = UploadedFile::getInstance($model, 'img');
+            $uploadForm->model     = $model;
+            $uploadForm->directory = 'discount';
+
+            $model->img = $uploadForm->upload();
+            $model->save();
+
+            if(isset($post['addresses'])) {
+                DiscountAddresses::attachTags($post['addresses'], $model);
+            }
+            
             return $this->redirect(['view', 'id' => $model->discount_id]);
         } else {
             return $this->render('create', [
@@ -87,6 +104,18 @@ class DiscountsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $uploadForm            = new UploadForm();
+            $uploadForm->img       = UploadedFile::getInstance($model, 'img');
+            $uploadForm->model     = $model;
+            $uploadForm->directory = 'discount';
+
+            $model->img = $uploadForm->upload();
+            $model->save();
+
+            if(isset($post['addresses'])) {
+                DiscountAddresses::attachTags($post['addresses'], $model);
+            }
+
             return $this->redirect(['view', 'id' => $model->discount_id]);
         } else {
             return $this->render('update', [

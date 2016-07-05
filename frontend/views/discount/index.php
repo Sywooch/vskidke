@@ -13,6 +13,9 @@ $this->title = 'Vskidke.com';
 /** @var Discounts $model */
 $model;
 
+$get = Yii::$app->request->get();
+unset($get['city']);
+
 ?>
 <?php Pjax::begin(); ?>
 <div class="container main">
@@ -24,12 +27,27 @@ $model;
             </div>
             <div class="filter-select-block"><span class="descr">акций на странице</span>
                 <div class="select-filter">
-                    <select>
-                        <option>10</option>
-                        <option>20</option>
-                        <option>30</option>
-                        <option>40</option>
-                        <option>50</option>
+                    <select id="limit-page">
+                        <option <?= $limit == 10 ? 'selected' : ''; ?>
+                                value="<?= Url::to(['/discount/index', $get, 'limit' => 10])?>">
+                            10
+                        </option>
+                        <option <?= $limit == 20 ? 'selected' : ''; ?>
+                                value="<?= Url::to(['/discount/index', $get, 'limit' => 20])?>">
+                            20
+                        </option>
+                        <option <?= $limit == 30 ? 'selected' : ''; ?>
+                                value="<?= Url::to(['/discount/index', $get, 'limit' => 30])?>">
+                            30
+                        </option>
+                        <option <?= $limit == 40 ? 'selected' : ''; ?>
+                                value="<?= Url::to(['/discount/index', $get, 'limit' => 40])?>">
+                            40
+                        </option>
+                        <option <?= $limit == 50 ? 'selected' : ''; ?>
+                                value="<?= Url::to(['/discount/index', $get, 'limit' => 50])?>">
+                            50
+                        </option>
                     </select>
                 </div>
             </div>

@@ -126,6 +126,12 @@ class Discounts extends \yii\db\ActiveRecord
         }
     }
 
+    public function getCompany() {
+        $user = $this->getUser()->with('profile')->one();
+
+        return $user->relatedRecords['profile'];
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
