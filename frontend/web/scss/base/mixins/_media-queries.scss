@@ -16,7 +16,16 @@
   @media screen and (min-width: #{$sm}){
     @content;
   }
-}//md
+}
+
+//media min width 480px
+@mixin minW480{
+  @media screen and (min-width: #{480px}){
+    @content;
+  }
+}
+
+//md
 @mixin md{
   @media screen and (min-width: #{$md}){
     @content;

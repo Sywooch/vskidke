@@ -13,7 +13,7 @@ $category;
 <header class="header">
     <div class="topbar container">
         <span id="toggle-menu" class="menu-btn"><a href="#"></a></span>
-        <span class="user"><a href="#"></a></span>
+        <span class="user" id="toggle-header-dropdown"><a href="#"></a></span>
         <div class="logo"><a href="<?= Url::to(['/discount/index']); ?>"></a>
         </div>
         <a href="<?= Url::to(['/discount/create']); ?>" class="mobile-create-btn"></a>
@@ -37,7 +37,7 @@ $category;
                     <?php else: ?>
                         <span class="dropdown-wrapp">
                             <a href="#" class="registration dropdown-button">Мои данные</a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" id="header-dropdown-menu">
                                 <li>
                                     <a href="<?= Url::to(['/company/index']); ?>">Мои данные</a>
                                 </li>

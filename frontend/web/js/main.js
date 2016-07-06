@@ -103,7 +103,12 @@
 
      //open menu
      $('#toggle-menu').on('click', function (e) {
-         $('#collapse-menu').slideToggle('fast');
+         $('#collapse-menu').toggleClass('menu-open').animate({width:'toggle'},350);
+         e.preventDefault();
+     });
+
+     $('#toggle-header-dropdown').on('click', function (e) {
+         $('#header-dropdown-menu').slideToggle(350);
          e.preventDefault();
      });
 

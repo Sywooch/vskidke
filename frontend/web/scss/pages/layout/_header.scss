@@ -1,13 +1,32 @@
 .header {
   .topbar {
-    padding: 23px 28px;
+    padding: 10px 16px;
     background: #17bdf0;
     @include clearfix;
     position: relative;
 
+    @include minW480 {
+      padding: 23px 28px;
+    }
     @include sm {
       background: $global-color;
       padding: 0 15px;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      position: fixed;
+      height: 59px;
+      background: #17bdf0;
+      top: 0;
+      left: 0;
+      z-index: 100000;
+      @include sm {
+       display: none;
+      }
+
     }
 
     //mobile navigation
@@ -16,7 +35,20 @@
       float: left;
       cursor: pointer;
       width: 42px;
-      height: 35px;
+      height: 24px;
+      background-size: auto 100%;
+      margin-top: 7px;
+      position: fixed;
+      z-index:100010;
+
+      @include minW480 {
+        height: 35px;
+        margin-top: 0;
+      }
+
+      @include sm {
+        display: none;
+      }
 
       a {
         display: block;
@@ -24,6 +56,10 @@
         height: 100%;
         content: '';
         background: url(../images/menu-btn.png) no-repeat;
+        background-size: auto 100%;
+        @include minW480 {
+          background-size: auto auto;
+        }
       }
 
       @include sm {
@@ -36,7 +72,18 @@
       display: block;
       float: right;
       width: 38px;
-      height: 38px;
+      height: 26px;
+      margin-top: 6px;
+
+      position: fixed;
+      right: 15px;
+      z-index: 100010;
+
+      @include minW480 {
+        height: 38px;
+        margin-top: 0;
+        right: 28px;
+      }
       @include sm {
         display: none;
       }
@@ -47,6 +94,12 @@
         height: 100%;
         content: '';
         background: url(../images/ic_people.png) no-repeat;
+        background-size: auto 100%;
+        background-position: right;
+        @include minW480 {
+          background-size: auto auto;
+          background-position: left;
+        }
       }
 
     }
@@ -79,11 +132,29 @@
       @include clearfix;
 
       @include sm {
-        display: block;
+        display: block!important;
         position: static;
         background: $global-color;
       }
-
+      .dropdown-wrapp {
+        position: static;
+        @include sm {
+          position: relative;
+        }
+      }
+      .dropdown-wrapp {
+        .dropdown-menu {
+          top: 59px;
+          position: fixed;
+          @include minW480 {
+            top: 85px;
+          }
+          @include sm {
+            top: 100%;
+            position: absolute;
+          }
+        }
+      }
     }
 
     .create-btn {
@@ -99,22 +170,44 @@
       margin: 0 auto;
       width: 276px;
       height: 39px;
+      padding: 4px 0 0;
+      @include minW480 {
+        padding: 0;
+      }
       @include sm {
-        width: rem(241);
-        height: rem(101);
+        width: rem(200);
+        height: rem(81);
         margin: 0;
         float: left;
       }
 
       a {
+        height: 28px;
+
         display: block;
         width: 100%;
-        height: 100%;
         content: '';
         background: url(../images/logo-mobile.png) no-repeat;
+        background-size: auto 100%;
+        background-position: center;
+
+        position: fixed;
+        left: 0;
+        z-index: 100000;
+
+        @include minW480 {
+          height: 40px;
+          background-size: auto auto;
+
+
+        }
 
         @include sm {
+          height: 81px;
+          position: relative;
+          left: auto;
           background: url(../images/logo-desctop.png) no-repeat;
+          background-size: auto 100%;
         }
 
       }
@@ -127,8 +220,12 @@
     .btn-holder {
       background: #cccccc;
       border-bottom: 1px solid #acacac;
-      padding: 52px 39px;
+      padding: 20px;
       width: 80%;
+      overflow: hidden;
+      @include minW480 {
+        padding: 52px 39px;
+      }
 
       .btn-row{
         @include clearfix;
@@ -142,6 +239,8 @@
           font-family: $font-family-3;
           background: #fff;
           color: #0e5f82;
+          height: 32px;
+          line-height: 32px;
 
           &:hover{
             background-color: #3f8bac;
@@ -171,7 +270,8 @@
 
           @include sm{
             float: right;
-            margin-right: 30px;
+            margin-right: 36px;
+            font-size: 13.5px;
           }
         }
 
@@ -187,7 +287,7 @@
       @include sm {
         background: $global-color;
         margin: 0;
-        padding: 21px 0 0;
+        padding: 13px 0 0;
         width: auto;
         float: right;
         border: none;
@@ -210,13 +310,13 @@
         border-color:  #3a809f;
         border-style: solid;
         background-color:  #ffffff;
-        width: 241px;
-        height: 61px;
+        width: 186px;
+        height: 48px;
         font-family:$font-family-3;
         color: #0e5f82;
-        font-size: 43.95px; /* Приближение из-за подстановки шрифтов */
+        font-size: 38px; /* Приближение из-за подстановки шрифтов */
         font-weight: 300;
-        line-height: 58px; /* Приближение из-за подстановки шрифтов */
+        line-height: 48px; /* Приближение из-за подстановки шрифтов */
         text-align: center;
         text-decoration: none;
 
@@ -224,6 +324,13 @@
           background-color: #3f8bac;
           color: #fff;
           text-decoration: none;
+        }
+
+        @include minW480 {
+          width: 241px;
+          height: 61px;
+          line-height: 58px; /* Приближение из-за подстановки шрифтов */
+          font-size: 43.95px; /* Приближение из-за подстановки шрифтов */
         }
 
         @include sm{
@@ -235,11 +342,11 @@
           border-style: solid;
           background-color: #ffffff;
           width: 162px;
-          height: 40px;
+          height: 32px;
           color: #0e5f82;
           font-size: 25.16px; /* Приближение из-за подстановки шрифтов */
           font-weight: 300;
-          line-height: 38px; /* Приближение из-за подстановки шрифтов */
+          line-height: 32px; /* Приближение из-за подстановки шрифтов */
           text-align: center;
         }
       }
@@ -250,15 +357,21 @@
         font-weight: 300;
         line-height: 1; /* Приближение из-за подстановки шрифтов */
         text-decoration: underline;
-        margin-bottom: 19px;
-        display: inline-block;
+        margin-bottom: 10px;
         font-family:$font-family-3;
+        &.dropdown-button {
+          display: none;
+        }
+
+        
 
         @include sm {
+
+          display: inline-block;
           font-size: rem(16);
           color: #0e5f82;
           display: block;
-          margin-top: 3px;
+          margin-top: 7px;
         }
       }
 
