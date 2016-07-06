@@ -26,7 +26,7 @@ class m160607_092123_create_discounts extends Migration
             'discount_price'      => $this->integer(),
             'discount_old_price'  => $this->integer(),
             'discount_percent'    => $this->integer(),
-            'img'                 => $this->string(255),
+            'img'                 => $this->string(255)->defaultValue(null),
             'date_create'         => $this->date(),
         ]);
 

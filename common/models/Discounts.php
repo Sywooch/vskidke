@@ -95,7 +95,7 @@ class Discounts extends \yii\db\ActiveRecord
         $newImg = Yii::getAlias('@frontend/web/upload') . $img;
 
         if (!file_exists($newImg) || is_dir($newImg)) {
-            $img = '/../img/bg-img.jpg';
+            $img = '/../images/error_photo2.png';
         } else {
             $img = Yii::$app->params['uploadUrl'] . $img;
         }
