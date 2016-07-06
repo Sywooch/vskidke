@@ -36,11 +36,9 @@ use yii\widgets\ActiveForm;
 
     <?= DepDrop::widget([
         'name' => 'addresses[]',
-//        'data' => $model->isNewRecord ? null : DiscountAddresses::getDiscountAddresses($model),
-        'options' => ['id'=>'city-id'],
+        'options' => ['id' => 'address-id'],
         'type' => DepDrop::TYPE_SELECT2,
         'select2Options' => [
-            'value' => $model->isNewRecord ? null : DiscountAddresses::getDiscountAddresses($model),
             'pluginOptions' => [
                 'allowClear'=>true,
                 'multiple' => true,
@@ -48,9 +46,9 @@ use yii\widgets\ActiveForm;
         ],
         'pluginOptions'=>[
             'depends'=>['user-id'],
-//            'initialize' => true,
-            'placeholder' => 'Выбрать',
-            'url' => Url::to(['/discounts/get-addresses'])
+            'initialize' => true,
+            'placeholder' => 'Выбрать аддресса',
+            'url' => Url::to(['/discounts/get-addresses', 'id' => $model->discount_id ? $model->discount_id : null])
         ]
     ]) ?>
 

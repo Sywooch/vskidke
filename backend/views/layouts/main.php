@@ -54,6 +54,11 @@ AppAsset::register($this);
             'url' => ['/cities/index'],
             'visible' => !Yii::$app->user->isGuest
         ],
+        [
+            'label' => 'Адресса',
+            'url' => ['/addresses/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -85,9 +90,11 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Vskidke <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">
+            <?= Html::a('Перейти на сайт', Yii::$app->params['frontUrl'], ['target' => '_blank'])?>
+        </p>
     </div>
 </footer>
 

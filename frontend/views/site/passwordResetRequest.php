@@ -6,6 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 ?>
 
@@ -14,7 +15,7 @@ use yii\bootstrap\ActiveForm;
         <div class="close"></div>
         <div class="modal-title">Забыли пароль?</div>
         <?php $form = ActiveForm::begin([
-            'action' => '/index.php?r=site/password-reset-request',
+            'action' => Url::to(['/site/password-reset-request']),
             'enableAjaxValidation' => true,
             'id'     => 'request-password-reset-form', 
             'class'  => 'form-registration'

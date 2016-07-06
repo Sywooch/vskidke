@@ -137,22 +137,31 @@ class DiscountsController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionGetAddresses() {
+    public function actionGetAddresses($id = null) {
         if(Yii::$app->request->isAjax && Yii::$app->request->isPost) {
-            $post = Yii::$app->request->post();
-            $userId = $post['depdrop_parents']['0'];
-            $result = [];
+            $post      = Yii::$app->request->post();
+            $userId    = $post['depdrop_parents']['0'];
+            $result    = [];
+            $selectedResult = [];
             $addresses = CompanyAddresses::find()->where(['user_id' => $userId])->with('city')->all();
+            $selected  = DiscountAddresses::find()->where(['discount_id' => $id])->with('address.city')->all();
+            $i         = 0;
+
+            foreach ($addresses as $address) {
+                $result[$i]['id']   = $address->id;
+                $result[$i]['name'] = $address->relatedRecords['city']->city_name . ' ' . $address->address;
+                $i++;
+            }
 
             $i = 0;
-            foreach ($addresses as $address) {
-                $result[$i]['id'] = $address->id;
-                $result[$i]['name']    = $address->relatedRecords['city']->city_name . ' ' . $address->address;
+            foreach ($selected as $select) {
+                $selectedResult[$i]['id']   = $select->address_id;
+                $selectedResult[$i]['name'] = $select->relatedRecords['address']->relatedRecords['city']->city_name . ' ' . $select->relatedRecords['address']->address;
                 $i++;
             }
 
 //            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            echo json_encode(['output' => $result, 'selected'=>'']);
+            echo json_encode(['output' => $result, 'selected' => ""]);
             return;
         }
     }

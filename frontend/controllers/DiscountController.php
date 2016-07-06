@@ -158,7 +158,7 @@ class DiscountController extends BaseController {
             if($comment->load($post) && $comment->save()) {
                 \Yii::$app->getSession()->setFlash(
                     'message',
-                    'Спасибо за ваш отзыв, он пояпится на сайте после модерации'
+                    'Спасибо за ваш отзыв, он появится на сайте после модерации'
                 );
 
                 return $this->redirect(Url::to(['/discount/view', 'id' => $post['Comment']['discount_id']]));

@@ -65,7 +65,7 @@ class DiscountAddresses extends \yii\db\ActiveRecord
     }
 
     public static function getDiscountAddresses($model) {
-        $addresses = parent::find()->where(['discount_id' => $model->discount_id])->with('address.city')->all();
+        $addresses = parent::find()->where(['discount_id' => $model->discount_id])->all();
         $result    = [];
         $i         = 0;
 
