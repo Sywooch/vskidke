@@ -1,7 +1,9 @@
 <?php
 namespace common\models;
 
+use yii\behaviors\SluggableBehavior;
 use yii\db\ActiveRecord;
+use yii\helpers\Inflector;
 
 /**
  * Class City
@@ -32,6 +34,24 @@ class City extends ActiveRecord {
         return [
             'city_name' => 'Название города'
         ];
+    }
+
+    public function behaviors() {
+        $behaviors         = parent::behaviors();
+        $behaviors['slug'] = [
+            'class' => SluggableBehavior::className(),
+            'slugAttribute' => 'uri',
+            'ensureUnique'  => TRUE,
+            'value'         => function ($event) {
+                if (!empty($event->sender->uri)) {
+                    return $event->sender->uri;
+                }
+
+                return Inflector::slug($event->sender->city_name);
+            },
+        ];
+
+        return $behaviors;
     }
 
     public static function getCityId() {

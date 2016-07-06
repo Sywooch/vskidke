@@ -2,6 +2,8 @@
 
 use common\models\Categories;
 use common\models\City;
+use common\models\CompanyAddresses;
+use common\models\DiscountAddresses;
 use common\models\User;
 use kartik\date\DatePicker;
 use kartik\depdrop\DepDrop;
@@ -18,7 +20,7 @@ use yii\widgets\ActiveForm;
 
 <div class="discounts-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'user_id')
              ->dropDownList(
@@ -34,19 +36,19 @@ use yii\widgets\ActiveForm;
 
     <?= DepDrop::widget([
         'name' => 'addresses[]',
-        'options' => ['id'=>'city-id'],
+        'options' => ['id' => 'address-id'],
         'type' => DepDrop::TYPE_SELECT2,
-//        'data' => '',
         'select2Options' => [
             'pluginOptions' => [
                 'allowClear'=>true,
-                'multiple' => true
+                'multiple' => true,
             ]
         ],
         'pluginOptions'=>[
             'depends'=>['user-id'],
-            'placeholder' => 'Select...',
-            'url' => Url::to(['/discounts/get-addresses'])
+            'initialize' => true,
+            'placeholder' => 'Выбрать аддресса',
+            'url' => Url::to(['/discounts/get-addresses', 'id' => $model->discount_id ? $model->discount_id : null])
         ]
     ]) ?>
 
@@ -55,7 +57,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'discount_text')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'discount_date_start')->widget(DatePicker::className(), [
-        'name' => 'dp_1',
         'type' => DatePicker::TYPE_INPUT,
         'pluginOptions' => [
             'autoclose'=>true,
@@ -65,7 +66,6 @@ use yii\widgets\ActiveForm;
     ]) ?>
 
     <?= $form->field($model, 'discount_date_end')->widget(DatePicker::className(), [
-        'name' => 'dp_1',
         'type' => DatePicker::TYPE_INPUT,
         'pluginOptions' => [
             'autoclose'=>true,

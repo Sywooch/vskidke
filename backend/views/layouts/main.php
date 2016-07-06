@@ -35,9 +35,35 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Пользователи', 'url' => ['/user/index']],
-        ['label' => 'Скидки', 'url' => ['/discounts/index']],
+        [
+            'label' => 'Home',
+            'url' => ['/site/index']
+        ],
+        [
+            'label' => 'Пользователи',
+            'url' => ['/user/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
+        [
+            'label' => 'Скидки',
+            'url' => ['/discounts/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
+        [
+            'label' => 'Города',
+            'url' => ['/cities/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
+        [
+            'label' => 'Адресса',
+            'url' => ['/addresses/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
+        [
+            'label' => 'Банеры',
+            'url' => ['/banners/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -69,9 +95,11 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Vskidke <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">
+            <?= Html::a('Перейти на сайт', Yii::$app->params['frontUrl'], ['target' => '_blank'])?>
+        </p>
     </div>
 </footer>
 

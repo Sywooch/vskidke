@@ -28,7 +28,8 @@
         "uran1980/yii2-jquery-essential": "dev-master",
         "kartik-v/yii2-widget-depdrop": "@dev",
         "kartik-v/yii2-widget-datepicker": "@dev",
-        "kartik-v/yii2-widget-select2": "@dev"
+        "kartik-v/yii2-widget-select2": "@dev",
+        "kartik-v/yii2-widget-activeform": "@dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -35,33 +35,33 @@ class SiteController extends BaseController
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['login', 'logout', 'signup'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['login', 'signup'],
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'allow' => true,
-                        'actions' => ['logout'],
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
+//            'access' => [
+//                'class' => AccessControl::className(),
+//                'only' => ['login', 'logout', 'signup'],
+//                'rules' => [
+//                    [
+//                        'allow' => true,
+//                        'actions' => ['login', 'signup'],
+//                        'roles' => ['?'],
+//                    ],
+//                    [
+//                        'allow' => true,
+//                        'actions' => ['logout'],
+//                        'roles' => ['@'],
+//                    ],
+//                ],
+//            ],
             'verbs'  => [
                 'class'   => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post', 'get'],
                 ],
             ],
-            'eauth' => array(
-                // required to disable csrf validation on OpenID requests
-                'class' => \nodge\eauth\openid\ControllerBehavior::className(),
-                'only' => array('login'),
-            ),
+//            'eauth' => array(
+//                // required to disable csrf validation on OpenID requests
+//                'class' => \nodge\eauth\openid\ControllerBehavior::className(),
+//                'only' => ['login'],
+//            ),
         ];
     }
 
@@ -132,6 +132,8 @@ class SiteController extends BaseController
                                 $profile->user_id = $identity->id;
                                 $profile->save();
 
+                                Yii::$app->getUser()->login($identity);
+
                                 Yii::$app->getSession()->setFlash('message', 'Спасибо за регистрацию на нашем сайте');
                             }
                         }
@@ -154,7 +156,7 @@ class SiteController extends BaseController
                     }
 
                     // special redirect with closing popup window
-                    $eauth->redirect();
+                    $this->refresh();
                 }
                 else {
                     // close popup window and redirect to cancelUrl

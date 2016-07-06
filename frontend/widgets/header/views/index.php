@@ -1,9 +1,7 @@
 <?php
+use common\models\Banners;
 use common\models\Categories;
-use common\models\City;
 use frontend\widgets\CityDropdown;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii\helpers\Url;
 
 /** @var Categories $category */
@@ -84,17 +82,14 @@ $category;
         </div>
     </div>
     <div id="owl-header" class="owl-carousel owl-theme">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <img src="/images/header-banner.png" onerror="src=''">
-        <div class="owl-controls">
-            <div id="customNav" class="owl-nav"></div>
-            <div id="customDots" class="owl-dots"></div>
-        </div>
+        <?php foreach(Banners::find()->where(['position' => '3'])->all() as $banner): ?>
+            <a href="<?= $banner->link; ?>" target="_blank">
+                <img src="<?= $banner->getImg(); ?>" onerror="src='/images/header-banner.png'">
+            </a>
+        <?php endforeach; ?>
+<!--        <div class="owl-controls">-->
+<!--            <div id="customNav" class="owl-nav"></div>-->
+<!--            <div id="customDots" class="owl-dots"></div>-->
+<!--        </div>-->
     </div>
 </header>

@@ -1,42 +1,3 @@
-
-
-Home
-Help
-Application
-
-Model Generator
-CRUD Generator
-Controller Generator
-Form Generator
-Module Generator
-Extension Generator
-CRUD Generator
-
-This generator generates a controller and views that implement CRUD (Create, Read, Update, Delete) operations for the specified data model.
-Model Class
-Search Model Class
-Controller Class
-View Path
-Base Controller Class
-yii\web\Controller
-Widget Used in Index Page
-GridView
-Enable I18N
-Enable Pjax
-Code Template
-default (/home/vskidki/web/vskidke.test.mediaretail.com.ua/public_html/vendor/yiisoft/yii2-gii/generators/crud/default)
-
-Click on the above Generate button to generate the files selected below:
-Code File 	Action
-controllers/DiscountsController.php 	unchanged
-backend/views/discounts/_form.php 	create
-backend/views/discounts/create.php 	create
-backend/views/discounts/index.php 	create
-backend/views/discounts/update.php 	create
-backend/views/discounts/view.php 	create
-
-backend/views/discounts/view.php
-CTRL+C to copy
 <?php
 
 use yii\helpers\Html;
@@ -48,6 +9,9 @@ use yii\widgets\DetailView;
 $this->title = $model->discount_id;
 $this->params['breadcrumbs'][] = ['label' => 'Discounts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$profile = $model->getUser()->with('profile')->one();
+
 ?>
 <div class="discounts-view">
 
@@ -68,21 +32,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'discount_id',
-            'user_id',
-            'category_id',
-            'city_id',
-            'discount_view',
+            [
+                'label' => 'Компания',
+                'value' => $profile->relatedRecords['profile']->profile_name
+            ],
+            [
+                'label' => 'Рубрика',
+                'value' => $model->getCategory()->one()->category_name
+            ],
             'discount_title',
             'discount_text:ntext',
             'discount_date_start',
             'discount_date_end',
-            'discount_app',
-            'discount_view_email:email',
+            [
+                'label' => 'Скидка в приложении',
+                'value' => $model->discount_app == 0 ? 'Нет' : 'Да'
+            ],
+            [
+                'label' => 'Скрыть email',
+                'value' => $model->discount_view_email == 0 ? 'Нет' : 'Да'
+            ],
             'discount_price',
             'discount_old_price',
             'discount_percent',
             'discount_gift:ntext',
-            'img',
+            [
+                'label' => 'Изображение',
+                'value' => $model->img
+            ],
             'date_create',
         ],
     ]) ?>

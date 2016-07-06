@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Categories;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -22,17 +23,28 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'discount_id',
-            'user_id',
-            'category_id',
-            'city_id',
-            'discount_view',
+            [
+                'attribute' => 'user_id',
+                'label' => 'Компания',
+                'value' => function($model) {
+                    $company = $model->getCompany();
+                    return $company->profile_name;
+                }
+            ],
+            [
+                'attribute' => 'category_id',
+                'value' => function($model) {
+                    $category = Categories::getCategory($model->category_id);
+                    return $category->category_name;
+                }
+            ],
             // 'discount_title',
             // 'discount_text:ntext',
-            // 'discount_date_start',
-            // 'discount_date_end',
+             'discount_date_start',
+             'discount_date_end',
             // 'discount_app',
             // 'discount_view_email:email',
-            // 'discount_price',
+//             'discount_price',
             // 'discount_old_price',
             // 'discount_percent',
             // 'discount_gift:ntext',

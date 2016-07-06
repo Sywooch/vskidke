@@ -46,7 +46,8 @@ class Discounts extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
-            [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_percent', 'discount_view'], 'integer'],
+            [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_view'], 'integer'],
+            [['discount_percent'], 'integer', 'max' => 99, 'message' => 'Максимальный процент 99'],
             [['discount_text', 'discount_app', 'discount_view_email', 'discount_gift'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],
             [['discount_title', 'img'], 'string', 'max' => 255],
@@ -94,7 +95,7 @@ class Discounts extends \yii\db\ActiveRecord
         $newImg = Yii::getAlias('@frontend/web/upload') . $img;
 
         if (!file_exists($newImg) || is_dir($newImg)) {
-            $img = '/../img/bg-img.jpg';
+            $img = '/../images/error_photo2.png';
         } else {
             $img = Yii::$app->params['uploadUrl'] . $img;
         }
@@ -124,6 +125,12 @@ class Discounts extends \yii\db\ActiveRecord
         }elseif ($percent >= 91 && $percent <= 100) {
             return 'purple-light';
         }
+    }
+
+    public function getCompany() {
+        $user = $this->getUser()->with('profile')->one();
+
+        return $user->relatedRecords['profile'];
     }
 
     /**
