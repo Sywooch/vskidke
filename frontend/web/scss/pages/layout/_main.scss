@@ -193,14 +193,12 @@
 
   .item {
     @include col-sm(435/890*100%);
-    margin-right: (20/890*100%);
+
     border: 1px solid #5f5f5f;
     margin-bottom: 20px;
     overflow: hidden;
 
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
+
 
     .img-holder {
       width: 100%;
@@ -214,6 +212,10 @@
       }
 
       @include sm {
+        margin-right: (20/890*100%);
+        &:nth-child(2n) {
+          margin-right: 0;
+        }
         height: 195px;
       }
 
@@ -406,7 +408,7 @@
             top: 1px;
             display: inline-block;
             content: '';
-            background: url(../images/spy_icon.png) no-repeat;
+            background: url(../images/spy_icon-with-shadow.png) no-repeat;
             background-size: contain;
 
             font-size: 32px;
@@ -421,10 +423,10 @@
             }
 
             @include sm {
-              width: 24px;
-              height: 14px;
-              margin-top: 6px;
-              //font-size: 26px;
+              width: 30px;
+              height: 20px;
+              margin-top: -4px;
+              vertical-align: middle;
               position: relative;
               top: 1px;
             }
@@ -479,7 +481,7 @@
           color: #fff;
           line-height: 26px;
           font-size: 14px;
-          text-shadow: 0px 0px 8.55px rgba(0, 0, 0, 0.43);
+          text-shadow: 0 1px 3px #333;
 
           @include media-custom(480px) {
             line-height: 42px;
@@ -512,11 +514,13 @@
       background-color: #ffffff;
       height: 75px;
       text-align: center;
-      padding: 5px 22px 22px;
+      padding: 5px 22px 0;
       position: relative;
+
 
       @include media-custom(480px) {
         height: 138px;
+        padding: 5px 22px 22px;
       }
 
       @include sm {
@@ -526,8 +530,8 @@
       .item-title {
         font-family: $font-family-7;
         color: #37445d;
-        font-size: 26.38px; /* Приближение из-за подстановки шрифтов */
-        line-height: 27.733px; /* Приближение из-за подстановки шрифтов */
+        font-size: 20px; /* Приближение из-за подстановки шрифтов */
+        line-height: 20px; /* Приближение из-за подстановки шрифтов */
         font-weight: 400;
 
         text-overflow: ellipsis;
@@ -1943,7 +1947,7 @@ h3 {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 150000;
   display: none;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
@@ -2003,14 +2007,21 @@ h3 {
 .modal-layout {
   text-align: center;
   width: 400px;
-  margin: 30px auto 30px;
+  max-width: 100%;
   line-height: 1.1;
   padding: 15px 25px;
   border-radius: 3px;
   color: #656d78;
   background: #fff;
+  top:50%;
+  left: 50%;
   cursor: initial;
-  position: relative;
+  position: fixed;
+  @media all and (max-width: 400px){
+    left: 0;
+    margin-left: 0!important;
+
+  }
 
   .close {
     position: absolute;

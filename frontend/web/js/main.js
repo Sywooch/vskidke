@@ -18,34 +18,35 @@
 
     $( "body" ).on('click', '.modal-layout-wrapp', function(e) {
         if (e.target === this) {
-            $(this).hide();
-            $('body').removeClass('modal-open');
+            $(this).fadeOut(150);
+            //$('body').removeClass('modal-open');
         }
     });
 
     $( "body" ).on('click', '.close', function() {
-        $(this).parents('.modal-layout-wrapp').hide();
-        $('body').removeClass('modal-open');
+        $(this).parents('.modal-layout-wrapp').fadeOut(150);
+        //$('body').removeClass('modal-open');
 
     });
 
      $( "body" ).on('click', '.address-modal-link', function() {
-        $('#address-modal').show();
+         $("#address-modal").fadeIn(300);
+         popupAlign($('#address-modal .modal-layout'));
     });
 
     $("#register").on('click', function () {
         $.get('/site/kiev/signup', function (data) {
             $(".modal-container").html(data);
-            $(".mask, #registration-modal").show();
-            $('body').addClass('modal-open');
+            $(".mask, #registration-modal").fadeIn(300);
+            popupAlign($('body').find('#registration-modal .modal-layout'));
         })
     });
 
     $("#login").on('click', function () {
         $.get('/site/kiev/login', function (data) {
             $(".modal-container").html(data);
-            $(".mask, #login-modal").show();
-            $('body').addClass('modal-open');
+            $(".mask, #login-modal").fadeIn(300);
+            popupAlign($('body').find('#login-modal .modal-layout'));
         })
     });
 
@@ -122,28 +123,29 @@
 
      //Search modal
      $( ".search-modal-link" ).click(function() {
-         $(" .mask ,  #search-modal").show();
-         $('body').addClass('modal-open');
+         $(" .mask ,  #search-modal").fadeIn(300);
+         popupAlign($('#search-modal .modal-layout'));
+
      });
     //Forgot pass
      $( ".forgot-modal-link" ).click(function() {
-         $(" .mask ,  #search-modal").show();
-         $('body').addClass('modal-open');
+         $(" .mask ,  #search-modal").fadeIn(300);
+         popupAlign($('#forgot-modal .modal-layout'));
      });
 
      $(".modal-container").on('click', '#register', function () {
          $.get('/site/kiev/signup', function (data) {
              $(".modal-container").html(data);
-             $("#login-modal").hide();
-             $("#registration-modal").show();
+             $("#login-modal").fadeOut(150);
+             $("#registration-modal").fadeIn(150);
          })
      });
 
      $(".modal-container").on('click', '#password', function () {
          $.get('/site/kiev/password-reset-request', function (data) {
              $(".modal-container").html(data);
-             $("#login-modal").hide();
-             $("#forgot-modal").show();
+             $("#login-modal").fadeOut(150);
+             $("#forgot-modal").fadeIn(150);
          })
      });
 
@@ -179,8 +181,19 @@ function readURL(input) {
      if($("#error")) {
          $("#error").on('click', function (event) {
              event.preventDefault();
-             $(".mask, #info-modal").show();
-             $('body').addClass('modal-open');
+             $(".mask, #info-modal").fadeIn(300);
+             popupAlign($('#info-modal .modal-layout'));
          })
      }
+ }
+
+ function popupAlign(param) {
+     var $popup = param,
+         popupWidth = $popup.outerWidth(),
+         popupHeight = $popup.outerHeight();
+     console.log(popupHeight);
+     $popup.css({
+         'margin-top': -1*popupHeight/2,
+         'margin-left': -1*popupWidth/2
+     })
  }
