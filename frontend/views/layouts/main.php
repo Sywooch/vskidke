@@ -30,9 +30,6 @@ AppAsset::register($this);
         #map { height: 300px; display: none}
     </style>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" />
-    <script async defer
-            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoxwf8_9WJvLTDR0dFtPmkiw1ysqO-n7c">
-    </script>
     <?php $this->head() ?>
 </head>
 <body>

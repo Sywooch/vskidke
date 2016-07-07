@@ -32,15 +32,21 @@ class CompanyController extends BaseController {
         $model   = $this->findModel();
         $profile = $model->relatedRecords['profile'];
         $post    = \Yii::$app->request->post();
+        $oldImg  = $profile->img;
         
         if(\Yii::$app->request->isAjax && \Yii::$app->request->isPost) {
             if($profile->load($post) && $profile->save()) {
-                $uploadForm            = new UploadForm();
-                $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
-                $uploadForm->model     = $profile;
-                $uploadForm->directory = 'profile';
+                if(UploadedFile::getInstance($profile, 'img')) {
+                    $uploadForm            = new UploadForm();
+                    $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
+                    $uploadForm->model     = $profile;
+                    $uploadForm->directory = 'profile';
 
-                $profile->img = $uploadForm->upload();
+                    $profile->img = $uploadForm->upload();
+                } else {
+                    $profile->img = $oldImg;
+                }
+
                 $profile->save();
 
                 Yii::$app->getSession()->setFlash('message', 'Данные успешно сохранены');

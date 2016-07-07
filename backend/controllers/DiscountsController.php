@@ -79,6 +79,7 @@ class DiscountsController extends Controller
             $uploadForm->directory = 'discount';
 
             $model->img = $uploadForm->upload();
+            $model->date_create = date('Y-m-d');
             $model->save();
 
             if(isset($post['addresses'])) {
@@ -101,16 +102,23 @@ class DiscountsController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model  = $this->findModel($id);
+        $oldImg = $model->img;
+        $post = Yii::$app->request->post();
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
+            if (UploadedFile::getInstance($model, 'img')) {
+                $uploadForm = new UploadForm();
+                $uploadForm->img = UploadedFile::getInstance($model, 'img');
+                $uploadForm->model = $model;
+                $uploadForm->directory = 'discount';
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $uploadForm            = new UploadForm();
-            $uploadForm->img       = UploadedFile::getInstance($model, 'img');
-            $uploadForm->model     = $model;
-            $uploadForm->directory = 'discount';
+                $model->img = $uploadForm->upload();
+            } else {
+                $model->img = $oldImg;
+            }
 
-            $model->img = $uploadForm->upload();
-            $model->save();
+            $model->save(false);
 
             if(isset($post['addresses'])) {
                 DiscountAddresses::attachTags($post['addresses'], $model);
