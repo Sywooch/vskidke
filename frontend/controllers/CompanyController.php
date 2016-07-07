@@ -64,14 +64,18 @@ class CompanyController extends BaseController {
     public function actionAddAddress() {
         $address = new CompanyAddresses();
         $post    = Yii::$app->request->post();
-        $address->setAttributes($post);
-        $address->save();
 
         $addressData = json_decode(
             file_get_contents(
                 'https://maps.google.com/maps/api/geocode/json?address=' . urlencode($post['city'] . ' ' . $post['address']) .'&sensor=false'
             )
         );
+
+        $post['lat'] = $addressData->results[0]->geometry->location->lat;
+        $post['lng'] = $addressData->results[0]->geometry->location->lng;
+
+        $address->setAttributes($post);
+        $address->save(false);
 
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 

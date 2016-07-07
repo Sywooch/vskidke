@@ -140,12 +140,22 @@ class DiscountController extends BaseController {
         $discount->discount_view += 1;
         $discount->save(false);
         $comments = $discount->getComments()->where(['status' => Comment::STATUS_ACTIVE])->all();
+        $addressCoordinates = $discount->getAddress()->asArray()->all();
+        $coordinates = [];
+        $i = 0;
+
+        foreach ($addressCoordinates as $addressCoordinate) {
+            $coordinates[$i]['lat'] = $addressCoordinate['lat'];
+            $coordinates[$i]['lng'] = $addressCoordinate['lng'];
+            $i++;
+        }
 
         return $this->render('view', [
             'discount' => $discount,
             'company'  => $discount->getUser()->with('profile')->one(),
             'comment'  => new Comment(),
-            'comments' => $comments
+            'comments' => $comments, 
+            'coordinates' => json_encode($coordinates)
         ]);
     }
     

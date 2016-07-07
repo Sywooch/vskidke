@@ -169,7 +169,8 @@ if($discount->discount_percent) {
     </aside>
 </div>
 
-
-<script type="text/javascript">
-    createMarkers()
-</script>
+<?php
+$this->registerJs("
+    createMarkers({$coordinates})
+");
+?>

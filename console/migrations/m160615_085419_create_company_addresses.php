@@ -21,6 +21,8 @@ class m160615_085419_create_company_addresses extends Migration
             'user_id' => $this->integer()->notNull(),
             'city_id' => $this->integer()->notNull(),
             'address' => $this->text(),
+            'lat' => $this->string(255),
+            'lng' => $this->string(255),
             'phone' => $this->string(50),
         ]);
 

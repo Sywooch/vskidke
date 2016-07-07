@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\City;
 use Yii;
 use common\models\CompanyAddresses;
 use yii\data\ActiveDataProvider;
@@ -64,8 +65,19 @@ class AddressesController extends Controller
     public function actionCreate()
     {
         $model = new CompanyAddresses();
+        $post = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($post) && $model->save()) {
+            $addressData = json_decode(
+                file_get_contents(
+                    'https://maps.google.com/maps/api/geocode/json?address=' . urlencode(City::getCityName($post['CompanyAddresses']['city_id']) . ' ' . $post['CompanyAddresses']['address']) .'&sensor=false'
+                )
+            );
+
+            $model->lat = $addressData->results[0]->geometry->location->lat;
+            $model->lng = $addressData->results[0]->geometry->location->lng;
+            $model->save(false);
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -83,8 +95,19 @@ class AddressesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $post = Yii::$app->request->post();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load($post) && $model->save()) {
+            $addressData = json_decode(
+                file_get_contents(
+                    'https://maps.google.com/maps/api/geocode/json?address=' . urlencode(City::getCityName($post['CompanyAddresses']['city_id']) . ' ' . $post['CompanyAddresses']['address']) .'&sensor=false'
+                )
+            );
+
+            $model->lat = $addressData->results[0]->geometry->location->lat;
+            $model->lng = $addressData->results[0]->geometry->location->lng;
+            $model->save(false);
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

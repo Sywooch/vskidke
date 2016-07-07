@@ -12,6 +12,8 @@ use Yii;
  * @property integer $city_id
  * @property string $address
  * @property string $phone
+ * @property string $lat
+ * @property string $lng
  *
  * @property City $city
  * @property User $user
@@ -35,6 +37,7 @@ class CompanyAddresses extends \yii\db\ActiveRecord
             [['user_id', 'city_id'], 'required'],
             [['user_id', 'city_id'], 'integer'],
             [['address'], 'string'],
+            [['lat', 'lng'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 50],
             [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => City::className(), 'targetAttribute' => ['city_id' => 'city_id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
