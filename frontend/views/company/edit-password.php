@@ -2,6 +2,7 @@
 
 use common\models\User;
 use common\models\UserProfile;
+use frontend\widgets\banners\BannerWidget;
 use yii\widgets\ActiveForm;
 
 /** @var User $user */
@@ -47,12 +48,5 @@ $profile = $user->relatedRecords['profile'];
             </div>
         <?php ActiveForm::end(); ?>
     </div>
-    <aside class="sidebar-left sidebar">
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-    </aside>
-    <aside class="sidebar-right sidebar">
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-    </aside>
+    <?= BannerWidget::widget(); ?>
 </div>
