@@ -92,19 +92,22 @@ class BannersController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
-        $model->load(Yii::$app->request->post());
+        $model  = $this->findModel($id);
+        $oldImg = $model->img;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if(UploadedFile::getInstance($model, 'img')) {
+            if (UploadedFile::getInstance($model, 'img')) {
                 $uploadForm            = new UploadForm();
                 $uploadForm->img       = UploadedFile::getInstance($model, 'img');
                 $uploadForm->model     = $model;
                 $uploadForm->directory = 'banners';
 
                 $model->img = $uploadForm->upload();
-                $model->save();
+            } else {
+                $model->img = $oldImg;
             }
+
+            $model->save();
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

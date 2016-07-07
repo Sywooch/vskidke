@@ -106,15 +106,21 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
         $profile = $model->getProfile()->one();
+        $oldImg  = $profile->img;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if ($profile->load(Yii::$app->request->post() && $profile->save())) {
-                $uploadForm            = new UploadForm();
-                $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
-                $uploadForm->model     = $profile;
-                $uploadForm->directory = 'profile';
+            if ($profile->load(Yii::$app->request->post()) && $profile->save()) {
+                if(UploadedFile::getInstance($profile, 'img')) {
+                    $uploadForm            = new UploadForm();
+                    $uploadForm->img       = UploadedFile::getInstance($profile, 'img');
+                    $uploadForm->model     = $profile;
+                    $uploadForm->directory = 'profile';
 
-                $profile->img = $uploadForm->upload();
+                    $profile->img = $uploadForm->upload();
+                } else {
+                    $profile->img = $oldImg;
+                }
+
                 $profile->save();
             }
 

@@ -46,9 +46,9 @@ class Discounts extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
-            [['user_id', 'category_id', 'city_id', 'discount_price', 'discount_old_price', 'discount_view'], 'integer'],
+            [['user_id', 'category_id', 'discount_price', 'discount_old_price', 'discount_view', 'discount_app', 'discount_view_email',], 'integer'],
             [['discount_percent'], 'integer', 'max' => 99, 'message' => 'Максимальный процент 99'],
-            [['discount_text', 'discount_app', 'discount_view_email', 'discount_gift'], 'string'],
+            [['discount_text', 'discount_gift'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],
             [['discount_title', 'img'], 'string', 'max' => 255],
             [['date_create'], 'date', 'format' => 'Y-m-d'],
