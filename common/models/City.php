@@ -63,4 +63,10 @@ class City extends ActiveRecord {
 
         return (isset($city) && isset($city->city_id)) ? $city->city_id : null;
     }
+
+    public static function getCityName($id) {
+        $city = parent::findOne($id);
+
+        return $city->city_name;
+    }
 }
