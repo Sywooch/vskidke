@@ -197,3 +197,24 @@ function readURL(input) {
          'margin-left': -1*popupWidth/2
      })
  }
+
+ var map;
+ function initMap() {
+     var myLatLng = {lat: 50.416378, lng: 30.642317};
+
+     map = new google.maps.Map(document.getElementById('map'), {
+         center: myLatLng,
+         zoom: 17,
+//                    scrollwheel: false,
+     });
+
+     var marker = new google.maps.Marker({
+         map: map,
+         position: {lat: 50.416378, lng: 30.642317}
+     });
+ }
+ initMap();
+ 
+ function createMarkers(array) {
+     console.log(array)
+ }
