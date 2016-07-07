@@ -122,6 +122,9 @@ $address;
                 }
             </script>
 
+        <script async defer
+                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoxwf8_9WJvLTDR0dFtPmkiw1ysqO-n7c">
+        </script>
             <div id="addresses" class="address-holder">
                 <?php foreach ($model->relatedRecords['addresses'] as $address): ?>
                     <div class="address">
@@ -177,12 +180,11 @@ $this->registerJs('
                     });
 
                     function getGeoposition(data) {
-                    console.log(data)
-                    $.post("/company/kiev/add-address", data, function (data) {
-                        initMap(data.coordinates);
-                        var address = "<div class=\'address\'><label>" + data.address + "</label></div>"
-                        $("#addresses").append(address);
-                    }, \'json\')
-                }
-            ');
+                        $.post("/company/kiev/add-address", data, function (data) {
+                            initMap(data.coordinates);
+                            var address = "<div class=\'address\'><label>" + data.address + "</label></div>"
+                            $("#addresses").append(address);
+                        }, \'json\')
+                    }
+                ');
 ?>

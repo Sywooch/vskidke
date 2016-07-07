@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use common\models\City;
+use common\models\Discounts;
 use common\models\User;
 use common\models\UserProfile;
 use yii\web\Controller;
@@ -16,37 +18,24 @@ class ParseOldDbController extends Controller {
         ]);
         $oldDb->open();
 
-        $userCommand = $oldDb->createCommand('SELECT * FROM _users WHERE login REGEXP \'^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$\';');
+        $userCommand = $oldDb->createCommand('SELECT lead, content, percent, create_moment FROM discounts');
         $users = $userCommand->queryAll();
 
-        $userModel = new User();
-        $profileModel = new UserProfile();
+        $userModel = new Discounts();
 
         foreach ($users as $user) {
-            $userModel->email = $user['login'];
-            $userModel->status = User::STATUS_ACTIVE;
-//            $userModel->setPassword(123456);
-            $userModel->save(false);
-            $profileModel->user_id = $userModel->id;
-            $profileModel->profile_name = $user['name'];
-            $profileModel->profile_phone = $user['phone'];
-            $profileModel->profile_site = $user['site'];
-            $profileModel->save(false);
-            $profileModel = new UserProfile();
-            $userModel = new User();
+            $userModel->category_id = 1;
+            $userModel->user_id = 15;
+            $userModel->discount_title = $user['lead'];
+            $userModel->discount_text = strip_tags($user['content']);
+            $userModel->discount_date_start = date('Y-m-d');
+            $userModel->discount_date_end = date('Y-m-d', strtotime("+10 days"));
+            $userModel->discount_percent = $user['percent'];
+            $userModel->date_create = date('Y-m-d', $user['create_moment']);
+            $userModel->save();
+            $userModel = new Discounts();
         }
 
-        \Yii::$app->db->createCommand()->batchInsert(User::tableName(), ['password_hash'], [\Yii::$app->security->generatePasswordHash(123456)]);
-
-        echo 'Компании перелиты';
-    }
-
-    public function actionSetPass() {
-        $users = User::find()->where(['password_hash' => ''])->all();
-        foreach ($users as $user) {
-            $user->setPassword(123456);
-            $user->save();
-        }
-
+        echo 'Скидки перелиты';
     }
 }

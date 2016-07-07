@@ -1,9 +1,13 @@
 <?php
+/**
+ * @var $this View
+ */
 
 use common\helpers\StringHelper;
 use common\models\Discounts;
 use common\models\User;
 use yii\helpers\Url;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
 /**@var User $company*/
@@ -23,6 +27,9 @@ if($discount->discount_percent) {
     $colorClass = 'pink';
 }
 ?>
+<style type="text/css">
+    #map { height: 400px; display: block}
+</style>
 
 <div class="container main">
     <div class="content fill <?= $colorClass; ?>">
@@ -70,7 +77,29 @@ if($discount->discount_percent) {
                 </div>
             </div>
         </div>
-        <div class="map-holder"></div>
+        <div id="map" class="map-holder"></div>
+        <script type="text/javascript">
+            var map;
+            function initMap() {
+                var myLatLng = {lat: 50.416378, lng: 30.642317};
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: myLatLng,
+                    zoom: 17,
+//                    scrollwheel: false,
+                });
+
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: {lat: 50.416378, lng: 30.642317},
+                });
+            }
+
+        </script>
+
+        <script async defer
+                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoxwf8_9WJvLTDR0dFtPmkiw1ysqO-n7c&callback=initMap">
+        </script>
         <div class="post-text-holder">
             <div class="post-img-holder">
                 <span class="img-wrapp">

@@ -21,6 +21,9 @@ $address;
 
 <div class="container main">
     <div class="content">
+        <script async defer
+                src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCoxwf8_9WJvLTDR0dFtPmkiw1ysqO-n7c">
+        </script>
         <div class="page-title-wrapp">
             <h1 class="page-title">Размещение скидки</h1>
         </div>

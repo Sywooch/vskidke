@@ -104,7 +104,8 @@ class DiscountsController extends Controller
     {
         $model  = $this->findModel($id);
         $oldImg = $model->img;
-
+        $post = Yii::$app->request->post();
+        
         if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             if (UploadedFile::getInstance($model, 'img')) {
                 $uploadForm = new UploadForm();

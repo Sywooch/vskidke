@@ -144,14 +144,6 @@ class Discounts extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCity()
-    {
-        return $this->hasOne(City::className(), ['city_id' => 'city_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
