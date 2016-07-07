@@ -14,6 +14,14 @@ use Yii;
  */
 class Banners extends \yii\db\ActiveRecord
 {
+
+    /**
+     * Position banners
+     */
+    const LEFT_BANNER  = 1;
+    const RIGHT_BANNER = 2;
+    const TOP_BANNER   = 3;
+
     /**
      * @inheritdoc
      */
@@ -70,7 +78,9 @@ class Banners extends \yii\db\ActiveRecord
         $newImg = Yii::getAlias('@frontend/web/upload') . $img;
 
         if (!file_exists($newImg) || is_dir($newImg)) {
-            $img = '/../images/header-banner.png';
+            if($this->position == self::TOP_BANNER) {
+                $img = '/../images/header-banner.png';
+            }
         } else {
             $img = Yii::$app->params['uploadUrl'] . $img;
         }

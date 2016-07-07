@@ -5,6 +5,7 @@
 use common\models\Categories;
 use common\models\Discounts;
 use frontend\components\LinkPager;
+use frontend\widgets\banners\BannerWidget;
 use yii\helpers\Url;
 use yii\widgets\Pjax;
 
@@ -73,13 +74,6 @@ $model;
             ]);?>
         </div>
     </div>
-    <aside class="sidebar-left sidebar">
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-    </aside>
-    <aside class="sidebar-right sidebar">
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-        <a href="#" class="sidebar-banner"><img src="/images/banner.png" onerror="src=&quot;/images/banner.png&quot;"></a>
-    </aside>
+    <?= BannerWidget::widget(); ?>
 </div>
 <?php Pjax::end(); ?>
