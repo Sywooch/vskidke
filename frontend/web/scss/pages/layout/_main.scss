@@ -198,7 +198,12 @@
     margin-bottom: 20px;
     overflow: hidden;
 
-
+    @include sm {
+      margin-right: (20/890*100%);
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
 
     .img-holder {
       width: 100%;
@@ -212,10 +217,6 @@
       }
 
       @include sm {
-        margin-right: (20/890*100%);
-        &:nth-child(2n) {
-          margin-right: 0;
-        }
         height: 195px;
       }
 

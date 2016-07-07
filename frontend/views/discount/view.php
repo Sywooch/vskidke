@@ -171,5 +171,5 @@ if($discount->discount_percent) {
 
 
 <script type="text/javascript">
-    function createMarkers()
+    createMarkers()
 </script>

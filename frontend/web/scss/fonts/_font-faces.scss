@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'FontAwesome';
-    src:    url('./../fonts/font-awesome-4.5.0/fontawesome-webfont.woff2') format('woff2'),
-            url('./../fonts/font-awesome-4.5.0/fontawesome-webfont.woff') format('woff');
+    src:    url('../../fonts/font-awesome-4.5.0/fontawesome-webfont.woff2') format('woff2'),
+            url('../../fonts/font-awesome-4.5.0/fontawesome-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,29 +9,41 @@
 
 @font-face {
     font-family: 'icomoon';
-    src:  url('./../fonts/icomoon/icomoon.woff') format('woff'),
-          url('./../fonts/icomoon/icomoon.ttf') format('ttf');
+    src:  url('../../fonts/icomoon/icomoon.woff') format('woff'),
+          url('../../fonts/icomoon/icomoon.ttf') format('ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 
-@font-face {
+/*@font-face {
     font-family: 'HouschkaRounded';
     src: url('./../fonts/houschkaroundedaltlightregular-webfont.woff2') format('woff2'),
          url('./../fonts/houschkaroundedaltlightregular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}*/
+
+@font-face {
+  font-family: 'HouschkaRounded';
+  src: url('../../fonts/Houschka/HouschkaRoundedAltLightRegular.eot');
+  src: url('../../fonts/Houschka/HouschkaRoundedAltLightRegular.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/Houschka/HouschkaRoundedAltLightRegular.woff2') format('woff2'),
+  url('../../fonts/Houschka/HouschkaRoundedAltLightRegular.woff') format('woff'),
+  url('../../fonts/Houschka/HouschkaRoundedAltLightRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 
 }
+
 
 
 
 
 @font-face {
     font-family: 'IntroRegular';
-    src: url('./../fonts/intro_regular.woff2') format('woff2'),
-         url('./../fonts/intro_regular.woff') format('woff');
+    src: url('../../fonts/intro_regular.woff2') format('woff2'),
+         url('../../fonts/intro_regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -39,8 +51,8 @@
 
 @font-face {
     font-family: 'IntroRegularAlt';
-    src: url('./../fonts/Intro-Light-Alt.woff2') format('woff2'),
-         url('./../fonts/intro-light-alt-webfont.woff') format('woff');
+    src: url('../../fonts/Intro-Light-Alt.woff2') format('woff2'),
+         url('../../fonts/intro-light-alt-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -51,8 +63,8 @@
 
 @font-face {
     font-family: 'SFUIDesignRegular';
-    src: url('./../fonts/sfuidisplay-regular-webfont.woff2') format('woff2'),
-         url('./../fonts/sfuidisplay-regular-webfont.woff') format('woff');
+    src: url('../../fonts/sfuidisplay-regular-webfont.woff2') format('woff2'),
+         url('../../fonts/sfuidisplay-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
