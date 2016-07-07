@@ -8,12 +8,12 @@ class BannerWidget extends Widget
 {
 
     public function run(){
-        $leftBanners = Banners::find()->where(['position' => Banners::LEFT_BANNER])->limit(2)->all();
-        $rightBanner = Banners::find()->where(['position' => Banners::RIGHT_BANNER])->limit(2)->all();
+        $leftBanners  = Banners::find()->where(['position' => Banners::LEFT_BANNER])->limit(2)->all();
+        $rightBanners = Banners::find()->where(['position' => Banners::RIGHT_BANNER])->limit(2)->all();
 
         return $this->render('index', [
-            'leftBanners' => $leftBanners,
-            'rightBanner' => $rightBanner
+            'leftBanners'  => $leftBanners,
+            'rightBanners' => $rightBanners
         ]);
     }
 
