@@ -65,9 +65,13 @@
 
 .filter-holder {
   @include clearfix;
-  padding: 24px 0 0;
+  padding: 20px 0 0;
   position: relative;
   text-align: center;
+
+  @include minW480 {
+    padding: 24px 0 0;
+  }
 
   @include sm {
     text-align: left;
@@ -95,9 +99,11 @@
     padding-right: 10px;
     position: relative;
     z-index: 10;
+    text-align: center;
 
     @include sm {
       float: left;
+      text-align: left;
     }
   }
 
@@ -115,20 +121,28 @@
     border-color: #d3d8dd;
     box-sizing: border-box;
     background-color: #ffffff;
-    padding: 0 40px;
-    height: 59px;
+    padding: 0 30px;
+    height: 50px;
     font-family: $font-family-4;
     color: #738d9a;
-    font-size: 38.48px; /* Приближение из-за подстановки шрифтов */
+    font-size: 32px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
-    line-height: 53px; /* Приближение из-за подстановки шрифтов */
+    line-height: 46px; /* Приближение из-за подстановки шрифтов */
     text-align: center;
     border-radius: 10px;
     display: inline-block;
     text-decoration: none;
-    margin: 0 21px 26px 0;
+    margin: 0 10px 20px 10px;
+
+    @include minW480 {
+      height: 59px;
+      padding: 0 40px;
+      line-height: 53px; /* Приближение из-за подстановки шрифтов */
+      font-size: 38.48px; /* Приближение из-за подстановки шрифтов */
+    }
 
     @include sm {
+      margin: 0 21px 26px 0;
       font-family: $font-family-4;
       color: #738d9a;
       font-size: 15px;
@@ -1025,8 +1039,16 @@
     border-width: 10px;
     border-color: #18bef0;
     box-sizing: border-box;
-    width: 253px;
-    height: 253px;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 30px;
+
+    @include minW480 {
+      width: 253px;
+      height: 253px;
+      margin-right: 7.58929%;
+      margin-bottom: 0;
+    }
     img {
       max-width: 100%;
       max-height: 253px;
@@ -1720,9 +1742,13 @@
     border-width: 10px;
     border-color: #18bef0;
     box-sizing: border-box;
-    width: 300px;
-    height: 300px;
+    width: 160px;
+    height: 160px;
     display: inline-block;
+    @include minW480 {
+      width: 300px;
+      height: 300px;
+    }
   }
 
   img {
@@ -2423,13 +2449,19 @@ h3 {
     font-weight: 300;
     line-height: 1.1; /* Приближение из-за подстановки шрифтов */
     text-align: left;
-    padding: 0 20px 0 0;
+    padding: 6px 20px 3px 0;
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     outline: none;
 
-    font-size: 29.08px; /* Приближение из-за подстановки шрифтов */
+    font-size: 18px; /* Приближение из-за подстановки шрифтов */
+
+    @include minW480 {
+      padding: 0 20px 0 0;
+      font-size: 29.08px; /* Приближение из-за подстановки шрифтов */
+    }
 
     @include sm {
       color: #0e5f82;

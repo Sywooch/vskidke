@@ -188,6 +188,7 @@ function readURL(input) {
  function flashMessages() {
      if($("#message")) {
          $(".mask, #flash-modal").show();
+         popupAlign($('#flash-modal .modal-layout'));
          // $('body').addClass('modal-open');
      }
  }
@@ -219,17 +220,40 @@ function readURL(input) {
 
      map = new google.maps.Map(document.getElementById('map'), {
          center: myLatLng,
-         zoom: 17,
+         zoom: 17
 //                    scrollwheel: false,
      });
 
-     var marker = new google.maps.Marker({
-         map: map,
-         position: {lat: 50.416378, lng: 30.642317}
-     });
+
  }
  initMap();
  
  function createMarkers(array) {
-     console.log(array)
+     console.log(array);
+     var marker,
+         place;
+
+     var bounds = new google.maps.LatLngBounds();
+
+
+
+     for (var i=0;i<array.length;i++) {
+         console.log(array[i]);
+         marker = new google.maps.Marker({
+             map: map,
+             position: {lat: parseInt(array[i].lat), lng: parseInt(array[i].lng)}
+         });
+         place = new google.maps.LatLng(parseInt(array[i].lat) ,parseInt(array[i].lng));
+         bounds.extend(place);
+
+     }
+     if(array.length>1) {
+         map.fitBounds(bounds);
+     }
+     else {
+         map.setCenter(new google.maps.LatLng(parseInt(array[0].lat) ,parseInt(array[0].lng)));
+         map.setZoom(14)
+     }
+
+
  }
