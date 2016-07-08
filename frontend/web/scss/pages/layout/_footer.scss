@@ -23,16 +23,33 @@
   .nav-footer {
     padding:rem(8) 0 0;
     margin: 0 0 20px;
+    text-align: center;
     @include clearfix;
 
     @include sm{
       margin: 0;
     }
     li {
-      float: left;
+      display: inline-block;
+      margin-bottom: 8px;
       &:last-child{
         margin-right: 0;
       }
+
+      @include sm {
+        margin-bottom: 0;
+        float: left;
+        display: block;
+        &:first-child a {
+          padding-left: 0;
+        }
+        &:last-child a {
+          padding-right: 0;
+
+        }
+
+      }
+
 
       a {
         padding:0 rem(15);
@@ -49,13 +66,7 @@
 
       }
 
-      &:first-child a {
-        padding-left: 0;
-      }
-      &:last-child a {
-        padding-right: 0;
 
-      }
     }
   }
   .social {

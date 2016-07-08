@@ -310,13 +310,14 @@
         border-color:  #3a809f;
         border-style: solid;
         background-color:  #ffffff;
-        width: 186px;
-        height: 48px;
+        margin-bottom: 10px;
+        width: 160px;
+        height: 40px;
         font-family:$font-family-3;
         color: #0e5f82;
-        font-size: 38px; /* Приближение из-за подстановки шрифтов */
+        font-size: 30px; /* Приближение из-за подстановки шрифтов */
         font-weight: 300;
-        line-height: 48px; /* Приближение из-за подстановки шрифтов */
+        line-height: 40px; /* Приближение из-за подстановки шрифтов */
         text-align: center;
         text-decoration: none;
 
@@ -329,6 +330,7 @@
         @include minW480 {
           width: 241px;
           height: 61px;
+          margin-bottom: 0;
           line-height: 58px; /* Приближение из-за подстановки шрифтов */
           font-size: 43.95px; /* Приближение из-за подстановки шрифтов */
         }
@@ -353,7 +355,7 @@
 
       .registration {
         color: #0e5f82;
-        font-size: 29.44px; /* Приближение из-за подстановки шрифтов */
+        font-size: 20px; /* Приближение из-за подстановки шрифтов */
         font-weight: 300;
         line-height: 1; /* Приближение из-за подстановки шрифтов */
         text-decoration: underline;
@@ -361,6 +363,10 @@
         font-family:$font-family-3;
         &.dropdown-button {
           display: none;
+        }
+
+        @include minW480 {
+          font-size: 29.44px; /* Приближение из-за подстановки шрифтов */
         }
 
         
