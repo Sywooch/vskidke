@@ -241,9 +241,9 @@ function readURL(input) {
          console.log(array[i]);
          marker = new google.maps.Marker({
              map: map,
-             position: {lat: parseInt(array[i].lat), lng: parseInt(array[i].lng)}
+             position: {lat: parseFloat(array[i].lat), lng: parseFloat(array[i].lng)}
          });
-         place = new google.maps.LatLng(parseInt(array[i].lat) ,parseInt(array[i].lng));
+         place = new google.maps.LatLng(parseFloat(array[i].lat) ,parseFloat(array[i].lng));
          bounds.extend(place);
 
      }
@@ -251,8 +251,8 @@ function readURL(input) {
          map.fitBounds(bounds);
      }
      else {
-         map.setCenter(new google.maps.LatLng(parseInt(array[0].lat) ,parseInt(array[0].lng)));
-         map.setZoom(8)
+         map.setCenter(new google.maps.LatLng(parseFloat(array[0].lat) ,parseFloat(array[0].lng)));
+         map.setZoom(14)
      }
 
 
