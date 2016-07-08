@@ -45,13 +45,14 @@ class DiscountController extends BaseController {
      * @return string
      */
     public function actionIndex($category = null, $limit = 10, $popular = null, $new = null, $q = null) {
-        $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
+        $query = Discounts::find()->joinWith('address')
                                   ->where(['>=', 'discount_date_end', date('Y-m-d')])
                                   ->andWhere(['company_addresses.city_id' => City::getCityId()])
                                   ->orderBy([
                                       'discounts.discount_view' => $popular == 'SORT_DESC' ? SORT_DESC : SORT_ASC,
                                       'discounts.date_create' => $new == 'SORT_DESC' ? SORT_DESC : SORT_ASC
-                                  ]);
+                                  ])
+                                  ->groupBy('discount_id');
 
         if($category) {
             $query->andWhere(['category_id' => $category]);
