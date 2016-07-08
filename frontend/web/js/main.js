@@ -241,7 +241,8 @@ function readURL(input) {
          console.log(array[i]);
          marker = new google.maps.Marker({
              map: map,
-             position: {lat: parseFloat(array[i].lat), lng: parseFloat(array[i].lng)}
+             position: {lat: parseFloat(array[i].lat), lng: parseFloat(array[i].lng)},
+             icon:'/images/map-marker.png'
          });
          place = new google.maps.LatLng(parseFloat(array[i].lat) ,parseFloat(array[i].lng));
          bounds.extend(place);
