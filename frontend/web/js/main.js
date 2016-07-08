@@ -252,7 +252,7 @@ function readURL(input) {
      }
      else {
          map.setCenter(new google.maps.LatLng(parseInt(array[0].lat) ,parseInt(array[0].lng)));
-         map.setZoom(14)
+         map.setZoom(8)
      }
 
 
