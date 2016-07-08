@@ -23,6 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'discount_id',
+            'discount_title',
             [
                 'attribute' => 'user_id',
                 'label' => 'Компания',

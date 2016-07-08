@@ -127,6 +127,21 @@
          popupAlign($('#search-modal .modal-layout'));
 
      });
+
+     //About modal
+     $( "#about").click(function() {
+         $(" .mask ,  #about-modal").fadeIn(300);
+         popupAlign($('#about-modal .modal-layout'));
+
+     });
+
+     //Contact modal
+     $( "#contact").click(function() {
+         $(" .mask ,  #contact-modal").fadeIn(300);
+         popupAlign($('#contact-modal .modal-layout'));
+
+     });
+
     //Forgot pass
      $( ".forgot-modal-link" ).click(function() {
          $(" .mask ,  #search-modal").fadeIn(300);

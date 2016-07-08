@@ -14,7 +14,7 @@ $category;
         <span class="user" id="toggle-header-dropdown"><a href="#"></a></span>
         <div class="logo"><a href="<?= Url::to(['/discount/index']); ?>"></a>
         </div>
-        <a href="<?= Url::to(['/discount/create']); ?>" class="mobile-create-btn"></a>
+        <a href="<?= Url::to(['/discount/create']); ?>" class="mobile-create-btn" <?php if (Yii::$app->user->isGuest): ?>id="error"<?php endif; ?>></a>
 
         <div class=" collapse-menu" id="collapse-menu">
 
