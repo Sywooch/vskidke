@@ -1,4 +1,6 @@
  $(document).ready(function () {
+     $('#citySwitch').styler();
+
      discountCreateError();
      flashMessages();
 
@@ -220,8 +222,8 @@ function readURL(input) {
 
      map = new google.maps.Map(document.getElementById('map'), {
          center: myLatLng,
-         zoom: 17
-//                    scrollwheel: false,
+         zoom: 17,
+         scrollwheel: false
      });
 
 
@@ -229,13 +231,9 @@ function readURL(input) {
  initMap();
  
  function createMarkers(array) {
-     console.log(array);
      var marker,
-         place;
-
-     var bounds = new google.maps.LatLngBounds();
-
-
+         place,
+         bounds = new google.maps.LatLngBounds();
 
      for (var i=0;i<array.length;i++) {
          console.log(array[i]);
@@ -253,8 +251,7 @@ function readURL(input) {
      }
      else {
          map.setCenter(new google.maps.LatLng(parseFloat(array[0].lat) ,parseFloat(array[0].lng)));
-         map.setZoom(14)
+         map.setZoom(17);
      }
-
 
  }

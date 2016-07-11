@@ -14,11 +14,13 @@ class AppAsset extends AssetBundle
     public $css = [
 //        'css/site.css',
         'css/main.css',
+        'css/jquery.formstyler.css',
     ];
     public $js = [
         'http://maps.googleapis.com/maps/api/js?key=AIzaSyCoxwf8_9WJvLTDR0dFtPmkiw1ysqO-n7c',
         'js/app.js',
         'js/jquery.form.min.js',
+        'js/jquery.formstyler.min.js',
         'js/main.js'
 
     ];

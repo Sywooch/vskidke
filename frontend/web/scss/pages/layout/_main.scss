@@ -1,7 +1,7 @@
 //==Index page layout
 .main {
 
-  @include media-custom(1400px) {
+  @include media-custom(1200px) {
     display: flex;
     flex-flow: row wrap;
   }
@@ -14,7 +14,7 @@
       padding: 0 rem(27);
     }
 
-    @include media-custom(1400px) {
+    @include media-custom(1200px) {
       flex: 4;
       order: 2;
     }
@@ -27,7 +27,7 @@
       box-shadow: -1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     }
 
-    @include media-custom(1400px) {
+    @include media-custom(1200px) {
       display: block;
       max-width: 211px;
       order: 1;
@@ -41,7 +41,7 @@
       box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
     }
 
-    @include media-custom(1400px) {
+    @include media-custom(1200px) {
       display: block;
       max-width: 211px;
       order: 3;
@@ -84,7 +84,7 @@
     left: 0;
     width: 100%;
     background-color: #cad4d9;
-    height: 3px;
+    height: 2px;
     content: '';
     z-index: 5;
     display: none;
@@ -762,20 +762,20 @@
     left: 0;
     width: 100%;
     background-color: #cad4d9;
-    height: 3px;
+    height: 2px;
     content: '';
     z-index: 5;
   }
   .page-title {
     font-family: $font-family-3;
     color: #0e5f82;
-    font-size: 31px; /* Приближение из-за подстановки шрифтов */
-    font-weight: 400;
+    font-size: 26px; /* Приближение из-за подстановки шрифтов */
+    font-weight: 600;
     line-height: 1; /* Приближение из-за подстановки шрифтов */
     position: relative;
     background: #fff;
     z-index: 10;
-    margin: 21px 0;
+    margin: 22px 0 24px;
     display: inline-block;
     padding-right: 10px;
 
@@ -852,10 +852,10 @@
     }
 
     .img-add {
-      font-family: $font-family-1;
+      font-family: $HouschkaRoundedMedium;
       color: #0e5f82;
-      font-size: 16.25px; /* Approximation due to font substitution */
-      font-weight: 500;
+      font-size: 13px; /* Approximation due to font substitution */
+      font-weight: 600;
       line-height: 25px; /* Approximation due to font substitution */
       margin-top: 12px;
 
@@ -903,10 +903,10 @@
     }
     //
     .form-label {
-      font-family: $font-family-1;
+      font-family: $HouschkaRoundedMedium;
       color: #3e3f3f;
-      font-size: 16.25px; /* Approximation due to font substitution */
-      font-weight: 500;
+      font-size: 13px; /* Approximation due to font substitution */
+      font-weight: 600;
       line-height: 1; /* Approximation due to font substitution */
     }
 
@@ -916,20 +916,20 @@
       height: 65px;
       line-height: 62;
       background-color: #ffffff;
-      font-family: $font-family-1;
+      font-family: $HouschkaRoundedAltLightRegular;
       color: #0e5f82;
       font-weight: 300;
       padding: 0 14px;
       display: block;
       width: 100%;
-      font-size: 33px; /* Приближение из-за подстановки шрифтов */
+      font-size: 20px; /* Приближение из-за подстановки шрифтов */
 
       @include sm {
         border-width: 1.25px;
         border-color: transparent;
         border-style: solid;
         height: 33px;
-        font-size: 25px; /* Approximation due to font substitution */
+        font-size: 20px; /* Approximation due to font substitution */
         line-height: 31px; /* Approximation due to font substitution */
 
         width: 390px;
@@ -945,10 +945,10 @@
     }
 
     .edit {
-      font-family: $font-family-1;
+      font-family: $HouschkaRoundedAltLightRegular;
       color: #8e8e8e;
-      font-size: 16.25px; /* Approximation due to font substitution */
-      font-weight: 300;
+      font-size: 13px; /* Approximation due to font substitution */
+      //font-weight: 300;
       line-height: 1; /* Approximation due to font substitution */
       text-decoration: none;
 
@@ -1084,24 +1084,24 @@
 
   .form-input {
     border-radius: 5px;
-    border-width: 1.25px;
-    border-color: #0e5f82;
+    border-width: 1.5px;
+    border-color: #afcad5;
     border-style: solid;
     background-color: #ffffff;
     width: 100%;
     height: 33px;
     font-family: $font-family-1;
     color: #7b7b7b;
-    font-size: 18.75px; /* Approximation due to font substitution */
+    font-size: 15px; /* Approximation due to font substitution */
     font-weight: 300;
-    line-height: 31px; /* Approximation due to font substitution */
+    line-height: 25px; /* Approximation due to font substitution */
     text-align: left;
-    padding: 0 14px;
+    padding: 0 10px;
 
     &.form-textarea {
       height: 222px;
       resize: none;
-      padding: 14px;
+      padding: 4px 10px;
     }
 
     //&.price {
@@ -1198,7 +1198,7 @@
     height: 33px;
     font-family: $font-family-1;
     color: #8e8e8e;
-    font-size: 25px; /* Approximation due to font substitution */
+    font-size: 18px; /* Approximation due to font substitution */
     font-weight: 300;
     line-height: 31px; /* Approximation due to font substitution */
     text-align: left;
@@ -1269,7 +1269,7 @@
       height: 33px;
       font-family: $font-family-1;
       color: #8e8e8e;
-      font-size: 22px; /* Approximation due to font substitution */
+      font-size: 18px; /* Approximation due to font substitution */
       font-weight: 300;
       line-height: 31px; /* Approximation due to font substitution */
       text-align: left;
@@ -1293,16 +1293,13 @@
   }
 
   .form-submit {
-    font-family: $font-family-3;
+    font-family: $SFUIDisplayLight;
     color: #ffffff;
-    font-size: 18.4px; /* Approximation due to font substitution */
-    font-weight: 300;
+    font-size: 15px; /* Approximation due to font substitution */
     line-height: 27px; /* Approximation due to font substitution */
     text-align: center;
-    border-width: 1.25px;
-    border-color: #0e5f82;
-    border-style: solid;
-    border-radius: 10px;
+    border:1px solid #0e5f82;
+    border-radius: 15px;
     background-color: #3885a9;
     width: 156px;
     height: 29px;
@@ -1324,7 +1321,7 @@
   margin: 38px 0;
 
   .save-btn {
-    border-width: 1.25px;
+    border-width: 1px;
     border-color: #0e5f82;
     border-style: solid;
     background-color: #3f8bac;
@@ -1332,11 +1329,11 @@
     height: 59px;
     font-family: $font-family-3;
     color: #ffffff;
-    font-size: 20.94px; /* Approximation due to font substitution */
+    font-size: 17px; /* Approximation due to font substitution */
     font-weight: 300;
     line-height: 57px; /* Approximation due to font substitution */
     text-align: center;
-    border-radius: 20px;
+    border-radius: 30px;
   }
 }
 
@@ -2348,15 +2345,15 @@ h3 {
     border-style: solid;
     background-color: #3f8bac;
     opacity: 0.7;
-    height: 35px;
+    height: 29px;
     font-family: $font-family-5;
     color: #ffffff;
-    font-size: 18.75px; /* Approximation due to font substitution */
+    font-size: 15px;
     font-weight: 300;
-    line-height: 32px; /* Approximation due to font substitution */
+    line-height: 30px;
     text-align: center;
     padding: 0 20px;
-    border-radius: 30px;
+    border-radius: 15px;
     display: block;
     width: auto;
     margin: 0 0 15px 0;
@@ -2402,19 +2399,39 @@ h3 {
   position: relative;
   display: inline-block;
 
+  .jq-selectbox__select {
+    border: none!important;
+    background: none;
+    box-shadow: none;
+    padding: 0 15px 0 0;
+    height: 22px;
+    font-family: $font-family-3;
+  }
+
+  .jq-selectbox__trigger {
+    border: none;
+  }
+  .jq-selectbox__select-text {
+    height: 27px;
+    line-height: 15px;
+  }
+
+  .jq-selectbox__trigger-arrow {
+    display: none;
+  }
+
   @include sm {
-    margin-top: 2px;
+    margin-top: 8px;
   }
 
   &:before {
     position: absolute;
     bottom: 3px;
-    left: 3px;
+    left: 0;
     width: 100%;
     border-bottom: 2px solid #0e5f82;
     display: block;
     content: '';
-
     @include sm {
       border-bottom: 1px solid #0e5f82;
     }
@@ -2422,8 +2439,8 @@ h3 {
 
   &:after {
     position: absolute;
-    top: 1px;
-    right: 0;
+    top: -8px;
+    right: -7px;
     display: block;
     font-family: $font-family-icomoon;
     content: $triangle-down-icon;
@@ -2432,7 +2449,7 @@ h3 {
 
     @include sm {
       font-size: 12px;
-      top: 1px;
+      top: 0;
       right: 0;
     }
   }
@@ -2442,6 +2459,9 @@ h3 {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+
     border: none;
     background: transparent;
     font-family: $font-family-3;
@@ -2457,6 +2477,10 @@ h3 {
     outline: none;
 
     font-size: 18px; /* Приближение из-за подстановки шрифтов */
+
+    &:hover {
+      max-width: 400px;
+    }
 
     @include minW480 {
       padding: 0 20px 0 0;

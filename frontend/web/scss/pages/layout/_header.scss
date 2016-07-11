@@ -271,14 +271,15 @@
           @include sm{
             float: right;
             margin-right: 36px;
-            font-size: 13.5px;
+            font-size: 13px;
+            padding-top: 5px;
           }
         }
 
         .select-town{
           @include sm{
             float: left;
-            margin-left: 40px;
+            margin-left: 0;
           }
 
         }
@@ -313,7 +314,7 @@
         margin-bottom: 10px;
         width: 160px;
         height: 40px;
-        font-family:$font-family-3;
+        font-family:$IntroLightAlt;
         color: #0e5f82;
         font-size: 30px; /* Приближение из-за подстановки шрифтов */
         font-weight: 300;

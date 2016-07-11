@@ -44,7 +44,12 @@ $secondary-1:             #ffd800  !default;
 
 
 // font families
-$font-family-1:           "HouschkaRounded", sans-serif !default;
+$HouschkaRoundedAltLightRegular:   "HouschkaRoundedAltLightRegular", sans-serif !default;
+$HouschkaRoundedMedium:   "HouschkaRoundedMedium", sans-serif !default;
+$SFUIDisplayLight:   "SFUIDisplayLight", sans-serif !default;
+$IntroLightAlt:   "IntroLightAlt", sans-serif !default;
+
+$font-family-1:           "$HouschkaRoundedAltLightRegular", sans-serif !default;
 $font-family-2:           "pfdintextcondprothin", sans-serif !default;
 $font-family-3:           "IntroRegularAlt", sans-serif !default;
 $font-family-4:           "SFUIDesignRegular", sans-serif !default;
