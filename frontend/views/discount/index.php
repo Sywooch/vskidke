@@ -30,23 +30,23 @@ unset($get['city']);
                 <div class="select-filter">
                     <select id="limit-page">
                         <option <?= $limit == 10 ? 'selected' : ''; ?>
-                                value="<?= Url::to(['/discount/index', $get, 'limit' => 10])?>">
+                                value="<?= Url::to(['/discount/index', 'limit' => 10])?>">
                             10
                         </option>
                         <option <?= $limit == 20 ? 'selected' : ''; ?>
-                                value="<?= Url::to(['/discount/index', $get, 'limit' => 20])?>">
+                                value="<?= Url::to(['/discount/index', 'limit' => 20])?>">
                             20
                         </option>
                         <option <?= $limit == 30 ? 'selected' : ''; ?>
-                                value="<?= Url::to(['/discount/index', $get, 'limit' => 30])?>">
+                                value="<?= Url::to(['/discount/index', 'limit' => 30])?>">
                             30
                         </option>
                         <option <?= $limit == 40 ? 'selected' : ''; ?>
-                                value="<?= Url::to(['/discount/index', $get, 'limit' => 40])?>">
+                                value="<?= Url::to(['/discount/index', 'limit' => 40])?>">
                             40
                         </option>
                         <option <?= $limit == 50 ? 'selected' : ''; ?>
-                                value="<?= Url::to(['/discount/index', $get, 'limit' => 50])?>">
+                                value="<?= Url::to(['/discount/index', 'limit' => 50])?>">
                             50
                         </option>
                     </select>
