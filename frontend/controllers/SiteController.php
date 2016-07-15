@@ -182,7 +182,7 @@ class SiteController extends BaseController
                 return $this->redirect(Url::to(['/company/index']));
             } else {
                 Yii::$app->response->format = Response::FORMAT_JSON;
-                return ActiveForm::validate($model);
+                return ActiveForm::validate($model); 
             }
         }
 

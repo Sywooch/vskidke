@@ -50,7 +50,7 @@ class DiscountController extends BaseController {
                                   ->andWhere(['company_addresses.city_id' => City::getCityId()])
                                   ->orderBy([
                                       'discounts.discount_view' => $popular == 'SORT_DESC' ? SORT_DESC : SORT_ASC,
-                                      'discounts.date_create' => $new == 'SORT_DESC' ? SORT_DESC : SORT_ASC
+                                      'discounts.discount_date_start' => $new == 'SORT_DESC' ? SORT_DESC : SORT_ASC
                                   ])
                                   ->groupBy('discount_id');
 
@@ -185,7 +185,8 @@ class DiscountController extends BaseController {
     public function actionArchive($category = null, $limit = 10) {
         $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
             ->where(['<', 'discount_date_end', date('Y-m-d')])
-            ->andWhere(['company_addresses.city_id' => City::getCityId()]);
+            ->andWhere(['company_addresses.city_id' => City::getCityId()])
+            ->groupBy('discount_id'); 
 
         if($category) {
             $query->andWhere(['category_id' => $category]);
