@@ -197,7 +197,7 @@ function readURL(input) {
 
  function discountCreateError() {
      if($("#error")) {
-         $("#error").on('click', function (event) {
+         $("#error,a.mobile-create-btn").on('click', function (event) {
              event.preventDefault();
              $(".mask, #info-modal").fadeIn(300);
              popupAlign($('#info-modal .modal-layout'));

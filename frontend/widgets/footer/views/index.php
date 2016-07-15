@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
             <ul class="nav-footer">
                 <li id="about"><a href="#">О проекте</a></li>
                 <li><a href="<?= Url::to(['/discount/archive']); ?>">Архив скидок</a></li>
-                <li><a href="#">Условия размещения</a></li>
+                <li><a href="<?= Url::to(['/site/condition']); ?>">Условия размещения</a></li>
                 <li id="contact"><a href="#">Контакты</a></li>
             </ul>
         </nav>

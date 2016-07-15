@@ -321,4 +321,8 @@ class SiteController extends BaseController
             'model' => $model,
         ]);
     }
+    
+    public function actionCondition() {
+        return $this->render('condition'); 
+    }
 }
