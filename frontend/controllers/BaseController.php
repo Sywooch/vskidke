@@ -13,6 +13,6 @@ class BaseController extends \yii\web\Controller
             $cookies->add(new Cookie(['name' => 'city', 'value' => 'kiev']));
         }
         
-        return parent::init();
+        return parent::init(); 
     }
 }

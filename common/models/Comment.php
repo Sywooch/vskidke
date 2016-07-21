@@ -32,6 +32,7 @@ class Comment extends ActiveRecord {
             [['name', 'text'], 'filter', 'filter' => function($value){return strip_tags($value);}],
             [['discount_id'], 'exist', 'skipOnError' => true, 'targetClass' => Discounts::className(), 'targetAttribute' => ['discount_id' => 'discount_id']],
             [['user_id'], 'integer'],
+            ['status', 'integer'],
             [['date'], 'safe']
         ];
     }

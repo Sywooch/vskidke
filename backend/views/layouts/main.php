@@ -64,6 +64,11 @@ AppAsset::register($this);
             'url' => ['/banners/index'],
             'visible' => !Yii::$app->user->isGuest
         ],
+        [
+            'label' => 'Отзывы',
+            'url' => ['/comments/index'],
+            'visible' => !Yii::$app->user->isGuest
+        ],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

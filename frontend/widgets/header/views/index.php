@@ -20,7 +20,7 @@ $category;
 
             <div class="btn-holder">
                 <div class="btn-row">
-                    <a href="#"
+                    <a href="<?= Url::to(['/discount/create']); ?>"
                        <?php if (Yii::$app->user->isGuest): ?>id="error"<?php endif; ?> class="btn-info create-btn">Разместить
                         скидку</a>
                     <?php if (Yii::$app->user->isGuest): ?>

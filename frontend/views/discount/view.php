@@ -58,7 +58,11 @@ if($discount->discount_percent) {
                 <div class="item mail"><?= $discount->discount_view_email == '0' ? $company->email : ''; ?></div>
                 <?php endif; ?>
                 <?php if ( $company->relatedRecords['profile']->profile_site): ?>
-                <div class="item site"><?= $company->relatedRecords['profile']->profile_site; ?></div>
+                <div class="item site">
+                    <a href="<?= $company->relatedRecords['profile']->profile_site; ?>" target="_blank">
+                        <?= $company->relatedRecords['profile']->profile_site; ?>
+                    </a>
+                </div>
                 <?php endif; ?>
             </div>
             <div class="action-holder">

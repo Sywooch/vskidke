@@ -323,6 +323,6 @@ class SiteController extends BaseController
     }
     
     public function actionCondition() {
-        return $this->render('condition'); 
+        return $this->render('condition');
     }
 }

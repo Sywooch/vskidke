@@ -2,19 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\UploadForm;
 use Yii;
-use common\models\Banners;
+use common\models\Comment;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * BannersController implements the CRUD actions for Banners model.
+ * CommentsController implements the CRUD actions for Comment model.
  */
-class BannersController extends Controller
+class CommentsController extends Controller
 {
     /**
      * @inheritdoc
@@ -32,13 +30,13 @@ class BannersController extends Controller
     }
 
     /**
-     * Lists all Banners models.
+     * Lists all Comment models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Banners::find(),
+            'query' => Comment::find(),
         ]);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class BannersController extends Controller
     }
 
     /**
-     * Displays a single Banners model.
+     * Displays a single Comment model.
      * @param integer $id
      * @return mixed
      */
@@ -59,23 +57,15 @@ class BannersController extends Controller
     }
 
     /**
-     * Creates a new Banners model.
+     * Creates a new Comment model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Banners();
+        $model = new Comment();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $uploadForm            = new UploadForm();
-            $uploadForm->img       = UploadedFile::getInstance($model, 'img');
-            $uploadForm->model     = $model;
-            $uploadForm->directory = 'banners';
-
-            $model->img = $uploadForm->upload();
-            $model->save();
-
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -85,30 +75,16 @@ class BannersController extends Controller
     }
 
     /**
-     * Updates an existing Banners model.
+     * Updates an existing Comment model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
     {
-        $model  = $this->findModel($id);
-        $oldImg = $model->img; 
+        $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            if (UploadedFile::getInstance($model, 'img')) {
-                $uploadForm            = new UploadForm();
-                $uploadForm->img       = UploadedFile::getInstance($model, 'img');
-                $uploadForm->model     = $model;
-                $uploadForm->directory = 'banners';
-
-                $model->img = $uploadForm->upload();
-            } else {
-                $model->img = $oldImg;
-            }
-
-            $model->save();
-
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -118,7 +94,7 @@ class BannersController extends Controller
     }
 
     /**
-     * Deletes an existing Banners model.
+     * Deletes an existing Comment model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -131,15 +107,15 @@ class BannersController extends Controller
     }
 
     /**
-     * Finds the Banners model based on its primary key value.
+     * Finds the Comment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Banners the loaded model
+     * @return Comment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Banners::findOne($id)) !== null) {
+        if (($model = Comment::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
