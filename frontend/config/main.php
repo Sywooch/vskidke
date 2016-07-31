@@ -64,6 +64,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName'  => false,
             'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'discount-api'],
                 '/<city:[a-z0-9_\-.]+>'      => 'discount/index',
                 '<controller:[a-zA-Z0-9\-]+>/<city:[a-z0-9_\-.]+>/<id:\d+>'                         => '<controller>/view',
                 '<controller:[a-zA-Z0-9\-]+>/<city:[a-z0-9_\-.]+>'                                  => '<controller>/index',
@@ -74,6 +75,11 @@ return [
                 'logout' => 'site/logout',
                 'signup' => 'site/signup',
             ],
+        ],
+        'request' => [
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'i18n' => [
             'translations' => [
