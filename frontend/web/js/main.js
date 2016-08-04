@@ -1,6 +1,12 @@
  $(document).ready(function () {
      $('#citySwitch').styler();
 
+     $('body').find('.jq-selectbox__dropdown ul').mCustomScrollbar({
+         theme: 'vskidke',
+         mouseWheel: true
+     });
+
+
      discountCreateError();
      flashMessages();
 
@@ -111,7 +117,7 @@
      });
 
      $('#toggle-header-dropdown').on('click', function (e) {
-         $('#header-dropdown-menu').slideToggle(350);
+         $('#header-mobile-dropdown-menu').slideToggle(350);
          e.preventDefault();
      });
 

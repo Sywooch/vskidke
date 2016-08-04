@@ -245,10 +245,10 @@
 	background:         linear-gradient(#FFF, #E6E6E6);
 	box-shadow: inset 1px -1px #F1F1F1, inset -1px 0 #F1F1F1, 0 1px 2px rgba(0,0,0,.1);
 	font: 14px/32px Arial, sans-serif;
-	color: #333;
+	color: #0e5f82;
 	text-shadow: 1px 1px #FFF;
 }
-.jq-selectbox__select:hover {
+/*.jq-selectbox__select:hover {
 	background: #E6E6E6;
 	background: -webkit-linear-gradient(#F6F6F6, #E6E6E6);
 	background:         linear-gradient(#F6F6F6, #E6E6E6);
@@ -256,7 +256,7 @@
 .jq-selectbox__select:active {
 	background: #F5F5F5;
 	box-shadow: inset 1px 1px 3px #DDD;
-}
+}  */
 .jq-selectbox.focused .jq-selectbox__select {
 	border: 1px solid #5794BF;
 }

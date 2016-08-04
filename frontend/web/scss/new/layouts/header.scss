@@ -1,0 +1,12 @@
+.hide {
+  display: none;
+}
+
+
+.clear-fix::after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}

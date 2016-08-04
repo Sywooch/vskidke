@@ -1976,7 +1976,7 @@ h3 {
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
   outline: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 
 }
@@ -2041,27 +2041,39 @@ h3 {
   left: 50%;
   cursor: initial;
   position: fixed;
+  box-shadow: 0 0 8px 0 #aaa;
+  &:before,&:after {
+    background: #299abc;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+  &:before {
+    border-radius: 3px 3px 0 0;
+    top: 0;
+  }
+  &:after {
+    border-radius: 0 0 3px 3px;
+    bottom: 0;
+  }
   @media all and (max-width: 400px){
     left: 0;
     margin-left: 0!important;
-
   }
 
   .close {
     position: absolute;
-    top: 0;
-    right: -20px;
+    top: 5px;
+    right: 0px;
     cursor: pointer;
-    opacity: 0.5;
-
-    &:hover {
-      opacity: 1;
-    }
-
+    font-size: 18px;
     &:before {
       font-family: $font-family-icomoon;
       content: '\e5cd';
-      color: #fff;
+      color: #3096e1;
     }
   }
 
@@ -2403,8 +2415,9 @@ h3 {
     border: none!important;
     background: none;
     box-shadow: none;
-    padding: 0 15px 0 0;
-    height: 22px;
+    padding: 0 14px 0 0;
+    height: 12px;
+    font-size: 11.7px;
     font-family: $font-family-3;
   }
 
@@ -2412,21 +2425,32 @@ h3 {
     border: none;
   }
   .jq-selectbox__select-text {
+
     height: 27px;
     line-height: 15px;
+
   }
 
   .jq-selectbox__trigger-arrow {
     display: none;
   }
-
-  @include sm {
-    margin-top: 8px;
+  .jq-selectbox li {
+    font-family: $font-family-3;
+    color: #0e5f82;
+    font-size: 12px;
+    min-height: 9px;
+    padding: 1px 5px;
+    text-align: left;
+    &:hover {
+      background-color: #18bef0;
+    }
   }
+
+
 
   &:before {
     position: absolute;
-    bottom: 3px;
+    bottom: 0;
     left: 0;
     width: 100%;
     border-bottom: 2px solid #0e5f82;
@@ -2449,7 +2473,7 @@ h3 {
 
     @include sm {
       font-size: 12px;
-      top: 0;
+      top: 4px;
       right: 0;
     }
   }
@@ -2461,6 +2485,7 @@ h3 {
     width: auto;
     overflow: hidden;
     white-space: nowrap;
+    display: none;
 
     border: none;
     background: transparent;
@@ -2581,7 +2606,8 @@ h3 {
   float: left;
 
   @include sm {
-    float: right;
+    float: none;
+    display: block;
   }
 
   @include clearfix;
@@ -2601,7 +2627,7 @@ h3 {
     z-index: 999;
     padding: 10px 0;
     min-width: 280px;
-    box-shadow: 1px 2px 4px 0px rgba(13, 13, 14, 0.35);
+    box-shadow: 1px 2px 4px 0 rgba(13, 13, 14, 0.35);
     display: none;
 
     > li {

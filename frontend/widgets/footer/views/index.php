@@ -127,12 +127,12 @@ use yii\widgets\ActiveForm;
                     map = new google.maps.Map(document.getElementById('map'), {
                         center: data,
                         zoom: 17,
-                        scrollwheel: false,
+                        scrollwheel: false
                     });
 
                     var marker = new google.maps.Marker({
                         map: map,
-                        position: data,
+                        position: data
                     });
                 }
             </script>
