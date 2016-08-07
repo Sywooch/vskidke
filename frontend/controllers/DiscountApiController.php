@@ -19,12 +19,29 @@ class DiscountApiController extends ActiveController {
                     'checkAccess' => [$this, 'checkAccess'],
                     'prepareDataProvider' => function ($action) {
                         /* @var $model Discounts */
-                        $model = new $this->modelClass;
-                        $query = $model::find();
-                        $dataProvider = new ActiveDataProvider(['query' => $query]);
-                        $model->setAttribute('category_id', $_GET['category']);
-                        $query->where(['category_id' => $model->category_id]);
-                        return $dataProvider;
+                        $model        = new $this->modelClass;
+                        $query        = $model::find()->where(['>=', 'discount_date_end', date('Y-m-d')]);
+                        $params       = \Yii::$app->request->get();
+
+                        if(isset($params['category'])) {
+                            $query->where(['category_id' => $params['category']]);
+                        }elseif (isset($params['city'])) {
+                            $query->joinWith('address')->andWhere(['company_addresses.city_id' => $params['city']]);
+                        }
+
+                        return $query->asArray()->all();
+                    }
+                ],
+                'view' => [
+                    'class' => 'yii\rest\ViewAction',
+                    'modelClass' => $this->modelClass,
+                    'checkAccess' => [$this, 'checkAccess'],
+                    'findModel' => function ($id) {
+                        /* @var $model Discounts */
+                        $model        = new $this->modelClass;
+                        $query        = $model::find()->where(['discount_id' => $id])->with('address', 'comments');
+
+                        return $query->asArray()->one();
                     }
                 ]
             ]

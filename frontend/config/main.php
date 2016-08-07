@@ -65,10 +65,12 @@ return [
             'showScriptName'  => false,
             'rules' => [
                 ['class' => 'yii\rest\UrlRule', 'controller' => 'discount-api'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'city-api'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'comment-api'],
                 '/<city:[a-z0-9_\-.]+>'      => 'discount/index',
                 '<controller:[a-zA-Z0-9\-]+>/<city:[a-z0-9_\-.]+>/<id:\d+>'                         => '<controller>/view',
                 '<controller:[a-zA-Z0-9\-]+>/<city:[a-z0-9_\-.]+>'                                  => '<controller>/index',
-                'login/<city:[a-z0-9_\-.]+>/<service:vkontakte|facebook>'                                                => 'site/login',
+                'login/<city:[a-z0-9_\-.]+>/<service:vkontakte|facebook>'                           => 'site/login',
                 '<controller:[a-zA-Z0-9\-]+>/<city:[a-z0-9_\-.]+>/<action:[a-zA-Z0-9\-]+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:[a-zA-Z0-9\-]+>/<city:[a-z0-9_\-.]+>/<action:[a-zA-Z0-9\-]+>'          => '<controller>/<action>',
                 '<controller:[a-zA-Z0-9\-]+>/<action:[a-zA-Z0-9\-]+>'                               => '<controller>/<action>',
