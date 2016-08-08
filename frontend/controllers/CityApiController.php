@@ -28,5 +28,19 @@ class CityApiController extends ActiveController {
      *     {
      *       "Accept: application/json"
      *     }
+     * @apiSuccessExample {json} Success-Response:.
+     * HTTP/1.1 200 OK
+     * [
+     *      {
+     *      "city_id": 5,
+     *      "city_name": "Киев",
+     *      "uri": "kiev"
+     *      },
+     *      {
+     *      "city_id": 6,
+     *      "city_name": "Одесса",
+     *      "uri": "odessa"
+     *      },
+     * ]
      */
 }
