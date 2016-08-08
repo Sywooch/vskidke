@@ -105,10 +105,7 @@ class CompanyController extends BaseController {
             'model' => $model
         ]);
     }
-
-    /**
-     * @return User the loaded model
-     */
+    
     private function findModel()
     {
         return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile', 'addresses.city')->one();

@@ -39,11 +39,6 @@ class DiscountController extends BaseController {
         ];
     }
 
-    /**
-     * @param null $category
-     * @param int $limit
-     * @return string
-     */
     public function actionIndex($category = null, $limit = 10, $popular = null, $new = null, $q = null) {
         $query = Discounts::find()->joinWith('address')
                                   ->where(['>=', 'discount_date_end', date('Y-m-d')])
@@ -84,9 +79,6 @@ class DiscountController extends BaseController {
         ]);
     }
 
-    /**
-     * @return string|\yii\web\Response
-     */
     public function actionCreate($id = null) {
         $userModel = $this->UserModel();
         
@@ -132,10 +124,6 @@ class DiscountController extends BaseController {
         ]);
     }
 
-    /**
-     * @param $id
-     * @return string
-     */
     public function actionView($id) {
         $discount = Discounts::findOne($id);
         $discount->discount_view += 1;
@@ -177,11 +165,6 @@ class DiscountController extends BaseController {
         }
     }
 
-    /**
-     * @param null $category
-     * @param int $limit
-     * @return string
-     */
     public function actionArchive($category = null, $limit = 10) {
         $query = Discounts::find()->joinWith('address', true, 'LEFT JOIN')
             ->where(['<', 'discount_date_end', date('Y-m-d')])
@@ -210,13 +193,6 @@ class DiscountController extends BaseController {
         ]);
     }
 
-    /**
-     * @param null $category
-     * @param int $limit
-     * @param bool $archive
-     * @param bool $active
-     * @return string
-     */
     public function actionMyDiscounts($category = null, $limit = 10, $archive = false, $active = false) {
         $user  = $this->UserModel();
         $query = Discounts::find()->where(['user_id' => $user->id]);
@@ -251,9 +227,6 @@ class DiscountController extends BaseController {
         ]);
     }
 
-    /**
-     * @return User the loaded model
-     */
     private function UserModel()
     {
         return User::find()->where(['id' => \Yii::$app->user->identity->getId()])->with('profile', 'addresses.city')->one();

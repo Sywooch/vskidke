@@ -8,16 +8,25 @@ use yii\rest\ActiveController;
 class CityApiController extends ActiveController {
     public $modelClass = 'common\models\City';
 
+    public function actions()
+    {
+        $actions = parent::actions();
+
+        // отключить действия "delete", "create, view, update"
+        unset($actions['delete'], $actions['create'], $actions['view'], $actions['update']);
+
+        return $actions;
+    }
+
     /**
-     * @ApiDescription(section="City", description="Get list cities")
-     * @ApiMethod(type="get")
-     * @ApiRoute(name="/city-apis")
-     * @ApiParams(name="city_id", type="integer", nullable=false, description="City id")
-     * @ApiParams(name="data", type="array", sample="{'city_id':'int','city_name':'string', 'uri':'string'}")
-     * @ApiReturnHeaders(sample="HTTP 200 OK")
-     * @ApiReturn(type="object", sample="{
-     *  'transaction_id':'int',
-     *  'transaction_status':'string'
-     * }")
+     * @api {get} city-apis
+     * @apiName GetCities
+     * @apiDescription Get list cities
+     * @apiGroup City
+     * @apiVersion 0.1.0
+     *  @apiHeaderExample {json} Header-Example:
+     *     {
+     *       "Accept: application/json"
+     *     }
      */
 }

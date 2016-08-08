@@ -10,8 +10,12 @@ class DiscountApiController extends ActiveController {
 
     public function actions()
     {
+        $actions = parent::actions();
+        // отключить действия "delete", "create", "update"
+        unset($actions['delete'], $actions['create'], $actions['update']);
+
         return array_merge(
-            parent::actions(),
+            $actions,
             [
                 'index' => [
                     'class' => 'yii\rest\IndexAction',

@@ -30,7 +30,8 @@
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-widget-activeform": "@dev",
-        "crada/php-apidoc": "@dev"
+        "crada/php-apidoc": "@dev",
+        "eold/yii2-apidoc-generator": "^1.0."
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
