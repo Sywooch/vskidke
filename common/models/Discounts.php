@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "discounts".
@@ -48,7 +49,7 @@ class Discounts extends \yii\db\ActiveRecord
             [['user_id', 'category_id', 'discount_title', 'discount_text', 'discount_date_start', 'discount_date_end'], 'required', 'message' => 'Поле не может быть пустым'],
             [['user_id', 'category_id', 'discount_price', 'discount_old_price', 'discount_view', 'discount_app', 'discount_view_email',], 'integer'],
             [['discount_percent'], 'integer', 'max' => 99, 'message' => 'Максимальный процент 99'],
-            [['discount_text', 'discount_gift'], 'string'],
+            [['discount_text', 'discount_gift', 'img'], 'string'],
             [['discount_date_start', 'discount_date_end'], 'safe'],
             [['discount_title', 'img'], 'string', 'max' => 255],
             [['date_create'], 'date', 'format' => 'Y-m-d'],
@@ -79,6 +80,32 @@ class Discounts extends \yii\db\ActiveRecord
             'discount_percent' => 'Процент скидки',
             'discount_gift' => 'Подарок'
         ];
+    }
+
+    public function fields() {
+        return ArrayHelper::merge(
+            parent::fields(),
+            [
+                'img' => function($model, $field) {
+                    return $model->getImg('small');
+                },
+            ]
+        );
+    }
+
+    public function extraFields() {
+        return [
+            'address',
+            'comments'
+        ];
+    }
+
+    public function resolveFields() {
+//        return $this->fields();
+        return ArrayHelper::merge(
+            $this->fields(),
+            $this->extraFields()
+        );
     }
 
     public function getImg($size = 'original')

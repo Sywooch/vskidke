@@ -5,11 +5,9 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
-
 return [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
-    'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
         'v1' => [
@@ -33,19 +31,16 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
+//            'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
                 [
+                    'pluralize' => false,
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'v1/city',
-                    'tokens' => [
-                        '{id}' => '<id:\\w+>'
-                    ]
-
+                    'controller' => ['v1/city', 'v1/comment', 'v1/discount'],
                 ]
             ],
-        ],
+        ]
     ],
     'params' => $params,
 ];

@@ -17,7 +17,7 @@ class CityController extends ActiveController {
     }
 
     /**
-     * @api {get} city
+     * @api {get} v1/city
      * @apiName GetCities
      * @apiDescription Get list cities
      * @apiGroup City
